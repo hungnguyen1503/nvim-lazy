@@ -62,6 +62,8 @@ local options = {
     guifont       = "CaskaydiaCove Nerd Font Propo:h13.5",
     wildmenu      = false,
     synmaxcol     = 200,
+    spelllang = 'en_us',
+    spell = false
 }
 
 vim.opt.syntax.minlines = 60

@@ -4,7 +4,52 @@ if not status_ok then
 end
 
 local options = {
-    ensure_installed = { "lua-language-server" }, -- not an option from mason.nvim
+    ensure_installed = {
+        -- C/C++ language
+        "clang-format",
+        "clangd",
+        "cmake-language-server",
+        "cmakelang",
+        "codelldb",
+        "cpplint",
+        "cpptools",
+
+        "lua-language-server",
+
+        -- Bash language
+        "bash-debug-adapter",
+        "bash-language-server",
+
+        -- Python language
+        "debugpy",
+        "python-lsp-server",
+        "pyflakes",
+        "reorder-python-imports",
+        -- "diagnostic-languageserver",
+
+        -- Json language
+        "fixjson",
+        "json-lsp",
+
+        -- Lua language
+        "lua-language-server",
+        "stylua",
+
+        -- Markdown
+        "markdownlint",
+
+        -- Vim language
+        "vim-language-server",
+
+        -- Yaml language
+        "yaml-language-server",
+        "yamlfmt",
+        "yamllint",
+
+        -- Other
+        "prettier",
+        "xmlformatter",
+    }, -- not an option from mason.nvim
     PATH = "prepend", -- "skip" seems to cause the spawning error
     ui = {
         icons = {

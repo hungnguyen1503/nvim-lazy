@@ -176,7 +176,7 @@ return {
         config = function()
             require("user.plugins.ultimate_autopair")
         end,
-        },
+    },
 
     -- Quick move
     {
@@ -464,6 +464,8 @@ return {
             require("user.plugins.lspserver")
         end,
     },
+
+    -- NULL-ls
 
     {
         'Djancyp/lsp-range-format',

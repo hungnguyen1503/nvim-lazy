@@ -1,7 +1,7 @@
 vim.defer_fn(function()
     pcall(require, "impatient")
 end, 0)
--- bootstrap lazy.nvim, LazyVim and your plugins
+-- bootstrap the lazy.nvim, the LazyVim and your plugins
 require("user")
 require("core")
 

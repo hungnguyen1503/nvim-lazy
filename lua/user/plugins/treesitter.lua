@@ -12,7 +12,7 @@ local options = {
     highlight = {
         enable = true,
         use_languagetree = true,
-        additional_vim_regex_highlighting = true,
+        additional_vim_regex_highlighting = false,
     },
     indent  = { enable = true },
     matchup = { enable = true },
@@ -41,7 +41,7 @@ if vim.fn.has("win32") == 0 then
             "make",
         }
     }
-    install.compilers = { "x86_64-w64-mingw32-clang" }
 end
 
+install.compilers = { "x86_64-w64-mingw32-clang" }
 vim.api.nvim_set_hl(0, "@punctuation.bracket", { link = "" })

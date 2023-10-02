@@ -140,7 +140,7 @@ nvim_tree.setup {
                 },
             },
         },
-        special_files = { "Makefile", "README.md", "readme.md", "CMakeLists.txt" },
+        special_files = { "Makefile", "README.md", "readme.md", "CMakeLists.txt", ".clang-format" },
         symlink_destination = true,
     },
     hijack_directories = {
@@ -170,7 +170,7 @@ nvim_tree.setup {
     },
     filters = {
         dotfiles = false,
-        custom = { ".git/", ".clang-format" },
+        custom = {},
         exclude = { ".gitignore", ".ci" },
     },
     filesystem_watchers = {

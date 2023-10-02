@@ -91,6 +91,13 @@ autocmd("FileType", {
         vim.opt.laststatus = 0
     end,
 })
+-- Enable spell check for specific language
+autocmd("FileType", {
+    pattern = "c",
+    callback = function ()
+        vim.opt.spell = true
+    end
+})
 
 -- Highlight yank
 autocmd("TextYankPost", {
