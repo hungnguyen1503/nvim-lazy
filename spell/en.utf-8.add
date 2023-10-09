@@ -8,3 +8,6 @@ ICLK
 ctrl
 irq
 lvl
+DTC
+UINT16
+tg1

@@ -43,6 +43,9 @@ return {
     {
         'nvim-tree/nvim-tree.lua',
         tag = 'nightly',
+        dependencies = {
+            "stevearc/dressing.nvim"
+        },
         config = function()
             require("user.plugins.nvimtree")
         end,
@@ -148,7 +151,10 @@ return {
     -- Tabout
     {
         'abecodes/tabout.nvim',
-        event = "InsertEnter",
+        event = {
+            "InsertEnter",
+            "VeryLazy"
+        },
         dependencies = {
             "nvim-treesitter",
             "nvim-cmp",
@@ -353,6 +359,16 @@ return {
         "RRethy/nvim-treesitter-endwise",
         event = "VeryLazy",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
+    },
+
+    -- Auto tag for html, xml, ....
+    {
+        "windwp/nvim-ts-autotag",
+        event = "VeryLazy",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        config = function ()
+            require('nvim-ts-autotag').setup()
+        end
     },
 
     {
@@ -654,12 +670,14 @@ return {
     {
         "nvim-neorg/neorg",
         -- build = ":Neorg sync-parsers", -- It should be enable after frist installation.
-        dependencies = { "nvim-lua/plenary.nvim" },
+        dependencies = {
+            "nvim-lua/plenary.nvim"
+        },
         opts = {
             load = {
-                ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.defaults"] = {},  -- Loads default behaviour
                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = { -- Manages Neorg workspaces
+                ["core.dirman"] = {      -- Manages Neorg workspaces
                     config = {
                         workspaces = {
                             notes = "~/notes",

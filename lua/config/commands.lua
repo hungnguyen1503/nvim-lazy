@@ -118,6 +118,7 @@ autocmd("User", {
             -- require("neo-tree").close_all()
             vim.cmd("Alpha")
             vim.cmd(event.buf .. "bwipeout")
+            vim.opt.spell = false
         end
     end,
 })
