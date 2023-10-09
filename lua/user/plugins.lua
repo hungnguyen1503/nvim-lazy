@@ -3,6 +3,7 @@ return {
     -- Icon source (need to be placed at the end)
     {
         'nvim-tree/nvim-web-devicons',
+        event = "VeryLazy"
     },
 
     -- Start up screen
@@ -436,8 +437,11 @@ return {
     -- Indent blank line
     {
         'lukas-reineke/indent-blankline.nvim',
-        tag    = "v2.20.8",
-        event  = "BufRead",
+        -- tag    = "v2.20.8",
+        event  = {
+            "BufRead",
+            "VeryLazy"
+        },
         config = function()
             require("user.plugins.blankline")
         end
