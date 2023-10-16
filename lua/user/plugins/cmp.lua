@@ -85,12 +85,13 @@ local options = {
         end,
     },
     sorting = {
+        priority_weight = 2,
         comparators = {
             require("cmp-under-comparator").under,
-            cmp.config.compare.recently_used,
-            cmp.config.compare.score,
             cmp.config.compare.offset,
+            cmp.config.compare.score,
             cmp.config.compare.exact,
+            cmp.config.compare.recently_used,
             cmp.config.compare.sort_text,
             cmp.config.compare.kind,
             cmp.config.compare.length,
@@ -131,9 +132,9 @@ local options = {
         end, { "i", "s" }),
     },
     sources = {
-        { name = "luasnip",        priority = 9, max_item_count = 10, option = { show_autosnippets = true } },
+        { name = "luasnip",        priority = 9, max_item_count = 12, option = { show_autosnippets = true } },
         { name = "luasnip_choice", priority = 9 },
-        { name = "nvim_lsp",       priority = 8, max_item_count = 10 },
+        { name = "nvim_lsp",       priority = 10, max_item_count = 12 },
         {
             name = "buffer",
             priority = 7,
@@ -192,7 +193,9 @@ cmp.setup.cmdline({ '/', '?' }, {
     })
 })
 
-require('cmp_luasnip_choice').setup({ auto_open = true });
+require('cmp_luasnip_choice').setup({
+    auto_open = true
+});
 
 cmp.mapping(function()
     if cmp.get_active_entry() then

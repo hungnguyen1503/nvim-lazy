@@ -104,4 +104,8 @@ if vim.g.neovide then
     -- vim.g.neovide_cursor_vfx_particle_speed = 10.0
     -- vim.g.neovide_cursor_vfx_particle_phase = 1.5
     -- vim.g.neovide_cursor_vfx_mode = "railgun"
+    -- vim.g.neovide_padding_top = 20
+    -- vim.g.neovide_padding_bottom = 20
+    -- vim.g.neovide_padding_right = 20
+    -- vim.g.neovide_padding_left = 20
 end

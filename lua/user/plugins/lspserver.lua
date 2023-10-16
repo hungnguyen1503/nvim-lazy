@@ -112,7 +112,12 @@ for _, lsp in ipairs(servers) do
                     pyflakes = { enabled = false },
                     pylint = { enabled = false },
                     pycodestyle = { enabled = false },
-                }
+                },
+                analysis = {
+                    autoSearchPaths = true,
+                    useLibraryCodeForTypes = true,
+                    diagnosticMode = 'openFilesOnly',
+                },
             }
         },
     })

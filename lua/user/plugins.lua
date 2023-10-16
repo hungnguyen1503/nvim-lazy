@@ -367,7 +367,7 @@ return {
         "windwp/nvim-ts-autotag",
         event = "VeryLazy",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
-        config = function ()
+        config = function()
             require('nvim-ts-autotag').setup()
         end
     },
@@ -395,6 +395,7 @@ return {
     -- Bracket rainbow color
     {
         'HiPhish/rainbow-delimiters.nvim',
+        -- commit = "43ecaf13c4c3fb3e60294d3f99a0324747379d82",
         event = "VeryLazy",
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
         config = function()
@@ -413,6 +414,7 @@ return {
     -- Align lines
     {
         'Vonr/align.nvim',
+        branch = "v2";
         event = "VeryLazy",
     },
 
@@ -476,6 +478,18 @@ return {
         cmd = "Mason",
     },
 
+    -- {
+    --     "j-hui/fidget.nvim",
+    --     tag = "legacy",
+    --     event = {
+    --         "LspAttach",
+    --         "VeryLazy"
+    --     },
+    --     config = function ()
+    --         require("user.plugins.fidget")
+    --     end
+    -- },
+
     -- LSP config manager
     {
         'neovim/nvim-lspconfig',
@@ -505,6 +519,7 @@ return {
     {
         'glepnir/lspsaga.nvim',
         event = 'BufRead',
+        -- commit = "71c1793c86a3fbf405c3100577b72c148ca91d9e",
         config = function()
             require("user.plugins.lspsaga")
         end,
@@ -679,9 +694,9 @@ return {
         },
         opts = {
             load = {
-                ["core.defaults"] = {},  -- Loads default behaviour
+                ["core.defaults"] = {}, -- Loads default behaviour
                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = {      -- Manages Neorg workspaces
+                ["core.dirman"] = { -- Manages Neorg workspaces
                     config = {
                         workspaces = {
                             notes = "~/notes",

@@ -486,25 +486,36 @@ M.align = {
     x = {
         ["<leader>aa"] = {
             function()
-                require 'align'.align_to_char(1, true)
+                require 'align'.align_to_char({
+                    lenth = 1
+                })
             end,
             "Aligns to 1 character, looking left"
         },
         ["<leader>as"] = {
             function()
-                require 'align'.align_to_char(2, true, true)
+                require 'align'.align_to_char({
+                    lenth = 2,
+                    preview = true
+                })
             end,
             "Aligns to 2 characters, looking left and with previews"
         },
         ["<leader>aw"] = {
             function()
-                require 'align'.align_to_string(false, true, true)
+                require 'align'.align_to_string({
+                    regex = false,
+                    preview = true
+                })
             end,
             "Aligns to a string, looking left and with previews"
         },
         ["<leader>ar"] = {
             function()
-                require 'align'.align_to_string(true, true, true)
+                require 'align'.align_to_string({
+                    regex = true,
+                    preview = true
+                })
             end,
             "Aligns to a Lua pattern, looking left and with previews"
         },
