@@ -342,7 +342,7 @@ M.telescope = {
         ["<leader>ff"]     = { "<cmd> Telescope find_files <CR>", "find files" },
         ["<leader>fa"]     = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
         ["<leader>fw"]     = { "<cmd> Telescope live_grep <CR>", "live grep" },
-        ["<leader>ft"]     = { "<cmd> Telescope help_tags <CR>", "help page" },
+        -- ["<leader>ft"]     = { "<cmd> Telescope help_tags <CR>", "help page" },
         ["<leader>fo"]     = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
         ["<leader>fk"]     = { "<cmd> Telescope keymaps <CR>", "show keys" },
         ["<leader>fp"]     = { "<cmd> Telescope project <CR>", "project" },
@@ -736,19 +736,19 @@ M.dap = {
     plugin = true,
     n = {
         -- ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Add breakpoint at line" },
-        ["<leader>dr"]    = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
-        ["<F5>"]          = { "<cmd>DapStepInto<CR>", "Step into" },
-        ["<F6>"]          = { "<cmd>DapStepOver<CR>", "Step Over" },
-        ["<F7>"]          = { "<cmd>DapStepOut<CR>", "Step Out" },
-        ["<F8>"]          = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
-        ["<C-F2>"]        = { "<cmd>DapTerminate<CR>", "Terminate debugger" },
-        ["<F3>"]          = {
+        ["<leader>dr"]  = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
+        ["<F5>"]        = { "<cmd>DapStepInto<CR>", "Step into" },
+        ["<F6>"]        = { "<cmd>DapStepOver<CR>", "Step Over" },
+        ["<F7>"]        = { "<cmd>DapStepOut<CR>", "Step Out" },
+        ["<F8>"]        = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
+        ["<C-F2>"]      = { "<cmd>DapTerminate<CR>", "Terminate debugger" },
+        ["<F3>"]        = {
             function()
                 require("dapui").eval()
             end,
             "Start or continue the debugger"
         },
-        ["<leader>db"]    = {
+        ["<leader>db"]  = {
             function()
                 require('persistent-breakpoints.api').toggle_breakpoint()
             end,
@@ -762,13 +762,13 @@ M.dap = {
         --     end,
         --     "Add breakpoint at line by double click"
         -- },
-        ["<leader>dcb"]   = {
+        ["<leader>dcb"] = {
             function()
                 require('persistent-breakpoints.api').set_conditional_breakpoint(vim.fn.input(' CONDITION    '))
             end,
             "Condition breakpoint"
         },
-        ["<leader>ddb"]   = {
+        ["<leader>ddb"] = {
             function()
                 require('persistent-breakpoints.api').clear_all_breakpoints()
             end,

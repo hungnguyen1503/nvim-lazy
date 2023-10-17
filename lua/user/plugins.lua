@@ -97,6 +97,20 @@ return {
         end,
     },
 
+    -- {
+    --     'niuiic/git-log.nvim',
+    --     event = "VeryLazy",
+    --     dependencies = {
+    --         'niuiic/core.nvim'
+    --     },
+    --     config = function()
+    --         require("user.plugins.gitlog")
+    --     end,
+    --     keys = {
+    --         { "<F10>", function() require("git-log").check_log() end, mode = "n", silent = true },
+    --     },
+    -- },
+
     -- Git quick command
     {
         'kdheepak/lazygit.nvim',
@@ -206,6 +220,51 @@ return {
         config = function()
             require("hop").setup {}
         end
+    },
+
+    -- Quick move with flash
+    {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        config = function()
+            require('user.plugins.flash')
+        end,
+        keys = {
+            {
+                "<leader>fj",
+                mode = { "n", "x", "o" },
+                function() require("flash").jump() end,
+                desc = "Flash"
+            },
+            {
+                "<leader>ft",
+                mode = { "n", "x", "o" },
+                function() require("flash").treesitter() end,
+                desc =
+                "Flash Treesitter"
+            },
+            {
+                "r",
+                mode = "o",
+                function() require("flash").remote() end,
+                desc =
+                "Remote Flash"
+            },
+            {
+                "R",
+                mode = { "o", "x" },
+                function() require("flash").treesitter_search() end,
+                desc =
+                "Treesitter Search"
+            },
+            -- {
+            --     "<c-s>",
+            --     mode = { "c" },
+            --     function() require("flash").toggle() end,
+            --     desc =
+            --     "Toggle Flash Search"
+            -- },
+        }
     },
     -- Extract argument in bracket
     {
@@ -414,7 +473,7 @@ return {
     -- Align lines
     {
         'Vonr/align.nvim',
-        branch = "v2";
+        branch = "v2",
         event = "VeryLazy",
     },
 
@@ -646,7 +705,7 @@ return {
     {
         'mfussenegger/nvim-dap',
         config = function(_, _)
-            require("core.utils").load_mappings("dap")
+            -- require("core.utils").load_mappings("dap")
             -- INFO: The config for debugger is able to set manually
             -- If you use this config, you will disable mason DAP to avoid duplicate debugger settings
             -- require("user.plugins.dap_config.c")
@@ -694,9 +753,9 @@ return {
         },
         opts = {
             load = {
-                ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.defaults"] = {},  -- Loads default behaviour
                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = { -- Manages Neorg workspaces
+                ["core.dirman"] = {      -- Manages Neorg workspaces
                     config = {
                         workspaces = {
                             notes = "~/notes",
