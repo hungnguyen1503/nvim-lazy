@@ -163,6 +163,15 @@ return {
         end,
     },
 
+    -- Tab tree to enhance navigation within code by leveraging the power of Treesitter
+    {
+        'roobert/tabtree.nvim',
+        event = "VeryLazy",
+        config = function()
+            require("user.plugins.tabtree")
+        end,
+    },
+
     -- Tabout
     {
         'abecodes/tabout.nvim',

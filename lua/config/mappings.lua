@@ -354,6 +354,9 @@ M.telescope = {
         -- ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
         -- ["<leader>st"] = { "<cmd> Telescope git_status <CR>", "git status" },
 
+        -- Noice
+        ["<leader>n"]     = { "<cmd> Telescope noice <CR>", "open the noice log" },
+
         -- pick a hidden term
         ["<leader>pt"]     = { "<cmd> Telescope terms <CR>", "pick hidden term" },
         -- theme switcher
