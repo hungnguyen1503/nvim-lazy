@@ -355,7 +355,8 @@ M.telescope = {
         -- ["<leader>st"] = { "<cmd> Telescope git_status <CR>", "git status" },
 
         -- Noice
-        ["<leader>n"]     = { "<cmd> Telescope noice <CR>", "open the noice log" },
+        ["<leader>n"]      = { "<cmd> Telescope noice <CR>", "Find the noice log" },
+        ["<leader>m"]      = { "<cmd> Telescope marks <CR>", "Find the marks" },
 
         -- pick a hidden term
         ["<leader>pt"]     = { "<cmd> Telescope terms <CR>", "pick hidden term" },
@@ -629,6 +630,10 @@ M.treesitter = {
         ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "goes previous" },
     },
     v = {
+        [";"] = { ts_repeat_move.repeat_last_move_next, "goes forward" },
+        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "goes previous" },
+    },
+    o = {
         [";"] = { ts_repeat_move.repeat_last_move_next, "goes forward" },
         ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "goes previous" },
     },

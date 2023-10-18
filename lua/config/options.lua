@@ -59,7 +59,9 @@ local options = {
 
     -- Color and font
     termguicolors = true,
-    guifont       = "CaskaydiaCove Nerd Font Propo:h13.5",
+    -- guifont       = "CaskaydiaCove Nerd Font Propo:h13.0",
+    guifont       = "CaskaydiaCove Nerd Font:h13.0",
+    -- guifont       = "CaskaydiaCove Nerd Font:h10.5",
     wildmenu      = false,
     synmaxcol     = 200,
     spelllang = 'en_us',
