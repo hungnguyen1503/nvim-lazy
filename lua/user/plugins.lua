@@ -722,7 +722,7 @@ return {
     {
         'mfussenegger/nvim-dap',
         config = function(_, _)
-            -- require("core.utils").load_mappings("dap")
+            require("core.utils").load_mappings("dap")
             -- INFO: The config for debugger is able to set manually
             -- If you use this config, you will disable mason DAP to avoid duplicate debugger settings
             -- require("user.plugins.dap_config.c")

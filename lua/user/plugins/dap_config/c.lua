@@ -18,19 +18,24 @@ dap.configurations.c = {
         name = "Launch file cppdbg",
         type = "cppdbg",
         request = "launch",
-        -- program = function()
-        --     return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\', 'file')
-        -- end,
-        program = "D:\\CodeTest\\TestC\\src\\main",
+        program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\', 'file')
+        end,
+        -- program = "D:\\CodeTest\\TestC\\src\\main",
         cwd = "${workspaceFolder}",
         stopOnEntry = true,
         MIMode = "gdb",
         miDebuggerPath = "C:\\MinGW\\bin\\gdb.exe",
         setupCommands = {
             {
-                description = 'enable pretty printing',
-                text = '-enable-pretty-printing',
-                ignoreFailures = true
+                description = "Setup to resolve symbols",
+                text = "set sysroot /",
+                ignoreFailures = false
+            },
+            {
+                description = "Enable pretty-printing for gdb",
+                text = "-enable-pretty-printing",
+                ignoreFailures = false
             }
         },
     },

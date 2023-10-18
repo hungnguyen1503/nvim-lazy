@@ -45,8 +45,6 @@ local options = {
               (compound_statement) @compound_statement_capture
               (enumerator_list) @enumerator_list_capture
               (field_declaration_list) @field_declaration_list_capture
-              (array_declarator) @array_declarator_capture
-              (subscript_expression) @subscript_expression_capture
               (system_lib_string) @system_lib_string_capture
               (string_literal) @string_literal_capture
               (char_literal) @char_literal_capture

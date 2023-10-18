@@ -32,14 +32,19 @@ local options = {
                         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\', 'file')
                     end,
                     cwd = '${workspaceFolder}',
-                    stopAtEntry = false,
+                    stopAtEntry = true,
                     setupCommands = {
                         {
-                            description = 'enable pretty printing',
-                            text = '-enable-pretty-printing',
-                            ignoreFailures = false
+                            description = "Setup to resolve symbols",
+                            text = "set sysroot /",
+                            ignoreFailures = true
                         },
-                    }
+                        {
+                            description = "Enable pretty-printing for gdb",
+                            text = "-enable-pretty-printing",
+                            ignoreFailures = false
+                        }
+                    },
                 },
 
                 -- {
@@ -67,7 +72,7 @@ local options = {
                         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '\\', 'file')
                     end,
                     cwd = '${workspaceFolder}',
-                    stopOnEntry = false,
+                    stopOnEntry = true,
                     args = {},
                 },
             }

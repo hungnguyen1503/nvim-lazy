@@ -87,16 +87,18 @@ local options = {
         end,
     },
     sorting = {
-        priority_weight = 2,
+        priority_weight = 1.0,
         comparators = {
             require("cmp-under-comparator").under,
-            cmp.config.compare.offset,
-            cmp.config.compare.score,
+            -- cmp.config.compare.offset, -- not good at all
             cmp.config.compare.recently_used,
-            cmp.config.compare.exact,
-            cmp.config.compare.sort_text,
-            cmp.config.compare.kind,
-            cmp.config.compare.length,
+            -- Based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+            cmp.config.compare.score,
+            cmp.config.compare.offset, -- not good at all
+            -- cmp.config.compare.exact,
+            -- cmp.config.compare.sort_text,
+            -- cmp.config.compare.kind,
+            -- cmp.config.compare.length,
             cmp.config.compare.order,
         },
     },
