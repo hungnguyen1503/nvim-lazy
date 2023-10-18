@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-local option = {
+local options = {
     keymaps = {
         insert          = "<C-g>s",
         insert_line     = "<C-g>S",
@@ -27,4 +27,4 @@ local option = {
     },
 }
 
-surround.setup(option)
+surround.setup(options)

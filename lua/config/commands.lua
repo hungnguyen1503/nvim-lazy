@@ -94,7 +94,7 @@ autocmd("FileType", {
 -- Enable spell check for specific language
 autocmd("FileType", {
     pattern = "c",
-    callback = function ()
+    callback = function()
         vim.opt.spell = true
     end
 })

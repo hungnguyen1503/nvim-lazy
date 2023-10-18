@@ -388,7 +388,7 @@ M.lspsaga = {
 
 M.jabs = {
     n = {
-        ["<leader>jb"] = { "<cmd>JABSOpen<CR>", "Quick open buffer with review" },
+        ["<leader>b"] = { "<cmd>JABSOpen<CR>", "Quick open buffer with review" },
     }
 }
 

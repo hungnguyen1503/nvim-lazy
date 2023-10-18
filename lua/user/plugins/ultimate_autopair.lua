@@ -8,7 +8,7 @@ local options = {
     --what profile to use
     map = true,
     --whether to allow any insert map
-    cmap = true,  --cmap stands for cmd-line map
+    cmap = true, --cmap stands for cmd-line map
     --whether to allow any cmd-line map
     pair_map = true,
     --whether to allow pair insert map
@@ -16,13 +16,13 @@ local options = {
     --whether to allow pair cmd-line map
     multiline = true,
     --enable/disable multiline
-    bs = {                -- *ultimate-autopair-map-backspace-config*
+    bs = {             -- *ultimate-autopair-map-backspace-config*
         enable = true,
-        map = '<BS>',     --string or table
-        cmap = '<BS>',    --string or table
+        map = '<BS>',  --string or table
+        cmap = '<BS>', --string or table
         overjumps = true,
         --(|foo) > bs > |foo
-        space = true,    --false, true or 'balance'
+        space = true, --false, true or 'balance'
         --( |foo ) > bs > (|foo)
         --balance:
         --  Will prioritize balanced spaces
@@ -36,9 +36,9 @@ local options = {
         multi = false,
         --use multiple configs (|ultimate-autopair-map-multi-config|)
     },
-    cr = {               -- *ultimate-autopair-map-newline-config*
+    cr = {            -- *ultimate-autopair-map-newline-config*
         enable = true,
-        map = '<cr>',    --string or table
+        map = '<cr>', --string or table
         autoclose = true,
         --(| > cr > (\n|\n)
         conf = { cond = function(fn) return not fn.in_lisp() end },
@@ -46,10 +46,10 @@ local options = {
         multi = false,
         --use multiple configs (|ultimate-autopair-map-multi-config|)
     },
-    space = {          -- *ultimate-autopair-map-space-config*
+    space = {       -- *ultimate-autopair-map-space-config*
         enable = true,
-        map = ' ',     --string or table
-        cmap = ' ',    --string or table
+        map = ' ',  --string or table
+        cmap = ' ', --string or table
         check_box_ft = { 'markdown', 'vimwiki' },
         --+ [|] > space > + [ ]
         conf = {},
@@ -57,7 +57,7 @@ local options = {
         multi = false,
         --use multiple configs (|ultimate-autopair-map-multi-config|)
     },
-    space2 = {  -- *ultimate-autopair-map-space2-config*
+    space2 = { -- *ultimate-autopair-map-space2-config*
         enable = false,
         match = [[\k]],
         --what character activate
@@ -66,16 +66,16 @@ local options = {
         multi = false,
         --use multiple configs (|ultimate-autopair-map-multi-config|)
     },
-    fastwarp = {  -- *ultimate-autopair-map-fastwarp-config*
+    fastwarp = { -- *ultimate-autopair-map-fastwarp-config*
         enable = true,
         enable_normal = true,
         enable_reverse = true,
         hopout = true,
         --{(|)} > fastwarp > {(}|)
-        map = '<A-e>',      --string or table
-        rmap = '<A-E>',     --string or table
-        cmap = '<A-e>',     --string or table
-        rcmap = '<A-E>',    --string or table
+        map = '<A-e>',   --string or table
+        rmap = '<A-E>',  --string or table
+        cmap = '<A-e>',  --string or table
+        rcmap = '<A-E>', --string or table
         multiline = true,
         --(|) > fastwarp > (\n|)
         nocursormove = true,
@@ -96,10 +96,10 @@ local options = {
         multi = false,
         --use multiple configs (|ultimate-autopair-map-multi-config|)
     },
-    close = {              -- *ultimate-autopair-map-close-config*
+    close = {           -- *ultimate-autopair-map-close-config*
         enable = true,
-        map = '<M-c>',     --string or table
-        cmap = '<M-c>',    --string or table
+        map = '<M-c>',  --string or table
+        cmap = '<M-c>', --string or table
         conf = {},
         --contains extension config
         multi = false,
@@ -108,10 +108,10 @@ local options = {
         --add a module so that if close fails
         --then a `)` will not be inserted
     },
-    tabout = {               -- *ultimate-autopair-map-tabout-config*
+    tabout = {          -- *ultimate-autopair-map-tabout-config*
         enable = true,
-        map = '<M-t>',     --string or table
-        cmap = '<M-t>',    --string or table
+        map = '<M-t>',  --string or table
+        cmap = '<M-t>', --string or table
         conf = {},
         --contains extension config
         multi = false,
@@ -122,7 +122,7 @@ local options = {
         --add a module so that if close fails
         --then a `\t` will not be inserted
     },
-    extensions = {  -- *ultimate-autopair-extensions-default-config*
+    extensions = { -- *ultimate-autopair-extensions-default-config*
         cmdtype = { skip = { '/', '?', '@', '-' }, p = 100 },
         filetype = { p = 90, nft = { 'TelescopePrompt' }, tree = true },
         escape = { filter = true, p = 80 },
@@ -131,23 +131,67 @@ local options = {
         cond = { p = 40, filter = true },
         alpha = { p = 30, filter = false, all = false },
         suround = { p = 20 },
-        fly = { other_char = { ' ' }, nofilter = false, p = 10, undomapconf = {}, undomap = nil, undocmap = nil,
-            only_jump_end_pair = false },
+        fly = {
+            other_char = { ' ' },
+            nofilter = false,
+            p = 10,
+            undomapconf = {},
+            undomap = nil,
+            undocmap = nil,
+            only_jump_end_pair = false
+        },
     },
-    internal_pairs = {  -- *ultimate-autopair-pairs-default-pairs*
-        {'[',']',fly=true,dosuround=true,newline=true,space=true},
-        {'(',')',fly=true,dosuround=true,newline=true,space=true},
-        {'{','}',fly=true,dosuround=true,newline=true,space=true},
-        {'"','"',suround=true,multiline=false,alpha={'txt'}},
-        {"'","'",suround=true,cond=function(fn) return not fn.in_lisp() or fn.in_string() end,alpha=true,nft={'tex','latex'},multiline=false},
-        {'`','`',nft={'tex','latex'},multiline=false},
-        {'``',"''",ft={'tex','latex'}},
-        {'```','```',newline=true,ft={'markdown'}},
-        {'<!--','-->',ft={'markdown','html'}},
-        {'"""','"""',newline=true,ft={'python'}},
-        {"'''","'''",newline=true,ft={'python'}},
+    internal_pairs = { -- *ultimate-autopair-pairs-default-pairs*
+        {
+            '[',
+            ']',
+            fly = true,
+            dosuround = true,
+            newline = true,
+            space = true
+        },
+        {
+            '(',
+            ')',
+            fly = true,
+            dosuround = true,
+            newline = true,
+            space = true
+        },
+        {
+            '{',
+            '}',
+            fly = true,
+            dosuround = true,
+            newline = true,
+            space = true
+        },
+        {
+            '"',
+            '"',
+            suround = true,
+            multiline = false,
+            alpha = {
+                'txt' }
+        },
+        {
+            "'",
+            "'",
+            suround = true,
+            cond = function(fn) return not fn.in_lisp() or fn.in_string() end,
+            alpha = true,
+            nft = {
+                'tex', 'latex' },
+            multiline = false
+        },
+        { '`',    '`',   nft = { 'tex', 'latex' },   multiline = false },
+        { '``',   "''",  ft = { 'tex', 'latex' } },
+        { '```',  '```', newline = true,             ft = { 'markdown' } },
+        { '<!--', '-->', ft = { 'markdown', 'html' } },
+        { '"""',  '"""', newline = true,             ft = { 'python' } },
+        { "'''",  "'''", newline = true,             ft = { 'python' } },
     },
-    config_internal_pairs = {  -- *ultimate-autopair-pairs-configure-default-pairs*
+    config_internal_pairs = { -- *ultimate-autopair-pairs-configure-default-pairs*
         --configure internal pairs
         --example:
         --{'{','}',suround=true},

@@ -63,6 +63,7 @@ M.lspkind = {
     Value = '󰎠 ',
     Variable = '󰀫 ',
     WhileStatement = '󰑖 ',
+    TabNine = "",
 }
 
 M.statusline_separators = {

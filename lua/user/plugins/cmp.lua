@@ -29,6 +29,8 @@ local kinds = {
     cmdline                   = "[🖥️ Cmd]",
     cmdline_history           = "[🖥️ History]",
     path                      = "[🔗 Path]",
+    cmp_tabnine               = "[🤖] TabNine",
+    treesitter                = "[🌳] Treesitter",
 }
 
 local cmp_window = require("cmp.utils.window")
@@ -90,8 +92,8 @@ local options = {
             require("cmp-under-comparator").under,
             cmp.config.compare.offset,
             cmp.config.compare.score,
-            cmp.config.compare.exact,
             cmp.config.compare.recently_used,
+            cmp.config.compare.exact,
             cmp.config.compare.sort_text,
             cmp.config.compare.kind,
             cmp.config.compare.length,
@@ -132,9 +134,10 @@ local options = {
         end, { "i", "s" }),
     },
     sources = {
-        { name = "luasnip",        priority = 9, max_item_count = 12, option = { show_autosnippets = true } },
+        { name = "luasnip", priority = 9, max_item_count = 12, option = { show_autosnippets = true } },
         { name = "luasnip_choice", priority = 9 },
-        { name = "nvim_lsp",       priority = 10, max_item_count = 12 },
+        { name = "nvim_lsp", priority = 10, max_item_count = 12 },
+        { name = 'cmp_tabnine', priority = 8, max_item_count = 15 },
         {
             name = "buffer",
             priority = 7,
@@ -151,7 +154,8 @@ local options = {
                 end
             }
         },
-        { name = "path",                   priority = 6 },
+        { name = "treesitter", max_item_count = 1 },
+        { name = "path", priority = 6 },
         { name = "nvim_lua" },
         { name = "nvim_lsp_signature_help" },
     },
@@ -163,7 +167,7 @@ cmp.setup.cmdline(':', {
     mapping = require("cmp").mapping.preset.cmdline(),
     sources = require("cmp").config.sources({
         { name = 'cmdline', priority = 3 },
-        { name = 'path',    priority = 2 },
+        { name = 'path', priority = 2 },
         {
             name = 'cmdline_history',
             priority = 1,
@@ -205,11 +209,33 @@ cmp.mapping(function()
     end
 end)
 
-local Kind=cmp.lsp.CompletionItemKind
-cmp.event:on(
-  'confirm_done',
-  function (evt)
-    if vim.tbl_contains({Kind.Function,Kind.Method},evt.entry:get_completion_item().kind) then
-      vim.api.nvim_feedkeys('()'..vim.api.nvim_replace_termcodes('<Left>',true,true,true),'n',false)
+-- INFO: This feature should be used for python language due to it will be duplicated bracket in another languages
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "python",
+    callback = function()
+        local Kind = cmp.lsp.CompletionItemKind
+        cmp.event:on(
+            'confirm_done',
+            function(evt)
+                if vim.tbl_contains({ Kind.Function, Kind.Method }, evt.entry:get_completion_item().kind) then
+                    vim.api.nvim_feedkeys('()' .. vim.api.nvim_replace_termcodes('<Left>', true, true, true), 'n', false)
+                end
+            end)
     end
-  end)
+})
+
+local tabnine = require('cmp_tabnine.config')
+
+tabnine:setup({
+    max_lines = 1000,
+    max_num_results = 20,
+    sort = true,
+    run_on_every_keystroke = true,
+    snippet_placeholder = '..',
+    ignored_file_types = {
+        -- default is not to ignore
+        -- uncomment to ignore in lua:
+        -- lua = true
+    },
+    show_prediction_strength = false
+})

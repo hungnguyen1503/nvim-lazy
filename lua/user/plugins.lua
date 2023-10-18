@@ -231,7 +231,7 @@ return {
         end,
         keys = {
             {
-                "<leader>fj",
+                "<leader>j",
                 mode = { "n", "x", "o" },
                 function() require("flash").jump() end,
                 desc = "Flash"
@@ -638,6 +638,14 @@ return {
             require("user.plugins.cmp")
         end,
     },
+
+    -- Tabnine
+    {
+        'tzachar/cmp-tabnine',
+        -- build = './install.sh',
+        dependencies = 'hrsh7th/nvim-cmp',
+    },
+
     {
         'L3MON4D3/LuaSnip',
         dependencies = {
@@ -753,9 +761,9 @@ return {
         },
         opts = {
             load = {
-                ["core.defaults"] = {},  -- Loads default behaviour
+                ["core.defaults"] = {}, -- Loads default behaviour
                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = {      -- Manages Neorg workspaces
+                ["core.dirman"] = { -- Manages Neorg workspaces
                     config = {
                         workspaces = {
                             notes = "~/notes",
