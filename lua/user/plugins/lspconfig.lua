@@ -36,8 +36,6 @@ M.capabilities.textDocument.completion.completionItem = {
     },
 }
 
-
-
 lspconfig.lua_ls.setup {
     on_attach = M.on_attach,
     capabilities = M.capabilities,

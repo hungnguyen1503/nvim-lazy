@@ -64,7 +64,6 @@ local options = {
               (parameters) @parameters_capture
               (arguments) @arguments_capture
               (bracket_index_expression) @bracket_index_expression_capture
-              (field) @field_capture
             ]],
             -- experimental feature, to move the cursor in certain situations like when handling python f-strings
             offsets = {

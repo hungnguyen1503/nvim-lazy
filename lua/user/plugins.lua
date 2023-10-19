@@ -460,7 +460,6 @@ return {
     -- Bracket rainbow color
     {
         'HiPhish/rainbow-delimiters.nvim',
-        -- commit = "43ecaf13c4c3fb3e60294d3f99a0324747379d82",
         event = "VeryLazy",
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
         config = function()
@@ -468,9 +467,10 @@ return {
         end
     },
 
-    -- TODO: Add feature autosave after changing current workspace
+    -- Auto save the project
     {
         'okuuva/auto-save.nvim',
+        event = "VeryLazy",
         config = function()
             require("user.plugins.autosave")
         end
@@ -582,7 +582,7 @@ return {
 
     -- LSP Saga
     {
-        'glepnir/lspsaga.nvim',
+        'nvimdev/lspsaga.nvim',
         event = 'BufRead',
         -- commit = "71c1793c86a3fbf405c3100577b72c148ca91d9e",
         config = function()
@@ -767,9 +767,9 @@ return {
         },
         opts = {
             load = {
-                ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.defaults"] = {},  -- Loads default behaviour
                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = { -- Manages Neorg workspaces
+                ["core.dirman"] = {      -- Manages Neorg workspaces
                     config = {
                         workspaces = {
                             notes = "~/notes",

@@ -785,4 +785,11 @@ M.dap = {
     }
 }
 
+M.ufo = {
+    n = {
+        ["<leader>zR"] = { "require('ufo').openAllFolds", "Open all folds" },
+        ["<leader>zM"] = { "require('ufo').closeAllFolds", "Close all folds" },
+    },
+}
+
 return M

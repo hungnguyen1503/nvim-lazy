@@ -1,77 +1,74 @@
 local options = {
-    clipboard = "unnamedplus",
+    clipboard      = "unnamedplus",
     -- Configuration mouse usage
-    mouse = "a",
-    mousemodel = "popup",
-    completeopt = { "menu", "menuone", "noselect" },
+    mouse          = "a",
+    mousemodel     = "popup",
+    completeopt    = { "menu", "menuone", "noselect" },
 
     -- Tab
-    smarttab = true,
-    tabstop = 4,
-    shiftwidth = 4,
-    softtabstop = 4,
-    expandtab = true,
-    list = true,
+    smarttab       = true,
+    tabstop        = 4,
+    shiftwidth     = 4,
+    softtabstop    = 4,
+    expandtab      = true,
+    list           = true,
 
     -- Fold
-    -- foldmethod = "expr",
-    -- foldexpr = "nvim_treesitter#foldexpr()",
 
     -- Disable backup
-    backup = false,
-    wb = false,
-    swapfile = false,
+    backup         = false,
+    wb             = false,
+    swapfile       = false,
 
     -- Text editor
-    smartcase = true,
-    ignorecase = true,
-    fileencoding = "utf-8",
-    textwidth = 0,
-    cursorline = true,
+    smartcase      = true,
+    ignorecase     = true,
+    fileencoding   = "utf-8",
+    textwidth      = 0,
+    cursorline     = true,
 
     -- Limited height box suggestion
-    pumheight = 15,
-    cmdheight = 1,
+    pumheight      = 15,
+    cmdheight      = 1,
 
     -- Time to update nvim, delay between multi shortcut
-    updatetime = 200,
-    timeoutlen = 750,
+    updatetime     = 100,
+    timeoutlen     = 750,
 
     -- Wrap text
-    wrap = false,
-    linebreak = true,
+    wrap           = false,
+    linebreak      = true,
 
     -- Show number
-    numberwidth = 3,
+    numberwidth    = 3,
     relativenumber = true,
-    number = true,
-    ruler = false,
-    laststatus = 3,
-    signcolumn = "yes",
+    number         = true,
+    ruler          = false,
+    laststatus     = 3,
+    signcolumn     = "yes",
 
     -- Split window
-    splitbelow = true,
-    splitright = true,
+    splitbelow     = true,
+    splitright     = true,
 
     -- Scroll with offset
-    scrolloff = 10, -- minimal number of screen lines to keep above and below the cursor.
-    sidescrolloff = 10, -- minimal number of screen lines to keep left and right of the cursor.
+    scrolloff      = 10, -- minimal number of screen lines to keep above and below the cursor.
+    sidescrolloff  = 10, -- minimal number of screen lines to keep left and right of the cursor.
 
     -- Color and font
-    termguicolors = true,
-    -- guifont       = "CaskaydiaCove Nerd Font Propo:h13.0",
-    guifont       = "CaskaydiaCove Nerd Font:h13.0",
+    termguicolors  = true,
+    guifont        = "CaskaydiaCove Nerd Font Propo:h13.0",
+    -- guifont        = "CaskaydiaCove Nerd Font:h12.2",
     -- guifont       = "CaskaydiaCove Nerd Font:h10.5",
-    wildmenu      = false,
-    synmaxcol     = 200,
-    spelllang = 'en_us',
-    spell = false
+    wildmenu       = true,
+    synmaxcol      = 200,
+    spelllang      = 'en_us',
+    spell          = false,
+    inccommand     = "split" -- show the effects of a search / replace in a live preview window
 }
 
 vim.opt.syntax.minlines = 60
 vim.opt.syntax.maxlines = 120
-
-vim.o.inccommand = "split" -- show the effects of a search / replace in a live preview window
 
 vim.g.mapleader = ","
 for k, v in pairs(options) do
