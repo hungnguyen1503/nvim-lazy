@@ -58,7 +58,6 @@ local options = {
         lua = {
             target_query = [[
               (string) @string_capture
-              (string_content) @string_content_capture
               (table_constructor) @table_constructor_capture
               (string_content) @string_content_capture
               (parameters) @parameters_capture

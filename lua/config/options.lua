@@ -14,6 +14,11 @@ local options = {
     list           = true,
 
     -- Fold
+    -- fillchars      = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]],
+    -- foldcolumn     = "0", -- '0' is not bad
+    -- foldlevel      = 99, -- Using ufo provider need a large value, feel free to decrease the value
+    -- foldlevelstart = 99,
+    -- foldenable     = true,
 
     -- Disable backup
     backup         = false,
