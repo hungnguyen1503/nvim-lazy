@@ -86,6 +86,8 @@ M.general = {
         ["k"]          = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
         ["<Up>"]       = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
         ["<Down>"]     = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
+
+        ["\\"]   = { "%", "Goto bracket pairs" },
     },
     v = {
         ["//"]       = { "\"fy/\\V<C-R>f<CR>", "Search a visual word", opts = { silent = true } },
@@ -785,10 +787,16 @@ M.dap = {
     }
 }
 
-M.ufo = {
+M.yanky = {
     n = {
-        ["<leader>zR"] = { "require('ufo').openAllFolds", "Open all folds" },
-        ["<leader>zM"] = { "require('ufo').closeAllFolds", "Close all folds" },
+        ["y"] = { "<Plug>(YankyYank)", "Preserve cursor position on Yank" },
+        ["p"] = { "<Plug>(YankyPutAfter)", "Yank put after" },
+        ["P"] = { "<Plug>(YankyPutBefore)", "Yank put after" },
+    },
+    x = {
+        ["y"] = { "<Plug>(YankyYank)", "Preserve cursor position on Yank" },
+        ["p"] = { "<Plug>(YankyPutAfter)", "Yank put after" },
+        ["P"] = { "<Plug>(YankyPutBefore)", "Yank put after" },
     },
 }
 

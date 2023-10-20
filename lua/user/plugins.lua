@@ -154,6 +154,15 @@ return {
         end,
     },
 
+    -- Improve yank
+    {
+        'gbprod/yanky.nvim',
+        event = "VeryLazy",
+        config = function ()
+            require("user.plugins.yanky")
+        end
+    },
+
     -- Quick edit parentheses
     {
         'kylechui/nvim-surround',
