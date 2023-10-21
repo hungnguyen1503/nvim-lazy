@@ -247,34 +247,34 @@ return {
         config = function()
             require('user.plugins.flash')
         end,
-        keys = {
-            {
-                "<leader>j",
-                mode = { "n", "x", "o" },
-                function() require("flash").jump() end,
-                desc = "Flash"
-            },
-            {
-                "<leader>ft",
-                mode = { "n", "x", "o" },
-                function() require("flash").treesitter() end,
-                desc =
-                "Flash Treesitter"
-            },
-            {
-                "r",
-                mode = "o",
-                function() require("flash").remote() end,
-                desc =
-                "Remote Flash"
-            },
-            {
-                "R",
-                mode = { "o", "x" },
-                function() require("flash").treesitter_search() end,
-                desc =
-                "Treesitter Search"
-            },
+        -- keys = {
+        --     {
+        --         "<leader>j",
+        --         mode = { "n", "x", "o" },
+        --         function() require("flash").jump() end,
+        --         desc = "Flash"
+        --     },
+        --     {
+        --         "<leader>ft",
+        --         mode = { "n", "x", "o" },
+        --         function() require("flash").treesitter() end,
+        --         desc =
+        --         "Flash Treesitter"
+        --     },
+        --     {
+        --         "r",
+        --         mode = "o",
+        --         function() require("flash").remote() end,
+        --         desc =
+        --         "Remote Flash"
+        --     },
+        --     {
+        --         "R",
+        --         mode = { "o", "x" },
+        --         function() require("flash").treesitter_search() end,
+        --         desc =
+        --         "Treesitter Search"
+        --     },
             -- {
             --     "<c-s>",
             --     mode = { "c" },
@@ -282,7 +282,7 @@ return {
             --     desc =
             --     "Toggle Flash Search"
             -- },
-        }
+        -- }
     },
     -- Extract argument in bracket
     {
@@ -703,6 +703,7 @@ return {
     -- Mason DAP to quickly install and custom config for debugger
     {
         'jay-babu/mason-nvim-dap.nvim',
+        event = "VeryLazy",
         dependencies = {
             'williamboman/mason.nvim',
             'mfussenegger/nvim-dap',
@@ -727,12 +728,7 @@ return {
     -- DAP for debugger
     {
         'mfussenegger/nvim-dap',
-        config = function(_, _)
-            require("core.utils").load_mappings("dap")
-            -- INFO: The config for debugger is able to set manually
-            -- If you use this config, you will disable mason DAP to avoid duplicate debugger settings
-            -- require("user.plugins.dap_config.c")
-        end
+        event = "VeryLazy",
     },
 
     -- Store breakpoints after terminating debug progress

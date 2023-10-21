@@ -87,7 +87,7 @@ M.general = {
         ["<Up>"]       = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
         ["<Down>"]     = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
 
-        ["\\"]   = { "%", "Goto bracket pairs" },
+        ["\\"] = { "%", "Goto bracket pairs"},
     },
     v = {
         ["//"]       = { "\"fy/\\V<C-R>f<CR>", "Search a visual word", opts = { silent = true } },
@@ -97,7 +97,8 @@ M.general = {
         ["<Down>"]   = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
         -- Format range
         ["<space>f"] = { "<cmd>lua require'lsp-range-format'.format()<CR>", "format range" },
-        ["y"]        = { "mcy`c", "copy not move cursor" },
+        -- ["y"]        = { "mcy`c", "copy not move cursor" },
+        ["\\"] = { "%", "Goto bracket pairs"},
     },
     x = {
         ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
@@ -116,6 +117,7 @@ M.general = {
     o = {
         ["<S-h>"] = { "^", "cursor left" },
         ["<S-l>"] = { "$", "cursor right" },
+        ["\\"] = { "%", "Goto bracket pairs"},
     },
     c = {
         ["<C-v>"] = { "<C-R>*", "Set paste as Win OS in command line" },
@@ -356,16 +358,19 @@ M.telescope = {
         -- ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
         -- ["<leader>st"] = { "<cmd> Telescope git_status <CR>", "git status" },
 
+        -- Yank history
+        ["<leader>y"] = { "<cmd> Telescope yank_history <CR>", "Find the yank history" },
+
         -- Noice
-        ["<leader>n"]      = { "<cmd> Telescope noice <CR>", "Find the noice log" },
-        ["<leader>m"]      = { "<cmd> Telescope marks <CR>", "Find the marks" },
+        ["<leader>n"] = { "<cmd> Telescope noice <CR>", "Find the noice log" },
+        ["<leader>m"] = { "<cmd> Telescope marks <CR>", "Find the marks" },
 
         -- pick a hidden term
-        ["<leader>pt"]     = { "<cmd> Telescope terms <CR>", "pick hidden term" },
+        ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "pick hidden term" },
         -- theme switcher
-        ["<leader>th"]     = { "<cmd> Telescope themes <CR>", "nvchad themes" },
+        ["<leader>th"] = { "<cmd> Telescope themes <CR>", "nvchad themes" },
         -- command
-        ["<leader>cm"]     = {
+        ["<leader>cm"] = {
             function()
                 require('telescope.builtin').commands(require('telescope.themes').get_dropdown())
             end,
@@ -743,10 +748,10 @@ M.muren = {
 }
 
 M.dap = {
-    plugin = true,
+    -- plugin = true,
     n = {
         -- ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Add breakpoint at line" },
-        ["<leader>dr"]  = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
+        -- ["<leader>dr"]  = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
         ["<F5>"]        = { "<cmd>DapStepInto<CR>", "Step into" },
         ["<F6>"]        = { "<cmd>DapStepOver<CR>", "Step Over" },
         ["<F7>"]        = { "<cmd>DapStepOut<CR>", "Step Out" },
@@ -764,14 +769,14 @@ M.dap = {
             end,
             "Add breakpoint at line"
         },
-        -- BUG: This feature should be disabled because of being conflicted to use icon DAP debugg
-        -- INFO: Using mouse to toggle breakpoint
-        -- ["<2-LeftMouse>"] = {
-        --     function()
-        --         require('persistent-breakpoints.api').toggle_breakpoint()
-        --     end,
-        --     "Add breakpoint at line by double click"
-        -- },
+        -- -- BUG: This feature should be disabled because of being conflicted to use icon DAP debugg
+        -- -- INFO: Using mouse to toggle breakpoint
+        -- -- ["<2-LeftMouse>"] = {
+        -- --     function()
+        -- --         require('persistent-breakpoints.api').toggle_breakpoint()
+        -- --     end,
+        -- --     "Add breakpoint at line by double click"
+        -- -- },
         ["<leader>dcb"] = {
             function()
                 require('persistent-breakpoints.api').set_conditional_breakpoint(vim.fn.input(' CONDITION    '))
@@ -798,6 +803,51 @@ M.yanky = {
         ["p"] = { "<Plug>(YankyPutAfter)", "Yank put after" },
         ["P"] = { "<Plug>(YankyPutBefore)", "Yank put after" },
     },
+}
+
+M.flash = {
+    n = {
+        ["<leader>j"] = {
+            function()
+                require("flash").jump()
+            end,
+            "Flash"
+        },
+        ["<leader>ft"] = {
+            function()
+                require("flash").treesitter()
+            end,
+            "Flash treesitter"
+        },
+    },
+    o = {
+        ["<leader>j"] = {
+            function()
+                require("flash").jump()
+            end,
+            "Flash"
+        },
+        ["<leader>ft"] = {
+            function()
+                require("flash").treesitter()
+            end,
+            "Flash treesitter"
+        },
+    },
+    x = {
+        ["<leader>j"] = {
+            function()
+                require("flash").jump()
+            end,
+            "Flash"
+        },
+        ["<leader>ft"] = {
+            function()
+                require("flash").treesitter()
+            end,
+            "Flash treesitter"
+        },
+    }
 }
 
 return M
