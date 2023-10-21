@@ -158,7 +158,7 @@ return {
     {
         'gbprod/yanky.nvim',
         event = "VeryLazy",
-        config = function ()
+        config = function()
             require("user.plugins.yanky")
         end
     },
@@ -275,13 +275,13 @@ return {
         --         desc =
         --         "Treesitter Search"
         --     },
-            -- {
-            --     "<c-s>",
-            --     mode = { "c" },
-            --     function() require("flash").toggle() end,
-            --     desc =
-            --     "Toggle Flash Search"
-            -- },
+        -- {
+        --     "<c-s>",
+        --     mode = { "c" },
+        --     function() require("flash").toggle() end,
+        --     desc =
+        --     "Toggle Flash Search"
+        -- },
         -- }
     },
     -- Extract argument in bracket
@@ -341,19 +341,27 @@ return {
     },
 
     -- Icon picker
+    -- {
+    --     'ziontee113/icon-picker.nvim',
+    --     event = "VeryLazy",
+    --     cmd = {
+    --         "PickEverything",
+    --         "IconPickerNormal",
+    --         "PickEverythingInsert",
+    --         'IconPickerInsert',
+    --         'IconPickerYank',
+    --     },
+    --     config = function()
+    --         require("user.plugins.icon-picker")
+    --     end
+    -- },
     {
-        'ziontee113/icon-picker.nvim',
-        event = "VeryLazy",
-        cmd = {
-            "PickEverything",
-            "IconPickerNormal",
-            "PickEverythingInsert",
-            'IconPickerInsert',
-            'IconPickerYank',
+        '2kabhishek/nerdy.nvim',
+        dependencies = {
+            'stevearc/dressing.nvim',
+            'nvim-telescope/telescope.nvim',
         },
-        config = function()
-            require("user.plugins.icon-picker")
-        end
+        cmd = 'Nerdy',
     },
 
     -- Session manager
@@ -772,9 +780,9 @@ return {
         },
         opts = {
             load = {
-                ["core.defaults"] = {},  -- Loads default behaviour
+                ["core.defaults"] = {}, -- Loads default behaviour
                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = {      -- Manages Neorg workspaces
+                ["core.dirman"] = { -- Manages Neorg workspaces
                     config = {
                         workspaces = {
                             notes = "~/notes",

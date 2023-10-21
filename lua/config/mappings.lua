@@ -616,13 +616,18 @@ M.hop = {
     }
 }
 
-M.iconpicker = {
+-- M.iconpicker = {
+--     n = {
+--         ["<leader>ip"] = { "<cmd>IconPickerNormal<CR>", "Icon picker in normal mode" },
+--         ["<leader>ii"] = { "<cmd>IconPickerInsert<CR>", " Yank the selected icon into register" },
+--     },
+--     i = {
+--         ["<A-i>"] = { "<cmd>IconPickerInsert<CR>", "Icon picker in insert mode" },
+--     }
+-- }
+M.nerdy = {
     n = {
-        ["<leader>ip"] = { "<cmd>IconPickerNormal<CR>", "Icon picker in normal mode" },
-        ["<leader>ii"] = { "<cmd>IconPickerInsert<CR>", " Yank the selected icon into register" },
-    },
-    i = {
-        ["<A-i>"] = { "<cmd>IconPickerInsert<CR>", "Icon picker in insert mode" },
+        ["<leader>ip"] = { "<cmd>Nerdy<CR>", "Icon picker in normal mode" }
     }
 }
 
