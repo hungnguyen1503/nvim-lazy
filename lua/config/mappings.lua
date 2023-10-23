@@ -2,8 +2,8 @@ local M = {}
 M.general = {
     i = {
         -- Quick normal map
-        ["jk"] = { "<ESC>", "escape vim" },
-        ["kj"] = { "<ESC>", "escape vim" },
+        ["jk"] = { "<ESC>", "Escape vim" },
+        ["kj"] = { "<ESC>", "Escape vim" },
         -- Wrap text
         ["<A-r>"] = { "<C-o><cmd>set wrap!<CR>", "Enable wrap text" },
         -- Paste
@@ -17,42 +17,42 @@ M.general = {
             opts = { silent = true },
         },
         -- go to  beginning and end
-        ["<C-h>"] = { "<ESC>^i", "beginning of line" },
-        ["<C-l>"] = { "<End>", "end of line" },
+        ["<C-h>"] = { "<ESC>^i", "Beginning of line" },
+        ["<C-l>"] = { "<End>", "End of line" },
         -- move word
-        ["<C-w>"] = { "<C-\\><C-O>w", "move words forward" },
-        ["<C-b>"] = { "<C-\\><C-O>b", "move words backward" },
-        ["<C-e>"] = { "<C-\\><C-O>e<C-O><Right>", "forword to end of word" },
-        ["<C-z>"] = { "<Left><C-\\><C-O>ge<Right>", "backward to end of word" },
+        ["<C-w>"] = { "<C-\\><C-O>w", "Move words forward" },
+        ["<C-b>"] = { "<C-\\><C-O>b", "Move words backward" },
+        ["<C-e>"] = { "<C-\\><C-O>e<C-O><Right>", "Forword to end of word" },
+        ["<C-z>"] = { "<Left><C-\\><C-O>ge<Right>", "Backward to end of word" },
         -- New line
         -- TODO: Add insert new line abow cursor
-        ["<C-o>"] = { "<C-\\><C-O>o", "insert new line below cursor" },
+        ["<C-o>"] = { "<C-\\><C-O>o", "Insert new line below cursor" },
         -- navigate within insert mode
-        ["<A-h>"] = { "<Left>", "move left" },
-        ["<A-l>"] = { "<Right>", "move right" },
-        ["<A-j>"] = { "<Down>", "move down" },
-        ["<A-k>"] = { "<Up>", "move up" },
+        ["<A-h>"] = { "<Left>", "Move left" },
+        ["<A-l>"] = { "<Right>", "Move right" },
+        ["<A-j>"] = { "<Down>", "Move down" },
+        ["<A-k>"] = { "<Up>", "Move up" },
         -- line relative numbers
-        ["<F12>"] = { "<C-o><cmd>set relativenumber!<CR>", "toggle line relative number" },
+        ["<F12>"] = { "<C-o><cmd>set relativenumber!<CR>", "Toggle line relative number" },
     },
     n = {
-        ["<ESC>"]      = { "<cmd> noh <CR>", "no highlight" },
+        ["<ESC>"]      = { "<cmd> noh <CR>", "No highlight" },
         -- Change argument wrapping
         ["<leader>ar"] = { "<cmd>ArgWrap<CR>", "Change argument wrapping" },
         -- Set cursor move begin and end line
-        ["<S-h>"]      = { "^", "cursor left" },
-        ["<S-l>"]      = { "$", "cursor right" },
+        ["<S-h>"]      = { "^", "Cursor left" },
+        ["<S-l>"]      = { "$", "Cursor right" },
         -- switch between windows
-        ["<C-h>"]      = { "<C-w>h", "window left" },
-        ["<C-l>"]      = { "<C-w>l", "window right" },
-        ["<space>h"]   = { "<C-w>h", "window left" },
-        ["<space>l"]   = { "<C-w>l", "window right" },
-        ["<space>j"]   = { "<C-w>j", "window down" },
-        ["<space>k"]   = { "<C-w>k", "window up" },
+        ["<C-h>"]      = { "<C-w>h", "Window left" },
+        ["<C-l>"]      = { "<C-w>l", "Window right" },
+        ["<space>h"]   = { "<C-w>h", "Window left" },
+        ["<space>l"]   = { "<C-w>l", "Window right" },
+        ["<space>j"]   = { "<C-w>j", "Window down" },
+        ["<space>k"]   = { "<C-w>k", "Window up" },
         -- Copy all
-        ["<C-c>"]      = { "<cmd> %y+ <CR>", "copy whole file" },
+        ["<C-c>"]      = { "<cmd> %y+ <CR>", "Copy whole file" },
         -- line relative numbers
-        ["<F12>"]      = { "<cmd>set relativenumber!<CR>", "toggle line relative number" },
+        ["<F12>"]      = { "<cmd>set Relativenumber!<CR>", "toggle line relative number" },
         -- Wrap text
         ["<A-r>"]      = { "<cmd>set wrap!<CR>", "Enable wrap text" },
         -- Delete
@@ -66,8 +66,8 @@ M.general = {
         ["<leader>hs"] = { "<cmd>hs<CR>", "Horizontal split window" },
         ["<leader>cs"] = { "<cmd>close<CR>", "Horizontal split window" },
         -- Unhightlight after search
-        ["n"]          = { "<cmd>set hlsearch<CR>n", "next search" },
-        ["N"]          = { "<cmd>set hlsearch<CR>N", "previou search" },
+        ["n"]          = { "<cmd>set hlsearch<CR>n", "Next search" },
+        ["N"]          = { "<cmd>set hlsearch<CR>N", "Previou search" },
         ["<C-s>"]      = {
             "<ESC>:w<CR>",
             "Save file in insert mode",
@@ -87,7 +87,10 @@ M.general = {
         ["<Up>"]       = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
         ["<Down>"]     = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
 
-        ["\\"] = { "%", "Goto bracket pairs"},
+        ["\\"] = { "%", "Goto bracket pairs" },
+
+        -- Cheat sheet
+        ["<leader>ch"] = { "<cmd>NvCheatsheet<CR>", "Cheat Sheet" },
     },
     v = {
         ["//"]       = { "\"fy/\\V<C-R>f<CR>", "Search a visual word", opts = { silent = true } },
@@ -98,7 +101,7 @@ M.general = {
         -- Format range
         ["<space>f"] = { "<cmd>lua require'lsp-range-format'.format()<CR>", "format range" },
         -- ["y"]        = { "mcy`c", "copy not move cursor" },
-        ["\\"] = { "%", "Goto bracket pairs"},
+        ["\\"]       = { "%", "Goto bracket pairs" },
     },
     x = {
         ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
@@ -107,17 +110,17 @@ M.general = {
         -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
         ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', opts = { silent = true } },
         -- Unhightlight after search
-        ["n"] = { "<cmd>set hlsearch<CR>n", "next search" },
-        ["N"] = { "<cmd>set hlsearch<CR>N", "previou search" },
+        ["n"] = { "<cmd>set hlsearch<CR>n", "Next search" },
+        ["N"] = { "<cmd>set hlsearch<CR>N", "Previou search" },
         ["<C-BS>"] = { "bdw", "Delete by Ctrl Backspace" },
         -- Set cursor move begin and end line
-        ["<S-h>"] = { "^", "cursor left" },
-        ["<S-l>"] = { "$", "cursor right" },
+        ["<S-h>"] = { "^", "Cursor left" },
+        ["<S-l>"] = { "$", "Cursor right" },
     },
     o = {
-        ["<S-h>"] = { "^", "cursor left" },
-        ["<S-l>"] = { "$", "cursor right" },
-        ["\\"] = { "%", "Goto bracket pairs"},
+        ["<S-h>"] = { "^", "Cursor left" },
+        ["<S-l>"] = { "$", "Cursor right" },
+        ["\\"] = { "%", "Goto bracket pairs" },
     },
     c = {
         ["<C-v>"] = { "<C-R>*", "Set paste as Win OS in command line" },
@@ -343,17 +346,17 @@ M.lspconfig = {
 M.telescope = {
     n = {
         -- find
-        ["<leader>ff"]     = { "<cmd> Telescope find_files <CR>", "find files" },
-        ["<leader>fa"]     = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
-        ["<leader>fw"]     = { "<cmd> Telescope live_grep <CR>", "live grep" },
+        ["<leader>ff"]     = { "<cmd> Telescope find_files <CR>", "Find files" },
+        ["<leader>fa"]     = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all files" },
+        ["<leader>fw"]     = { "<cmd> Telescope live_grep <CR>", "Find live grep" },
         -- ["<leader>ft"]     = { "<cmd> Telescope help_tags <CR>", "help page" },
-        ["<leader>fo"]     = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
-        ["<leader>fk"]     = { "<cmd> Telescope keymaps <CR>", "show keys" },
-        ["<leader>fp"]     = { "<cmd> Telescope project <CR>", "project" },
-        ["<leader>fs"]     = { "<cmd> Telescope menu Sessions <CR>", "Sessions" },
-        ["<leader>fb"]     = { "<cmd> Telescope file_browser <CR>", "File on directory" },
-        ["<leader>fh"]     = { "<cmd> Telescope highlights <CR>", "File on directory" },
-        ["<leader>f<Tab>"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
+        ["<leader>fo"]     = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
+        ["<leader>fk"]     = { "<cmd> Telescope keymaps <CR>", "Find key mappings" },
+        ["<leader>fp"]     = { "<cmd> Telescope project <CR>", "Find projects" },
+        ["<leader>fs"]     = { "<cmd> Telescope menu Sessions <CR>", "Find sessions" },
+        ["<leader>fb"]     = { "<cmd> Telescope file_browser <CR>", "Find browser" },
+        ["<leader>fh"]     = { "<cmd> Telescope highlights <CR>", "Find highlights" },
+        ["<leader>f<Tab>"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
         -- git
         -- ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
         -- ["<leader>st"] = { "<cmd> Telescope git_status <CR>", "git status" },
@@ -367,8 +370,10 @@ M.telescope = {
 
         -- pick a hidden term
         ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "pick hidden term" },
+
         -- theme switcher
-        ["<leader>th"] = { "<cmd> Telescope themes <CR>", "nvchad themes" },
+        ["<leader>th"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
+
         -- command
         ["<leader>cm"] = {
             function()
@@ -380,20 +385,20 @@ M.telescope = {
 
 M.lspsaga = {
     n = {
-        ["gpd"]        = { "<cmd>Lspsaga peek_definition<CR>", "goto peek definition" },
-        ["gf"]         = { "<cmd>Lspsaga finder<CR>", "lsp finder" },
+        ["gpd"]        = { "<cmd>Lspsaga peek_definition<CR>", "Goto peek definition" },
+        ["gf"]         = { "<cmd>Lspsaga finder<CR>", "Lsp finder" },
         ["K"]          = { "<cmd>Lspsaga hover_doc<CR>", "Hover doc" },
-        ["<leader>go"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", "show line diagnostic" },
-        ["<leader>gc"] = { "<cmd>Lspsaga show_cursor_diagnostics<CR>", "show cursor diagnostic" },
-        ["<leader>gb"] = { "<cmd>Lspsaga show_buf_diagnostics<CR>", "show buffer diagnostic" },
-        ["<leader>gj"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "diagnostic jump next" },
-        ["<leader>gk"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "diagnostic jump previous" },
+        ["<leader>go"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Show line diagnostic" },
+        ["<leader>gc"] = { "<cmd>Lspsaga show_cursor_diagnostics<CR>", "Show cursor diagnostic" },
+        ["<leader>gb"] = { "<cmd>Lspsaga show_buf_diagnostics<CR>", "Show buffer diagnostic" },
+        ["<leader>gj"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Diagnostic jump next" },
+        ["<leader>gk"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Diagnostic jump previous" },
         -- ["<leader>ra"] = { "<cmd>Lspsaga rename<CR>", "lsp rename" },
-        ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "lsp code_action" },
+        ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Lsp code action" },
         ["<leader>o"]  = { "<cmd>Lspsaga outline<CR>", "Lspsaga outline" },
     },
     v = {
-        ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "lsp code_action" },
+        ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Lsp code action" },
     }
 }
 
@@ -462,20 +467,20 @@ M.gitsigns = {
 
 M.floaterm = {
     n = {
-        ["<leader>to"] = { "<cmd>FloatermNew bash.exe<CR>", "open new terminal" },
-        ["<leader>tk"] = { "<cmd>FloatermKill<CR>:floatermprev<cr>", "kill current terminal" },
-        ["<leader>tn"] = { "<cmd>FloatermNext<CR>", "next terminal" },
-        ["<leader>tp"] = { "<cmd>FloatermPrev<CR>", "previous terminal" },
-        ["<leader>tt"] = { "<cmd>FloatermToggle<CR>", "toggle terminal" },
-        ["<leader>ts"] = { "<cmd>FloatermShow<CR>", "show terminal" },
+        ["<leader>to"] = { "<cmd>FloatermNew bash.exe<CR>", "Open new terminal" },
+        ["<leader>tk"] = { "<cmd>FloatermKill<CR>:floatermprev<cr>", "Kill current terminal" },
+        ["<leader>tn"] = { "<cmd>FloatermNext<CR>", "Next terminal" },
+        ["<leader>tp"] = { "<cmd>FloatermPrev<CR>", "Previous terminal" },
+        ["<leader>tt"] = { "<cmd>FloatermToggle<CR>", "Toggle terminal" },
+        ["<leader>ts"] = { "<cmd>FloatermShow<CR>", "Show terminal" },
     },
     t = {
-        ["<leader>to"] = { "<C-\\><C-n><cmd>FloatermNew bash.exe<CR>", "open new terminal" },
-        ["<leader>tk"] = { "<C-\\><C-n><cmd>FloatermKill<CR>:FloatermPrev<cr>", "kill current terminal" },
-        ["<leader>tn"] = { "<C-\\><C-n><cmd>FloatermNext<CR>", "next terminal" },
-        ["<leader>tp"] = { "<C-\\><C-n><cmd>FloatermPrev<CR>", "previous terminal" },
-        ["<leader>tt"] = { "<C-\\><C-n><cmd>FloatermToggle<CR>", "toggle terminal" },
-        ["<leader>ts"] = { "<C-\\><C-n><cmd>FloatermShow<CR>", "show terminal" },
+        ["<leader>to"] = { "<C-\\><C-n><cmd>FloatermNew bash.exe<CR>", "Open new terminal" },
+        ["<leader>tk"] = { "<C-\\><C-n><cmd>FloatermKill<CR>:FloatermPrev<cr>", "Kill current terminal" },
+        ["<leader>tn"] = { "<C-\\><C-n><cmd>FloatermNext<CR>", "Next terminal" },
+        ["<leader>tp"] = { "<C-\\><C-n><cmd>FloatermPrev<CR>", "Previous terminal" },
+        ["<leader>tt"] = { "<C-\\><C-n><cmd>FloatermToggle<CR>", "Toggle terminal" },
+        ["<leader>ts"] = { "<C-\\><C-n><cmd>FloatermShow<CR>", "Show terminal" },
         ["<C-v>"]      = { "<C-\\><C-n>pi", "Paste in terminal" },
         ["<C-BS>"]     = { "<C-\\><C-n>bdw", "Delete word in terminal" },
         ["<C-q>"]      = { "<C-\\><C-n>:FloatermToggle<CR>", "Quit terminal" },
@@ -492,6 +497,7 @@ M.align = {
                     { is_pattern = false, reverse = true, preview = true }
                 )
             end,
+            "Aligns to 1 character, looking left and with preivews"
         }
     },
     x = {
@@ -541,25 +547,25 @@ M.hop = {
             function()
                 hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
             end,
-            "hop move forward"
+            "Hop move forward"
         },
         ["F"] = {
             function()
                 hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
             end,
-            "hop move backward"
+            "Hop move backward"
         },
         ['t'] = {
             function()
                 hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
             end,
-            "hop move forward before cursor"
+            "Hop move forward before cursor"
         },
         ['T'] = {
             function()
                 hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = -1 })
             end,
-            "hop move backward before cursor"
+            "Hop move backward before cursor"
         }
     },
     x = {
@@ -567,25 +573,25 @@ M.hop = {
             function()
                 hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
             end,
-            "hop move forward"
+            "Hop move forward"
         },
         ["F"] = {
             function()
                 hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
             end,
-            "hop move backward"
+            "Hop move backward"
         },
         ['t'] = {
             function()
                 hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
             end,
-            "hop move forward before cursor"
+            "Hop move forward before cursor"
         },
         ['T'] = {
             function()
                 hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = -1 })
             end,
-            "hop move backward before cursor"
+            "Hop move backward before cursor"
         }
     },
     o = {
@@ -593,25 +599,25 @@ M.hop = {
             function()
                 hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
             end,
-            "hop move forward"
+            "Hop move forward"
         },
         ["F"] = {
             function()
                 hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
             end,
-            "hop move backward"
+            "Hop move backward"
         },
         ['t'] = {
             function()
                 hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
             end,
-            "hop move forward before cursor"
+            "Hop move forward before cursor"
         },
         ['T'] = {
             function()
                 hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = -1 })
             end,
-            "hop move backward before cursor"
+            "Hop move backward before cursor"
         }
     }
 }
@@ -634,20 +640,20 @@ M.nerdy = {
 local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
 M.treesitter = {
     n = {
-        [";"] = { ts_repeat_move.repeat_last_move_next, "goes forward" },
-        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "goes previous" },
+        [";"] = { ts_repeat_move.repeat_last_move_next, "Goes forward" },
+        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "Goes previous" },
     },
     x = {
-        [";"] = { ts_repeat_move.repeat_last_move_next, "goes forward" },
-        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "goes previous" },
+        [";"] = { ts_repeat_move.repeat_last_move_next, "Goes forward" },
+        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "Goes previous" },
     },
     v = {
-        [";"] = { ts_repeat_move.repeat_last_move_next, "goes forward" },
-        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "goes previous" },
+        [";"] = { ts_repeat_move.repeat_last_move_next, "Goes forward" },
+        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "Goes previous" },
     },
     o = {
-        [";"] = { ts_repeat_move.repeat_last_move_next, "goes forward" },
-        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "goes previous" },
+        [";"] = { ts_repeat_move.repeat_last_move_next, "Goes forward" },
+        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "Goes previous" },
     },
 }
 
@@ -657,25 +663,25 @@ M.spider = {
             function()
                 require("spider").motion("w")
             end,
-            " spider w"
+            "Spider w"
         },
         ["e"] = {
             function()
                 require("spider").motion("e")
             end,
-            " spider e"
+            "Spider e"
         },
         ["b"] = {
             function()
                 require("spider").motion("b")
             end,
-            " spider b"
+            "Spider b"
         },
         ["ge"] = {
             function()
                 require("spider").motion("ge")
             end,
-            " spider ge"
+            "Spider ge"
         },
     },
     o = {
@@ -683,25 +689,25 @@ M.spider = {
             function()
                 require("spider").motion("w")
             end,
-            " spider w"
+            "Spider w"
         },
         ["e"] = {
             function()
                 require("spider").motion("e")
             end,
-            " spider e"
+            "Spider e"
         },
         ["b"] = {
             function()
                 require("spider").motion("b")
             end,
-            " spider b"
+            "Spider b"
         },
         ["ge"] = {
             function()
                 require("spider").motion("ge")
             end,
-            " spider ge"
+            "Spider ge"
         },
     },
     x = {
@@ -709,25 +715,25 @@ M.spider = {
             function()
                 require("spider").motion("w")
             end,
-            " spider w"
+            "Spider w"
         },
         ["e"] = {
             function()
                 require("spider").motion("e")
             end,
-            " spider e"
+            "Spider e"
         },
         ["b"] = {
             function()
                 require("spider").motion("b")
             end,
-            " spider b"
+            "Spider b"
         },
         ["ge"] = {
             function()
                 require("spider").motion("ge")
             end,
-            " spider ge"
+            "Spider ge"
         },
     }
 }
@@ -816,7 +822,7 @@ M.flash = {
             function()
                 require("flash").jump()
             end,
-            "Flash"
+            "Flash jump"
         },
         ["<leader>ft"] = {
             function()
@@ -830,7 +836,7 @@ M.flash = {
             function()
                 require("flash").jump()
             end,
-            "Flash"
+            "Flash jump"
         },
         ["<leader>ft"] = {
             function()
@@ -839,12 +845,13 @@ M.flash = {
             "Flash treesitter"
         },
     },
+
     x = {
         ["<leader>j"] = {
             function()
                 require("flash").jump()
             end,
-            "Flash"
+            "Flash jump"
         },
         ["<leader>ft"] = {
             function()
