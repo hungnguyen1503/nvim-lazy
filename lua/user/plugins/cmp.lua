@@ -134,10 +134,10 @@ local options = {
         end, { "i", "s" }),
     },
     sources = {
-        { name = "luasnip",        priority = 9,  max_item_count = 12, option = { show_autosnippets = true } },
+        { name = "luasnip", priority = 9, max_item_count = 12, option = { show_autosnippets = true } },
         { name = "luasnip_choice", priority = 9 },
-        { name = "nvim_lsp",       priority = 10, max_item_count = 12 },
-        { name = 'cmp_tabnine',    priority = 8,  max_item_count = 15 },
+        { name = "nvim_lsp", priority = 10, max_item_count = 12 },
+        { name = 'cmp_tabnine', priority = 8, max_item_count = 15 },
         {
             name = "buffer",
             priority = 7,
@@ -154,10 +154,10 @@ local options = {
                 end
             }
         },
-        { name = "treesitter",             max_item_count = 1 },
-        { name = "path",                   priority = 6 },
+        { name = "treesitter", max_item_count = 1 },
+        { name = "path", priority = 6 },
         { name = "nvim_lua" },
-        { name = "nvim_lsp_signature_help" },
+        -- { name = "nvim_lsp_signature_help" },
     },
 }
 
@@ -167,7 +167,7 @@ cmp.setup.cmdline(':', {
     mapping = require("cmp").mapping.preset.cmdline(),
     sources = require("cmp").config.sources({
         { name = 'cmdline', priority = 3 },
-        { name = 'path',    priority = 2 },
+        { name = 'path', priority = 2 },
         {
             name = 'cmdline_history',
             priority = 1,
@@ -239,3 +239,4 @@ tabnine:setup({
     },
     show_prediction_strength = false
 })
+

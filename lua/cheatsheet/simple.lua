@@ -187,4 +187,7 @@ return function()
     vim.keymap.set("n", "<ESC>", function()
         require("cheatsheet.api").close_buffer(buf)
     end, { buffer = buf }) -- use ESC to close
+    vim.keymap.set("n", "q", function()
+        require("cheatsheet.api").close_buffer(buf)
+    end, { buffer = buf }) -- use 'q' to close
 end

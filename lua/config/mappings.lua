@@ -234,13 +234,13 @@ M.lspconfig = {
             function()
                 vim.lsp.buf.declaration()
             end,
-            "lsp declaration",
+            "Lsp declaration",
         },
         ["gd"] = {
             function()
                 vim.lsp.buf.definition()
             end,
-            "lsp definition",
+            "Lsp definition",
         },
         -- ["K"] = {
         --     function()
@@ -253,25 +253,25 @@ M.lspconfig = {
             function()
                 vim.lsp.buf.implementation()
             end,
-            "lsp implementation",
+            "Lsp implementation",
         },
         ["<leader>ls"] = {
             function()
                 vim.lsp.buf.signature_help()
             end,
-            "lsp signature_help",
+            "Lsp signature_help",
         },
         ["gt"] = {
             function()
                 vim.lsp.buf.type_definition()
             end,
-            "lsp definition type",
+            "Lsp definition type",
         },
         ["<leader>ra"] = {
             function()
                 vim.lsp.buf.rename()
             end,
-            "lsp rename",
+            "Lsp rename",
         },
         -- ["<leader>ca"] = {
         --   function()
@@ -284,61 +284,61 @@ M.lspconfig = {
             function()
                 vim.lsp.buf.references()
             end,
-            "lsp references",
+            "Lsp references",
         },
         ["<leader>f"] = {
             function()
                 vim.diagnostic.open_float()
             end,
-            "floating diagnostic",
+            "Floating diagnostic",
         },
         ["[d"] = {
             function()
                 vim.diagnostic.goto_prev()
             end,
-            "goto prev",
+            "Goto prev",
         },
         ["d]"] = {
             function()
                 vim.diagnostic.goto_next()
             end,
-            "goto_next",
+            "Goto_next",
         },
         ["<leader>q"] = {
             function()
                 vim.diagnostic.setloclist()
             end,
-            "diagnostic setloclist",
+            "Diagnostic setloclist",
         },
         ["<leader>fm"] = {
             function()
                 vim.lsp.buf.format { async = true }
             end,
-            "lsp formatting",
+            "Lsp formatting",
         },
         ["<leader>wa"] = {
             function()
                 vim.lsp.buf.add_workspace_folder()
             end,
-            "add workspace folder",
+            "Add workspace folder",
         },
         ["<leader>wr"] = {
             function()
                 vim.lsp.buf.remove_workspace_folder()
             end,
-            "remove workspace folder",
+            "Remove workspace folder",
         },
         ["<leader>wl"] = {
             function()
                 print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
             end,
-            "list workspace folders",
+            "List workspace folders",
         },
     },
     x = {
         ["<space>f"] = {
             ":lua require'lsp-range-format'.format()<ESC>",
-            "lsp formatting",
+            "Lsp formatting",
         },
     }
 }
@@ -369,7 +369,7 @@ M.telescope = {
         ["<leader>m"] = { "<cmd> Telescope marks <CR>", "Find the marks" },
 
         -- pick a hidden term
-        ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "pick hidden term" },
+        ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Find and pick hidden term" },
 
         -- theme switcher
         ["<leader>th"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },

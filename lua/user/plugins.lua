@@ -247,42 +247,6 @@ return {
         config = function()
             require('user.plugins.flash')
         end,
-        -- keys = {
-        --     {
-        --         "<leader>j",
-        --         mode = { "n", "x", "o" },
-        --         function() require("flash").jump() end,
-        --         desc = "Flash"
-        --     },
-        --     {
-        --         "<leader>ft",
-        --         mode = { "n", "x", "o" },
-        --         function() require("flash").treesitter() end,
-        --         desc =
-        --         "Flash Treesitter"
-        --     },
-        --     {
-        --         "r",
-        --         mode = "o",
-        --         function() require("flash").remote() end,
-        --         desc =
-        --         "Remote Flash"
-        --     },
-        --     {
-        --         "R",
-        --         mode = { "o", "x" },
-        --         function() require("flash").treesitter_search() end,
-        --         desc =
-        --         "Treesitter Search"
-        --     },
-        -- {
-        --     "<c-s>",
-        --     mode = { "c" },
-        --     function() require("flash").toggle() end,
-        --     desc =
-        --     "Toggle Flash Search"
-        -- },
-        -- }
     },
     -- Extract argument in bracket
     {
@@ -706,6 +670,14 @@ return {
     {
         'lukas-reineke/cmp-under-comparator',
         dependencies = "cmp_luasnip",
+    },
+
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+        config = function ()
+            require("user.plugins.lspsignature")
+        end
     },
 
     -- Mason DAP to quickly install and custom config for debugger

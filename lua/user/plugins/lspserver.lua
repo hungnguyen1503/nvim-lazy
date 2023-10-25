@@ -46,10 +46,11 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
     relative = "cursor",
 })
 
+
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
     {
-        underline = true,
+        underline = false,
         virtual_text = {
             spacing = 5,
             severity_limit = 'Warning',
@@ -83,7 +84,7 @@ local servers = {
 
 local lsp_flags = {
     -- This is the default in Nvim 0.7+
-    debounce_text_changes = 100,
+    debounce_text_changes = 10,
 }
 
 
@@ -102,9 +103,14 @@ for _, lsp in ipairs(servers) do
             Lua = {
                 diagnostics = {
                     -- Get the language server to recognize the `vim` global
-                    -- globals = { "vim" },
+                    globals = { "vim" },
                     virtual_text = false,
                 },
+                workspace = {
+                    -- Disable neodev modify workspace
+                    checkThirdParty = false,
+                },
+                hint = { enable = true },
             },
             pylsp = {
                 plugins = {
@@ -118,6 +124,23 @@ for _, lsp in ipairs(servers) do
                     useLibraryCodeForTypes = true,
                     diagnosticMode = 'openFilesOnly',
                 },
+            },
+            c = {
+                cmd = {
+                    "clangd",
+                    "--background-index",
+                    "--pch-storage=memory",
+                    "--clang-tidy",
+                    "--cross-file-rename",
+                    "--completion-style=detailed",
+                },
+                init_options = {
+                    clangdFileStatus = true,
+                    usePlaceholders = true,
+                    completeUnimported = true,
+                    semanticHighlighting = true,
+            },
+                hint = { enable = true },
             }
         },
     })

@@ -1,8 +1,8 @@
 local colors = {}
 
 local tokyonight = {
-    black         = "#1a1b26",
-    black2        = "#1f2336",
+    black         = "#1f2336",
+    black2        = "#1a1b26",
     blue          = "#7aa2f7",
     red           = "#f7768e",
     green         = "#9ece6a",

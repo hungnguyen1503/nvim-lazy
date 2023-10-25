@@ -1,5 +1,6 @@
 dofile(vim.fn.stdpath("config") .. "/lua/cheatsheet/color.lua")
 
+
 local nvcheatsheet = vim.api.nvim_create_namespace("nvcheatsheet")
 local mappings_tb = require("core.utils").load_config().mappings
 local isValid_mapping_TB = require("cheatsheet.api").isValid_mapping_TB
@@ -306,7 +307,7 @@ return function()
     vim.opt_local.modifiable = false
     vim.opt_local.buftype = "nofile"
     vim.opt_local.filetype = "nvcheatsheet"
-    vim.opt_local.number = true
+    vim.opt_local.number = false
     vim.opt_local.list = false
     vim.opt_local.wrap = false
     vim.opt_local.relativenumber = false
