@@ -868,21 +868,4 @@ M.flash = {
     }
 }
 
-M.tabtree = {
-    n = {
-        ["<C-Tab>"] = {
-            function()
-                require('tabtree').next()
-            end,
-            "Next bracket"
-        },
-        ["<S-Tab>"] = {
-            function()
-                require('tabtree').previous()
-            end,
-            "Previous bracket"
-        }
-    }
-}
-
 return M
