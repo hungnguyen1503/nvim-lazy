@@ -125,7 +125,7 @@ for _, lsp in ipairs(servers) do
                     diagnosticMode = 'openFilesOnly',
                 },
             },
-            c = {
+            clangd = {
                 cmd = {
                     "clangd",
                     "--background-index",
@@ -139,7 +139,7 @@ for _, lsp in ipairs(servers) do
                     usePlaceholders = true,
                     completeUnimported = true,
                     semanticHighlighting = true,
-            },
+                },
                 hint = { enable = true },
             }
         },
