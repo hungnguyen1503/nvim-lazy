@@ -52,7 +52,7 @@ M.general = {
         -- Copy all
         ["<C-c>"]      = { "<cmd> %y+ <CR>", "Copy whole file" },
         -- line relative numbers
-        ["<F12>"]      = { "<cmd>set Relativenumber!<CR>", "toggle line relative number" },
+        ["<F12>"]      = { "<cmd>set relativenumber!<CR>", "toggle line relative number" },
         -- Wrap text
         ["<A-r>"]      = { "<cmd>set wrap!<CR>", "Enable wrap text" },
         -- Delete
@@ -255,9 +255,15 @@ M.lspconfig = {
             end,
             "Lsp implementation",
         },
+        -- ["<leader>ls"] = {
+        --     function()
+        --         vim.lsp.buf.signature_help()
+        --     end,
+        --     "Lsp signature_help",
+        -- },
         ["<leader>ls"] = {
             function()
-                vim.lsp.buf.signature_help()
+                require('lsp_signature').toggle_float_win()
             end,
             "Lsp signature_help",
         },
@@ -267,12 +273,12 @@ M.lspconfig = {
             end,
             "Lsp definition type",
         },
-        ["<leader>ra"] = {
-            function()
-                vim.lsp.buf.rename()
-            end,
-            "Lsp rename",
-        },
+        -- ["<leader>ra"] = {
+        --     function()
+        --         vim.lsp.buf.rename()
+        --     end,
+        --     "Lsp rename",
+        -- },
         -- ["<leader>ca"] = {
         --   function()
         --     vim.lsp.buf.code_action()
@@ -393,7 +399,7 @@ M.lspsaga = {
         ["<leader>gb"] = { "<cmd>Lspsaga show_buf_diagnostics<CR>", "Show buffer diagnostic" },
         ["<leader>gj"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Diagnostic jump next" },
         ["<leader>gk"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Diagnostic jump previous" },
-        -- ["<leader>ra"] = { "<cmd>Lspsaga rename<CR>", "lsp rename" },
+        ["<leader>ra"] = { "<cmd>Lspsaga rename<CR>", "lsp rename" },
         ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Lsp code action" },
         ["<leader>o"]  = { "<cmd>Lspsaga outline<CR>", "Lspsaga outline" },
     },
@@ -859,6 +865,23 @@ M.flash = {
             end,
             "Flash treesitter"
         },
+    }
+}
+
+M.tabtree = {
+    n = {
+        ["<C-Tab>"] = {
+            function()
+                require('tabtree').next()
+            end,
+            "Next bracket"
+        },
+        ["<S-Tab>"] = {
+            function()
+                require('tabtree').previous()
+            end,
+            "Previous bracket"
+        }
     }
 }
 

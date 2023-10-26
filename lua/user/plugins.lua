@@ -297,6 +297,8 @@ return {
             'keyvchan/telescope-find-pickers.nvim',
             -- Menu management
             'octarect/telescope-menu.nvim',
+            -- Dap
+            'nvim-telescope/telescope-dap.nvim'
         },
         cmd = "Telescope",
         config = function()
@@ -385,13 +387,13 @@ return {
 
     -- NOTE: It should be replace by another plugin
     -- Vim easy replace
-    {
-        'kqito/vim-easy-replace',
-        event = "VeryLazy",
-        config = function()
-            require("user.plugins.replace")
-        end
-    },
+    -- {
+    --     'kqito/vim-easy-replace',
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("user.plugins.replace")
+    --     end
+    -- },
 
     -- Code highlight
     {

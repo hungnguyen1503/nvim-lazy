@@ -14,12 +14,6 @@ M.on_attach = function(client, bufnr)
     client.server_capabilities.documentRangeFormattingProvider = true
 
     utils.load_mappings("lspconfig", { buffer = bufnr })
-    require "lsp_signature".on_attach({
-        bind = true, -- This is mandatory, otherwise border config won't get registered.
-        handler_opts = {
-            border = "rounded"
-        }
-    }, bufnr)
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()

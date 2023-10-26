@@ -9,10 +9,10 @@ local options = {
     --debug = true,
 
     -- disable key bindings
-    --key_bindings_disabled = true,
+    key_bindings_disabled = false,
 
     key_bindings = {
-        next = "<Tab>",
+        next = "<C-Tab>",
         previous = "<S-Tab>",
     },
 
@@ -59,7 +59,6 @@ local options = {
             target_query = [[
               (string) @string_capture
               (table_constructor) @table_constructor_capture
-              (string_content) @string_content_capture
               (parameters) @parameters_capture
               (arguments) @arguments_capture
               (bracket_index_expression) @bracket_index_expression_capture

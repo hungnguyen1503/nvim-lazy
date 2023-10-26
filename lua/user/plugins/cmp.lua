@@ -87,14 +87,14 @@ local options = {
         end,
     },
     sorting = {
-        priority_weight = 2.0,
+        priority_weight = 2,
         comparators = {
             require("cmp-under-comparator").under,
             cmp.config.compare.offset,
             cmp.config.compare.exact,
-            cmp.config.compare.score,
-            cmp.config.compare.recently_used,
             cmp.config.compare.kind,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.score,
             cmp.config.compare.sort_text,
             cmp.config.compare.length,
             cmp.config.compare.order,
@@ -119,10 +119,7 @@ local options = {
             else
                 fallback()
             end
-        end, {
-            "i",
-            "s",
-        }),
+        end, { "i", "s" }),
         ["<S-Tab>"]   = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
@@ -134,10 +131,10 @@ local options = {
         end, { "i", "s" }),
     },
     sources = {
-        { name = "luasnip",        priority = 10, max_item_count = 12, option = { show_autosnippets = true } },
-        { name = "luasnip_choice", priority = 9 },
-        { name = "nvim_lsp",       priority = 8,  max_item_count = 12 },
-        { name = 'cmp_tabnine',    priority = 7,  max_item_count = 15 },
+        { name = "luasnip", priority = 10, max_item_count = 12, option = { show_autosnippets = true } },
+        { name = "luasnip_choice", priority = 10 },
+        { name = "nvim_lsp", priority = 9, max_item_count = 12 },
+        { name = 'cmp_tabnine', priority = 8, max_item_count = 15 },
         {
             name = "buffer",
             priority = 5,
@@ -155,8 +152,8 @@ local options = {
             }
         },
         { name = "nvim_lsp_signature_help", priority = 7 },
-        { name = "treesitter",              max_item_count = 1 },
-        { name = "path",                    priority = 6 },
+        { name = "treesitter", priority = 6 },
+        { name = "path", priority = 6 },
         { name = "nvim_lua" },
     },
 }
@@ -239,4 +236,3 @@ tabnine:setup({
     },
     show_prediction_strength = false
 })
-
