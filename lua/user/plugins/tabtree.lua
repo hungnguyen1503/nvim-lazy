@@ -12,8 +12,8 @@ local options = {
     key_bindings_disabled = false,
 
     key_bindings = {
-        next = "<C-Tab>",
-        previous = "<S-Tab>",
+        next = "<C-\\>",
+        previous = "<C-|>",
     },
 
     -- INFO: InspectTree to discover the (capture group)

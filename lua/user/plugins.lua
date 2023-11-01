@@ -198,15 +198,15 @@ return {
     },
 
     -- NOTE: Check the new plugin to automate pair
-    -- Auto pair
+    -- Auto pair just for python
     -- https://github.com/altermo/ultimate-autopair.nvim
-    -- {
-    --     'windwp/nvim-autopairs',
-    --     config = function()
-    --         require("user.plugins.autopairs")
-    --     end,
-    --     event = { "InsertEnter" },
-    -- },
+    {
+        'windwp/nvim-autopairs',
+        config = function()
+            require("user.plugins.autopairs")
+        end,
+        event = { "InsertEnter" },
+    },
 
     {
         'altermo/ultimate-autopair.nvim',

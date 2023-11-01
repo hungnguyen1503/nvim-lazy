@@ -349,6 +349,25 @@ M.lspconfig = {
     }
 }
 
+M.lspsaga = {
+    n = {
+        ["gpd"]        = { "<cmd>Lspsaga peek_definition<CR>", "Goto peek definition" },
+        ["gf"]         = { "<cmd>Lspsaga finder<CR>", "Lsp finder" },
+        ["K"]          = { "<cmd>Lspsaga hover_doc<CR>", "Hover doc" },
+        ["<leader>go"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Show line diagnostic" },
+        ["<leader>gc"] = { "<cmd>Lspsaga show_cursor_diagnostics<CR>", "Show cursor diagnostic" },
+        ["<leader>gb"] = { "<cmd>Lspsaga show_buf_diagnostics<CR>", "Show buffer diagnostic" },
+        ["<leader>gj"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Diagnostic jump next" },
+        ["<leader>gk"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Diagnostic jump previous" },
+        ["<leader>ra"] = { "<cmd>Lspsaga rename<CR>", "lsp rename" },
+        ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Lsp code action" },
+        ["<leader>o"]  = { "<cmd>Lspsaga outline<CR>", "Lspsaga outline" },
+    },
+    v = {
+        ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Lsp code action" },
+    }
+}
+
 M.telescope = {
     n = {
         -- find
@@ -387,25 +406,6 @@ M.telescope = {
             end,
         }
     },
-}
-
-M.lspsaga = {
-    n = {
-        ["gpd"]        = { "<cmd>Lspsaga peek_definition<CR>", "Goto peek definition" },
-        ["gf"]         = { "<cmd>Lspsaga finder<CR>", "Lsp finder" },
-        ["K"]          = { "<cmd>Lspsaga hover_doc<CR>", "Hover doc" },
-        ["<leader>go"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Show line diagnostic" },
-        ["<leader>gc"] = { "<cmd>Lspsaga show_cursor_diagnostics<CR>", "Show cursor diagnostic" },
-        ["<leader>gb"] = { "<cmd>Lspsaga show_buf_diagnostics<CR>", "Show buffer diagnostic" },
-        ["<leader>gj"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Diagnostic jump next" },
-        ["<leader>gk"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Diagnostic jump previous" },
-        ["<leader>ra"] = { "<cmd>Lspsaga rename<CR>", "lsp rename" },
-        ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Lsp code action" },
-        ["<leader>o"]  = { "<cmd>Lspsaga outline<CR>", "Lspsaga outline" },
-    },
-    v = {
-        ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Lsp code action" },
-    }
 }
 
 M.jabs = {
