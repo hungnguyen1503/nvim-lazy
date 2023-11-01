@@ -307,20 +307,20 @@ return {
     },
 
     -- Icon picker
-    -- {
-    --     'ziontee113/icon-picker.nvim',
-    --     event = "VeryLazy",
-    --     cmd = {
-    --         "PickEverything",
-    --         "IconPickerNormal",
-    --         "PickEverythingInsert",
-    --         'IconPickerInsert',
-    --         'IconPickerYank',
-    --     },
-    --     config = function()
-    --         require("user.plugins.icon-picker")
-    --     end
-    -- },
+    {
+        'ziontee113/icon-picker.nvim',
+        event = "VeryLazy",
+        cmd = {
+            "PickEverything",
+            "IconPickerNormal",
+            "PickEverythingInsert",
+            'IconPickerInsert',
+            'IconPickerYank',
+        },
+        config = function()
+            require("user.plugins.icon-picker")
+        end
+    },
     {
         '2kabhishek/nerdy.nvim',
         dependencies = {
