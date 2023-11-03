@@ -33,6 +33,7 @@ todo.setup {
     -- TODO:
     -- warning:
     -- testing:
+    -- ERR:
     highlight = {
         before = "", -- "fg" or "bg" or empty
         keyword = "wide", -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
@@ -45,11 +46,11 @@ todo.setup {
     -- list of named colors where we try to extract the guifg from the
     -- list of hilight groups or use the hex color if hl not found as a fallback
     colors = {
-        error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
-        warning = { "DiagnosticWarning", "WarningMsg", "#FBBF24" },
-        info = { "DiagnosticInfo", "#3973EB" },
-        hint = { "DiagnosticHint", "#10B981" },
-        default = { "Identifier", "#7C3AED" },
+        error = { "DiagnosticError", "ErrorMsg", "#ff6962" },
+        warning = { "DiagnosticWarning", "WarningMsg", "#fac898" },
+        info = { "DiagnosticInfo", "#aad7fe" },
+        hint = { "DiagnosticHint", "#c1e1c1" },
+        test = { "Identifier", "##e1aaed" };
     },
     search = {
         command = "rg",

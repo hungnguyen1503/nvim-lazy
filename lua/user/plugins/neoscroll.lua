@@ -17,28 +17,28 @@ neoscroll.setup({
     performance_mode = false,    -- Disable "Performance Mode" on all buffers.
 })
 
-local t = {}
+local mappings = {}
 -- Syntax: t[keys] = {function, {function arguments}}
-t['<C-u>'] = {'scroll', {'-vim.wo.scroll', 'true', '350', [['cubic']]}}
-t['<C-d>'] = {'scroll', { 'vim.wo.scroll', 'true', '350', [['cubic']]}}
+mappings['<C-u>'] = {'scroll', {'-vim.wo.scroll', 'true', '350', [['cubic']]}}
+mappings['<C-d>'] = {'scroll', { 'vim.wo.scroll', 'true', '350', [['cubic']]}}
 
 -- Use the "cubic" easing function
-t['<C-b>'] = {'scroll', {'-0.9', 'true', '400', [['cubic']]}}
-t['<C-f>'] = {'scroll', { '0.9', 'true', '400', [['cubic']]}}
+mappings['<C-b>'] = {'scroll', {'-0.9', 'true', '400', [['cubic']]}}
+mappings['<C-f>'] = {'scroll', { '0.9', 'true', '400', [['cubic']]}}
 
 -- Pass "cubic" to disable the easing animation (constant scrolling speed)
-t['<C-y>'] = {'scroll', {'-0.01', 'true', '200', [['cubic']]}}
-t['<C-e>'] = {'scroll', { '0.01', 'true', '200', [['cubic']]}}
+mappings['<C-y>'] = {'scroll', {'-0.01', 'true', '200', [['cubic']]}}
+mappings['<C-e>'] = {'scroll', { '0.01', 'true', '200', [['cubic']]}}
 
-t['<C-k>'] = {'scroll', {'-0.25', 'true', '200', [['cubic']]}}
-t['<C-j>'] = {'scroll', { '0.25', 'true', '200', [['cubic']]}}
+mappings['<C-k>'] = {'scroll', {'-0.25', 'true', '200', [['cubic']]}}
+mappings['<C-j>'] = {'scroll', { '0.25', 'true', '200', [['cubic']]}}
 
-t['<ScrollWheelUp>'] = {'scroll', {'-0.25', 'true', '200', [['cubic']]}}
-t['<ScrollWheelDown>'] = {'scroll', { '0.25', 'true', '200', [['cubic']]}}
+mappings['<ScrollWheelUp>'] = {'scroll', {'-0.25', 'true', '200', [['cubic']]}}
+mappings['<ScrollWheelDown>'] = {'scroll', { '0.25', 'true', '200', [['cubic']]}}
 
 -- When no easing function is provided the default easing function (in this case "quadratic") will be used
-t['zt']    = {'zt', {'250'}}
-t['zz']    = {'zz', {'250'}}
-t['zb']    = {'zb', {'250'}}
+mappings['zt']    = {'zt', {'250'}}
+mappings['zz']    = {'zz', {'250'}}
+mappings['zb']    = {'zb', {'250'}}
 
-require('neoscroll.config').set_mappings(t)
+require('neoscroll.config').set_mappings(mappings)
