@@ -202,10 +202,14 @@ M.trouble = {
     }
 }
 
-M.neotree = {
+-- M.neotree = {
+--     n = {
+--         ["<F4>"] = { "<cmd>Neotree toggle<CR>", "Toggle Neotree" },
+--     },
+-- }
+M.nvimtree = {
     n = {
-        -- toggle nvimtree
-        ["<F4>"] = { "<cmd>Neotree toggle<CR>", "Toggle Neotree" },
+        ["<F4>"] = { "<cmd>NvimTreeToggle<CR>", "Toggle NvimTree" },
     },
 }
 

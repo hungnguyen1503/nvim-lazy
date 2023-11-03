@@ -40,26 +40,37 @@ return {
         end,
     },
 
-    -- File explorer
+    -- File explorer-- File explorer
     {
-        'nvim-neo-tree/neo-tree.nvim',
-        cmd = "Neotree",
+        'nvim-tree/nvim-tree.lua',
+        tag = 'nightly',
+        dependencies = {
+            "stevearc/dressing.nvim"
+        },
         config = function()
-            require("user.plugins.neotree")
-        end
-    },
-
-    -- Window picker
-    {
-        's1n7ax/nvim-window-picker',
-        name = 'window-picker',
-        event = 'VeryLazy',
-        cmd = "Neotree",
-        version = '2.*',
-        config = function()
-            require("user.plugins.window-picker")
+            require("user.plugins.nvimtree")
         end,
+        cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     },
+    -- {
+    --     'nvim-neo-tree/neo-tree.nvim',
+    --     cmd = "Neotree",
+    --     config = function()
+    --         require("user.plugins.neotree")
+    --     end
+    -- },
+
+    ---- Window picker
+    -- {
+    --     's1n7ax/nvim-window-picker',
+    --     name = 'window-picker',
+    --     event = 'VeryLazy',
+    --     cmd = "Neotree",
+    --     version = '2.*',
+    --     config = function()
+    --         require("user.plugins.window-picker")
+    --     end,
+    -- },
 
     -- Status line
     {
@@ -516,6 +527,14 @@ return {
         end
     },
 
+    {
+        'vidocqh/auto-indent.nvim',
+        event = { "VeryLazy" },
+        config = function()
+            require("user.plugins.autoindent")
+        end
+    },
+
     -- Todo comment
     {
         'folke/todo-comments.nvim',
@@ -773,9 +792,9 @@ return {
         },
         opts = {
             load = {
-                ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.defaults"] = {},  -- Loads default behaviour
                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = { -- Manages Neorg workspaces
+                ["core.dirman"] = {      -- Manages Neorg workspaces
                     config = {
                         workspaces = {
                             notes = "~/notes",
