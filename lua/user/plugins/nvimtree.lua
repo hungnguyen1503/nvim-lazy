@@ -136,7 +136,7 @@ nvim_tree.setup {
                     renamed = "➜",
                     untracked = "★",
                     deleted = "",
-                    ignored = "◌",
+                    ignored = "",
                 },
             },
         },

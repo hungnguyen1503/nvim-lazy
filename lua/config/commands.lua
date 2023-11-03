@@ -115,7 +115,7 @@ autocmd("User", {
         local fallback_on_empty = fallback_name == "" and fallback_ft == ""
 
         if fallback_on_empty then
-            -- require("neo-tree").close_all()
+            require("neo-tree").close_all()
             vim.cmd("Alpha")
             vim.cmd(event.buf .. "bwipeout")
             vim.opt.spell = false

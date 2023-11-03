@@ -12,9 +12,9 @@ local options = {
         javascript = { "string", "template_string" },
         java = false,
     },
-    disable_filetype = { "TelescopePrompt", "spectre_panel", "vim", "c" },
+    disable_filetype = { "TelescopePrompt", "spectre_panel", "vim"},
     fast_wrap = {
-        map = "<M-e>",
+        map = "<M-w>",
         chars = { "{", "[", "(", '"', "'" },
         pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
         offset = 0, -- Offset from pattern match{}

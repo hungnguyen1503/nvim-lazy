@@ -202,10 +202,10 @@ M.trouble = {
     }
 }
 
-M.nvimtree = {
+M.neotree = {
     n = {
         -- toggle nvimtree
-        ["<F4>"] = { "<cmd>NvimTreeToggle<CR>", "toggle nvimtree" },
+        ["<F4>"] = { "<cmd>Neotree toggle<CR>", "Toggle Neotree" },
     },
 }
 
@@ -865,6 +865,17 @@ M.flash = {
             end,
             "Flash treesitter"
         },
+    }
+}
+
+M.duplicate = {
+    n = {
+        ["<C-A-k>"] = { "<cmd>LineDuplicate -1<CR>", "Line: duplicate up" },
+        ["<C-A-j>"] = { "<cmd>LineDuplicate +1<CR>", "Line: duplicate down" },
+    },
+    v = {
+        ["<C-A-k>"] = { "<cmd>VisualDuplicate  -1<CR>", "Line: duplicate up" },
+        ["<C-A-j>"] = { "<cmd>VisualDuplicate +1<CR>", "Line: duplicate down" },
     }
 }
 

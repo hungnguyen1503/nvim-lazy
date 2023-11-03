@@ -42,15 +42,23 @@ return {
 
     -- File explorer
     {
-        'nvim-tree/nvim-tree.lua',
-        tag = 'nightly',
-        dependencies = {
-            "stevearc/dressing.nvim"
-        },
+        'nvim-neo-tree/neo-tree.nvim',
+        cmd = "Neotree",
         config = function()
-            require("user.plugins.nvimtree")
+            require("user.plugins.neotree")
+        end
+    },
+
+    -- Window picker
+    {
+        's1n7ax/nvim-window-picker',
+        name = 'window-picker',
+        event = 'VeryLazy',
+        cmd = "Neotree",
+        version = '2.*',
+        config = function()
+            require("user.plugins.window-picker")
         end,
-        cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     },
 
     -- Status line
@@ -197,9 +205,7 @@ return {
         end
     },
 
-    -- NOTE: Check the new plugin to automate pair
-    -- Auto pair just for python
-    -- https://github.com/altermo/ultimate-autopair.nvim
+    -- Auto pair
     {
         'windwp/nvim-autopairs',
         config = function()
@@ -208,6 +214,7 @@ return {
         event = { "InsertEnter" },
     },
 
+    -- Improve auto pair
     {
         'altermo/ultimate-autopair.nvim',
         event = { 'InsertEnter', 'CmdlineEnter' },
@@ -281,6 +288,18 @@ return {
         end
     },
 
+    -- Duplicate
+    {
+        "hinell/duplicate.nvim",
+        setup = function()
+            vim.g["duplicate-nvim-config"] = {
+                visual = {
+                    selectAfter = true, -- true to select duplicated text
+                    block = true        -- true to enable block-wise duplication
+                }
+            }
+        end
+    },
     -- Telescope
     {
         'nvim-telescope/telescope.nvim',
@@ -677,7 +696,7 @@ return {
     {
         "ray-x/lsp_signature.nvim",
         event = "VeryLazy",
-        config = function ()
+        config = function()
             require("user.plugins.lspsignature")
         end
     },
