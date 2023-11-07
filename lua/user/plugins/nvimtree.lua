@@ -25,11 +25,12 @@ nvim_tree.setup {
     sync_root_with_cwd = true,
     reload_on_bufenter = true,
     respect_buf_cwd = true,
-    on_attach = "disable",  -- function(bufnr). If nil, will use the deprecated mapping strategy
+    on_attach = "disable", -- function(bufnr). If nil, will use the deprecated mapping strategy
     remove_keymaps = false, -- boolean (disable totally or not) or list of key (lhs)
     view = {
         adaptive_size = true,
         centralize_selection = false,
+        debounce_delay = 1,
         -- width = 50,
         -- height = 30,
         hide_root_folder = false,
@@ -44,37 +45,38 @@ nvim_tree.setup {
             list = {
                 -- user mappings go here
                 { key = { "<CR>", "o", "<2-LeftMouse>" }, action = "edit" },
-                { key = { "<C-]>", "<2-RightMouse>" },    action = "cd" },
-                { key = "<S-k>",                          action = "toggle_file_info" },
-                { key = "<C-v>",                          action = "vsplit" },
-                { key = "<C-x>",                          action = "split" },
-                { key = "<C-t>",                          action = "tabnew" },
-                { key = "<",                              action = "prev_sibling" },
-                { key = ">",                              action = "next_sibling" },
-                { key = "P",                              action = "parent_node" },
-                { key = "<BS>",                           action = "close_node" },
-                { key = "<Tab>",                          action = "preview" },
-                { key = "R",                              action = "refresh" },
-                { key = "a",                              action = "create" },
-                { key = "d",                              action = "remove" },
-                { key = "D",                              action = "trash" },
-                { key = "r",                              action = "rename" },
-                { key = "<C-r>",                          action = "full_rename" },
-                { key = "x",                              action = "cut" },
-                { key = "c",                              action = "copy" },
-                { key = "p",                              action = "paste" },
-                { key = "y",                              action = "copy_name" },
-                { key = "Y",                              action = "copy_path" },
-                { key = "gy",                             action = "copy_absolute_path" },
-                { key = "f",                              action = "live_filter" },
-                { key = "F",                              action = "clear_live_filter" },
-                { key = "q",                              action = "close" },
-                { key = "U",                              action = "first_sibling" },
-                { key = "D",                              action = "last_sibling" },
+                { key = { "<C-]>", "<2-RightMouse>" }, action = "cd" },
+                { key = "<S-k>", action = "toggle_file_info" },
+                { key = "<C-v>", action = "vsplit" },
+                { key = "<C-x>", action = "split" },
+                { key = "<C-t>", action = "tabnew" },
+                { key = "<", action = "prev_sibling" },
+                { key = ">", action = "next_sibling" },
+                { key = "P", action = "parent_node" },
+                { key = "<BS>", action = "close_node" },
+                { key = "<Tab>", action = "preview" },
+                { key = "R", action = "refresh" },
+                { key = "a", action = "create" },
+                { key = "d", action = "remove" },
+                { key = "D", action = "trash" },
+                { key = "r", action = "rename" },
+                { key = "<C-r>", action = "full_rename" },
+                { key = "x", action = "cut" },
+                { key = "c", action = "copy" },
+                { key = "p", action = "paste" },
+                { key = "y", action = "copy_name" },
+                { key = "Y", action = "copy_path" },
+                { key = "gy", action = "copy_absolute_path" },
+                { key = "f", action = "live_filter" },
+                { key = "F", action = "clear_live_filter" },
+                { key = "q", action = "close" },
+                { key = "U", action = "first_sibling" },
+                { key = "D", action = "last_sibling" },
             },
         },
         float = {
-            enable = false,
+            enable = true,
+            quit_on_focus_loss = true,
             open_win_config = {
                 relative = "editor",
                 border = "rounded",
@@ -90,8 +92,10 @@ nvim_tree.setup {
         group_empty = true,
         highlight_git = true,
         full_name = false,
+        root_folder_label = ":~:s?$?/..?",
         highlight_opened_files = "none",
-        root_folder_modifier = ":~",
+        highlight_modified = "none",
+        -- root_folder_modifier = ":~",
         indent_width = 2,
         indent_markers = {
             enable = true,
@@ -107,6 +111,7 @@ nvim_tree.setup {
         icons = {
             webdev_colors = true,
             git_placement = "signcolumn",
+            modified_placement = "after",
             padding = " ",
             symlink_arrow = " ➛ ",
             show = {
@@ -114,11 +119,13 @@ nvim_tree.setup {
                 folder = true,
                 folder_arrow = true,
                 git = true,
+                modified = true,
             },
             glyphs = {
                 default = "",
                 symlink = "",
                 bookmark = "",
+                modified = "●",
                 folder = {
                     arrow_closed = "",
                     arrow_open = "",
@@ -160,7 +167,12 @@ nvim_tree.setup {
     diagnostics = {
         enable = true,
         show_on_dirs = true,
+        show_on_open_dirs = true,
         debounce_delay = 50,
+        severity = {
+            min = vim.diagnostic.severity.HINT,
+            max = vim.diagnostic.severity.ERROR,
+        },
         icons = {
             hint = "",
             info = "",
@@ -168,14 +180,22 @@ nvim_tree.setup {
             error = "",
         },
     },
+    modified = {
+        enable = true,
+        show_on_dirs = true,
+        show_on_open_dirs = true,
+    },
     filters = {
         dotfiles = false,
+        git_clean = false,
+        no_buffer = false,
         custom = {},
         exclude = { ".gitignore", ".ci" },
     },
     filesystem_watchers = {
         enable = true,
         debounce_delay = 50,
+        ignore_dirs = {},
     },
     git = {
         enable = true,
@@ -217,6 +237,22 @@ nvim_tree.setup {
         },
         remove_file = {
             close_window = true,
+        },
+    },
+    tab = {
+        sync = {
+            open = false,
+            close = false,
+            ignore = {},
+        },
+    },
+    notify = {
+        threshold = vim.log.levels.INFO,
+    },
+    ui = {
+        confirm = {
+            remove = true,
+            trash = true,
         },
     },
     trash = {

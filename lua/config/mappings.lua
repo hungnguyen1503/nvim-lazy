@@ -63,7 +63,7 @@ M.general = {
         -- Manage to split window
         ["<leader>co"] = { "<C-W>o<CR>", "Close all split window" },
         ["<leader>vs"] = { "<cmd>vs<CR>", "Veritical split window" },
-        ["<leader>hs"] = { "<cmd>hs<CR>", "Horizontal split window" },
+        ["<leader>hs"] = { "<cmd>split<CR>", "Horizontal split window" },
         ["<leader>cs"] = { "<cmd>close<CR>", "Horizontal split window" },
         -- Unhightlight after search
         ["n"]          = { "<cmd>set hlsearch<CR>n", "Next search" },
@@ -213,24 +213,6 @@ M.nvimtree = {
     },
 }
 
-M.blankline = {
-    n = {
-        ["<leader>cc"] = {
-            function()
-                local ok, start = require("indent_blankline.utils").get_current_context(
-                    vim.g.indent_blankline_context_patterns,
-                    vim.g.indent_blankline_use_treesitter_scope
-                )
-                if ok then
-                    vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
-                    vim.cmd [[normal! _]]
-                end
-            end,
-            "Jump to current_context",
-        },
-    },
-}
-
 M.lspconfig = {
     -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
     n = {
@@ -363,12 +345,13 @@ M.lspsaga = {
         ["<leader>gb"] = { "<cmd>Lspsaga show_buf_diagnostics<CR>", "Show buffer diagnostic" },
         ["<leader>gj"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Diagnostic jump next" },
         ["<leader>gk"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Diagnostic jump previous" },
-        ["<leader>ra"] = { "<cmd>Lspsaga rename<CR>", "lsp rename" },
+        ["<leader>ra"] = { "<cmd>Lspsaga rename<CR>", "Lsp rename" },
         ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Lsp code action" },
         ["<leader>o"]  = { "<cmd>Lspsaga outline<CR>", "Lspsaga outline" },
     },
     v = {
         ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Lsp code action" },
+        ["<leader>ra"] = { "<cmd>Lspsaga rename<CR>", "Lsp rename" },
     }
 }
 

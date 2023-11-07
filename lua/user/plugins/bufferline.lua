@@ -37,10 +37,10 @@ local options = {
         --     -- buffers (tabs only) | table(int) | the numbers of the buffers in the tab
         --     -- tabnr (tabs only)   | int        | the "handle" of the tab, can be converted to its ordinal number using: `vim.api.nvim_tabpage_get_number(buf.tabnr)`
         -- end,
-        max_name_length = 30,
+        max_name_length = 50,
         max_prefix_length = 20, -- prefix used when a buffer is de-duplicated
         truncate_names = true,  -- whether or not tab names should be truncated
-        tab_size = 22,
+        tab_size = 30,
         diagnostics = false,    -- | "nvim_lsp" | "coc"
         diagnostics_update_in_insert = false,
         -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
@@ -104,7 +104,7 @@ local options = {
             delay = 200,
             reveal = { 'close' }
         },
-        sort_by = 'insert_after_current', -- | 'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' |
+        sort_by = 'insert_at_end', -- | 'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' |
         -- 'tabs' | function(buffer_a, buffer_b)
         --     -- add custom logic
         --     return buffer_a.modified > buffer_b.modified

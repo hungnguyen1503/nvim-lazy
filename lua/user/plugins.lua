@@ -44,9 +44,9 @@ return {
     {
         'nvim-tree/nvim-tree.lua',
         tag = 'nightly',
-        dependencies = {
-            "stevearc/dressing.nvim"
-        },
+        -- dependencies = {
+        --     "stevearc/dressing.nvim"
+        -- },
         config = function()
             require("user.plugins.nvimtree")
         end,
@@ -786,6 +786,7 @@ return {
 
     {
         "nvim-neorg/neorg",
+								
         -- build = ":Neorg sync-parsers", -- It should be enable after frist installation.
         dependencies = {
             "nvim-lua/plenary.nvim"
