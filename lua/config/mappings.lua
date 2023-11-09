@@ -857,12 +857,12 @@ M.flash = {
 
 M.duplicate = {
     n = {
-        ["<C-A-k>"] = { "<cmd>LineDuplicate -1<CR>", "Line: duplicate up" },
-        ["<C-A-j>"] = { "<cmd>LineDuplicate +1<CR>", "Line: duplicate down" },
+        ["<leader>dk"]   = { "<cmd>LineDuplicate -1<CR>", "Line: duplicate up" },
+        ["<leader>dj"] = { "<cmd>LineDuplicate +1<CR>", "Line: duplicate down" },
     },
     v = {
-        ["<C-A-k>"] = { "<cmd>VisualDuplicate  -1<CR>", "Line: duplicate up" },
-        ["<C-A-j>"] = { "<cmd>VisualDuplicate +1<CR>", "Line: duplicate down" },
+        ["<leader>dk"] = { "<cmd>VisualDuplicate  -1<CR>", "Line: duplicate up" },
+        ["<leader>dj"] = { "<cmd>VisualDuplicate +1<CR>", "Line: duplicate down" },
     }
 }
 

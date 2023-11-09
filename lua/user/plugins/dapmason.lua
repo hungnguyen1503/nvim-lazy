@@ -6,6 +6,10 @@ end
 local options = {
     ensure_installed = {
         "cppdbg",
+        "bash-debug-adapter",
+        "codelldb",
+        "cpptools",
+        "debugpy",
     },
     automatic_installation = false,
     handlers = {
@@ -14,6 +18,7 @@ local options = {
             -- Keep original functionality
             require('mason-nvim-dap').default_setup(config)
         end,
+
         cppdbg = function(config)
             config.adapters = {
                 id = 'cppdbg',

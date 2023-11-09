@@ -6,7 +6,7 @@ end
 size_matters.setup({
     default_mappings = true,
     -- font resize step size
-    step_size = 0.5,
+    step_size = 1,
     notifications = {
         enable = true,
         -- ms how long a notification should be displayed (only applies if notify is used)

@@ -90,7 +90,7 @@ if vim.g.neovide then
     vim.g.neovide_confirm_quit = true
     vim.g.neovide_touch_drag_timeout = 0
     vim.g.neovide_cursor_antialiasing = true
-    vim.g.neovide_scroll_animation_length = 0.3
+    vim.g.neovide_scroll_animation_length = 0.4
     vim.g.neovide_cursor_vfx_particle_density = 0.2
     vim.g.neovide_hide_mouse_when_typing = true
     vim.g.neovide_cursor_animate_in_insert_mode = false

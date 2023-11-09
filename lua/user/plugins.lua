@@ -302,6 +302,7 @@ return {
     -- Duplicate
     {
         "hinell/duplicate.nvim",
+        event = "VeryLazy",
         setup = function()
             vim.g["duplicate-nvim-config"] = {
                 visual = {

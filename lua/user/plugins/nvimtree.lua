@@ -72,6 +72,13 @@ nvim_tree.setup {
                 { key = "q", action = "close" },
                 { key = "U", action = "first_sibling" },
                 { key = "D", action = "last_sibling" },
+                { key = "-", action = "dir_up" },
+                { key = "s", action = "system_open" },
+                { key = "?", action = "toggle_help" },
+                { key = 'e', action = "collapse_all" },
+                { key = "E", action = "expand_all" },
+                -- { key = "gi", action = "toggle_gitignore_filter" },
+                { key = "S", action = "search_node" },
             },
         },
         float = {
@@ -165,7 +172,7 @@ nvim_tree.setup {
         args = {},
     },
     diagnostics = {
-        enable = true,
+        enable = false,
         show_on_dirs = true,
         show_on_open_dirs = true,
         debounce_delay = 50,
