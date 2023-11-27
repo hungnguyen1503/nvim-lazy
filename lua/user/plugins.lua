@@ -307,7 +307,7 @@ return {
             vim.g["duplicate-nvim-config"] = {
                 visual = {
                     selectAfter = true, -- true to select duplicated text
-                    block = true        -- true to enable block-wise duplication
+                    block = true -- true to enable block-wise duplication
                 }
             }
         end
@@ -467,6 +467,7 @@ return {
     -- Syntax aware text-objects, select, move, swap,
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
+        commit = "e1e670a86274d5cb681e475d4891ea1afe605ced",
         event = 'VeryLazy',
         dependencies = 'nvim-treesitter/nvim-treesitter',
     },
@@ -787,16 +788,15 @@ return {
 
     {
         "nvim-neorg/neorg",
-								
         -- build = ":Neorg sync-parsers", -- It should be enable after frist installation.
         dependencies = {
             "nvim-lua/plenary.nvim"
         },
         opts = {
             load = {
-                ["core.defaults"] = {},  -- Loads default behaviour
+                ["core.defaults"] = {}, -- Loads default behaviour
                 ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = {      -- Manages Neorg workspaces
+                ["core.dirman"] = { -- Manages Neorg workspaces
                     config = {
                         workspaces = {
                             notes = "~/notes",
@@ -806,4 +806,13 @@ return {
             },
         },
     },
+
+    {
+        "andrewferrier/debugprint.nvim",
+        event = "VeryLazy",
+        dependencies = {"nvim-treesitter/nvim-treesitter"},
+        opts = {
+            create_keymaps = true
+        },
+    }
 }

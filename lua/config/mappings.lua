@@ -857,13 +857,54 @@ M.flash = {
 
 M.duplicate = {
     n = {
-        ["<leader>dk"]   = { "<cmd>LineDuplicate -1<CR>", "Line: duplicate up" },
+        ["<leader>dk"] = { "<cmd>LineDuplicate -1<CR>", "Line: duplicate up" },
         ["<leader>dj"] = { "<cmd>LineDuplicate +1<CR>", "Line: duplicate down" },
     },
     v = {
         ["<leader>dk"] = { "<cmd>VisualDuplicate  -1<CR>", "Line: duplicate up" },
         ["<leader>dj"] = { "<cmd>VisualDuplicate +1<CR>", "Line: duplicate down" },
     }
+}
+
+M.debugprint = {
+    n = {
+        ["<leader>dp"] = {
+            function()
+                return require('debugprint').debugprint()
+            end,
+            opts = { expr = true },
+            "Printf debug below",
+        },
+        ["<leader>dP"] = {
+            function()
+                return require('debugprint').debugprint({ above = true })
+            end,
+            opts = { expr = true },
+            "Printf debug above",
+        },
+        ["<leader>dv"] = {
+            function()
+                return require('debugprint').debugprint({ variable = true })
+            end,
+            opts = { expr = true },
+            "Printf varialbe below",
+        },
+        ["<leader>dV"] = {
+            function()
+                return require('debugprint').debugprint({ variable = true, above = true })
+            end,
+            opts = { expr = true },
+            "Printf varialbe above",
+        },
+        ["<leader>do"] = {
+            function()
+                return require('debugprint').debugprint({ motion = true })
+            end,
+            opts = { expr = true },
+            "Optional pending",
+        },
+        ["<leader>da"] = {"<cmd>DeleteDebugPrints<CR>", opts = { expr = true }, "Delete all printf debug"},
+    },
 }
 
 return M

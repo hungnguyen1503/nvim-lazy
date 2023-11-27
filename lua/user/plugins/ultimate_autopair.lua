@@ -184,14 +184,6 @@ local options = {
                 'tex', 'latex' },
             multiline = false
         },
-        {
-            '<',
-            '>',
-            fly = true,
-            dosuround = true,
-            newline = true,
-            space = true
-        },
         { '`',    '`',   nft = { 'tex', 'latex' },   multiline = false },
         { '``',   "''",  ft = { 'tex', 'latex' } },
         { '```',  '```', newline = true,             ft = { 'markdown' } },
