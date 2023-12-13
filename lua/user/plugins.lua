@@ -519,7 +519,6 @@ return {
     -- Indent blank line
     {
         'lukas-reineke/indent-blankline.nvim',
-        -- tag    = "v2.20.8",
         event  = {
             "BufRead",
             "VeryLazy"
@@ -588,7 +587,6 @@ return {
     },
 
     -- NULL-ls
-
     {
         'Djancyp/lsp-range-format',
         event = "VeryLazy",
@@ -607,7 +605,6 @@ return {
     {
         'nvimdev/lspsaga.nvim',
         event = 'BufRead',
-        -- commit = "71c1793c86a3fbf405c3100577b72c148ca91d9e",
         config = function()
             require("user.plugins.lspsaga")
         end,
@@ -785,21 +782,55 @@ return {
     --         require("user.plugins.ide")
     --     end
     -- },
+    {
+        "harrisoncramer/gitlab.nvim",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "sindrets/diffview.nvim",
+            "stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
+            "nvim-tree/nvim-web-devicons", -- Recommended but not required. Icons in discussion tree.
+            enabled = true,
+        },
+        build = function()
+            require("gitlab.server").build(true)
+        end, -- Builds the Go binary
+        -- dir = vim.fn.stdpath("data") .. "/lazy/gitlab",
+        config = function()
+            require("user.plugins.gitlab")
+        end,
+    },
 
     {
         "nvim-neorg/neorg",
-        -- build = ":Neorg sync-parsers", -- It should be enable after frist installation.
+        build = ":Neorg sync-parsers", -- It should be enable after frist installation.
         dependencies = {
             "nvim-lua/plenary.nvim"
         },
         opts = {
             load = {
-                ["core.defaults"] = {}, -- Loads default behaviour
-                ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = { -- Manages Neorg workspaces
+                ["core.defaults"]              = {}, -- Loads default behaviour.
+                ["core.mode"]                  = {}, -- Loads default behaviour.
+                ["core.concealer"]             = {
+                    config = {
+                        folds = false
+                    }
+                }, -- Adds pretty icons to your documents.
+                ["core.integrations.nvim-cmp"] = {},
+                ["core.completion"]            = {
+                    config = {
+                        engine = "nvim-cmp",
+                    },
+                },
+                -- INFO: This configuration will be added in nvim > 0.1.x
+                -- ["core.ui.calendar"]           = {},
+                ['core.summary']               = {},
+                ["core.syntax"]                = {}, -- Handles interaction for syntax files for code blocks.
+                ["core.dirman"]                = { -- Manages Neorg workspaces.
                     config = {
                         workspaces = {
                             notes = "~/notes",
+                            REDACTED = "D://REDACTED"
                         },
                     },
                 },
@@ -810,7 +841,7 @@ return {
     {
         "andrewferrier/debugprint.nvim",
         event = "VeryLazy",
-        dependencies = {"nvim-treesitter/nvim-treesitter"},
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
         opts = {
             create_keymaps = true
         },

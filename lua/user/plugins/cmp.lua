@@ -155,6 +155,7 @@ local options = {
         { name = "treesitter", priority = 6 },
         { name = "path", priority = 6 },
         { name = "nvim_lua" },
+        { name = "neorg" },
     },
 }
 

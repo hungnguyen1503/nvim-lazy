@@ -1,4 +1,5 @@
 -- default value
 require("spider").setup({
-	skipInsignificantPunctuation = true
+    skipInsignificantPunctuation = true,
+    subwordMovement = true,
 })

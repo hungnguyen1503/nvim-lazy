@@ -30,11 +30,11 @@ mappings['<C-f>'] = {'scroll', { '0.9', 'true', '400', [['cubic']]}}
 mappings['<C-y>'] = {'scroll', {'-0.01', 'true', '200', [['cubic']]}}
 mappings['<C-e>'] = {'scroll', { '0.01', 'true', '200', [['cubic']]}}
 
-mappings['<C-k>'] = {'scroll', {'-0.25', 'true', '200', [['cubic']]}}
-mappings['<C-j>'] = {'scroll', { '0.25', 'true', '200', [['cubic']]}}
+mappings['<C-k>'] = {'scroll', {'-0.25', 'true', '200', [['sine']]}}
+mappings['<C-j>'] = {'scroll', { '0.25', 'true', '200', [['sine']]}}
 
-mappings['<ScrollWheelUp>'] = {'scroll', {'-0.25', 'true', '200', [['cubic']]}}
-mappings['<ScrollWheelDown>'] = {'scroll', { '0.25', 'true', '200', [['cubic']]}}
+mappings['<ScrollWheelUp>'] = {'scroll', {'-0.25', 'true', '200', [['sine']]}}
+mappings['<ScrollWheelDown>'] = {'scroll', { '0.25', 'true', '200', [['sine']]}}
 
 -- When no easing function is provided the default easing function (in this case "quadratic") will be used
 mappings['zt']    = {'zt', {'250'}}

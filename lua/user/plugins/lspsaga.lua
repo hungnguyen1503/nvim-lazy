@@ -13,14 +13,14 @@ saga.setup({
     finder = {
         max_height = 0.6,
         left_width = 0.3,
-        right_width = 0.6,
+        right_width = 0.9,
         method = {},
-        default = 'ref+imp',
+        default = 'tyd+ref+imp+def',
         layout = 'float',
         filter = {},
         silent = false,
         keys = {
-            shuttle = 'w',
+            shuttle = '[w',
             toggle_or_oppen = 'o',
             vsplit = 'v',
             split = 'h',
@@ -137,7 +137,6 @@ saga.setup({
         actionfix = ' ',
         lines = { '└', '├', '│', ' ', '┌' },
         imp_sign = '󰳛 ',
-        kind = {
-        },
+        kind = {},
     },
 })
