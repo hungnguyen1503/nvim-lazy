@@ -91,6 +91,7 @@ saga.setup({
         }
     },
     outline = {
+        enable = false,
         layout = 'float',
         win_position = 'right',
         win_width = 60,
@@ -120,7 +121,7 @@ saga.setup({
         },
     },
     symbol_in_winbar = {
-        enable = true,
+        enable = false,
         separator = '  ',
     },
     beacon = {

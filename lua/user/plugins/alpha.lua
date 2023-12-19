@@ -32,7 +32,7 @@ local function button(sc, txt, keybind)
 end
 
 local fn = vim.fn
-local marginTopPercent = 0.3
+local marginTopPercent = 0.30
 local headerPadding = fn.max { 2, fn.floor(fn.winheight(0) * marginTopPercent) }
 
 -- Footer

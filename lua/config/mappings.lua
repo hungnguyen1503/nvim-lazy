@@ -202,16 +202,21 @@ M.trouble = {
     }
 }
 
--- M.neotree = {
---     n = {
---         ["<F4>"] = { "<cmd>Neotree toggle<CR>", "Toggle Neotree" },
---     },
--- }
-M.nvimtree = {
+M.neotree = {
     n = {
-        ["<F4>"] = { "<cmd>NvimTreeToggle<CR>", "Toggle NvimTree" },
+        ["<F4>"] = {
+            function()
+                require("neo-tree.command").execute({ toggle = true, dir = vim.fn.getcwd() })
+            end,
+            "Toggle Neotree"
+        },
     },
 }
+-- M.nvimtree = {
+--     n = {
+--         ["<F4>"] = { "<cmd>NvimTreeToggle<CR>", "Toggle NvimTree" },
+--     },
+-- }
 
 M.lspconfig = {
     -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
@@ -347,7 +352,7 @@ M.lspsaga = {
         ["<leader>gk"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Diagnostic jump previous" },
         ["<leader>ra"] = { "<cmd>Lspsaga rename<CR>", "Lsp rename" },
         ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Lsp code action" },
-        ["<leader>o"]  = { "<cmd>Lspsaga outline<CR>", "Lspsaga outline" },
+        -- ["<leader>o"]  = { "<cmd>Lspsaga outline<CR>", "Lspsaga outline" },
     },
     v = {
         ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Lsp code action" },
@@ -903,7 +908,7 @@ M.debugprint = {
             opts = { expr = true },
             "Optional pending",
         },
-        ["<leader>da"] = {"<cmd>DeleteDebugPrints<CR>", opts = { expr = true }, "Delete all printf debug"},
+        ["<leader>da"] = { "<cmd>DeleteDebugPrints<CR>", opts = { expr = true }, "Delete all printf debug" },
     },
 }
 

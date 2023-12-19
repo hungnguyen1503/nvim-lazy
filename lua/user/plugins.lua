@@ -41,36 +41,37 @@ return {
     },
 
     -- File explorer-- File explorer
-    {
-        'nvim-tree/nvim-tree.lua',
-        tag = 'nightly',
-        -- dependencies = {
-        --     "stevearc/dressing.nvim"
-        -- },
-        config = function()
-            require("user.plugins.nvimtree")
-        end,
-        cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    },
     -- {
-    --     'nvim-neo-tree/neo-tree.nvim',
-    --     cmd = "Neotree",
+    --     'nvim-tree/nvim-tree.lua',
+    --     tag = 'nightly',
+    --     -- dependencies = {
+    --     --     "stevearc/dressing.nvim"
+    --     -- },
     --     config = function()
-    --         require("user.plugins.neotree")
-    --     end
+    --         require("user.plugins.nvimtree")
+    --     end,
+    --     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     -- },
 
-    ---- Window picker
-    -- {
-    --     's1n7ax/nvim-window-picker',
-    --     name = 'window-picker',
-    --     event = 'VeryLazy',
-    --     cmd = "Neotree",
-    --     version = '2.*',
-    --     config = function()
-    --         require("user.plugins.window-picker")
-    --     end,
-    -- },
+    {
+        'nvim-neo-tree/neo-tree.nvim',
+        cmd = "Neotree",
+        config = function()
+            require("user.plugins.neotree")
+        end
+    },
+
+    -- Window picker
+    {
+        's1n7ax/nvim-window-picker',
+        name = 'window-picker',
+        event = 'VeryLazy',
+        cmd = "Neotree",
+        version = '2.*',
+        config = function()
+            require("user.plugins.window-picker")
+        end,
+    },
 
     -- Status line
     {
