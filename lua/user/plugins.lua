@@ -117,20 +117,6 @@ return {
         end,
     },
 
-    -- {
-    --     'niuiic/git-log.nvim',
-    --     event = "VeryLazy",
-    --     dependencies = {
-    --         'niuiic/core.nvim'
-    --     },
-    --     config = function()
-    --         require("user.plugins.gitlog")
-    --     end,
-    --     keys = {
-    --         { "<F10>", function() require("git-log").check_log() end, mode = "n", silent = true },
-    --     },
-    -- },
-
     -- Git quick command
     {
         'kdheepak/lazygit.nvim',
@@ -614,6 +600,16 @@ return {
             'nvim-treesitter/nvim-treesitter',
             'nvim-tree/nvim-web-devicons'
         },
+    },
+
+    -- Lsp outline
+    {
+        "hedyhli/outline.nvim",
+        event = "VeryLazy",
+        cmd = { "Outline", "OutlineOpen" },
+        config = function ()
+            require("user.plugins.outline")
+        end
     },
 
     -- Display lsp progress loading

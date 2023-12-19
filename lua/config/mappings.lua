@@ -360,6 +360,12 @@ M.lspsaga = {
     }
 }
 
+M.outline = {
+    n = {
+        ["<leader>o"] = {"<cmd>Outline<CR>", "Outline"}
+    }
+}
+
 M.telescope = {
     n = {
         -- find
