@@ -776,24 +776,6 @@ return {
     --         require("user.plugins.ide")
     --     end
     -- },
-    {
-        "harrisoncramer/gitlab.nvim",
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "sindrets/diffview.nvim",
-            "stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
-            "nvim-tree/nvim-web-devicons", -- Recommended but not required. Icons in discussion tree.
-            enabled = true,
-        },
-        build = function()
-            require("gitlab.server").build(true)
-        end, -- Builds the Go binary
-        -- dir = vim.fn.stdpath("data") .. "/lazy/gitlab",
-        config = function()
-            require("user.plugins.gitlab")
-        end,
-    },
 
     {
         "nvim-neorg/neorg",
