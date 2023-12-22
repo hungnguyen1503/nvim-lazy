@@ -13,31 +13,6 @@ autocmd({ "FileType" },
     }
 )
 
--- Auto reload content changed outside
-autocmd({ "CursorHold,CursorHoldI,FocusGained,BufEnter " },
-    {
-        pattern = "*",
-        command = "checktime",
-        group = _general
-    }
-)
-
-autocmd({ "FocusGained,BufEnter,CursorHold,CursorHoldI" },
-    {
-        pattern = "*",
-        command = "if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == ''| checktime |endif",
-        group = _general
-    }
-)
-
-autocmd({ "FileChangedShellPost" },
-    {
-        pattern = "*",
-        command = "echohl WarningMsg | echohl None",
-        group = _general
-    }
-)
-
 autocmd({ "CursorHold" },
     {
         pattern = "*",

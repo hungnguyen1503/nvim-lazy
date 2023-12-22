@@ -416,9 +416,6 @@ return {
     -- Code highlight
     {
         'nvim-treesitter/nvim-treesitter',
-        pin = true,
-        event = "VeryLazy",
-        build = ":TSUpdate",
         config = function()
             require("user.plugins.treesitter")
         end,
@@ -427,14 +424,14 @@ return {
     -- End certain structures automatically
     {
         "RRethy/nvim-treesitter-endwise",
-        event = "VeryLazy",
+        -- event = "VeryLazy",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
 
     -- Auto tag for html, xml, ....
     {
         "windwp/nvim-ts-autotag",
-        event = "VeryLazy",
+        -- event = "VeryLazy",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         config = function()
             require('nvim-ts-autotag').setup()
@@ -454,7 +451,7 @@ return {
     -- Syntax aware text-objects, select, move, swap,
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
-        commit = "e1e670a86274d5cb681e475d4891ea1afe605ced",
+        -- commit = "e1e670a86274d5cb681e475d4891ea1afe605ced",
         event = 'VeryLazy',
         dependencies = 'nvim-treesitter/nvim-treesitter',
     },
