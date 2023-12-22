@@ -121,7 +121,7 @@ saga.setup({
         },
     },
     symbol_in_winbar = {
-        enable = true,
+        enable = false,
         separator = '  ',
     },
     beacon = {

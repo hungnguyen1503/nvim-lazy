@@ -4,7 +4,6 @@ if not status_ok then
     return
 end
 
-local current_path = vim.fs.normalize(vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':p'))
 local preview = true
 
 local kinds = {
@@ -274,11 +273,14 @@ dropbar.setup({
             end,
         },
     },
+
     sources = {
         path = {
-            relative_to = function(_)
-                return vim.fn.finddir(vim.fn.fnamemodify(current_path, ":h"), vim.fn.getcwd())
-            end,
+            relative_to = function(_, win)
+                -- Workaround for Vim:E5002: Cannot find window number
+                local ok, cwd = pcall(vim.fn.getcwd, win)
+                return ok and cwd or vim.fn.getcwd()
+            end
         },
     }
 })

@@ -129,6 +129,7 @@ neotree.setup({
             ["q"] = "close_window",
             ["R"] = "refresh",
             ["?"] = "show_help",
+            ["F"] = "clear_filter",
         }
     },
     nesting_rules = {},
@@ -181,7 +182,7 @@ neotree.setup({
                 ["#"]      = "fuzzy_sorter", -- fuzzy sorting using the fzy algorithm
                 -- ["D"]   = "fuzzy_sorter_directory",
                 ["f"]      = "filter_on_submit",
-                ["<c-x>"]  = "clear_filter",
+                ["F"]      = "clear_filter",
                 ["[g"]     = "prev_git_modified",
                 ["]g"]     = "next_git_modified",
             },

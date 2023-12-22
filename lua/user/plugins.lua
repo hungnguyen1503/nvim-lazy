@@ -40,19 +40,6 @@ return {
         end,
     },
 
-    -- File explorer-- File explorer
-    -- {
-    --     'nvim-tree/nvim-tree.lua',
-    --     tag = 'nightly',
-    --     -- dependencies = {
-    --     --     "stevearc/dressing.nvim"
-    --     -- },
-    --     config = function()
-    --         require("user.plugins.nvimtree")
-    --     end,
-    --     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    -- },
-
     {
         'nvim-neo-tree/neo-tree.nvim',
         cmd = "Neotree",
@@ -79,6 +66,14 @@ return {
         event = "BufRead",
         config = function()
             require("user.plugins.lualine")
+        end,
+    },
+
+    {
+        'Bekaboo/dropbar.nvim',
+        -- Desc: Winbar
+        config = function()
+            require("user.plugins.dropbar")
         end,
     },
 
@@ -253,6 +248,7 @@ return {
             require('user.plugins.flash')
         end,
     },
+
     -- Extract argument in bracket
     {
         'foosoft/vim-argwrap',
@@ -299,6 +295,7 @@ return {
             }
         end
     },
+
     -- Telescope
     {
         'nvim-telescope/telescope.nvim',
@@ -351,7 +348,7 @@ return {
     -- Session manager
     {
         'Shatur/neovim-session-manager',
-        -- event = "VeryLazy",
+        event = "VeryLazy",
         dependencies = {
             'nvim-telescope/telescope.nvim'
         },
@@ -416,6 +413,7 @@ return {
     -- Code highlight
     {
         'nvim-treesitter/nvim-treesitter',
+        event = "VeryLazy",
         config = function()
             require("user.plugins.treesitter")
         end,
@@ -424,14 +422,14 @@ return {
     -- End certain structures automatically
     {
         "RRethy/nvim-treesitter-endwise",
-        -- event = "VeryLazy",
+        event = "VeryLazy",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
 
     -- Auto tag for html, xml, ....
     {
         "windwp/nvim-ts-autotag",
-        -- event = "VeryLazy",
+        event = "VeryLazy",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         config = function()
             require('nvim-ts-autotag').setup()
@@ -604,7 +602,7 @@ return {
         "hedyhli/outline.nvim",
         event = "VeryLazy",
         cmd = { "Outline", "OutlineOpen" },
-        config = function ()
+        config = function()
             require("user.plugins.outline")
         end
     },

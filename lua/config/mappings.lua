@@ -921,4 +921,15 @@ M.debugprint = {
     },
 }
 
+M.dropbar = {
+    n = {
+        ["<leader>ww"] = {
+            function()
+                require("dropbar.api").pick()
+            end,
+            "pick winbar element"
+        },
+    }
+}
+
 return M
