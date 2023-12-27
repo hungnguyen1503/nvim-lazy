@@ -115,9 +115,9 @@ for _, lsp in ipairs(servers) do
             pylsp = {
                 plugins = {
                     black = { enabled = true },
-                    pyflakes = { enabled = true },
-                    pylint = { enabled = true},
-                    pycodestyle = { enabled = true },
+                    pyflakes = { enabled = false },
+                    pylint = { enabled = false},
+                    pycodestyle = { enabled = false },
                 },
                 analysis = {
                     autoSearchPaths = true,

@@ -90,13 +90,15 @@ autocmd("User", {
         local fallback_on_empty = fallback_name == "" and fallback_ft == ""
 
         if fallback_on_empty then
-            -- require("neo-tree").close_all()
+            require("neo-tree").close_all()
             vim.cmd("Alpha")
             vim.cmd(event.buf .. "bwipeout")
             vim.opt.spell = false
         end
     end,
 })
+
+vim.api.nvim_set_hl(0, 'WinBarNC', { fg = '#828bb8' })
 
 vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#993939' })
 vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef' })

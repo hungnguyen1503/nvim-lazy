@@ -158,7 +158,7 @@ return {
     -- Improve yank
     {
         'gbprod/yanky.nvim',
-        event = "VeryLazy",
+        lazy = false,
         config = function()
             require("user.plugins.yanky")
         end
@@ -252,7 +252,6 @@ return {
     -- Extract argument in bracket
     {
         'foosoft/vim-argwrap',
-        event = "VeryLazy",
         cmd = { "ArgWrap" },
     },
 
@@ -338,11 +337,11 @@ return {
     },
     {
         '2kabhishek/nerdy.nvim',
+        cmd = 'Nerdy',
         dependencies = {
             'stevearc/dressing.nvim',
             'nvim-telescope/telescope.nvim',
         },
-        cmd = 'Nerdy',
     },
 
     -- Session manager
@@ -501,10 +500,7 @@ return {
     -- Indent blank line
     {
         'lukas-reineke/indent-blankline.nvim',
-        event  = {
-            "BufRead",
-            "VeryLazy"
-        },
+        event  = "BufRead",
         config = function()
             require("user.plugins.blankline")
         end
@@ -531,7 +527,6 @@ return {
     {
         'folke/trouble.nvim',
         cmd = "TroubleToggle",
-        event = 'VeryLazy',
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
             require("user.plugins.trouble")
@@ -541,10 +536,10 @@ return {
     -- LSP installer
     {
         'williamboman/mason.nvim',
+        cmd = "Mason",
         config = function()
             require("user.plugins.mason")
         end,
-        cmd = "Mason",
     },
 
     -- {
@@ -562,6 +557,7 @@ return {
     -- LSP config manager
     {
         'neovim/nvim-lspconfig',
+        ft = { "lua", "python", "c", "cpp", "bash", "sh", "cmake" },
         config = function()
             require("user.plugins.lspconfig")
             require("user.plugins.lspserver")
@@ -586,7 +582,7 @@ return {
     -- LSP Saga
     {
         'nvimdev/lspsaga.nvim',
-        event = 'BufRead',
+        ft = { "lua", "python", "c", "cpp", "bash", "sh", "cmake" },
         config = function()
             require("user.plugins.lspsaga")
         end,
@@ -714,7 +710,7 @@ return {
     -- Mason DAP to quickly install and custom config for debugger
     {
         'jay-babu/mason-nvim-dap.nvim',
-        event = "VeryLazy",
+        ft = { "c", "cpp", "python" },
         dependencies = {
             'williamboman/mason.nvim',
             'mfussenegger/nvim-dap',
@@ -727,7 +723,7 @@ return {
     -- DAP UI to supply UI for debugging
     {
         'rcarriga/nvim-dap-ui',
-        event = "VeryLazy",
+        ft = { "c", "cpp", "python" },
         dependencies = {
             'mfussenegger/nvim-dap',
         },
@@ -739,13 +735,13 @@ return {
     -- DAP for debugger
     {
         'mfussenegger/nvim-dap',
-        event = "VeryLazy",
+        ft = { "c", "cpp", "python" },
     },
 
     -- Store breakpoints after terminating debug progress
     {
         'Weissle/persistent-breakpoints.nvim',
-        event = "VeryLazy",
+        ft = { "c", "cpp", "python" },
         dependencies = {
             'mfussenegger/nvim-dap',
         },

@@ -32,7 +32,12 @@ local function button(sc, txt, keybind)
 end
 
 local fn = vim.fn
-local marginTopPercent = 0.30
+local marginTopPercent
+if vim.g.neovide then
+    marginTopPercent = 0.37
+else
+    marginTopPercent = 0.28
+end
 local headerPadding = fn.max { 2, fn.floor(fn.winheight(0) * marginTopPercent) }
 
 -- Footer

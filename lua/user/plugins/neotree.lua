@@ -51,6 +51,20 @@ neotree.setup({
             use_git_status_colors = true,
             highlight = "NeoTreeFileName",
         },
+        diagnostics = {
+            symbols = {
+                error = "",
+                info = "",
+                hint = "",
+                warn = "",
+            },
+            highlights = {
+                hint = "DiagnosticSignHint",
+                info = "DiagnosticSignInfo",
+                warn = "DiagnosticSignWarn",
+                error = "DiagnosticSignError",
+            },
+        },
         git_status = {
             symbols = {
                 -- Change type

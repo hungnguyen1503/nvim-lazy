@@ -207,6 +207,7 @@ M.neotree = {
         ["<F4>"] = {
             function()
                 require("neo-tree.command").execute({ toggle = true, dir = vim.fn.getcwd() })
+                -- vim.cmd([[wincmd =]])
             end,
             "Toggle Neotree"
         },
