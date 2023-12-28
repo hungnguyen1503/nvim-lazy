@@ -98,7 +98,7 @@ autocmd("User", {
     end,
 })
 
-vim.api.nvim_set_hl(0, 'WinBarNC', { fg = '#828bb8' })
+vim.api.nvim_set_hl(0, 'WinbarNC', { link = 'WinBar' })
 
 vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#993939' })
 vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef' })
