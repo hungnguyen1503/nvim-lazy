@@ -472,7 +472,7 @@ M.gitsigns = {
 
 M.floaterm = {
     n = {
-        ["<leader>to"] = { "<cmd>FloatermNew bash.exe<CR>", "Open new terminal" },
+        ["<leader>to"] = { "<cmd>FloatermNew bash<CR>", "Open new terminal" },
         ["<leader>tk"] = { "<cmd>FloatermKill<CR>:floatermprev<cr>", "Kill current terminal" },
         ["<leader>tn"] = { "<cmd>FloatermNext<CR>", "Next terminal" },
         ["<leader>tp"] = { "<cmd>FloatermPrev<CR>", "Previous terminal" },
