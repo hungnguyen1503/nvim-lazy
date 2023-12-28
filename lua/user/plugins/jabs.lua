@@ -4,7 +4,7 @@ if not status_ok then
     return
 end
 
-jabs.setup({
+local options = {
     -- Options for the main window
     position = { 'right', 'bottom' },
     relative = 'editor', -- win, editor, cursor. Default win
@@ -63,4 +63,6 @@ jabs.setup({
 
     -- Whether to use nvim-web-devicons next to filenames
     use_devicons = true -- true or false. Default true
-})
+}
+
+jabs.setup(options)

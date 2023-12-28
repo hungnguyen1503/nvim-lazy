@@ -750,7 +750,7 @@ return {
         end
     },
 
-    -- Virtul text for debbuging
+    -- Virtual text for debbuging
     {
         'theHamsta/nvim-dap-virtual-text',
         event = "VeryLazy",
@@ -762,14 +762,17 @@ return {
         end
     },
 
-    -- TODO: Nvim IDE layout
-    -- {
-    --     'ldelossa/nvim-ide',
-    --     event = "VeryLazy",
-    --     config = function ()
-    --         require("user.plugins.ide")
-    --     end
-    -- },
+    -- Launch
+    {
+        'dasupradyumna/launch.nvim',
+        dependencies = {
+            'mfussenegger/nvim-dap',
+            'rcarriga/nvim-notify',
+        },
+        config = function ()
+            require("user.plugins.launch")
+        end
+    },
 
     {
         "nvim-neorg/neorg",
