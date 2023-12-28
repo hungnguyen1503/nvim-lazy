@@ -480,7 +480,7 @@ M.floaterm = {
         ["<leader>ts"] = { "<cmd>FloatermShow<CR>", "Show terminal" },
     },
     t = {
-        ["<leader>to"] = { "<C-\\><C-n><cmd>FloatermNew bash.exe<CR>", "Open new terminal" },
+        ["<leader>to"] = { "<C-\\><C-n><cmd>FloatermNew bash<CR>", "Open new terminal" },
         ["<leader>tk"] = { "<C-\\><C-n><cmd>FloatermKill<CR>:FloatermPrev<cr>", "Kill current terminal" },
         ["<leader>tn"] = { "<C-\\><C-n><cmd>FloatermNext<CR>", "Next terminal" },
         ["<leader>tp"] = { "<C-\\><C-n><cmd>FloatermPrev<CR>", "Previous terminal" },
