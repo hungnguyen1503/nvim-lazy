@@ -16,7 +16,7 @@ local options = {
             "--column",
             "--smart-case",
         },
-        wrap_results = "true",
+        -- wrap_results = "true",
         shorten_path = true,
         prompt_prefix = " ",
         selection_caret = " ",
@@ -109,7 +109,7 @@ local options = {
         },
     },
 
-    extensions_list = { "notify", "project", "file_browser", "ui-select", "menu", "dap" },
+    extensions_list = { "notify", "project", "file_browser", "ui-select", "menu", "dap", "remote-sshfs"},
 }
 
 telescope.setup(options)

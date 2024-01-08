@@ -769,7 +769,7 @@ return {
             'mfussenegger/nvim-dap',
             'rcarriga/nvim-notify',
         },
-        config = function ()
+        config = function()
             require("user.plugins.launch")
         end
     },
@@ -818,5 +818,13 @@ return {
         opts = {
             create_keymaps = true
         },
+    },
+
+    {
+        'nosduco/remote-sshfs.nvim',
+        dependencies = { 'nvim-telescope/telescope.nvim' }, -- optional if you declare plugin somewhere else
+        config = function ()
+            require("user.plugins.remote-ssh")
+        end
     }
 }
