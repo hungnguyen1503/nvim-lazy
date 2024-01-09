@@ -820,11 +820,23 @@ return {
         },
     },
 
+    -- {
+    --     'nosduco/remote-sshfs.nvim',
+    --     dependencies = { 'nvim-telescope/telescope.nvim' }, -- optional if you declare plugin somewhere else
+    --     config = function ()
+    --         require("user.plugins.remote-ssh")
+    --     end
+    -- }
     {
-        'nosduco/remote-sshfs.nvim',
-        dependencies = { 'nvim-telescope/telescope.nvim' }, -- optional if you declare plugin somewhere else
-        config = function ()
-            require("user.plugins.remote-ssh")
-        end
+        "amitds1997/remote-nvim.nvim",
+        version = "*", -- This keeps it pinned to semantic releases
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+            -- This would be an optional dependency eventually
+            "nvim-telescope/telescope.nvim",
+        },
+        config = true, -- This calls the default setup(); make sure to call it
     }
 }

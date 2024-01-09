@@ -1,4 +1,4 @@
-local status_ok, remotessh = pcall(require, "remotessh")
+local status_ok, remotessh = pcall(require, "remote-sshfs")
 if not status_ok then
     return
 end
