@@ -2,8 +2,8 @@ local M = {}
 M.general = {
     i = {
         -- Quick normal map
-        ["jk"] = { "<ESC>", "Escape vim" },
-        ["kj"] = { "<ESC>", "Escape vim" },
+        -- ["jk"] = { "<ESC>", "Escape vim" },
+        -- ["kj"] = { "<ESC>", "Escape vim" },
         -- Wrap text
         ["<A-r>"] = { "<C-o><cmd>set wrap!<CR>", "Enable wrap text" },
         -- Paste

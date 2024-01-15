@@ -23,11 +23,19 @@ return {
     },
 
     -- Colorscheme manager
+    -- {
+    --     'folke/tokyonight.nvim',
+    --     config = function()
+    --         require("user.plugins.tokyonight")
+    --     end,
+    -- },
+    -- Lazy
+    -- TODO: Should be updated to change themes and highlight
     {
-        'folke/tokyonight.nvim',
-        config = function()
-            require("user.plugins.tokyonight")
-        end,
+        "olimorris/onedarkpro.nvim",
+        config = function ()
+            vim.cmd("colorscheme onedark")
+        end
     },
 
     -- Change font size
@@ -838,5 +846,12 @@ return {
             "nvim-telescope/telescope.nvim",
         },
         config = true, -- This calls the default setup(); make sure to call it
+    },
+    -- lua with packer.nvim
+    {
+        "max397574/better-escape.nvim",
+        config = function()
+            require("user.plugins.escape")
+        end,
     }
 }

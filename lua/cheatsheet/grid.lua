@@ -315,10 +315,12 @@ return function()
     vim.opt_local.colorcolumn = "0"
     vim.g.nvcheatsheet_displayed = true
 
-    vim.keymap.set("n", "<ESC>", function()
-        require("cheatsheet.api").close_buffer(buf)
+    vim.keymap.set("n", "<ESC>", function(bufnum)
+        -- require("cheatsheet.api").close_buffer(buf)
+        require('bufdelete').bufdelete(bufnum, true)
     end, { buffer = buf }) -- use ESC to close
-    vim.keymap.set("n", "q", function()
-        require("cheatsheet.api").close_buffer(buf)
+    vim.keymap.set("n", "q", function(bufnum)
+        -- require("cheatsheet.api").close_buffer(buf)
+        require('bufdelete').bufdelete(bufnum, true)
     end, { buffer = buf }) -- use 'q' to close
 end
