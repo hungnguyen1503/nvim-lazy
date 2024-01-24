@@ -299,7 +299,8 @@ return {
     -- Telescope
     {
         'nvim-telescope/telescope.nvim',
-        commit = "f336f8c",
+        -- commit = "f336f8c",
+        commit = "e90fdba",
         -- event = "VeryLazy",
         dependencies = {
             'nvim-lua/plenary.nvim',

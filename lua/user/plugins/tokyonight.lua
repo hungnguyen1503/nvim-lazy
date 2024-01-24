@@ -14,9 +14,10 @@ tokyonight.setup({
         -- Style to be applied to different syntax groups
         -- Value is any valid attr-list value for `:help nvim_set_hl`
         comments = { italic = true, fg = '#5c6370' },
-        keywords = { italic = true, fg = '#FFB86C' },
+        keywords = { italic = false, fg = '#FFB86C' },
         functions = { fg = '#ff79c6' },
         variables = { fg = '#f9f2eb' },
+        -- macro = { fg = '#57afef'},
         -- Background styles. Can be "dark", "transparent" or "normal"
         sidebars = "moon", -- style for sidebars, see below
         floats = "storm", -- style for floating windows

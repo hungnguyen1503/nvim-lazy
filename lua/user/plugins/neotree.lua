@@ -121,7 +121,8 @@ neotree.setup({
                 nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
             },
             ["<2-LeftMouse>"] = "open",
-            ["<cr>"] = "open",
+            -- ["<cr>"] = "open",
+            ["<cr>"] = "open_with_window_picker",
             ["<esc>"] = "revert_preview",
             ["P"] = { "toggle_preview", config = { use_float = true } },
             ["l"] = "focus_preview",
@@ -150,7 +151,7 @@ neotree.setup({
     filesystem = {
         filtered_items = {
             visible = true, -- when true, they will just be displayed differently than normal items
-            hide_dotfiles = true,
+            hide_dotfiles = false,
             hide_gitignored = true,
             hide_hidden = true, -- only works on Windows for hidden files/directories
             hide_by_name = {
@@ -174,7 +175,7 @@ neotree.setup({
         follow_current_file = {
             enabled = true, -- This will find and focus the file in the active buffer every time
             --               -- the current file is changed while the tree is open.
-            leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+            leave_dirs_open = true, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
         -- time the current file is changed while the tree is open.
         group_empty_dirs = false, -- when true, empty folders will be grouped together
@@ -214,7 +215,7 @@ neotree.setup({
         follow_current_file = {
             enabled = true, -- This will find and focus the file in the active buffer every time
             --              -- the current file is changed while the tree is open.
-            leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+            leave_dirs_open = true, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
         -- time the current file is changed while the tree is open.
         group_empty_dirs = true, -- when true, empty folders will be grouped together

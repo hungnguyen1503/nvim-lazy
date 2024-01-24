@@ -109,7 +109,7 @@ local options = {
         },
     },
 
-    extensions_list = { "notify", "project", "file_browser", "ui-select", "menu", "dap"},
+    extensions_list = { "notify", "project", "file_browser", "ui-select", "menu", "dap" },
 }
 
 telescope.setup(options)

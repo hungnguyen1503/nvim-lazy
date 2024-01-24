@@ -68,9 +68,16 @@ autocmd("FileType", {
 })
 -- Enable spell check for specific language
 autocmd("FileType", {
-    pattern = "c",
+    pattern = "*",
     callback = function()
-        vim.opt.spell = true
+        local current_buffer = vim.fn.bufnr()
+        ---@diagnostic disable-next-line: param-type-mismatch
+        local filetype = vim.api.nvim_buf_get_option(current_buffer, 'filetype')
+        if filetype == 'c' or filetype == 'h'then
+            vim.opt.spell = true
+        else
+            vim.opt.spell = false
+        end
     end
 })
 
