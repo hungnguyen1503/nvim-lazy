@@ -72,7 +72,6 @@ return {
 
     {
         'Bekaboo/dropbar.nvim',
-        -- Desc: Winbar
         config = function()
             require("user.plugins.dropbar")
         end,
@@ -462,6 +461,14 @@ return {
         end
     },
 
+    {
+        "LintaoAmons/cd-project.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("user.plugins.cd-project")
+        end
+    },
+
     -- Align lines
     {
         'Vonr/align.nvim',
@@ -582,14 +589,14 @@ return {
     },
 
     -- Display lsp progress loading
-    -- {
-    --     "j-hui/fidget.nvim", -- Display LSP status messages in a floating window
-    --     tag = "legacy",
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("user.plugins.fidget")
-    --     end
-    -- },
+    {
+        "j-hui/fidget.nvim", -- Display LSP status messages in a floating window
+        tag = "legacy",
+        event = "VeryLazy",
+        config = function()
+            require("user.plugins.fidget")
+        end
+    },
 
     -- NOTE: Drop snow in dashboard
     -- This plugin is being disabled because of decreasing performance
