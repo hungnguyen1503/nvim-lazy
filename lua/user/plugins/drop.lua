@@ -5,10 +5,10 @@ end
 
 local options = {
     theme = "leaves", -- can be one of rhe default themes, or a custom theme
-    max = 10, -- maximum number of drops on the screen
-    interval = 15, -- every 150ms we update the drops
+    max = 15, -- maximum number of drops on the screen
+    interval = 12, -- every 150ms we update the drops
     screensaver = false, -- show after 5 minutes. Set to false, to disable
-    filetypes = { "dashboard", "alpha", "starter" }, -- will enable/disable automatically for the following filetypes
+    filetypes = { "alpha" }, -- will enable/disable automatically for the following filetypes
 }
 
 drop.setup(options)
