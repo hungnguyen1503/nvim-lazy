@@ -107,7 +107,48 @@ local options = {
     -- A list of functions, each representing a global custom command
     -- that will be available in all sources (if not overridden in `opts[source_name].commands`)
     -- see `:h neo-tree-global-custom-commands`
-    commands = {},
+    commands = {
+        copy_selector = function(state)
+            local node = state.tree:get_node()
+            local filepath = node:get_id()
+            local filename = node.name
+            local modify = vim.fn.fnamemodify
+
+            local vals = {
+                ["BASENAME"] = modify(filename, ":r"),
+                ["EXTENSION"] = modify(filename, ":e"),
+                ["FILENAME"] = filename,
+                ["PATH (CWD)"] = modify(filepath, ":."),
+                ["PATH (HOME)"] = modify(filepath, ":~"),
+                ["PATH"] = filepath,
+                ["URI"] = vim.uri_from_fname(filepath),
+            }
+
+            local options = vim.tbl_filter(
+                function(val)
+                    return vals[val] ~= ""
+                end,
+                vim.tbl_keys(vals)
+            )
+            if vim.tbl_isempty(options) then
+                vim.notify("No values to copy", vim.log.levels.WARN)
+                return
+            end
+            table.sort(options)
+            vim.ui.select(options, {
+                prompt = "Choose to copy to clipboard:",
+                format_item = function(item)
+                    return ("%s: %s"):format(item, vals[item])
+                end,
+            }, function(choice)
+                local result = vals[choice]
+                if result then
+                    vim.notify(("Copied: `%s`"):format(result))
+                    vim.fn.setreg("+", result)
+                end
+            end)
+        end
+    },
     window = {
         position = "left",
         width = 40,
@@ -116,46 +157,48 @@ local options = {
             nowait = true,
         },
         mappings = {
-            ["<space>"] = {
+            ["<space>"]       = {
                 "toggle_node",
                 nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
             },
             ["<2-LeftMouse>"] = "open",
             -- ["<cr>"] = "open",
-            ["<cr>"] = "open_with_window_picker",
-            ["<esc>"] = "revert_preview",
-            ["P"] = { "toggle_preview", config = { use_float = true } },
-            ["l"] = "focus_preview",
-            ["h"] = "open_split",
-            ["v"] = "open_vsplit",
-            ["t"] = "open_tabnew",
-            ["w"] = "open_with_window_picker",
-            ["C"] = "close_node",
-            ["z"] = "close_all_nodes",
-            ["a"] = { "add", config = { show_path = "none" } }, -- "none", "relative", "absolute"
-            ["A"] = "add_directory",                            -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
-            ["d"] = "delete",
-            ["r"] = "rename",
-            ["y"] = "copy_to_clipboard",
-            ["x"] = "cut_to_clipboard",
-            ["p"] = "paste_from_clipboard",
-            ["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
-            ["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
-            ["q"] = "close_window",
-            ["R"] = "refresh",
-            ["?"] = "show_help",
-            ["F"] = "clear_filter",
+            ["<cr>"]          = "open_with_window_picker",
+            ["<esc>"]         = "revert_preview",
+            ["P"]             = { "toggle_preview", config = { use_float = true } },
+            ["l"]             = "focus_preview",
+            ["h"]             = "open_split",
+            ["v"]             = "open_vsplit",
+            ["t"]             = "open_tabnew",
+            ["w"]             = "open_with_window_picker",
+            ["C"]             = "close_node",
+            ["<Tab>"]         = "close_node",
+            ["z"]             = "close_all_nodes",
+            ["a"]             = { "add", config = { show_path = "none" } }, -- "none", "relative", "absolute"
+            ["A"]             = "add_directory",                -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
+            ["d"]             = "delete",
+            ["r"]             = "rename",
+            ["y"]             = "copy_to_clipboard",
+            ["Y"]             = "copy_selector",
+            ["x"]             = "cut_to_clipboard",
+            ["p"]             = "paste_from_clipboard",
+            ["c"]             = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
+            ["m"]             = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
+            ["q"]             = "close_window",
+            ["R"]             = "refresh",
+            ["?"]             = "show_help",
+            ["F"]             = "clear_filter",
         }
     },
     nesting_rules = {},
-    event_handlers = {
-        {
-            event = "neo_tree_buffer_enter",
-            handler = function()
-                vim.wo.relativenumber = true
-            end,
-        },
-    },
+    -- event_handlers = {
+    --     {
+    --         event = "neo_tree_buffer_enter",
+    --         handler = function()
+    --             vim.wo.relativenumber = true
+    --         end,
+    --     },
+    -- },
     filesystem = {
         filtered_items = {
             visible = true, -- when true, they will just be displayed differently than normal items
@@ -194,48 +237,7 @@ local options = {
         -- window like netrw would, regardless of window.position
         -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
         use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
-        commands = {
-            copy_selector = function(state)
-                local node = state.tree:get_node()
-                local filepath = node:get_id()
-                local filename = node.name
-                local modify = vim.fn.fnamemodify
-
-                local vals = {
-                    ["BASENAME"] = modify(filename, ":r"),
-                    ["EXTENSION"] = modify(filename, ":e"),
-                    ["FILENAME"] = filename,
-                    ["PATH (CWD)"] = modify(filepath, ":."),
-                    ["PATH (HOME)"] = modify(filepath, ":~"),
-                    ["PATH"] = filepath,
-                    ["URI"] = vim.uri_from_fname(filepath),
-                }
-
-                local options = vim.tbl_filter(
-                    function(val)
-                        return vals[val] ~= ""
-                    end,
-                    vim.tbl_keys(vals)
-                )
-                if vim.tbl_isempty(options) then
-                    vim.notify("No values to copy", vim.log.levels.WARN)
-                    return
-                end
-                table.sort(options)
-                vim.ui.select(options, {
-                    prompt = "Choose to copy to clipboard:",
-                    format_item = function(item)
-                        return ("%s: %s"):format(item, vals[item])
-                    end,
-                }, function(choice)
-                    local result = vals[choice]
-                    if result then
-                        vim.notify(("Copied: `%s`"):format(result))
-                        vim.fn.setreg("+", result)
-                    end
-                end)
-            end,
-        }, -- Add a custom command or override a global one using the same function name
+        commands = {},                  -- Add a custom command or override a global one using the same function name
         -- instead of relying on nvim autocmd events.
         window = {
             mappings = {
@@ -250,7 +252,6 @@ local options = {
                 ["F"]      = "clear_filter",
                 ["[g"]     = "prev_git_modified",
                 ["]g"]     = "next_git_modified",
-                ["Y"]      = "copy_selector",
             },
             fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
                 ["<down>"] = "move_cursor_down",
