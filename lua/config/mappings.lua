@@ -5,12 +5,12 @@ M.general = {
         -- ["jk"] = { "<ESC>", "Escape vim" },
         -- ["kj"] = { "<ESC>", "Escape vim" },
         -- Wrap text
-        ["<A-r>"] = { "<C-o><cmd>set wrap!<CR>", "Enable wrap text" },
+        ["<A-r>"] = { "<C-o><cmd>set wrap!<CR>", opts = { silent = true }, "Enable wrap text" },
         -- Paste
         ["<C-v>"] = { "<C-R>*", "Set paste as Win OS" },
         -- Delete
-        ["<C-BS>"] = { "<C-o>b<C-o>dw", "Delete by Ctrl Backspace" },
-        ["<C-Del>"] = { "<C-o>dw", "Delete by Ctrl Backspace" },
+        ["<C-BS>"] = { "<C-o>b<C-o>dw", opts = { silent = true }, "Delete by Ctrl Backspace" },
+        ["<C-Del>"] = { "<C-o>dw", opts = { silent = true }, "Delete by Ctrl Backspace" },
         ["<C-s>"] = {
             "<ESC>:w<CR>",
             "Save file in insert mode",
@@ -20,13 +20,13 @@ M.general = {
         ["<C-h>"] = { "<ESC>^i", "Beginning of line" },
         ["<C-l>"] = { "<End>", "End of line" },
         -- move word
-        ["<C-w>"] = { "<C-\\><C-O>w", "Move words forward" },
-        ["<C-b>"] = { "<C-\\><C-O>b", "Move words backward" },
-        ["<C-e>"] = { "<C-\\><C-O>e<C-O><Right>", "Forword to end of word" },
-        ["<C-z>"] = { "<Left><C-\\><C-O>ge<Right>", "Backward to end of word" },
+        ["<C-w>"] = { "<C-\\><C-O>w", opts = { silent = true }, "Move words forward" },
+        ["<C-b>"] = { "<C-\\><C-O>b", opts = { silent = true }, "Move words backward" },
+        ["<C-e>"] = { "<C-\\><C-O>e<C-O><Right>", opts = { silent = true }, "Forword to end of word" },
+        ["<C-z>"] = { "<Left><C-\\><C-O>ge<Right>", opts = { silent = true }, "Backward to end of word" },
         -- New line
         -- TODO: Add insert new line abow cursor
-        ["<C-o>"] = { "<C-\\><C-O>o", "Insert new line below cursor" },
+        ["<C-o>"] = { "<C-\\><C-O>o", opts = { silent = true }, "Insert new line below cursor" },
         -- navigate within insert mode
         ["<A-h>"] = { "<Left>", "Move left" },
         ["<A-l>"] = { "<Right>", "Move right" },
@@ -471,23 +471,23 @@ M.gitsigns = {
 
 M.floaterm = {
     n = {
-        ["<leader>to"] = { "<cmd>FloatermNew bash<CR>", "Open new terminal" },
-        ["<leader>tk"] = { "<cmd>FloatermKill<CR>:floatermprev<cr>", "Kill current terminal" },
-        ["<leader>tn"] = { "<cmd>FloatermNext<CR>", "Next terminal" },
-        ["<leader>tp"] = { "<cmd>FloatermPrev<CR>", "Previous terminal" },
-        ["<leader>tt"] = { "<cmd>FloatermToggle<CR>", "Toggle terminal" },
-        ["<leader>ts"] = { "<cmd>FloatermShow<CR>", "Show terminal" },
+        ["<leader>to"] = { "<cmd>FloatermNew bash<CR>", opts = { silent = true }, "Open new terminal" },
+        ["<leader>tk"] = { "<cmd>FloatermKill<CR>:floatermprev<cr>", opts = { silent = true }, "Kill current terminal" },
+        ["<leader>tn"] = { "<cmd>FloatermNext<CR>", opts = { silent = true }, "Next terminal" },
+        ["<leader>tp"] = { "<cmd>FloatermPrev<CR>", opts = { silent = true }, "Previous terminal" },
+        ["<leader>tt"] = { "<cmd>FloatermToggle<CR>", opts = { silent = true }, "Toggle terminal" },
+        ["<leader>ts"] = { "<cmd>FloatermShow<CR>", opts = { silent = true }, "Show terminal" },
     },
     t = {
-        ["<leader>to"] = { "<C-\\><C-n><cmd>FloatermNew bash<CR>", "Open new terminal" },
-        ["<leader>tk"] = { "<C-\\><C-n><cmd>FloatermKill<CR>:FloatermPrev<cr>", "Kill current terminal" },
-        ["<leader>tn"] = { "<C-\\><C-n><cmd>FloatermNext<CR>", "Next terminal" },
-        ["<leader>tp"] = { "<C-\\><C-n><cmd>FloatermPrev<CR>", "Previous terminal" },
-        ["<leader>tt"] = { "<C-\\><C-n><cmd>FloatermToggle<CR>", "Toggle terminal" },
-        ["<leader>ts"] = { "<C-\\><C-n><cmd>FloatermShow<CR>", "Show terminal" },
-        ["<C-v>"]      = { "<C-\\><C-n>pi", "Paste in terminal" },
-        ["<C-BS>"]     = { "<C-\\><C-n>bdw", "Delete word in terminal" },
-        ["<C-q>"]      = { "<C-\\><C-n>:FloatermToggle<CR>", "Quit terminal" },
+        ["<leader>to"] = { "<C-\\><C-n><cmd>FloatermNew bash<CR>", opts = { silent = true }, "Open new terminal" },
+        ["<leader>tk"] = { "<C-\\><C-n><cmd>FloatermKill<CR>:FloatermPrev<cr>", opts = { silent = true }, "Kill current terminal" },
+        ["<leader>tn"] = { "<C-\\><C-n><cmd>FloatermNext<CR>", opts = { silent = true }, "Next terminal" },
+        ["<leader>tp"] = { "<C-\\><C-n><cmd>FloatermPrev<CR>", opts = { silent = true }, "Previous terminal" },
+        ["<leader>tt"] = { "<C-\\><C-n><cmd>FloatermToggle<CR>", opts = { silent = true }, "Toggle terminal" },
+        ["<leader>ts"] = { "<C-\\><C-n><cmd>FloatermShow<CR>", opts = { silent = true }, "Show terminal" },
+        ["<C-v>"]      = { "<C-\\><C-n>pi", "Paste in terminal", opts = { silent = true }, },
+        ["<C-BS>"]     = { "<C-\\><C-n>bdw", opts = { silent = true }, "Delete word in terminal" },
+        ["<C-q>"]      = { "<C-\\><C-n>:FloatermToggle<CR>", opts = { silent = true }, "Quit terminal" },
     },
 }
 
