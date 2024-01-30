@@ -69,7 +69,7 @@ local options = {
         end,
         offsets = {
             {
-                filetype = "NvimTree",
+                filetype = "NeoTree",
                 text = "File Explorer", -- | function ,
                 text_align = "center",  -- "left" | "center" | "right"
                 separator = true,

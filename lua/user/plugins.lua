@@ -290,7 +290,7 @@ return {
             vim.g["duplicate-nvim-config"] = {
                 visual = {
                     selectAfter = true, -- true to select duplicated text
-                    block = true -- true to enable block-wise duplication
+                    block = true        -- true to enable block-wise duplication
                 }
             }
         end
@@ -299,9 +299,8 @@ return {
     -- Telescope
     {
         'nvim-telescope/telescope.nvim',
-        -- commit = "f336f8c",
-        commit = "e90fdba",
-        -- event = "VeryLazy",
+        -- commit = "20a37e4",
+        event = "VeryLazy",
         dependencies = {
             'nvim-lua/plenary.nvim',
             -- File browser
@@ -402,16 +401,6 @@ return {
         end,
     },
 
-    -- NOTE: It should be replace by another plugin
-    -- Vim easy replace
-    -- {
-    --     'kqito/vim-easy-replace',
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require("user.plugins.replace")
-    --     end
-    -- },
-
     -- Code highlight
     {
         'nvim-treesitter/nvim-treesitter',
@@ -443,7 +432,6 @@ return {
         event = "VeryLazy",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         config = function()
-            -- require("wildfire").setup()
             require("user.plugins.wildfire")
         end,
     },
@@ -451,7 +439,6 @@ return {
     -- Syntax aware text-objects, select, move, swap,
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
-        -- commit = "e1e670a86274d5cb681e475d4891ea1afe605ced",
         event = 'VeryLazy',
         dependencies = 'nvim-treesitter/nvim-treesitter',
     },
@@ -544,18 +531,6 @@ return {
             require("user.plugins.mason")
         end,
     },
-
-    -- {
-    --     "j-hui/fidget.nvim",
-    --     tag = "legacy",
-    --     event = {
-    --         "LspAttach",
-    --         "VeryLazy"
-    --     },
-    --     config = function ()
-    --         require("user.plugins.fidget")
-    --     end
-    -- },
 
     -- LSP config manager
     {
@@ -659,6 +634,7 @@ return {
     -- Tabnine
     {
         'tzachar/cmp-tabnine',
+        -- INFO: The build configuration shall be installed manually on Windows
         -- build = './install.sh',
         dependencies = 'hrsh7th/nvim-cmp',
     },
@@ -802,7 +778,7 @@ return {
                 -- ["core.ui.calendar"]           = {},
                 ['core.summary']               = {},
                 ["core.syntax"]                = {}, -- Handles interaction for syntax files for code blocks.
-                ["core.dirman"]                = { -- Manages Neorg workspaces.
+                ["core.dirman"]                = {   -- Manages Neorg workspaces.
                     config = {
                         workspaces = {
                             notes = "~/notes",

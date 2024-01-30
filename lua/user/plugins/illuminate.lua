@@ -1,7 +1,7 @@
 local status, illuminate = pcall(require, "illuminate")
 
 if not status then
-	return
+    return
 end
 
 illuminate.configure({
@@ -58,4 +58,3 @@ illuminate.configure({
 -- vim.cmd("hi link IlluminatedWordText Visual")
 -- vim.cmd("hi link IlluminatedWordRead Visual")
 -- vim.cmd("hi link IlluminatedWordWrite Visual")
-

@@ -4,15 +4,15 @@ if not status_ok then
     return
 end
 
-neotree.setup({
+local options = {
     close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
     popup_border_style = "rounded",
     enable_git_status = true,
     enable_diagnostics = true,
     enable_normal_mode_for_inputs = false,
     open_files_do_not_replace_types = { "terminal", "trouble", "qf", "alpha" }, -- when opening files, do not use windows containing these filetypes or buftypes
-    sort_case_insensitive = false, -- used when sorting files and directories in the tree
-    sort_function = nil, -- use a custom function for sorting files and directories in the tree
+    sort_case_insensitive = false,                                              -- used when sorting files and directories in the tree
+    sort_function = nil,                                                        -- use a custom function for sorting files and directories in the tree
     default_component_configs = {
         container = {
             enable_character_fade = false
@@ -133,7 +133,7 @@ neotree.setup({
             ["C"] = "close_node",
             ["z"] = "close_all_nodes",
             ["a"] = { "add", config = { show_path = "none" } }, -- "none", "relative", "absolute"
-            ["A"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
+            ["A"] = "add_directory",                            -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
             ["d"] = "delete",
             ["r"] = "rename",
             ["y"] = "copy_to_clipboard",
@@ -148,6 +148,14 @@ neotree.setup({
         }
     },
     nesting_rules = {},
+    event_handlers = {
+        {
+            event = "neo_tree_buffer_enter",
+            handler = function()
+                vim.wo.relativenumber = true
+            end,
+        },
+    },
     filesystem = {
         filtered_items = {
             visible = true, -- when true, they will just be displayed differently than normal items
@@ -173,12 +181,12 @@ neotree.setup({
             },
         },
         follow_current_file = {
-            enabled = true, -- This will find and focus the file in the active buffer every time
-            --               -- the current file is changed while the tree is open.
+            enabled = true,         -- This will find and focus the file in the active buffer every time
+            -- the current file is changed while the tree is open.
             leave_dirs_open = true, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
         -- time the current file is changed while the tree is open.
-        group_empty_dirs = false, -- when true, empty folders will be grouped together
+        group_empty_dirs = false,           -- when true, empty folders will be grouped together
         -- hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
         hijack_netrw_behavior = "disabled", -- netrw disabled, opening a directory opens neo-tree
         -- in whatever position is specified in window.position
@@ -186,6 +194,48 @@ neotree.setup({
         -- window like netrw would, regardless of window.position
         -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
         use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
+        commands = {
+            copy_selector = function(state)
+                local node = state.tree:get_node()
+                local filepath = node:get_id()
+                local filename = node.name
+                local modify = vim.fn.fnamemodify
+
+                local vals = {
+                    ["BASENAME"] = modify(filename, ":r"),
+                    ["EXTENSION"] = modify(filename, ":e"),
+                    ["FILENAME"] = filename,
+                    ["PATH (CWD)"] = modify(filepath, ":."),
+                    ["PATH (HOME)"] = modify(filepath, ":~"),
+                    ["PATH"] = filepath,
+                    ["URI"] = vim.uri_from_fname(filepath),
+                }
+
+                local options = vim.tbl_filter(
+                    function(val)
+                        return vals[val] ~= ""
+                    end,
+                    vim.tbl_keys(vals)
+                )
+                if vim.tbl_isempty(options) then
+                    vim.notify("No values to copy", vim.log.levels.WARN)
+                    return
+                end
+                table.sort(options)
+                vim.ui.select(options, {
+                    prompt = "Choose to copy to clipboard:",
+                    format_item = function(item)
+                        return ("%s: %s"):format(item, vals[item])
+                    end,
+                }, function(choice)
+                    local result = vals[choice]
+                    if result then
+                        vim.notify(("Copied: `%s`"):format(result))
+                        vim.fn.setreg("+", result)
+                    end
+                end)
+            end,
+        }, -- Add a custom command or override a global one using the same function name
         -- instead of relying on nvim autocmd events.
         window = {
             mappings = {
@@ -200,6 +250,7 @@ neotree.setup({
                 ["F"]      = "clear_filter",
                 ["[g"]     = "prev_git_modified",
                 ["]g"]     = "next_git_modified",
+                ["Y"]      = "copy_selector",
             },
             fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
                 ["<down>"] = "move_cursor_down",
@@ -209,11 +260,10 @@ neotree.setup({
             },
         },
 
-        commands = {} -- Add a custom command or override a global one using the same function name
     },
     buffers = {
         follow_current_file = {
-            enabled = true, -- This will find and focus the file in the active buffer every time
+            enabled = true,         -- This will find and focus the file in the active buffer every time
             --              -- the current file is changed while the tree is open.
             leave_dirs_open = true, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
@@ -281,4 +331,6 @@ neotree.setup({
             },
         },
     },
-})
+}
+
+neotree.setup(options)

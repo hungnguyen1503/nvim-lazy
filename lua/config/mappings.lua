@@ -87,7 +87,7 @@ M.general = {
         ["<Up>"]       = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
         ["<Down>"]     = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
 
-        ["\\"] = { "%", "Goto bracket pairs" },
+        ["\\"]         = { "%", "Goto bracket pairs" },
 
         -- Cheat sheet
         ["<leader>ch"] = { "<cmd>NvCheatsheet<CR>", "Cheat Sheet" },
@@ -202,22 +202,21 @@ M.trouble = {
     }
 }
 
+local function delayedNeoTreeToggle()
+    require("neo-tree.command").execute({ toggle = true, dir = vim.fn.getcwd() })
+end
+
 M.neotree = {
     n = {
         ["<F4>"] = {
             function()
-                require("neo-tree.command").execute({ toggle = true, dir = vim.fn.getcwd() })
-                -- vim.cmd([[wincmd =]])
+                -- Delay 200ms to avoid double toggle
+                vim.defer_fn(delayedNeoTreeToggle, 300)
             end,
             "Toggle Neotree"
         },
     },
 }
--- M.nvimtree = {
---     n = {
---         ["<F4>"] = { "<cmd>NvimTreeToggle<CR>", "Toggle NvimTree" },
---     },
--- }
 
 M.lspconfig = {
     -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
@@ -377,7 +376,7 @@ M.telescope = {
         ["<leader>fo"]     = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
         ["<leader>fk"]     = { "<cmd> Telescope keymaps <CR>", "Find key mappings" },
         ["<leader>fp"]     = { "<cmd> Telescope project <CR>", "Find projects" },
-        ["<leader>fs"]     = { "<cmd> Telescope menu Sessions <CR>", "Find sessions" },
+        -- ["<leader>fs"]     = { "<cmd> Telescope menu Sessions <CR>", "Find sessions" },
         ["<leader>fb"]     = { "<cmd> Telescope file_browser <CR>", "Find browser" },
         ["<leader>fh"]     = { "<cmd> Telescope highlights <CR>", "Find highlights" },
         ["<leader>f<Tab>"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
@@ -386,20 +385,20 @@ M.telescope = {
         -- ["<leader>st"] = { "<cmd> Telescope git_status <CR>", "git status" },
 
         -- Yank history
-        ["<leader>y"] = { "<cmd> Telescope yank_history <CR>", "Find the yank history" },
+        ["<leader>y"]      = { "<cmd> Telescope yank_history <CR>", "Find the yank history" },
 
         -- Noice
-        ["<leader>n"] = { "<cmd> Telescope noice <CR>", "Find the noice log" },
-        ["<leader>m"] = { "<cmd> Telescope marks <CR>", "Find the marks" },
+        ["<leader>n"]      = { "<cmd> Telescope noice <CR>", "Find the noice log" },
+        ["<leader>m"]      = { "<cmd> Telescope marks <CR>", "Find the marks" },
 
         -- pick a hidden term
-        ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Find and pick hidden term" },
+        ["<leader>pt"]     = { "<cmd> Telescope terms <CR>", "Find and pick hidden term" },
 
         -- theme switcher
-        ["<leader>th"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
+        ["<leader>th"]     = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
 
         -- command
-        ["<leader>cm"] = {
+        ["<leader>cm"]     = {
             function()
                 require('telescope.builtin').commands(require('telescope.themes').get_dropdown())
             end,
@@ -931,6 +930,16 @@ M.dropbar = {
             "pick winbar element"
         },
     }
+}
+
+M.session = {
+    n =
+    {
+        ["<leader>fs"] = { "<cmd> SessionManager load_session <CR>", "Load sessions" },
+        ["<leader>as"] = { "<cmd> SessionManager save_current_session <CR>", "Save current session" },
+        ["<leader>ds"] = { "<cmd> SessionManager delete_session <CR>", "Delete session" },
+    }
+
 }
 
 return M

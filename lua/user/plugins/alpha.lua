@@ -74,7 +74,7 @@ local options = {
             button("o", "  Recent File  ", ":Telescope oldfiles<CR>"),
             button("w", "  Find Word  ", ":Telescope live_grep<CR>"),
             button("p", "  Find Project  ", ":Telescope project<CR>"),
-            button("m", "  Sessions", ":Telescope menu Sessions<CR>"),
+            button("m", "  Sessions", ":SessionManager load_session<CR>"),
             button("b", "  Bookmarks  ", ":Telescope marks<CR>"),
             button("t", "  Themes  ", ":Telescope themes<CR>"),
             button("s", "  Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
