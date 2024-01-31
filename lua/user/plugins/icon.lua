@@ -61,7 +61,7 @@ M.lspkind = {
     TypeParameter = '󰆩 ',
     Unit = ' ',
     Value = '󰎠 ',
-    Variable = '󰀫 ',
+    Variable = ' ',
     WhileStatement = '󰑖 ',
     TabNine = "",
 }

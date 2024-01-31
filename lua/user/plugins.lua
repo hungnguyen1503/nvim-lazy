@@ -3,7 +3,10 @@ return {
     -- Icon source (need to be placed at the end)
     {
         'nvim-tree/nvim-web-devicons',
-        event = "VeryLazy"
+        event = "VeryLazy",
+        config = function()
+            require("user.plugins.devicons")
+        end
     },
 
     -- Start up screen
