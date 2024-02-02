@@ -149,8 +149,7 @@ return {
         pin = true,
         cmd = {
             "DiffviewOpen",
-            "DiffviewToggleFiles",
-            "DiffviewFocusFiles"
+            "DiffviewFileHistory",
         },
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
@@ -753,6 +752,7 @@ return {
     -- Launch
     {
         'dasupradyumna/launch.nvim',
+        event = "VeryLazy",
         dependencies = {
             'mfussenegger/nvim-dap',
             'rcarriga/nvim-notify',
@@ -768,6 +768,7 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim"
         },
+        event = "VeryLazy",
         opts = {
             load = {
                 ["core.defaults"]              = {}, -- Loads default behaviour.
@@ -823,6 +824,7 @@ return {
     -- lua with packer.nvim
     {
         "max397574/better-escape.nvim",
+        event = "VeryLazy",
         config = function()
             require("user.plugins.escape")
         end,

@@ -942,4 +942,13 @@ M.session = {
 
 }
 
+M.diffview = {
+    n = {
+        ["<leader>gdo"] = { "<cmd> DiffviewOpen <CR>", "Diff view open" },
+        ["<leader>gdc"] = { "<cmd> DiffviewClose <CR>", "Diff view close" },
+        ["<leader>gdd"] = { "<cmd> DiffviewFileHistory <CR>", "Open history" },
+        ["<leader>gdf"] = { "<cmd> DiffviewFileHistory %<CR>", "Current History" },
+    }
+}
+
 return M
