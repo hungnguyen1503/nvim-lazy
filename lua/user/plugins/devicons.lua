@@ -35,7 +35,12 @@ require 'nvim-web-devicons'.setup {
         ["txt"] = {
             icon = "",
             color = "#81e043",
-            name = "Log"
+            name = "Text"
+        },
+        ["xml"] = {
+            icon = "󰗀",
+            color = "#f1502f",
+            name = "Xml"
         }
     },
 }

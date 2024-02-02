@@ -570,7 +570,6 @@ return {
     -- LSP Saga
     {
         'nvimdev/lspsaga.nvim',
-        ft = { "lua", "python", "c", "cpp", "bash", "sh", "cmake" },
         config = function()
             require("user.plugins.lspsaga")
         end,
@@ -809,13 +808,6 @@ return {
         },
     },
 
-    -- {
-    --     'nosduco/remote-sshfs.nvim',
-    --     dependencies = { 'nvim-telescope/telescope.nvim' }, -- optional if you declare plugin somewhere else
-    --     config = function ()
-    --         require("user.plugins.remote-ssh")
-    --     end
-    -- }
     {
         "amitds1997/remote-nvim.nvim",
         version = "*", -- This keeps it pinned to semantic releases

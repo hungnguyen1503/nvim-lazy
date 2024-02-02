@@ -175,7 +175,7 @@ local options = {
             ["<Tab>"]         = "close_node",
             ["z"]             = "close_all_nodes",
             ["a"]             = { "add", config = { show_path = "none" } }, -- "none", "relative", "absolute"
-            ["A"]             = "add_directory",                -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
+            ["A"]             = "add_directory",                            -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
             ["d"]             = "delete",
             ["r"]             = "rename",
             ["y"]             = "copy_to_clipboard",
