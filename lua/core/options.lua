@@ -44,6 +44,7 @@ opt.updatetime = 250
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "bs<>[]hl"
+vim.opt.formatoptions:remove({ "c", "r", "o" })
 
 g.mapleader = ","
 

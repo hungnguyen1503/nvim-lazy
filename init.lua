@@ -8,4 +8,6 @@ require("core")
 pcall(require, "config")
 require("core.utils").load_mappings()
 
+require("core.utils").load_highlights()
+
 require("cheatsheet")

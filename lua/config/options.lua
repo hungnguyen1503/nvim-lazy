@@ -1,17 +1,18 @@
 local options = {
-    clipboard   = "unnamedplus",
+    clipboard      = "unnamedplus",
     -- Configuration mouse usage
-    mouse       = "a",
-    mousemodel  = "popup",
-    completeopt = { "menu", "menuone", "noselect" },
+    mouse          = "a",
+    mousemodel     = "extend",
+    mousemoveevent = true,
+    completeopt    = { "menu", "menuone", "noselect" },
 
     -- Tab
-    smarttab    = true,
-    tabstop     = 4,
-    shiftwidth  = 4,
-    softtabstop = 4,
-    expandtab   = true,
-    list        = true,
+    smarttab       = true,
+    tabstop        = 4,
+    shiftwidth     = 4,
+    softtabstop    = 4,
+    expandtab      = true,
+    list           = true,
 
     -- Fold
     -- fillchars      = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]],
@@ -21,28 +22,28 @@ local options = {
     -- foldenable     = true,
 
     -- Disable backup
-    backup   = false,
-    wb       = false,
-    swapfile = false,
+    backup         = false,
+    wb             = false,
+    swapfile       = false,
 
     -- Text editor
-    smartcase    = true,
-    ignorecase   = true,
-    fileencoding = "utf-8",
-    textwidth    = 0,
-    cursorline   = true,
+    smartcase      = true,
+    ignorecase     = true,
+    fileencoding   = "utf-8",
+    textwidth      = 0,
+    cursorline     = true,
 
     -- Limited height box suggestion
-    pumheight = 15,
-    cmdheight = 1,
+    pumheight      = 15,
+    cmdheight      = 1,
 
     -- Time to update nvim, delay between multi shortcut
-    updatetime = 100,
-    timeoutlen = 750,
+    updatetime     = 1000,
+    timeoutlen     = 750,
 
     -- Wrap text
-    wrap      = false,
-    linebreak = true,
+    wrap           = false,
+    linebreak      = true,
 
     -- Show number
     numberwidth    = 3,
@@ -53,23 +54,23 @@ local options = {
     signcolumn     = "yes",
 
     -- Split window
-    splitbelow = true,
-    splitright = true,
+    splitbelow     = true,
+    splitright     = true,
 
     -- Scroll with offset
-    scrolloff     = 10, -- minimal number of screen lines to keep above and below the cursor.
-    sidescrolloff = 10, -- minimal number of screen lines to keep left and right of the cursor.
+    scrolloff      = 0, -- minimal number of screen lines to keep above and below the cursor.
+    sidescrolloff  = 8, -- minimal number of screen lines to keep left and right of the cursor.
 
     -- Color and font
-    termguicolors = true,
+    termguicolors  = true,
     -- guifont       = "CaskaydiaCove Nerd Font Propo:h13.0",
     guifont        = "CaskaydiaCove Nerd Font:h11.5",
     -- guifont       = "CaskaydiaCove Nerd Font:h10.5",
-    wildmenu      = true,
-    synmaxcol     = 150,
-    spelllang     = 'en_us',
-    spell         = false,
-    inccommand    = "split" -- show the effects of a search / replace in a live preview window
+    wildmenu       = true,
+    synmaxcol      = 200,
+    spelllang      = 'en_us',
+    spell          = false,
+    inccommand     = "split", -- show the effects of a search / replace in a live preview window
 }
 
 vim.opt.syntax.minlines = 60
