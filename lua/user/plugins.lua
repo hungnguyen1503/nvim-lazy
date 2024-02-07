@@ -306,8 +306,8 @@ return {
             'nvim-lua/plenary.nvim',
             -- File browser
             'nvim-telescope/telescope-file-browser.nvim',
-            -- Project
-            'nvim-telescope/telescope-project.nvim',
+            -- -- Project
+            -- 'nvim-telescope/telescope-project.nvim',
             -- UI for telescope
             'nvim-telescope/telescope-ui-select.nvim',
             -- Builtin/extension picker for telescope
@@ -463,11 +463,16 @@ return {
         end
     },
 
+    -- Project manager
     {
-        "LintaoAmons/cd-project.nvim",
+        "coffebar/neovim-project",
         event = "VeryLazy",
+        dependencies = {
+            { "nvim-lua/plenary.nvim" },
+            { "Shatur/neovim-session-manager" },
+        },
         config = function()
-            require("user.plugins.cd-project")
+            require("user.plugins.project")
         end
     },
 
@@ -598,16 +603,6 @@ return {
             require("user.plugins.fidget")
         end
     },
-
-    -- NOTE: Drop snow in dashboard
-    -- This plugin is being disabled because of decreasing performance
-    -- {
-    --     "folke/drop.nvim",
-    --     event = "VimEnter",
-    --     config = function()
-    --         require("user.plugins.drop")
-    --     end,
-    -- },
 
     -- NOTE: This plugin can be supportted for neovide with multigrid mode
     -- Show message popup, LSP progress, popup commandline
@@ -809,8 +804,10 @@ return {
         },
     },
 
+    -- TODO: investigate to using the plugins for remote editor
     {
         "amitds1997/remote-nvim.nvim",
+        event = "VeryLazy",
         version = "*", -- This keeps it pinned to semantic releases
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -821,12 +818,34 @@ return {
         },
         config = true, -- This calls the default setup(); make sure to call it
     },
-    -- lua with packer.nvim
+
+    -- Escape without getting delay when typing in insert mode
     {
         "max397574/better-escape.nvim",
         event = "VeryLazy",
         config = function()
             require("user.plugins.escape")
         end,
+    },
+
+    -- Last position
+    {
+        "mrcjkb/nvim-lastplace",
+        event = "VeryLazy",
+        init = function()
+            vim.g.nvim_lastplace = {
+                ignore_buftype = { 'quickfix', 'nofile', 'help' },
+                ignore_filetype = { 'gitcommit', 'gitrebase', 'svn', 'hgcommit' },
+                open_folds = true,
+            }
+        end,
+    },
+
+    {
+        'notomo/gesture.nvim',
+        event = "VeryLazy",
+        init = function()
+            require("user.plugins.gesture")
+        end
     }
 }

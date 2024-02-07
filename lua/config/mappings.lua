@@ -376,7 +376,7 @@ M.telescope = {
         ["<leader>fo"]     = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
         ["<leader>fk"]     = { "<cmd> Telescope keymaps <CR>", "Find key mappings" },
         ["<leader>fp"]     = { "<cmd> Telescope project <CR>", "Find projects" },
-        -- ["<leader>fs"]     = { "<cmd> Telescope menu Sessions <CR>", "Find sessions" },
+        ["<leader>fs"]     = { "<cmd> Telescope neovim-project discover <CR>", "Find project" },
         ["<leader>fb"]     = { "<cmd> Telescope file_browser <CR>", "Find browser" },
         ["<leader>fh"]     = { "<cmd> Telescope highlights <CR>", "Find highlights" },
         ["<leader>f<Tab>"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
@@ -932,15 +932,15 @@ M.dropbar = {
     }
 }
 
-M.session = {
-    n =
-    {
-        ["<leader>fs"] = { "<cmd> SessionManager load_session <CR>", "Load sessions" },
-        ["<leader>as"] = { "<cmd> SessionManager save_current_session <CR>", "Save current session" },
-        ["<leader>ds"] = { "<cmd> SessionManager delete_session <CR>", "Delete session" },
-    }
-
-}
+-- M.session = {
+--     n =
+--     {
+--         ["<leader>fs"] = { "<cmd> SessionManager load_session <CR>", "Load sessions" },
+--         ["<leader>as"] = { "<cmd> SessionManager save_current_session <CR>", "Save current session" },
+--         ["<leader>ds"] = { "<cmd> SessionManager delete_session <CR>", "Delete session" },
+--     }
+--
+-- }
 
 M.diffview = {
     n = {
@@ -948,6 +948,49 @@ M.diffview = {
         ["<leader>gdc"] = { "<cmd> DiffviewClose <CR>", "Diff view close" },
         ["<leader>gdd"] = { "<cmd> DiffviewFileHistory <CR>", "Open history" },
         ["<leader>gdf"] = { "<cmd> DiffviewFileHistory %<CR>", "Current History" },
+    }
+}
+
+M.gestures = {
+    n = {
+        ["<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+        ["2-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+        ["3-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+        ["4-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+        ["<RightDrag>"] = {
+            function()
+                require("gesture").draw()
+            end,
+            "Draw by mouse",
+            opts = { silent = true }
+        },
+        ["<RightRelease>"] = {
+            function()
+                require("gesture").finish()
+            end,
+            "Finish to draw by mouse",
+            opts = { silent = true }
+        },
+    },
+    v = {
+        ["<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+        ["2-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+        ["3-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+        ["4-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+        ["<RightDrag>"] = {
+            function()
+                require("gesture").draw()
+            end,
+            "Draw by mouse",
+            opts = { silent = true }
+        },
+        ["<RightRelease>"] = {
+            function()
+                require("gesture").finish()
+            end,
+            "Finish to draw by mouse",
+            opts = { silent = true }
+        },
     }
 }
 

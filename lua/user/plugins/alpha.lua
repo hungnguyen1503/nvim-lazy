@@ -73,7 +73,7 @@ local options = {
             button("f", "  Find File  ", ":Telescope find_files<CR>"),
             button("o", "  Recent File  ", ":Telescope oldfiles<CR>"),
             button("w", "  Find Word  ", ":Telescope live_grep<CR>"),
-            button("p", "  Find Project  ", ":Telescope project<CR>"),
+            button("p", "  Find Project  ", ":Telescope neovim-project discover<CR>"),
             button("m", "  Sessions", ":SessionManager load_session<CR>"),
             button("b", "  Bookmarks  ", ":Telescope marks<CR>"),
             button("t", "  Themes  ", ":Telescope themes<CR>"),

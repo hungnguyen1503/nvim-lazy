@@ -23,6 +23,7 @@ illuminate.configure({
         "fugitive",
         "alpha",
         "NvimTree",
+        "neo-tree",
         "packer",
         "neogitstatus",
         "Trouble",

@@ -4,7 +4,7 @@ local options = {
     mouse          = "a",
     mousemodel     = "extend",
     mousemoveevent = true,
-    completeopt    = { "menu", "menuone", "noselect" },
+    -- completeopt    = { "menu", "menuone", "noselect" },
 
     -- Tab
     smarttab       = true,
@@ -30,7 +30,7 @@ local options = {
     smartcase      = true,
     ignorecase     = true,
     fileencoding   = "utf-8",
-    textwidth      = 0,
+    textwidth      = 120,
     cursorline     = true,
 
     -- Limited height box suggestion
@@ -38,7 +38,7 @@ local options = {
     cmdheight      = 1,
 
     -- Time to update nvim, delay between multi shortcut
-    updatetime     = 1000,
+    updatetime     = 100,
     timeoutlen     = 750,
 
     -- Wrap text
@@ -58,7 +58,7 @@ local options = {
     splitright     = true,
 
     -- Scroll with offset
-    scrolloff      = 0, -- minimal number of screen lines to keep above and below the cursor.
+    scrolloff      = 8, -- minimal number of screen lines to keep above and below the cursor.
     sidescrolloff  = 8, -- minimal number of screen lines to keep left and right of the cursor.
 
     -- Color and font

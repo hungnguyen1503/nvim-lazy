@@ -74,28 +74,28 @@ local options = {
                 preview_width = 0.55
             },
         },
-        project = {
-            display_type = "full",
-            theme = 'dropdown',
-            order_by = "asc",
-            search_by = "title",
-            sync_with_nvim_tree = false, -- default false
-        },
+        -- project = {
+        --     display_type = "full",
+        --     theme = 'dropdown',
+        --     order_by = "asc",
+        --     search_by = "title",
+        --     sync_with_nvim_tree = false, -- default false
+        -- },
         menu = {
             Sessions = {
                 items = {
-                    { "Load session", "SessionManager load_session" },
-                    { "Load last session", "SessionManager load_last_session" },
+                    { "Load session",             "SessionManager load_session" },
+                    { "Load last session",        "SessionManager load_last_session" },
                     { "Load current dir session", "SessionManager load_current_dir_session" },
-                    { "Save current session", "SessionManager save_current_session" },
-                    { "Delete session", "SessionManager delete_session" },
+                    { "Save current session",     "SessionManager save_current_session" },
+                    { "Delete session",           "SessionManager delete_session" },
                 },
             },
             default = {
                 items = {
-                    { "Split window vertically", "vsplit" },
+                    { "Split window vertically",   "vsplit" },
                     { "Split window horizontally", "split" },
-                    { "Write", "w" },
+                    { "Write",                     "w" },
                 },
             },
         },
@@ -109,10 +109,11 @@ local options = {
         },
     },
 
-    extensions_list = { "notify", "project", "file_browser", "ui-select", "menu", "dap" },
+    extensions_list = { "notify", --[[ "project", ]] "file_browser", "ui-select", "menu", "dap" },
 }
 
 telescope.setup(options)
+
 -- load extensions
 pcall(function()
     for _, ext in ipairs(options.extensions_list) do
