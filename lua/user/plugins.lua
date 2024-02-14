@@ -843,7 +843,7 @@ return {
 
     {
         'notomo/gesture.nvim',
-        event = "VeryLazy",
+        enabled = false,
         init = function()
             require("user.plugins.gesture")
         end

@@ -38,7 +38,7 @@ local options = {
     cmdheight      = 1,
 
     -- Time to update nvim, delay between multi shortcut
-    updatetime     = 100,
+    updatetime     = 500,
     timeoutlen     = 750,
 
     -- Wrap text

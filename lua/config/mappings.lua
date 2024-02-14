@@ -375,8 +375,8 @@ M.telescope = {
         -- ["<leader>ft"]     = { "<cmd> Telescope help_tags <CR>", "help page" },
         ["<leader>fo"]     = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
         ["<leader>fk"]     = { "<cmd> Telescope keymaps <CR>", "Find key mappings" },
-        ["<leader>fp"]     = { "<cmd> Telescope project <CR>", "Find projects" },
-        ["<leader>fs"]     = { "<cmd> Telescope neovim-project discover <CR>", "Find project" },
+        -- ["<leader>fp"]     = { "<cmd> Telescope project <CR>", "Find projects" },
+        ["<leader>fp"]     = { "<cmd> Telescope neovim-project discover <CR>", "Find project" },
         ["<leader>fb"]     = { "<cmd> Telescope file_browser <CR>", "Find browser" },
         ["<leader>fh"]     = { "<cmd> Telescope highlights <CR>", "Find highlights" },
         ["<leader>f<Tab>"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
@@ -951,47 +951,47 @@ M.diffview = {
     }
 }
 
-M.gestures = {
-    n = {
-        ["<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
-        ["2-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
-        ["3-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
-        ["4-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
-        ["<RightDrag>"] = {
-            function()
-                require("gesture").draw()
-            end,
-            "Draw by mouse",
-            opts = { silent = true }
-        },
-        ["<RightRelease>"] = {
-            function()
-                require("gesture").finish()
-            end,
-            "Finish to draw by mouse",
-            opts = { silent = true }
-        },
-    },
-    v = {
-        ["<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
-        ["2-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
-        ["3-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
-        ["4-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
-        ["<RightDrag>"] = {
-            function()
-                require("gesture").draw()
-            end,
-            "Draw by mouse",
-            opts = { silent = true }
-        },
-        ["<RightRelease>"] = {
-            function()
-                require("gesture").finish()
-            end,
-            "Finish to draw by mouse",
-            opts = { silent = true }
-        },
-    }
-}
+-- M.gestures = {
+--     n = {
+--         ["<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+--         ["2-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+--         ["3-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+--         ["4-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+--         ["<RightDrag>"] = {
+--             function()
+--                 require("gesture").draw()
+--             end,
+--             "Draw by mouse",
+--             opts = { silent = true }
+--         },
+--         ["<RightRelease>"] = {
+--             function()
+--                 require("gesture").finish()
+--             end,
+--             "Finish to draw by mouse",
+--             opts = { silent = true }
+--         },
+--     },
+--     v = {
+--         ["<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+--         ["2-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+--         ["3-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+--         ["4-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
+--         ["<RightDrag>"] = {
+--             function()
+--                 require("gesture").draw()
+--             end,
+--             "Draw by mouse",
+--             opts = { silent = true }
+--         },
+--         ["<RightRelease>"] = {
+--             function()
+--                 require("gesture").finish()
+--             end,
+--             "Finish to draw by mouse",
+--             opts = { silent = true }
+--         },
+--     }
+-- }
 
 return M
