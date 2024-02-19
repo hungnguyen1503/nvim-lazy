@@ -98,7 +98,7 @@ local options = {
         -- [focused and unfocused]. eg: { '|', '|' }
         separator_style = "thin", -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' }
         enforce_regular_tabs = true,
-        always_show_bufferline = true,
+        always_show_bufferline = false,
         hover = {
             enabled = true,
             delay = 200,

@@ -101,6 +101,7 @@ autocmd("User", {
             vim.cmd("Alpha")
             vim.cmd(event.buf .. "bwipeout")
             vim.opt.spell = false
+            vim.opt.showtabline = 2
         end
     end,
 })
