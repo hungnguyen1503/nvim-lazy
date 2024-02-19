@@ -178,7 +178,7 @@ M.move = {
     v = {
         ["<A-j>"] = { ":MoveBlock(1)<CR>", "Move block line down", opts = { silent = true } },
         ["<A-k>"] = { ":MoveBlock(-1)<CR>", "Move blockline up", opts = { silent = true } },
-        ["<A-h>"] = { ":MoveHBlock(-1)<CR>", "Move blockline left", opts = { silent = true } },
+        ["<A-h>"] = { ":MoveHBlock(-1)<CR>", "Move blockline,left", opts = { silent = true } },
         ["<A-l>"] = { ":MoveHBlock(1)<CR>", "Move blockline right", opts = { silent = true } },
     }
 }

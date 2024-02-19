@@ -10,6 +10,7 @@ local options = {
         "D:\\REDACTED\\REDACTED-ra-test",
         "D:\\REDACTED\\peaks",
         "D:\\CodeTest\\TestC",
+        "D:\\REDACTED\\wikijs",
         "~\\AppData\\Local\\nvim"
     },
     -- Path to store history and sessions
@@ -30,6 +31,7 @@ local options = {
             "gitrebase",
             "qf",
             "toggleterm",
+            "alpha",
         },
     },
 }
