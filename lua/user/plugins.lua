@@ -805,9 +805,12 @@ return {
 
     {
         'notomo/gesture.nvim',
-        enabled = false,
         init = function()
-            require("user.plugins.gesture")
+            if vim.fn.has("win32") == 1 then
+                -- Don't use this plugin in Window OS
+            else
+                require("user.plugins.gesture")
+            end
         end
     },
 }
