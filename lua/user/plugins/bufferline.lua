@@ -14,9 +14,10 @@ local options = {
         close_command = function(bufnum)
             require('bufdelete').bufdelete(bufnum, true)
         end,
-        right_mouse_command = "bdelete! %d",
+        middle_mouse_command = "bdelete! %d",
         left_mouse_command = "buffer %d", -- can be a string | function, | false see "Mouse actions"
-        middle_mouse_command = "BufferLineTogglePin", -- can be a string | function, | false see "Mouse actions"
+        right_mouse_command = "BufferLineTogglePin", -- can be a string | function, | false see "Mouse actions"
+
         indicator = {
             icon = '▎', -- this should be omitted if indicator style is not 'icon'
             style = 'icon', --| 'underline' | 'none'
@@ -50,18 +51,18 @@ local options = {
         -- NOTE: this will be called a lot so don't do any heavy processing here
         custom_filter = function(buf_number, buf_numbers)
             -- filter out filetypes you don't want to see
-            if vim.bo[buf_number].filetype ~= "<i-dont-want-to-see-this>" then
+            if vim.bo[buf_number].filetype ~= "alpha" then
                 return true
             end
             -- filter out by buffer name
-            if vim.fn.bufname(buf_number) ~= "<buffer-name-I-dont-want>" then
-                return true
-            end
+            -- if vim.fn.bufname(buf_number) ~= "<buffer-name-I-dont-want>" then
+            --     return true
+            -- end
             -- filter out based on arbitrary rules
             -- e.g. filter out vim wiki buffer from tabline in your work repo
-            if vim.fn.getcwd() == "<work-repo>" and vim.bo[buf_number].filetype ~= "wiki" then
-                return true
-            end
+            -- if vim.fn.getcwd() == "<work-repo>" and vim.bo[buf_number].filetype ~= "wiki" then
+            --     return true
+            -- end
             -- filter out by it's index number in list (don't show first buffer)
             if buf_numbers[1] ~= buf_number then
                 return true
@@ -69,8 +70,14 @@ local options = {
         end,
         offsets = {
             {
-                filetype = "NeoTree",
+                filetype = "neo-tree",
                 text = "File Explorer", -- | function ,
+                text_align = "center",  -- "left" | "center" | "right"
+                separator = true,
+            },
+            {
+                filetype = "Outline",
+                text = "Outline", -- | function ,
                 text_align = "center",  -- "left" | "center" | "right"
                 separator = true,
             }
@@ -98,7 +105,7 @@ local options = {
         -- [focused and unfocused]. eg: { '|', '|' }
         separator_style = "thin", -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' }
         enforce_regular_tabs = true,
-        always_show_bufferline = false,
+        always_show_bufferline = true,
         hover = {
             enabled = true,
             delay = 200,
