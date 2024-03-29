@@ -171,9 +171,8 @@ local options = {
             ["v"]             = "open_vsplit",
             ["t"]             = "open_tabnew",
             ["w"]             = "open_with_window_picker",
-            ["C"]             = "close_node",
             ["<Tab>"]         = "close_node",
-            ["z"]             = "close_all_nodes",
+            ["Z"]             = "close_all_nodes",
             ["a"]             = { "add", config = { show_path = "none" } }, -- "none", "relative", "absolute"
             ["A"]             = "add_directory",                            -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
             ["d"]             = "delete",
@@ -191,14 +190,16 @@ local options = {
         }
     },
     nesting_rules = {},
-    -- event_handlers = {
-    --     {
-    --         event = "neo_tree_buffer_enter",
-    --         handler = function()
-    --             vim.wo.relativenumber = true
-    --         end,
-    --     },
-    -- },
+    event_handlers = {
+        {
+            event = "neo_tree_popup_input_ready",
+            ---@param args { bufnr: integer, winid: integer }
+            handler = function(args)
+                vim.cmd("stopinsert")
+                vim.keymap.set("i", "<esc>", vim.cmd.stopinsert, { noremap = true, buffer = args.bufnr })
+            end,
+        },
+    },
     filesystem = {
         filtered_items = {
             visible = true, -- when true, they will just be displayed differently than normal items

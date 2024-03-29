@@ -23,7 +23,7 @@ M.general = {
         ["<C-w>"] = { "<C-\\><C-O>w", opts = { silent = true }, "Move words forward" },
         ["<C-b>"] = { "<C-\\><C-O>b", opts = { silent = true }, "Move words backward" },
         ["<C-e>"] = { "<C-\\><C-O>e<C-O><Right>", opts = { silent = true }, "Forword to end of word" },
-        ["<C-z>"] = { "<Left><C-\\><C-O>ge<Right>", opts = { silent = true }, "Backward to end of word" },
+        ["<C-z>"] = { "<C-g>u<Esc>[s1z=`]a<C-g>u", opts = { silent = true }, "Correct ltest misspelled word" },
         -- New line
         -- TODO: Add insert new line abow cursor
         ["<C-o>"] = { "<C-\\><C-O>o", opts = { silent = true }, "Insert new line below cursor" },
@@ -78,6 +78,8 @@ M.general = {
             "Save file and source file in normal mode",
             opts = { silent = true },
         },
+
+        ["<C-z>"] = { "[s1z=", opts = { silent = true }, "Correct ltest misspelled word" },
         -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
         -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
         -- empty mode is same as using <cmd> :map
@@ -951,47 +953,9 @@ M.diffview = {
     }
 }
 
--- M.gestures = {
---     n = {
---         ["<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
---         ["2-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
---         ["3-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
---         ["4-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
---         ["<RightDrag>"] = {
---             function()
---                 require("gesture").draw()
---             end,
---             "Draw by mouse",
---             opts = { silent = true }
---         },
---         ["<RightRelease>"] = {
---             function()
---                 require("gesture").finish()
---             end,
---             "Finish to draw by mouse",
---             opts = { silent = true }
---         },
---     },
---     v = {
---         ["<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
---         ["2-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
---         ["3-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
---         ["4-<RightMouse>"] = { "<Nop>", "Disable right mouse click" },
---         ["<RightDrag>"] = {
---             function()
---                 require("gesture").draw()
---             end,
---             "Draw by mouse",
---             opts = { silent = true }
---         },
---         ["<RightRelease>"] = {
---             function()
---                 require("gesture").finish()
---             end,
---             "Finish to draw by mouse",
---             opts = { silent = true }
---         },
---     }
--- }
-
+M.lauch = {
+    n = {
+        ["<leader>ll"] = { "<cmd> DiffviewOpen <CR>", "Diff view open" },
+    }
+}
 return M

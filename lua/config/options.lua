@@ -69,6 +69,7 @@ local options = {
     wildmenu       = true,
     synmaxcol      = 200,
     spelllang      = 'en_us',
+    -- spellfile      = "~/AppData/Local/nvim/spell/en.utf-8.add",
     spell          = false,
     inccommand     = "split", -- show the effects of a search / replace in a live preview window
 }

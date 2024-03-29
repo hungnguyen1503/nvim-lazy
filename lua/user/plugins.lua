@@ -45,7 +45,6 @@ return {
 
     {
         'nvim-neo-tree/neo-tree.nvim',
-        tag = "3.14",
         cmd = "Neotree",
         config = function()
             require("user.plugins.neotree")
