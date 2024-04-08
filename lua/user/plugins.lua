@@ -800,10 +800,13 @@ return {
     {
         "andrewferrier/debugprint.nvim",
         event = "VeryLazy",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        opts = {
-            create_keymaps = true
+        dependencies = {
+            "echasnovski/mini.nvim", -- Needed to enable :ToggleCommentDebugPrints for NeoVim <= 0.9
+            "nvim-treesitter/nvim-treesitter" -- Needed to enable treesitter for NeoVim 0.8
         },
+        config = function()
+            require("user.plugins.debugprint")
+        end,
     },
 
     -- TODO: investigate to using the plugins for remote editor
