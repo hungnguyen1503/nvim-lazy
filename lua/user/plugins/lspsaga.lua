@@ -91,13 +91,13 @@ saga.setup({
         }
     },
     outline = {
-        enable = false,
-        layout = 'float',
+        enable = true,
+        layout = 'normal',
         win_position = 'right',
-        win_width = 60,
+        win_width = 50,
         auto_preview = true,
         detail = true,
-        auto_close = true,
+        auto_close = false,
         close_after_jump = false,
         max_height = 0.7,
         left_width = 0.25,
