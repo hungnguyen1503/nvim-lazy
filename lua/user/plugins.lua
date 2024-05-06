@@ -551,7 +551,6 @@ return {
     -- LSP config manager
     {
         'neovim/nvim-lspconfig',
-        ft = { "lua", "python", "c", "cpp", "bash", "sh", "cmake" },
         config = function()
             require("user.plugins.lspconfig")
             require("user.plugins.lspserver")
@@ -757,44 +756,6 @@ return {
         config = function()
             require("user.plugins.launch")
         end
-    },
-
-    {
-        "nvim-neorg/neorg",
-        build = ":Neorg sync-parsers", -- It should be enable after frist installation.
-        dependencies = {
-            "nvim-lua/plenary.nvim"
-        },
-        event = "VeryLazy",
-        opts = {
-            load = {
-                ["core.defaults"]              = {}, -- Loads default behaviour.
-                ["core.mode"]                  = {}, -- Loads default behaviour.
-                ["core.concealer"]             = {
-                    config = {
-                        folds = false
-                    }
-                }, -- Adds pretty icons to your documents.
-                ["core.integrations.nvim-cmp"] = {},
-                ["core.completion"]            = {
-                    config = {
-                        engine = "nvim-cmp",
-                    },
-                },
-                -- INFO: This configuration will be added in nvim > 0.1.x
-                -- ["core.ui.calendar"]           = {},
-                ['core.summary']               = {},
-                ["core.syntax"]                = {}, -- Handles interaction for syntax files for code blocks.
-                ["core.dirman"]                = {   -- Manages Neorg workspaces.
-                    config = {
-                        workspaces = {
-                            notes = "~/notes",
-                            REDACTED = "D://REDACTED"
-                        },
-                    },
-                },
-            },
-        },
     },
 
     {
