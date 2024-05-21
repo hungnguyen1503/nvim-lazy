@@ -13,6 +13,7 @@ local options = {
     softtabstop    = 4,
     expandtab      = true,
     list           = true,
+    shiftround     = true,
 
     -- Fold
     -- fillchars      = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]],
@@ -38,8 +39,11 @@ local options = {
     cmdheight      = 1,
 
     -- Time to update nvim, delay between multi shortcut
-    updatetime     = 500,
-    timeoutlen     = 750,
+    updatetime     = 300,
+    timeoutlen     = 500,
+
+    -- Auto load the file when modified externally
+    autoread = true,
 
     -- Wrap text
     wrap           = false,
