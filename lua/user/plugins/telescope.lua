@@ -3,19 +3,17 @@ local present, telescope = pcall(require, "telescope")
 if not present then
     return
 end
+-- Clone the default Telescope configuration
+local vimgrep_arguments = { unpack(require("telescope.config").values.vimgrep_arguments) }
+-- Search in hidden/dot files.
+table.insert(vimgrep_arguments, "--hidden")
+-- Do not search in the `.git` directory.
+table.insert(vimgrep_arguments, "--glob")
+table.insert(vimgrep_arguments, "!**/.git/*")
 
 local options = {
     defaults = {
-        vimgrep_arguments = {
-            "rg",
-            "-L",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-        },
+        vimgrep_arguments = vimgrep_arguments,
         -- wrap_results = "true",
         shorten_path = true,
         prompt_prefix = " ",
@@ -109,7 +107,7 @@ local options = {
         },
     },
 
-    extensions_list = { "notify", --[[ "project", ]] "file_browser", "ui-select", "menu", "dap" },
+    extensions_list = { "notify", --[[ "project", ]] "file_browser", "ui-select", "menu", "dap", "fzf" },
 }
 
 telescope.setup(options)
