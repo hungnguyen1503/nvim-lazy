@@ -24,12 +24,6 @@ local options = {
     indent                = { enable = true },
     matchup               = { enable = true },
     endwise               = { enable = true },
-    autotag               = {
-        enable = true,
-        enable_rename = true,
-        enable_close = true,
-        enable_close_on_slash = false,
-    },
     textobjects           = {
         -- NOTE: Build in text objects.
         -- @block.inner

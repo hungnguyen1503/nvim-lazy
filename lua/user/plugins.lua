@@ -156,15 +156,6 @@ return {
         end,
     },
 
-    -- Improve yank
-    {
-        'gbprod/yanky.nvim',
-        lazy = false,
-        config = function()
-            require("user.plugins.yanky")
-        end
-    },
-
     -- Quick edit parentheses
     {
         'kylechui/nvim-surround',
@@ -632,6 +623,8 @@ return {
     },
 
     -- Tabnine
+    -- INFO: This plugin will use a significant performance.
+    -- We should condsider this plugin if your device doesn't have enough RAM.
     {
         'tzachar/cmp-tabnine',
         -- INFO: The build configuration shall be installed manually on Windows

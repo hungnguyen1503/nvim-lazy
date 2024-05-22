@@ -796,19 +796,6 @@ M.dap = {
     }
 }
 
-M.yanky = {
-    n = {
-        ["y"] = { "<Plug>(YankyYank)", "Preserve cursor position on Yank" },
-        ["p"] = { "<Plug>(YankyPutAfter)", "Yank put after" },
-        ["P"] = { "<Plug>(YankyPutBefore)", "Yank put after" },
-    },
-    x = {
-        ["y"] = { "<Plug>(YankyYank)", "Preserve cursor position on Yank" },
-        ["p"] = { "<Plug>(YankyPutAfter)", "Yank put after" },
-        ["P"] = { "<Plug>(YankyPutBefore)", "Yank put after" },
-    },
-}
-
 M.flash = {
     n = {
         ["<leader>j"] = {
