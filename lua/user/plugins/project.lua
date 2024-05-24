@@ -16,6 +16,7 @@ if vim.fn.has("win32") == 1 then
 else
     project_dir = {
         "~/REDACTED/REDACTED/",
+        "~/REDACTED/wikijs/",
         "~/data2/hungnguyen/neovim/nvim-lazy/"
     }
 end
