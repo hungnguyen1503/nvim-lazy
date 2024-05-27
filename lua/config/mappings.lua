@@ -929,4 +929,57 @@ M.lauch = {
         ["<leader>ll"] = { "<cmd> DiffviewOpen <CR>", "Diff view open" },
     }
 }
+
+M.neoscroll = {
+    n = {
+        ["<C-u>"] = {
+            function ()
+                require('neoscroll').ctrl_u({timeout = 350; easing = 'cubic'})
+            end,
+            "Scroll Up with U"
+        },
+        ["<C-d>"] = {
+            function()
+                require('neoscroll').ctrl_d({ timeout = 350, easing = 'cubic' })
+            end,
+            "Scroll Down with D"
+        },
+        ["<C-b>"] = {
+            function()
+                require('neoscroll').ctrl_b({ timeout = 400, easing = 'cubic' })
+            end,
+            "Scroll Backward with B"
+        },
+        ["<C-f>"] = {
+            function()
+                require('neoscroll').ctrl_f({ timeout = 400, easing = 'cubic' })
+            end,
+            "Scroll Forward with F"
+        },
+        ["<C-k>"] = {
+            function()
+                require('neoscroll').scroll( -0.25, { move_cursor = true, duration = 200, easing = 'sine' } )
+            end,
+            "Scroll Up with K"
+        },
+        ["<C-j>"] = {
+            function()
+                require('neoscroll').scroll( 0.25, { move_cursor = true, duration = 200, easing = 'sine' } )
+            end,
+            "Scroll Down with J"
+        },
+        ["<ScrollWheelUp>"] = {
+            function()
+                require('neoscroll').scroll( -0.25, { move_cursor = true, duration = 200, easing = 'sine' } )
+            end,
+            "Scroll Up with WheelUp"
+        },
+        ["<ScrollWheelDown>"] = {
+            function()
+                require('neoscroll').scroll( 0.25, { move_cursor = true, duration = 200, easing = 'sine' } )
+            end,
+            "Scroll Down with WheelDown"
+        }
+    }
+}
 return M
