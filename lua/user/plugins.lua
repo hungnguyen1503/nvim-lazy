@@ -78,7 +78,7 @@ return {
             require("user.plugins.dropbar")
         end,
     },
-
+ 
     -- Manage buffer
     {
         'akinsho/bufferline.nvim',
