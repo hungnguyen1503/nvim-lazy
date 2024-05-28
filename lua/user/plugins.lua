@@ -582,6 +582,16 @@ return {
         event = "VeryLazy",
     },
 
+    -- Lsp outline
+    {
+        "hedyhli/outline.nvim",
+        event = "VeryLazy",
+        cmd = { "Outline", "OutlineOpen" },
+        config = function()
+            require("user.plugins.outline")
+        end
+    },
+
     -- Display lsp progress loading
     {
         "j-hui/fidget.nvim", -- Display LSP status messages in a floating window

@@ -147,7 +147,7 @@ local options = {
         winblend = 0,
         -- Experimental feature that let's you edit the source content live
         -- in the preview window. Like VS Code's "peek editor".
-        live = false
+        live = true
     },
 
     -- These keymaps can be a string or a table for multiple keys.
@@ -186,8 +186,8 @@ local options = {
         -- Move down/up by one line and peek_location immediately.
         -- You can also use outline_window.auto_jump=true to do this for any
         -- j/k/<down>/<up>.
-        down_and_jump = '<C-j>',
-        up_and_jump = '<C-k>',
+        down_and_jump = '<A-j>',
+        up_and_jump = '<A-k>',
     },
 
     providers = {
@@ -216,7 +216,9 @@ local options = {
         -- You can use a custom function that returns the icon for each symbol kind.
         -- This function takes a kind (string) as parameter and should return an
         -- icon as string.
-        icon_fetcher = nil,
+        symbols = {
+            icon_fetcher = function(kind) return kind:sub(1, 1) end
+        },
         -- 3rd party source for fetching icons. Fallback if icon_fetcher returned
         -- empty string. Currently supported values: 'lspkind'
         icon_source = nil,

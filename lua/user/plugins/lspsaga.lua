@@ -91,7 +91,7 @@ saga.setup({
         }
     },
     outline = {
-        enable = true,
+        enable = false,
         layout = 'normal',
         win_position = 'right',
         win_width = 50,
