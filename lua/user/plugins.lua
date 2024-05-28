@@ -585,14 +585,10 @@ return {
         },
     },
 
-    -- Lsp outline
+    -- wb only current line
     {
-        "hedyhli/outline.nvim",
+        "yutkat/wb-only-current-line.nvim",
         event = "VeryLazy",
-        cmd = { "Outline", "OutlineOpen" },
-        config = function()
-            require("user.plugins.outline")
-        end
     },
 
     -- Display lsp progress loading

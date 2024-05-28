@@ -344,17 +344,11 @@ M.lspsaga = {
         ["<leader>gk"] = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Diagnostic jump previous" },
         ["<leader>ra"] = { "<cmd>Lspsaga rename<CR>", "Lsp rename" },
         ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Lsp code action" },
-        -- ["<leader>o"]  = { "<cmd>Lspsaga outline<CR>", "Lspsaga outline" },
+        ["<leader>o"]  = { "<cmd>Lspsaga outline<CR>", "Lspsaga outline" },
     },
     v = {
         ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Lsp code action" },
         ["<leader>ra"] = { "<cmd>Lspsaga rename<CR>", "Lsp rename" },
-    }
-}
-
-M.outline = {
-    n = {
-        ["<leader>o"] = { "<cmd>Outline<CR>", "Outline" }
     }
 }
 
