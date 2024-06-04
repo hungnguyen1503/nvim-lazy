@@ -131,7 +131,7 @@ local options = {
     prefills = {
         search = '',
         replacement = '',
-        filesFilter = '',
+        filesFilter = '*.{c,h,cpp}',
         flags = '',
     },
 

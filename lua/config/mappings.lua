@@ -198,9 +198,14 @@ M.fontsize = {
 
 M.trouble = {
     n = {
-        ['<leader>tb'] = { "<cmd>TroubleToggle<CR>", "Toggle trouble" },
-        ['<leader>tw'] = { "<cmd>TroubleToggle workspace_diagnostics<CR>", "Toggle workspace_diagnostics" },
-        ['<leader>td'] = { "<cmd>TroubleToggle document_diagnostics<CR>", "Toggle document_diagnostics" },
+        ['<leader>tb'] = {
+            "<cmd>Trouble diagnostics toggle<CR>",
+            "Toggle diagnostics trouble"
+        },
+        ['<leader>td'] = {
+            "<cmd>Trouble todo toggle<CR>",
+            "Toggle diagnostics trouble"
+        }
     }
 }
 
@@ -679,7 +684,7 @@ M.spider = {
             end,
             "Spider ge"
         },
-        ["ciw"] = { "c<cmd>lua require('spider').motion('e')<CR>", "Spider ge" }
+        ["cw"] = { "c<cmd>lua require('spider').motion('e')<CR>", "Spider ge" }
     },
     o = {
         ["w"] = {
@@ -706,7 +711,7 @@ M.spider = {
             end,
             "Spider ge"
         },
-        ["ciw"] = { "c<cmd>lua require('spider').motion('e')<CR>", "Spider ge" }
+        ["cw"] = { "c<cmd>lua require('spider').motion('e')<CR>", "Spider ge" }
     },
     x = {
         ["w"] = {

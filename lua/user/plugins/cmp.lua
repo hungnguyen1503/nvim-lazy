@@ -154,8 +154,7 @@ local options = {
         { name = "nvim_lsp_signature_help", priority = 7 },
         { name = "treesitter", priority = 6 },
         { name = "path", priority = 6 },
-        { name = "nvim_lua" },
-        { name = "neorg" },
+        { name = "lazydev", group_index = 0, },
     },
 }
 

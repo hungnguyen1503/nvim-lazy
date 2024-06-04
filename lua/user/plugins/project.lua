@@ -10,7 +10,6 @@ if vim.fn.has("win32") == 1 then
         "D:\\REDACTED\\REDACTED-ra-test",
         "D:\\REDACTED\\peaks",
         "D:\\CodeTest\\TestC",
-        "D:\\REDACTED\\wikijs",
         "~\\AppData\\Local\\nvim"
     }
 else
