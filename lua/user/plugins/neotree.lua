@@ -198,6 +198,13 @@ local options = {
         --         vim.keymap.set("i", "<esc>", vim.cmd.stopinsert, { noremap = true, buffer = args.bufnr })
         --     end,
         -- },
+        {
+            event = "file_opened",
+            handler = function(file_path)
+                --auto close
+                require("neo-tree.command").execute({ action = "close" })
+            end,
+        }
     },
     filesystem = {
         filtered_items = {
