@@ -623,15 +623,6 @@ M.hop = {
     }
 }
 
--- M.iconpicker = {
---     n = {
---         ["<leader>ip"] = { "<cmd>IconPickerNormal<CR>", "Icon picker in normal mode" },
---         ["<leader>ii"] = { "<cmd>IconPickerInsert<CR>", " Yank the selected icon into register" },
---     },
---     i = {
---         ["<A-i>"] = { "<cmd>IconPickerInsert<CR>", "Icon picker in insert mode" },
---     }
--- }
 M.nerdy = {
     n = {
         ["<leader>ip"] = { "<cmd>Nerdy<CR>", "Icon picker in normal mode" }
@@ -754,7 +745,6 @@ M.replace = {
 }
 
 M.dap = {
-    -- plugin = true,
     n = {
         -- ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Add breakpoint at line" },
         -- ["<leader>dr"]  = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
@@ -855,47 +845,6 @@ M.duplicate = {
     }
 }
 
--- M.debugprint = {
---     n = {
---         ["<leader>dp"] = {
---             function()
---                 return require('debugprint').debugprint()
---             end,
---             opts = { expr = true },
---             "Printf debug below",
---         },
---         ["<leader>dP"] = {
---             function()
---                 return require('debugprint').debugprint({ above = true })
---             end,
---             opts = { expr = true },
---             "Printf debug above",
---         },
---         ["<leader>dv"] = {
---             function()
---                 return require('debugprint').debugprint({ variable = true })
---             end,
---             opts = { expr = true },
---             "Printf varialbe below",
---         },
---         ["<leader>dV"] = {
---             function()
---                 return require('debugprint').debugprint({ variable = true, above = true })
---             end,
---             opts = { expr = true },
---             "Printf varialbe above",
---         },
---         ["<leader>do"] = {
---             function()
---                 return require('debugprint').debugprint({ motion = true })
---             end,
---             opts = { expr = true },
---             "Optional pending",
---         },
---         ["<leader>da"] = { "<cmd>DeleteDebugPrints<CR>", opts = { expr = true }, "Delete all printf debug" },
---     },
--- }
-
 M.dropbar = {
     n = {
         ["<leader>ww"] = {
@@ -907,28 +856,13 @@ M.dropbar = {
     }
 }
 
--- M.session = {
---     n =
---     {
---         ["<leader>fs"] = { "<cmd> SessionManager load_session <CR>", "Load sessions" },
---         ["<leader>as"] = { "<cmd> SessionManager save_current_session <CR>", "Save current session" },
---         ["<leader>ds"] = { "<cmd> SessionManager delete_session <CR>", "Delete session" },
---     }
---
--- }
-
 M.diffview = {
     n = {
         ["<leader>gdo"] = { "<cmd> DiffviewOpen <CR>", "Diff view open" },
         ["<leader>gdc"] = { "<cmd> DiffviewClose <CR>", "Diff view close" },
         ["<leader>gdd"] = { "<cmd> DiffviewFileHistory <CR>", "Open history" },
         ["<leader>gdf"] = { "<cmd> DiffviewFileHistory %<CR>", "Current History" },
-    }
-}
-
-M.lauch = {
-    n = {
-        ["<leader>ll"] = { "<cmd> DiffviewOpen <CR>", "Diff view open" },
+        ["<leader>ll"]  = { "<cmd> DiffviewOpen <CR>", "Diff view open" },
     }
 }
 
@@ -1038,10 +972,17 @@ M.neoscroll = {
 M.GrugFar = {
     n = {
         ["<leader>fs"] = {
-            function ()
+            function()
                 require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>") } })
             end,
-            "Search and Replace Word in Visual mode" },
+            "Search and Replace Current Word in Normal mode"
+        },
+        ["<leader>ss"] = {
+            function()
+                require('grug-far').grug_far({ prefills = { flags = vim.fn.expand("%") } })
+            end,
+            "Search and Replace Word in Normal mode"
+        },
     },
 
     x = {
@@ -1049,7 +990,14 @@ M.GrugFar = {
             function ()
                 require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>") } })
             end,
-            "Search and Replace Word in Visual mode" },
+            "Search and Replace Current Word in Visual mode"
+        },
+        ["<leader>ss"] = {
+            function()
+                require('grug-far').grug_far({ prefills = { flags = vim.fn.expand("%") } })
+            end,
+            "Search and Replace Word in Visual mode"
+        },
     },
 }
 

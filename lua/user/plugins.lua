@@ -72,13 +72,6 @@ return {
         end,
     },
 
-    {
-        'Bekaboo/dropbar.nvim',
-        config = function()
-            require("user.plugins.dropbar")
-        end,
-    },
- 
     -- Manage buffer
     {
         'akinsho/bufferline.nvim',
@@ -267,15 +260,6 @@ return {
         end,
     },
 
-    -- Comment box
-    {
-        'LudoPinelli/comment-box.nvim',
-        event = "VeryLazy",
-        config = function()
-            require("user.plugins.comment-box")
-        end
-    },
-
     -- Duplicate
     {
         "hinell/duplicate.nvim",
@@ -317,20 +301,6 @@ return {
     },
 
     -- Icon picker
-    {
-        'ziontee113/icon-picker.nvim',
-        event = "VeryLazy",
-        cmd = {
-            "PickEverything",
-            "IconPickerNormal",
-            "PickEverythingInsert",
-            'IconPickerInsert',
-            'IconPickerYank',
-        },
-        config = function()
-            require("user.plugins.icon-picker")
-        end
-    },
     {
         '2kabhishek/nerdy.nvim',
         cmd = 'Nerdy',
@@ -745,21 +715,6 @@ return {
         config = function()
             require("user.plugins.debugprint")
         end,
-    },
-
-    -- TODO: investigate to using the plugins for remote editor
-    {
-        "amitds1997/remote-nvim.nvim",
-        event = "VeryLazy",
-        version = "*", -- This keeps it pinned to semantic releases
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-            -- This would be an optional dependency eventually
-            "nvim-telescope/telescope.nvim",
-        },
-        config = true, -- This calls the default setup(); make sure to call it
     },
 
     -- Escape without getting delay when typing in insert mode
