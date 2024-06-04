@@ -16,7 +16,7 @@ local options = {
         top    = 2, -- default 0
         bottom = 3, -- default 0
         left   = 2, -- default 0
-        right  = 8, -- default 0
+        right  = 2, -- default 0
     },
 
     sort_mru = true, -- Sort buffers by most recently used (true or false). Default false
