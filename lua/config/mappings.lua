@@ -1038,4 +1038,16 @@ M.neoscroll = {
         }
     }
 }
+
+M.GrugFar = {
+    n = {
+        ["A-f"] = { "<cmd>GrugFar<CR>", "Search and Replace Word" },
+    },
+    i = {
+        ["A-f"] = { "<cmd>GrugFar<CR>", "Search and Replace Word" },
+    },
+    x = {
+        ["A-f"] = { "<cmd>GrugFar<CR>", "Search and Replace Word" },
+    },
+}
 return M

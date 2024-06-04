@@ -142,7 +142,7 @@ local options = {
         maxHistoryLines = 10000,
 
         -- directory where to store history file
-        historyDir = vim.fn.stdpath('state') .. '/grug-far',
+        historyDir = vim.fn.stdpath('data') .. '/grug-far',
 
         -- configuration for when to auto-save history entries
         autoSave = {
