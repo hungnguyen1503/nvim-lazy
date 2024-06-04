@@ -576,12 +576,6 @@ return {
         },
     },
 
-    -- wb only current line
-    {
-        "yutkat/wb-only-current-line.nvim",
-        event = "VeryLazy",
-    },
-
     -- Lsp outline
     {
         "hedyhli/outline.nvim",

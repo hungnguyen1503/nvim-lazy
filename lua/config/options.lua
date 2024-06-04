@@ -31,7 +31,7 @@ local options = {
     smartcase      = true,
     ignorecase     = true,
     fileencoding   = "utf-8",
-    textwidth      = 120,
+    textwidth      = 200,
     cursorline     = true,
 
     -- Limited height box suggestion

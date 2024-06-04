@@ -156,15 +156,15 @@ local options = {
             nowait = true,
         },
         mappings = {
-            ["<space>"]       = {
-                "toggle_node",
-                nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
-            },
+            -- ["<space>"]       = {
+            --     "toggle_node",
+            --     nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
+            -- },
             ["<2-LeftMouse>"] = "open",
             -- ["<cr>"] = "open",
             ["<cr>"]          = "open_with_window_picker",
             ["<esc>"]         = "revert_preview",
-            ["P"]             = { "toggle_preview", config = { use_float = true } },
+            ["<space>"]       = { "toggle_preview", config = { use_float = true } },
             ["l"]             = "focus_preview",
             ["h"]             = "open_split",
             ["v"]             = "open_vsplit",
@@ -182,7 +182,7 @@ local options = {
             ["p"]             = "paste_from_clipboard",
             ["c"]             = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
             ["m"]             = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
-            ["q"]             = "close_window",
+            ["<esc>"]         = "close_window",
             ["R"]             = "refresh",
             ["?"]             = "show_help",
             ["F"]             = "clear_filter",
@@ -226,7 +226,7 @@ local options = {
         follow_current_file = {
             enabled = true,         -- This will find and focus the file in the active buffer every time
             -- the current file is changed while the tree is open.
-            leave_dirs_open = true, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+            leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
         -- time the current file is changed while the tree is open.
         group_empty_dirs = false,           -- when true, empty folders will be grouped together
@@ -266,7 +266,7 @@ local options = {
         follow_current_file = {
             enabled = true,         -- This will find and focus the file in the active buffer every time
             --              -- the current file is changed while the tree is open.
-            leave_dirs_open = true, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+            leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
         -- time the current file is changed while the tree is open.
         group_empty_dirs = true, -- when true, empty folders will be grouped together
