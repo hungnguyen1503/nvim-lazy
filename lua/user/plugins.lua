@@ -395,6 +395,13 @@ return {
         end,
     },
 
+    {
+        'MagicDuck/grug-far.nvim',
+        config = function()
+            require("user.plugins.grugfar")
+        end
+    },
+
     -- Code highlight
     {
         'nvim-treesitter/nvim-treesitter',

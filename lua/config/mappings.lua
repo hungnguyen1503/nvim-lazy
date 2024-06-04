@@ -679,7 +679,7 @@ M.spider = {
             end,
             "Spider ge"
         },
-        ["cw"] = { "c<cmd>lua require('spider').motion('e')<CR>", "Spider ge" }
+        ["ciw"] = { "c<cmd>lua require('spider').motion('e')<CR>", "Spider ge" }
     },
     o = {
         ["w"] = {
@@ -706,7 +706,7 @@ M.spider = {
             end,
             "Spider ge"
         },
-        ["cw"] = { "c<cmd>lua require('spider').motion('e')<CR>", "Spider ge" }
+        ["ciw"] = { "c<cmd>lua require('spider').motion('e')<CR>", "Spider ge" }
     },
     x = {
         ["w"] = {
@@ -733,7 +733,7 @@ M.spider = {
             end,
             "Spider ge"
         },
-        ["cw"] = { "c<cmd>lua require('spider').motion('e')<CR>", "Spider ge" }
+        ["ciw"] = { "c<cmd>lua require('spider').motion('e')<CR>", "Spider ge" }
     }
 }
 
