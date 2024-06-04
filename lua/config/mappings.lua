@@ -748,15 +748,6 @@ M.replace = {
     }
 }
 
-M.muren = {
-    n = {
-        ["<leader>mr"] = { "<cmd>MurenToggle<CR>", "Replace word" },
-    },
-    v = {
-        ["<leader>mr"] = { "<cmd>MurenToggle<CR>", "Replace word in range visual mode" },
-    },
-}
-
 M.dap = {
     -- plugin = true,
     n = {
@@ -1041,13 +1032,20 @@ M.neoscroll = {
 
 M.GrugFar = {
     n = {
-        ["A-f"] = { "<cmd>GrugFar<CR>", "Search and Replace Word" },
+        ["<leader>fs"] = {
+            function ()
+                require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>") } })
+            end,
+            "Search and Replace Word in Visual mode" },
     },
-    i = {
-        ["A-f"] = { "<cmd>GrugFar<CR>", "Search and Replace Word" },
-    },
+
     x = {
-        ["A-f"] = { "<cmd>GrugFar<CR>", "Search and Replace Word" },
+        ["<leader>fs"] = {
+            function ()
+                require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>") } })
+            end,
+            "Search and Replace Word in Visual mode" },
     },
 }
+
 return M

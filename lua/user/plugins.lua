@@ -367,34 +367,6 @@ return {
         end,
     },
 
-    -- Replace multiple different words in a file or multiple files
-    {
-        'AckslD/muren.nvim',
-        event = "VeryLazy",
-        cmd = {
-            "MurenToggle",
-            "MurenOpen",
-            "MurenFresh",
-            "MurenUnique"
-        },
-        config = function()
-            require("user.plugins.muren")
-        end
-    },
-
-    -- Search and replace single or visual words/lines
-    {
-        "roobert/search-replace.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("search-replace").setup({
-                -- optionally override defaults
-                default_replace_single_buffer_options = "gcI",
-                default_replace_multi_buffer_options = "egcI",
-            })
-        end,
-    },
-
     {
         'MagicDuck/grug-far.nvim',
         config = function()

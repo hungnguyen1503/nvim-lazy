@@ -54,7 +54,7 @@ local options = {
         qflist = { n = '<leader>q' },
         syncLocations = { n = '<leader>s' },
         syncLine = { n = '<leader>l' },
-        close = { n = '<leader>c' },
+        close = { n = 'q' },
         historyOpen = { n = '<leader>t' },
         historyAdd = { n = '<leader>a' },
         refresh = { n = '<leader>f' },
