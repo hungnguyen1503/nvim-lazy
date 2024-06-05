@@ -72,6 +72,13 @@ return {
         end,
     },
 
+    {
+        'Bekaboo/dropbar.nvim',
+        config = function()
+            require("user.plugins.dropbar")
+        end,
+    },
+
     -- Manage buffer
     {
         'akinsho/bufferline.nvim',
