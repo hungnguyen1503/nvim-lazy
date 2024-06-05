@@ -5,7 +5,6 @@ local config = require("core.utils").load_config()
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
 
-opt.clipboard = "unnamedplus"
 opt.cursorline = true
 
 -- Indenting

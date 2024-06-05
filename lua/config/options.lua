@@ -1,5 +1,4 @@
 local options = {
-    clipboard      = "unnamedplus",
     -- Configuration mouse usage
     mouse          = "a",
     mousemodel     = "extend",
@@ -84,6 +83,12 @@ vim.opt.syntax.maxlines = 120
 vim.g.mapleader = ","
 for k, v in pairs(options) do
     vim.opt[k] = v
+end
+
+if vim.fn.has("win32") == 1 then
+    vim.opt.clipboard = "unnamedplus"
+else
+    vim.opt.clipboard = "unnamed"
 end
 
 -- neovide
