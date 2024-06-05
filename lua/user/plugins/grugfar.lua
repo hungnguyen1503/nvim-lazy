@@ -8,7 +8,6 @@ local options = {
     -- prevents excesive searching
     debounceMs = 500,
 
-    -- minimum number of chars which will cause a search to happen
     -- prevents performance issues in larger dirs
     minSearchChars = 2,
 
@@ -132,7 +131,7 @@ local options = {
     prefills = {
         search = '',
         replacement = '',
-        filesFilter = '*.{c, h, cpp, lua}',
+        filesFilter = '',
         flags = '',
     },
 

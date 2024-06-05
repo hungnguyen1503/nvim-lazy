@@ -73,7 +73,7 @@ M.general = {
             "Save file in insert mode",
             opts = { silent = true },
         },
-        ["<leader>s"]  = {
+        ["<leader>ss"]  = {
             "<ESC>:w<CR>:source%<CR>",
             "Save file and source file in normal mode",
             opts = { silent = true },
@@ -976,9 +976,15 @@ M.GrugFar = {
             end,
             "Search and Replace Current Word in Normal mode"
         },
-        ["<leader>ss"] = {
+        ["<leader>sc"] = {
             function()
-                require('grug-far').grug_far({ prefills = { flags = vim.fn.expand("%") } })
+                require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>"), filesFilter = '*.{c, h, cpp}' } })
+            end,
+            "Search and Replace Word in Normal mode"
+        },
+        ["<leader>sl"] = {
+            function()
+                require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>"), filesFilter = '*.{lua}' } })
             end,
             "Search and Replace Word in Normal mode"
         },
@@ -990,12 +996,6 @@ M.GrugFar = {
                 require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>") } })
             end,
             "Search and Replace Current Word in Visual mode"
-        },
-        ["<leader>ss"] = {
-            function()
-                require('grug-far').grug_far({ prefills = { flags = vim.fn.expand("%") } })
-            end,
-            "Search and Replace Word in Visual mode"
         },
     },
 }

@@ -1,4 +1,4 @@
-local status_ok, saga = pcall(require, "saga")
+local status_ok, lspsaga = pcall(require, "lspsaga")
 if not status_ok then
     return
 end
@@ -145,4 +145,4 @@ local options = {
     },
 }
 
-saga.setup(options)
+lspsaga.setup(options)
