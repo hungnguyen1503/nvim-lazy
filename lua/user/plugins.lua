@@ -114,12 +114,20 @@ return {
         end,
     },
 
-    -- Yank bank to control the clipboard
+    -- -- Yank bank to control the clipboard
+    -- {
+    --     "ptdewey/yankbank-nvim",
+    --     config = function()
+    --         require("user.plugins.yankbank")
+    --     end,
+    -- },
+
     {
-        "ptdewey/yankbank-nvim",
+        'gbprod/yanky.nvim',
+        dependencies = "kkharji/sqlite.lua" ,
         config = function()
-            require("user.plugins.yankbank")
-        end,
+            require("user.plugins.yanky")
+        end
     },
 
     -- Git quick command

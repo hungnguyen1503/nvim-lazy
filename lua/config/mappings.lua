@@ -1000,9 +1000,14 @@ M.GrugFar = {
     },
 }
 
-M.yankbank = {
+M.yanky = {
     n = {
-        ["<leader>y"] = { "<cmd>YankBank<CR>", "Quick open buffer with review" },
+        ["<leader>yy"] = {
+            function()
+                require("telescope").extensions.yank_history.yank_history({})
+            end,
+            "Quick open buffer with review"
+        },
     }
 }
 
