@@ -858,11 +858,10 @@ M.dropbar = {
 
 M.diffview = {
     n = {
-        ["<leader>gdo"] = { "<cmd> DiffviewOpen <CR>", "Diff view open" },
-        ["<leader>gdc"] = { "<cmd> DiffviewClose <CR>", "Diff view close" },
-        ["<leader>gdd"] = { "<cmd> DiffviewFileHistory <CR>", "Open history" },
-        ["<leader>gdf"] = { "<cmd> DiffviewFileHistory %<CR>", "Current History" },
-        ["<leader>ll"]  = { "<cmd> DiffviewOpen <CR>", "Diff view open" },
+        ["<leader>do"] = { "<cmd> DiffviewOpen <CR>", "Diff view open" },
+        ["<leader>dc"] = { "<cmd> DiffviewClose <CR>", "Diff view close" },
+        ["<leader>dh"] = { "<cmd> DiffviewFileHistory <CR>", "Open history" },
+        ["<leader>df"] = { "<cmd> DiffviewFileHistory %<CR>", "Current History" },
     }
 }
 
