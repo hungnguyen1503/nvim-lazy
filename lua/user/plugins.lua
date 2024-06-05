@@ -107,6 +107,14 @@ return {
         end,
     },
 
+    -- Yank bank to control the clipboard
+    {
+        "ptdewey/yankbank-nvim",
+        config = function()
+            require("user.plugins.yankbank")
+        end,
+    },
+
     -- Git quick command
     {
         'kdheepak/lazygit.nvim',

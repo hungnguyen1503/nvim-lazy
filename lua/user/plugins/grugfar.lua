@@ -55,6 +55,7 @@ local options = {
         syncLocations = { n = '<leader>s' },
         syncLine = { n = '<leader>l' },
         close = { n = 'q' },
+        close = { n = '<ESC>' },
         historyOpen = { n = '<leader>t' },
         historyAdd = { n = '<leader>a' },
         refresh = { n = '<leader>f' },

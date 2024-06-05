@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-gitsigns.setup {
+local options = {
     signs                        = {
         -- NOTE: icon refer: ✹  ~
         add          = { hl = "GitSignsAdd", text = '▌', numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
@@ -56,3 +56,5 @@ gitsigns.setup {
         enable = false,
     },
 }
+
+gitsigns.setup(options)

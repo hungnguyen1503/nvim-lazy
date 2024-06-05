@@ -1,6 +1,9 @@
-local saga = require('lspsaga')
+local status_ok, saga = pcall(require, "saga")
+if not status_ok then
+    return
+end
 
-saga.setup({
+local options = {
     preview = {
         lines_above = 5,
         lines_below = 5,
@@ -26,7 +29,7 @@ saga.setup({
             split = 'h',
             tabe = 't',
             quit = { 'q', '<ESC>' },
-            close_in_preview = '<ESC>',
+            close_in_preview = { 'q', '<ESC>' },
         },
     },
     implement = {
@@ -43,8 +46,8 @@ saga.setup({
             vsplit = 'v',
             split = 'h',
             tabe = 't',
-            quit = 'q',
-            close = '<Esc>',
+            quit = { 'q', '<ESC>' },
+            close = { 'q', '<ESC>' },
         },
     },
     lightbulb = {
@@ -69,7 +72,7 @@ saga.setup({
         diagnostic_only_current = false,
         keys = {
             exec_action = 'o',
-            quit = 'q',
+            quit = { 'q', '<ESC>' },
             toggle_or_jump = '<CR>',
             quit_in_show = { 'q', '<ESC>' },
         },
@@ -85,7 +88,7 @@ saga.setup({
         project_max_width = 0.5,
         project_max_height = 0.5,
         keys = {
-            quit = 'q',
+            quit = { 'q', '<ESC>' },
             exec = '<CR>',
             select = 'x',
         }
@@ -103,7 +106,7 @@ saga.setup({
         left_width = 0.25,
         keys = {
             toggle_or_jump = 'o',
-            quit = 'q',
+            quit = { 'q', '<ESC>' },
             jump = '<CR>'
         },
     },
@@ -114,7 +117,7 @@ saga.setup({
             vsplit = "s",
             split = "i",
             tabe = "t",
-            quit = "q",
+            quit = { 'q', '<ESC>' },
             shuttle = 'w',
             toggle_or_req = 'u',
             close = '<Esc>',
@@ -140,4 +143,6 @@ saga.setup({
         imp_sign = '󰳛 ',
         kind = {},
     },
-})
+}
+
+saga.setup(options)
