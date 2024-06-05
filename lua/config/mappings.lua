@@ -382,7 +382,7 @@ M.telescope = {
         -- ["<leader>st"] = { "<cmd> Telescope git_status <CR>", "git status" },
 
         -- Yank history
-        ["<leader>y"]      = { "<cmd> Telescope yank_history <CR>", "Find the yank history" },
+        -- ["<leader>y"]      = { "<cmd> Telescope yank_history <CR>", "Find the yank history" },
 
         -- Noice
         ["<leader>n"]      = { "<cmd> Telescope noice <CR>", "Find the noice log" },
@@ -999,6 +999,12 @@ M.GrugFar = {
             "Search and Replace Word in Visual mode"
         },
     },
+}
+
+M.yankbank = {
+    n = {
+        ["<leader>y"] = { "<cmd>YankBank<CR>", "Quick open buffer with review" },
+    }
 }
 
 return M
