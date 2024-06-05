@@ -9,6 +9,7 @@ local options = {
     keymaps = {
         navigation_next = "j",
         navigation_prev = "k",
+        paste = "<CR>",
     },
     num_behavior = "prefix",
 }
