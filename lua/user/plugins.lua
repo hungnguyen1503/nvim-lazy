@@ -124,7 +124,7 @@ return {
 
     {
         'gbprod/yanky.nvim',
-        dependencies = "kkharji/sqlite.lua" ,
+        dependencies = "kkharji/sqlite.lua",
         config = function()
             require("user.plugins.yanky")
         end
@@ -242,6 +242,23 @@ return {
         end
     },
 
+    {
+        "smoka7/multicursors.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            'smoka7/hydra.nvim',
+        },
+        opts = {},
+        cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
+        keys = {
+            {
+                mode = { 'x', 'n' },
+                '<Leader>m',
+                '<cmd>MCstart<cr>',
+                desc = 'Create a selection for selected text or word under the cursor',
+            },
+        },
+    },
     -- Quick scope move word
     {
         'phaazon/hop.nvim',
@@ -732,7 +749,7 @@ return {
         "andrewferrier/debugprint.nvim",
         event = "VeryLazy",
         dependencies = {
-            "echasnovski/mini.nvim", -- Needed to enable :ToggleCommentDebugPrints for NeoVim <= 0.9
+            "echasnovski/mini.nvim",          -- Needed to enable :ToggleCommentDebugPrints for NeoVim <= 0.9
             "nvim-treesitter/nvim-treesitter" -- Needed to enable treesitter for NeoVim 0.8
         },
         config = function()
