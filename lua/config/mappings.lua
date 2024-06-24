@@ -418,7 +418,7 @@ M.gitsigns = {
                     return "]c"
                 end
                 vim.schedule(function()
-                    require("gitsigns").next_hunk()
+                    require("gitsigns").nav_hunk("next")
                 end)
                 return "<Ignore>"
             end,
@@ -431,7 +431,7 @@ M.gitsigns = {
                     return "[c"
                 end
                 vim.schedule(function()
-                    require("gitsigns").prev_hunk()
+                    require("gitsigns").nav_hunk("prev")
                 end)
                 return "<Ignore>"
             end,

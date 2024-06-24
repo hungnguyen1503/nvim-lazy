@@ -254,7 +254,7 @@ return {
             {
                 mode = { 'x', 'n' },
                 '<Leader>m',
-                '<cmd>MCstart<cr>',
+                '<cmd>MCstart<CR>',
                 desc = 'Create a selection for selected text or word under the cursor',
             },
         },
@@ -625,6 +625,7 @@ return {
     -- We should condsider this plugin if your device doesn't have enough RAM.
     {
         'tzachar/cmp-tabnine',
+        event = "VeryLazy",
         -- INFO: The build configuration shall be installed manually on Windows
         -- build = './install.sh',
         dependencies = 'hrsh7th/nvim-cmp',
