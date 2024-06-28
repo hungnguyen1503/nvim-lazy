@@ -14,9 +14,9 @@ noice.setup({
             -- view: (default is cmdline view)
             -- opts: any options passed to the view
             -- icon_hl_group: optional hl_group for the icon
-            cmdline = { pattern = "^:", icon = " COMMAND   ", lang = "vim" },
-            search_down = { kind = "search", pattern = "^/", icon = " SEARCH DOWN   ", lang = "vim" },
-            search_up = { kind = "search", pattern = "^%?", icon = " SEARCH UP   ", lang = "vim" },
+            cmdline = { pattern = "^:", icon = " COMMAND   ", lang = "vim", view = "cmdline" },
+            search_down = { kind = "search", pattern = "^/", icon = " SEARCH DOWN   ", lang = "vim", view = "cmdline" },
+            search_up = { kind = "search", pattern = "^%?", icon = " SEARCH UP   ", lang = "vim", view = "cmdline" },
             filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
             lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
             help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋖" },
@@ -170,7 +170,7 @@ noice.setup({
         bottom_search = true, -- use a classic bottom cmdline for search
         command_palette = false, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false, -- enables an input dialog for inc-rename.nvim
+        inc_rename = true, -- enables an input dialog for inc-rename.nvim
         lsp_doc_border = false, -- add a border to hover docs and signature help
     },
     throttle = 1000 / 30, -- how frequently does Noice need to checkfor ui updates? This has no effect when in blocking mode.

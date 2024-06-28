@@ -697,6 +697,7 @@ return {
         ft = { "c", "cpp", "python" },
         dependencies = {
             'mfussenegger/nvim-dap',
+            "nvim-neotest/nvim-nio",
         },
         config = function()
             require("user.plugins.dapui")
@@ -734,17 +735,21 @@ return {
     },
 
     -- Launch
-    {
-        'dasupradyumna/launch.nvim',
-        event = "VeryLazy",
-        dependencies = {
-            'mfussenegger/nvim-dap',
-            'rcarriga/nvim-notify',
-        },
-        config = function()
-            require("user.plugins.launch")
-        end
-    },
+    -- {
+        -- "EthanJWright/vs-tasks.nvim",
+        -- dependencies = {
+        --     "nvim-lua/popup.nvim",
+        --     "nvim-lua/plenary.nvim",
+        --     {
+        --         'Joakker/lua-json5',
+        --         run = './install.sh'
+        --     },
+        --     "nvim-telescope/telescope.nvim",
+        -- },
+        -- config = function()
+        --     require("user.plugins.vstask")
+        -- end,
+    -- },
 
     {
         "andrewferrier/debugprint.nvim",

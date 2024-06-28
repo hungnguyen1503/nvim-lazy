@@ -468,23 +468,24 @@ M.gitsigns = {
 
 M.floaterm = {
     n = {
-        ["<leader>to"] = { "<cmd>FloatermNew bash<CR>", opts = { silent = true }, "Open new terminal" },
-        ["<leader>tk"] = { "<cmd>FloatermKill<CR>:floatermprev<cr>", opts = { silent = true }, "Kill current terminal" },
+        ["<leader>to"] = { "<cmd>FloatermNew<CR>", opts = { silent = true }, "Open new terminal" },
+        ["<leader>tk"] = { "<cmd>FloatermKill<CR>:FloatermPrev<cr>", opts = { silent = true }, "Kill current terminal" },
         ["<leader>tn"] = { "<cmd>FloatermNext<CR>", opts = { silent = true }, "Next terminal" },
         ["<leader>tp"] = { "<cmd>FloatermPrev<CR>", opts = { silent = true }, "Previous terminal" },
         ["<leader>tt"] = { "<cmd>FloatermToggle<CR>", opts = { silent = true }, "Toggle terminal" },
         ["<leader>ts"] = { "<cmd>FloatermShow<CR>", opts = { silent = true }, "Show terminal" },
     },
     t = {
-        ["<leader>to"] = { "<C-\\><C-n><cmd>FloatermNew bash<CR>", opts = { silent = true }, "Open new terminal" },
-        ["<leader>tk"] = { "<C-\\><C-n><cmd>FloatermKill<CR>:FloatermPrev<cr>", opts = { silent = true }, "Kill current terminal" },
-        ["<leader>tn"] = { "<C-\\><C-n><cmd>FloatermNext<CR>", opts = { silent = true }, "Next terminal" },
-        ["<leader>tp"] = { "<C-\\><C-n><cmd>FloatermPrev<CR>", opts = { silent = true }, "Previous terminal" },
-        ["<leader>tt"] = { "<C-\\><C-n><cmd>FloatermToggle<CR>", opts = { silent = true }, "Toggle terminal" },
-        ["<leader>ts"] = { "<C-\\><C-n><cmd>FloatermShow<CR>", opts = { silent = true }, "Show terminal" },
-        ["<C-v>"]      = { "<C-\\><C-n>pi", "Paste in terminal", opts = { silent = true }, },
-        ["<C-BS>"]     = { "<C-\\><C-n>bdw", opts = { silent = true }, "Delete word in terminal" },
-        ["<C-q>"]      = { "<C-\\><C-n>:FloatermToggle<CR>", opts = { silent = true }, "Quit terminal" },
+        ["<leader>tk"]    = { "<cmd>FloatermKill<CR>:FloatermPrev<cr>", opts = { silent = true }, "Kill current terminal" },
+        ["<leader>tt"]    = { "<cmd>FloatermToggle<CR>", opts = { silent = true }, "Toggle terminal" },
+        ["<leader>to"]    = { "<cmd>FloatermNew<CR>", opts = { silent = true }, "Open new terminal" },
+        ["<leader>tn"]    = { "<cmd>FloatermNext<CR>", opts = { silent = true }, "Next terminal" },
+        ["<leader>tp"]    = { "<cmd>FloatermPrev<CR>", opts = { silent = true }, "Previous terminal" },
+        ["<leader>ts"]    = { "<cmd>FloatermShow<CR>", opts = { silent = true }, "Show terminal" },
+        ["<C-v>"]         = { "<C-\\><C-n>pi", "Paste in terminal", opts = { silent = true }, },
+        ["<C-BS>"]        = { "<C-\\><C-n>bdw", opts = { silent = true }, "Delete word in terminal" },
+        ["<C-q>"]         = { "<C-\\><C-n>:FloatermToggle<CR>", opts = { silent = true }, "Quit terminal" },
+        ["<leader><ESC>"] = { "<C-\\><C-n>", opts = { silent = true }, "Exit terminal mode" },
     },
 }
 
