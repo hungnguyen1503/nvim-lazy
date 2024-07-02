@@ -969,36 +969,68 @@ M.neoscroll = {
     }
 }
 
-M.GrugFar = {
-    n = {
-        ["<leader>fs"] = {
-            function()
-                require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>") } })
-            end,
-            "Search and Replace Current Word in Normal mode"
-        },
-        ["<leader>sc"] = {
-            function()
-                require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>"), filesFilter = '*.{c, h, cpp}' } })
-            end,
-            "Search and Replace Word in Normal mode"
-        },
-        ["<leader>sl"] = {
-            function()
-                require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>"), filesFilter = '*.{lua}' } })
-            end,
-            "Search and Replace Word in Normal mode"
-        },
-    },
+-- INFO: This plugin is disabled temporarily
+-- M.GrugFar = {
+--     n = {
+--         ["<leader>fs"] = {
+--             function()
+--                 require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>") } })
+--             end,
+--             "Search and Replace Current Word in Normal mode"
+--         },
+--         ["<leader>sc"] = {
+--             function()
+--                 require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>"), filesFilter = '*.{c, h, cpp}' } })
+--             end,
+--             "Search and Replace Word in Normal mode"
+--         },
+--         ["<leader>sl"] = {
+--             function()
+--                 require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>"), filesFilter = '*.{lua}' } })
+--             end,
+--             "Search and Replace Word in Normal mode"
+--         },
+--     },
+--
+--     x = {
+--         ["<leader>fs"] = {
+--             function ()
+--                 require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>") } })
+--             end,
+--             "Search and Replace Current Word in Visual mode"
+--         },
+--     },
+-- }
 
-    x = {
-        ["<leader>fs"] = {
-            function ()
-                require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>") } })
+M.specture = {
+    n = {
+        ["<leader>S"] = {
+            function()
+                require("spectre").toggle()
             end,
-            "Search and Replace Current Word in Visual mode"
+            "Toggle Spectre"
+        },
+        ["<leader>sw"] = {
+            function()
+                require("spectre").open_visual({select_word=true})
+            end,
+            "Search current word"
+        },
+        ["<leader>sp"] = {
+            function()
+                require("spectre").open_file_search({select_word=true})
+            end,
+            "Search on current file"
         },
     },
+    v = {
+        ["<leader>sw"] = {
+            function()
+                require("spectre").open_visual({ select_word = true })
+            end,
+            "Search current word"
+        },
+    }
 }
 
 M.yanky = {

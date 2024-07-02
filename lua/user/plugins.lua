@@ -377,12 +377,13 @@ return {
         end,
     },
 
-    {
-        'MagicDuck/grug-far.nvim',
-        config = function()
-            require("user.plugins.grugfar")
-        end
-    },
+    -- TODO: This plugins should be rechecked because some feature is not compatible with my config
+    -- {
+    --     'MagicDuck/grug-far.nvim',
+    --     config = function()
+    --         require("user.plugins.grugfar")
+    --     end
+    -- },
 
     -- Code highlight
     {
@@ -795,4 +796,17 @@ return {
             end
         end
     },
+
+    {
+        "nvim-pack/nvim-spectre",
+        config = function()
+            -- require("spectre").setup()
+            require("user.plugins.spectre")
+        end,
+    },
+
+    -- TODO: Disabled tempolarily because there is a issue related nui-components plugin 
+    -- {
+    --     dir = vim.fn.stdpath("data") .. "/nui-components",
+    -- }
 }
