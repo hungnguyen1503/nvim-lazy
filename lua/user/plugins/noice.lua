@@ -7,20 +7,20 @@ end
 noice.setup({
     cmdline = {
         enabled = true, -- enables the Noice cmdline UI
-        view = "cmdline", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
-        opts = { lang = "vim" }, -- enable syntax highlighting in the cmdline
+        view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+        opts = {}, -- enable syntax highlighting in the cmdline
         format = {
             -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
             -- view: (default is cmdline view)
             -- opts: any options passed to the view
             -- icon_hl_group: optional hl_group for the icon
-            cmdline = { pattern = "^:", icon = " COMMAND   ", lang = "vim", view = "cmdline" },
-            search_down = { kind = "search", pattern = "^/", icon = " SEARCH DOWN   ", lang = "vim", view = "cmdline" },
-            search_up = { kind = "search", pattern = "^%?", icon = " SEARCH UP   ", lang = "vim", view = "cmdline" },
+            cmdline = { pattern = "^:", icon = " COMMAND   ", lang = "vim" },
+            search_down = { kind = "search", pattern = "^/", icon = " SEARCH DOWN   ", lang = "regex" },
+            search_up = { kind = "search", pattern = "^%?", icon = " SEARCH UP   ", lang = "regex" },
             filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
             lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
             help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋖" },
-            input = {}, -- Used by input()
+            input = {view = "cmdline_input", icon = "󰥻 "}, -- Used by input()
             -- lua = false, -- to disable a format, set to `false`
         },
     },
@@ -36,9 +36,14 @@ noice.setup({
     },
     popupmenu = {
         enabled = true, -- enables the Noice popupmenu UI
+        ---@type 'nui'|'cmp'
         backend = "nui", -- backend to use to show regular cmdline completions
         -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
         kind_icons = {}, -- set to `false` to disable icons
+    },
+    redirect = {
+        view = "popup",
+        filter = { event = "msg_show" },
     },
     -- You can add any custom commands below that will be available with `:Noice command`
     commands = {
@@ -167,8 +172,8 @@ noice.setup({
     presets = {
         -- you can enable a preset by setting it to true, or a table that will override the preset config
         -- you can also add custom presets that you can enable/disable with enabled=true
-        bottom_search = true, -- use a classic bottom cmdline for search
-        command_palette = false, -- position the cmdline and popupmenu together
+        bottom_search = false, -- use a classic bottom cmdline for search
+        command_palette = true, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
         inc_rename = true, -- enables an input dialog for inc-rename.nvim
         lsp_doc_border = false, -- add a border to hover docs and signature help
@@ -176,50 +181,50 @@ noice.setup({
     throttle = 1000 / 30, -- how frequently does Noice need to checkfor ui updates? This has no effect when in blocking mode.
     --@type NoiceConfigViews
     views = {
-        mini = {
-            zindex = 60,
-            position = {
-                row = "95%",
-                col = "97%",
-            },
-            border = {
-                style = 'rounded',
-            },
-            win_options = {
-                winblend = 60,
-            },
-            timeout = 4000,
-        },
-        cmdline_popup = {
-            zindex = 65,
-            position = {
-                row = vim.fn.winheight(0),
-                col = 8,
-            },
-            size = {
-                width = "auto",
-                height = "auto",
-            },
-        },
-        popupmenu = {
-            zindex = 60,
-            relative = "editor",
-            position = {
-                row = vim.fn.winheight(0) - 8,
-                col = "auto",
-            },
-            size = {
-                width = 60,
-                height = "auto",
-            },
-            border = {
-                style = "rounded",
-                padding = { 0, 1 },
-            },
-            win_options = {
-                winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
-            },
-        },
+        -- mini = {
+        --     zindex = 60,
+        --     position = {
+        --         row = "95%",
+        --         col = "97%",
+        --     },
+        --     border = {
+        --         style = 'rounded',
+        --     },
+        --     win_options = {
+        --         winblend = 60,
+        --     },
+        --     timeout = 4000,
+        -- },
+        -- cmdline_popup = {
+        --     zindex = 65,
+        --     position = {
+        --         row = vim.fn.winheight(0),
+        --         col = 8,
+        --     },
+        --     size = {
+        --         width = "auto",
+        --         height = "auto",
+        --     },
+        -- },
+        -- popupmenu = {
+        --     zindex = 60,
+        --     relative = "editor",
+        --     position = {
+        --         row = vim.fn.winheight(0) - 8,
+        --         col = "auto",
+        --     },
+        --     size = {
+        --         width = 60,
+        --         height = "auto",
+        --     },
+        --     border = {
+        --         style = "rounded",
+        --         padding = { 0, 1 },
+        --     },
+        --     win_options = {
+        --         winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+        --     },
+        -- },
         notify = {
             replace = true,
             merge = true,

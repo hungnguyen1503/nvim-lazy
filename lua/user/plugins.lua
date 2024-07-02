@@ -209,10 +209,10 @@ return {
     -- Auto pair
     {
         'windwp/nvim-autopairs',
+        event = { 'InsertEnter', 'CmdlineEnter' },
         config = function()
             require("user.plugins.autopairs")
         end,
-        event = { "InsertEnter" },
     },
 
     -- Improve auto pair
@@ -800,8 +800,15 @@ return {
     {
         "nvim-pack/nvim-spectre",
         config = function()
-            -- require("spectre").setup()
             require("user.plugins.spectre")
+        end,
+    },
+
+    {
+        "ravibrock/spellwarn.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("user.plugins.spellwarn")
         end,
     },
 
