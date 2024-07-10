@@ -736,21 +736,17 @@ return {
     },
 
     -- Launch
-    -- {
-        -- "EthanJWright/vs-tasks.nvim",
-        -- dependencies = {
-        --     "nvim-lua/popup.nvim",
-        --     "nvim-lua/plenary.nvim",
-        --     {
-        --         'Joakker/lua-json5',
-        --         run = './install.sh'
-        --     },
-        --     "nvim-telescope/telescope.nvim",
-        -- },
-        -- config = function()
-        --     require("user.plugins.vstask")
-        -- end,
-    -- },
+    {
+        'dasupradyumna/launch.nvim',
+        -- add below plugins as per user requirement
+        dependencies = {
+            'mfussenegger/nvim-dap',
+            'rcarriga/nvim-notify',
+        },
+        config = function()
+            require("user.plugins.launch")
+        end,
+    },
 
     {
         "andrewferrier/debugprint.nvim",
@@ -811,6 +807,11 @@ return {
             require("user.plugins.spellwarn")
         end,
     },
+
+    -- {
+    --     'stevearc/overseer.nvim',
+    --     opts = {},
+    -- }
 
     -- TODO: Disabled tempolarily because there is a issue related nui-components plugin 
     -- {
