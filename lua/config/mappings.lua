@@ -473,6 +473,16 @@ M.floaterm = {
         ["<leader>tn"] = { "<cmd>FloatermNext<CR>", opts = { silent = true }, "Next terminal" },
         ["<leader>tp"] = { "<cmd>FloatermPrev<CR>", opts = { silent = true }, "Previous terminal" },
         ["<leader>tt"] = { "<cmd>FloatermToggle<CR>", opts = { silent = true }, "Toggle terminal" },
+        ["<leader>tr"] = {
+            "<cmd>FloatermNew --width=0.4 --height=0.9 --position=right --wintype=float<CR>",
+            opts = { silent = true },
+            "Toggle terminal"
+        },
+        ["<leader>tf"] = {
+            "<cmd>FloatermNew --width=0.9 --height=0.9 --position=center --wintype=float<CR>",
+            opts = { silent = true },
+            "Toggle terminal"
+        },
         ["<leader>ts"] = { "<cmd>FloatermShow<CR>", opts = { silent = true }, "Show terminal" },
     },
     t = {
@@ -486,6 +496,16 @@ M.floaterm = {
         ["<C-BS>"]        = { "<C-\\><C-n>bdw", opts = { silent = true }, "Delete word in terminal" },
         ["<C-q>"]         = { "<C-\\><C-n>:FloatermToggle<CR>", opts = { silent = true }, "Quit terminal" },
         ["<leader><ESC>"] = { "<C-\\><C-n>", opts = { silent = true }, "Exit terminal mode" },
+        ["<leader>tr"] = {
+            "<cmd>FloatermNew --width=0.4 --height=0.9 --position=right --wintype=float<CR>",
+            opts = { silent = true },
+            "Toggle terminal"
+        },
+        ["<leader>tf"] = {
+            "<cmd>FloatermNew --width=0.9 --height=0.9 --position=center --wintype=float<CR>",
+            opts = { silent = true },
+            "Toggle terminal"
+        },
     },
 }
 
