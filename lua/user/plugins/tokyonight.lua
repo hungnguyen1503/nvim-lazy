@@ -17,7 +17,6 @@ tokyonight.setup({
         keywords = { italic = false, fg = '#FFB86C' },
         functions = { fg = '#ff79c6' },
         variables = { fg = '#f9f2eb' },
-        -- macro = { fg = '#57afef'},
         -- Background styles. Can be "dark", "transparent" or "normal"
         sidebars = "moon",           -- style for sidebars, see below
         floats = "storm",            -- style for floating windows
@@ -58,6 +57,10 @@ tokyonight.setup({
         highlights.DapStopped = {
             ctermbg = 0,
             fg = '#98c379'
+        }
+        highlights.Macro = {
+            ctermbg = 0,
+            fg = colors.orange
         }
     end,
 })
