@@ -469,7 +469,7 @@ M.gitsigns = {
 M.floaterm = {
     n = {
         ["<leader>to"] = { "<cmd>FloatermNew<CR>", opts = { silent = true }, "Open new terminal" },
-        ["<leader>tk"] = { "<cmd>FloatermKill<CR>:FloatermPrev<cr>", opts = { silent = true }, "Kill current terminal" },
+        ["<leader>tk"] = { "<cmd>FloatermKill<CR><cmd>FloatermPrev<CR>", opts = { silent = true }, "Kill current terminal" },
         ["<leader>tn"] = { "<cmd>FloatermNext<CR>", opts = { silent = true }, "Next terminal" },
         ["<leader>tp"] = { "<cmd>FloatermPrev<CR>", opts = { silent = true }, "Previous terminal" },
         ["<leader>tt"] = { "<cmd>FloatermToggle<CR>", opts = { silent = true }, "Toggle terminal" },
@@ -486,7 +486,7 @@ M.floaterm = {
         ["<leader>ts"] = { "<cmd>FloatermShow<CR>", opts = { silent = true }, "Show terminal" },
     },
     t = {
-        ["<leader>tk"]    = { "<cmd>FloatermKill<CR>:FloatermPrev<cr>", opts = { silent = true }, "Kill current terminal" },
+        ["<leader>tk"]    = { "<cmd>FloatermKill<CR><cmd>FloatermPrev<CR>", opts = { silent = true }, "Kill current terminal" },
         ["<leader>tt"]    = { "<cmd>FloatermToggle<CR>", opts = { silent = true }, "Toggle terminal" },
         ["<leader>to"]    = { "<cmd>FloatermNew<CR>", opts = { silent = true }, "Open new terminal" },
         ["<leader>tn"]    = { "<cmd>FloatermNext<CR>", opts = { silent = true }, "Next terminal" },
@@ -494,7 +494,7 @@ M.floaterm = {
         ["<leader>ts"]    = { "<cmd>FloatermShow<CR>", opts = { silent = true }, "Show terminal" },
         ["<C-v>"]         = { "<C-\\><C-n>pi", "Paste in terminal", opts = { silent = true }, },
         ["<C-BS>"]        = { "<C-\\><C-n>bdw", opts = { silent = true }, "Delete word in terminal" },
-        ["<C-q>"]         = { "<C-\\><C-n>:FloatermToggle<CR>", opts = { silent = true }, "Quit terminal" },
+        ["<C-q>"]         = { "<C-\\><C-n><cmd>FloatermToggle<CR>", opts = { silent = true }, "Quit terminal" },
         ["<leader><ESC>"] = { "<C-\\><C-n>", opts = { silent = true }, "Exit terminal mode" },
         ["<leader>tr"] = {
             "<cmd>FloatermNew --width=0.4 --height=0.9 --position=right --wintype=float<CR>",
@@ -767,13 +767,12 @@ M.replace = {
 
 M.dap = {
     n = {
-        -- ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Add breakpoint at line" },
-        -- ["<leader>dr"]  = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
+        ["<leader>dlj"] = { "<cmd>DapLoadLaunchJSON<CR>", "Dap load JSON file" },
         ["<F5>"]        = { "<cmd>DapStepInto<CR>", "Step into" },
         ["<F6>"]        = { "<cmd>DapStepOver<CR>", "Step Over" },
         ["<F7>"]        = { "<cmd>DapStepOut<CR>", "Step Out" },
         ["<F8>"]        = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
-        ["<C-F2>"]      = { "<cmd>DapTerminate<CR>", "Terminate debugger" },
+        ["<C-F2>"]      = { "<cmd>DapTerminate<CR><cmd>DapVirtualTextClear<CR>", "Terminate debugger" },
         ["<F3>"]        = {
             function()
                 require("dapui").eval()
@@ -786,21 +785,19 @@ M.dap = {
             end,
             "Add breakpoint at line"
         },
-        -- -- BUG: This feature should be disabled because of being conflicted to use icon DAP debugg
-        -- -- INFO: Using mouse to toggle breakpoint
-        -- -- ["<2-LeftMouse>"] = {
-        -- --     function()
-        -- --         require('persistent-breakpoints.api').toggle_breakpoint()
-        -- --     end,
-        -- --     "Add breakpoint at line by double click"
-        -- -- },
-        ["<leader>dcb"] = {
+        ["<F9>"]  = {
+            function()
+                require('persistent-breakpoints.api').toggle_breakpoint()
+            end,
+            "Add breakpoint at line"
+        },
+        ["<S-F9>"] = {
             function()
                 require('persistent-breakpoints.api').set_conditional_breakpoint(vim.fn.input(' CONDITION    '))
             end,
-            "Condition breakpoint"
+            "Set condition breakpoint"
         },
-        ["<leader>ddb"] = {
+        ["<leader>cb"] = {
             function()
                 require('persistent-breakpoints.api').clear_all_breakpoints()
             end,

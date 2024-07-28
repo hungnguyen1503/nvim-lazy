@@ -595,6 +595,7 @@ return {
     -- Show message popup, LSP progress, popup commandline
     {
         'folke/noice.nvim',
+        tag = "v4.4.7",
         dependencies = {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
@@ -735,18 +736,18 @@ return {
         end
     },
 
-    -- Launch
-    {
-        'dasupradyumna/launch.nvim',
-        -- add below plugins as per user requirement
-        dependencies = {
-            'mfussenegger/nvim-dap',
-            'rcarriga/nvim-notify',
-        },
-        config = function()
-            require("user.plugins.launch")
-        end,
-    },
+    -- -- Launch
+    -- {
+    --     'dasupradyumna/launch.nvim',
+    --     -- add below plugins as per user requirement
+    --     dependencies = {
+    --         'mfussenegger/nvim-dap',
+    --         'rcarriga/nvim-notify',
+    --     },
+    --     config = function()
+    --         require("user.plugins.launch")
+    --     end,
+    -- },
 
     {
         "andrewferrier/debugprint.nvim",
@@ -810,7 +811,9 @@ return {
 
     -- {
     --     'stevearc/overseer.nvim',
-    --     opts = {},
+    --     config = function()
+    --         require('overseer').setup()
+    --     end
     -- }
 
     -- TODO: Disabled tempolarily because there is a issue related nui-components plugin 

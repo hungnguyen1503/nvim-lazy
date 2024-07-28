@@ -109,3 +109,11 @@ vim.fn.sign_define('DapBreakpointCondition', { text = ' ', texthl = 'DapBreak
 vim.fn.sign_define('DapBreakpointRejected', { text = ' ', texthl = 'DapBreakpoint' })
 vim.fn.sign_define('DapLogPoint', { text = ' ', texthl = 'DapLogPoint' })
 vim.fn.sign_define('DapStopped', { text = ' ', texthl = 'DapStopped' })
+
+vim.api.nvim_create_user_command(
+    "DapVirtualTextClear",
+    function() require("nvim-dap-virtual-text.virtual_text").clear_virtual_text() end,
+    {
+        desc = "Clear all the virtual text displayed by nvim-dap-virtual-text",
+    }
+)
