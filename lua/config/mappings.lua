@@ -1061,5 +1061,156 @@ M.yanky = {
     }
 }
 
+M.gitlab = {
+    n = {
+        ["glb"] = {
+            function()
+                require("gitlab").choose_merge_request()
+            end,
+            "Choose merge request"
+        },
+        ["glr"] = {
+            function()
+                require("gitlab").review()
+            end,
+            "Review"
+        },
+        ["gls"] = {
+            function()
+                require("gitlab").summary()
+            end,
+            "Summary"
+        },
+        ["glA"] = {
+            function()
+                require("gitlab").approve()
+            end,
+            "Approve"
+        },
+        ["glR"] = {
+            function()
+                require("gitlab").revoke()
+            end,
+            "Revoke"
+        },
+        ["glc"] = {
+            function()
+                require("gitlab").create_comment()
+            end,
+            "Create comment"
+        },
+        ["glO"] = {
+            function()
+                require("gitlab").create_mr()
+            end,
+            "Create MR"
+        },
+        ["glm"] = {
+            function()
+                require("gitlab").move_to_discussion_tree_from_diagnostic()
+            end,
+            "Move to discussion tree from diagnostic"
+        },
+        ["gln"] = {
+            function()
+                require("gitlab").create_note()
+            end,
+            "Create note"
+        },
+        ["gld"] = {
+            function()
+                require("gitlab").toggle_discussions()
+            end,
+            "Toggle discussions"
+        },
+        ["glaa"] = {
+            function()
+                require("gitlab").add_assignee()
+            end,
+            "Add assignee"
+        },
+        ["glad"] = {
+            function()
+                require("gitlab").delete_assignee()
+            end,
+            "Delete assignee"
+        },
+        ["glla"] = {
+            function()
+                require("gitlab").add_label()
+            end,
+            "Add label"
+        },
+        ["glld"] = {
+            function()
+                require("gitlab").delete_label()
+            end,
+            "Delete label"
+        },
+        ["glra"] = {
+            function()
+                require("gitlab").add_reviewer()
+            end,
+            "Add reviewer"
+        },
+        ["glrd"] = {
+            function()
+                require("gitlab").delete_reviewer()
+            end,
+            "Delete reviewer"
+        },
+        ["glp"] = {
+            function()
+                require("gitlab").pipeline()
+            end,
+            "Pipeline"
+        },
+        ["glo"] = {
+            function()
+                require("gitlab").open_in_browser()
+            end,
+            "Open in browser"
+        },
+        ["glM"] = {
+            function()
+                require("gitlab").merge()
+            end,
+            "Merge"
+        },
+        ["glu"] = {
+            function()
+                require("gitlab").copy_mr_url()
+            end,
+            "Copy MR URL"
+        },
+        ["glP"] = {
+            function()
+                require("gitlab").publish_all_drafts()
+            end,
+            "Publish all drafts"
+        },
+        ["glD"] = {
+            function()
+                require("gitlab").toggle_draft_mode()
+            end,
+            "Toggle draft mode"
+        },
+    },
+    v = {
+        ["glc"] = {
+            function()
+                require("gitlab").create_multiline_comment()
+            end,
+            "Create multiline comment"
+        },
+        ["glC"] = {
+            function()
+                require("gitlab").create_comment_suggestion()
+            end,
+            "Create comment suggestion"
+        },
+    }
+}
+
 
 return M

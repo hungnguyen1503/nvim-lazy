@@ -809,6 +809,23 @@ return {
         end,
     },
 
+        {
+        "harrisoncramer/gitlab.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "folke/tokyonight.nvim",
+            "sindrets/diffview.nvim",
+            "stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
+            "nvim-tree/nvim-web-devicons" -- Recommended but not required. Icons in discussion tree.
+        },
+        build = function() require("gitlab.server").build(true) end, -- Builds the Go binary
+        config = function()
+            require("user.plugins.gitlab")
+        end,
+    }
+
     -- {
     --     'stevearc/overseer.nvim',
     --     config = function()
