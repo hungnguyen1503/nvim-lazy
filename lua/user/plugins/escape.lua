@@ -7,12 +7,12 @@ end
 -- lua, default settings
 local options = {
     timeout = vim.o.timeoutlen,
+    default_mappings = false,
     mappings = {
         i = {
             j = {
                 -- These can all also be functions
                 k = "<Esc>",
-                j = "<Esc>",
             },
         },
         c = {
@@ -21,17 +21,8 @@ local options = {
                 j = "<Esc>",
             },
         },
-        t = {
-            j = {
-                k = "<Esc>",
-                j = "<Esc>",
-            },
-        },
-        v = {
-            j = {
-                k = "<Esc>",
-            },
-        },
+        t = {},
+        v = {},
         s = {
             j = {
                 k = "<Esc>",
