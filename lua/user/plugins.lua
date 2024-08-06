@@ -824,6 +824,13 @@ return {
         config = function()
             require("user.plugins.gitlab")
         end,
+    },
+
+    {
+        "gbprod/stay-in-place.nvim",
+        config = function()
+            require("stay-in-place").setup()
+        end,
     }
 
     -- {
