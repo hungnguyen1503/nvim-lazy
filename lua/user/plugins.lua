@@ -831,6 +831,29 @@ return {
         config = function()
             require("stay-in-place").setup()
         end,
+    },
+
+    -- TODO: This plugin is being used default configuration. I will check and add config soon.
+    {
+        'Kicamon/markdown-table-mode.nvim',
+        config = function()
+            require('markdown-table-mode').setup()
+        end
+    },
+
+    -- TODO: This plugin is being used default configuration. I will config them soon.
+    {
+        "OXY2DEV/markview.nvim",
+        lazy = false, -- Recommended
+        ft = "markdown", -- If you decide to lazy-load anyway
+        dependencies = {
+            -- You will not need this if you installed the
+            -- parsers manually
+            -- Or if the parsers are in your $RUNTIMEPATH
+            "nvim-treesitter/nvim-treesitter",
+
+            "nvim-tree/nvim-web-devicons"
+        }
     }
 
     -- {
