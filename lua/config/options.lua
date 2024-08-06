@@ -60,10 +60,6 @@ local options = {
     splitbelow     = true,
     splitright     = true,
 
-    -- Scroll with offset
-    scrolloff      = 8, -- minimal number of screen lines to keep above and below the cursor.
-    sidescrolloff  = 8, -- minimal number of screen lines to keep left and right of the cursor.
-
     -- Color and font
     termguicolors  = true,
     -- guifont       = "CaskaydiaCove Nerd Font Propo:h13.0",

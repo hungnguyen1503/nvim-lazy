@@ -833,9 +833,19 @@ return {
         end,
     },
 
+    {
+        -- Enhance to scroll off
+        "tonymajestro/smart-scrolloff.nvim",
+        opts = {
+            scrolloff_percentage = 0.2,
+        },
+    },
+
     -- TODO: This plugin is being used default configuration. I will check and add config soon.
     {
         'Kicamon/markdown-table-mode.nvim',
+        event = "VeryLazy",
+        ft = "markdown", -- If you decide to lazy-load anyway
         config = function()
             require('markdown-table-mode').setup()
         end
