@@ -880,6 +880,7 @@ return {
         end
     }
 
+    -- This plugin can be used to read and execute the command in the vscode json file
     -- {
     --     'stevearc/overseer.nvim',
     --     config = function()

@@ -1212,5 +1212,20 @@ M.gitlab = {
     }
 }
 
+M.markview = {
+    n = {
+        ["mv"] = { "<cmd>Markview toggleAll<CR>", "Toggle Markview" },
+    },
+    v = {
+        ["mv"] = { "<cmd>Markview toggleAll<CR>", "Toggle Markview" },
+    }
+}
+
+M.spellwarn = {
+    n = {
+        ["<leader>sc"] = { "<cmd>Spellwarn toggle<CR>", "Toggle spell check" },
+    }
+}
+
 
 return M
