@@ -20,6 +20,7 @@ else
     project_dir = {
         "~/REDACTED/REDACTED/",
         "~/REDACTED/wikijs/",
+        "~/REDACTED/wikiRVC/wikijs/",
         "~/data2/hungnguyen/neovim/nvim-lazy/"
     }
 end
