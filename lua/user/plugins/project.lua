@@ -20,6 +20,7 @@ else
     project_dir = {
         "~/workspace_rx/fsp-rx/",
         "~/workspace_rx/wikijs/",
+        "~/workspace_rx/wikiRVC/wikijs/",
         "~/data2/hungnguyen/neovim/nvim-lazy/"
     }
 end
