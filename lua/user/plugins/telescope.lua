@@ -6,7 +6,7 @@ end
 -- Clone the default Telescope configuration
 local vimgrep_arguments = { unpack(require("telescope.config").values.vimgrep_arguments) }
 -- Search in hidden/dot files.
-table.insert(vimgrep_arguments, "--hidden")
+-- table.insert(vimgrep_arguments, "--hidden")
 -- Do not search in the `.git` directory.
 table.insert(vimgrep_arguments, "--glob")
 table.insert(vimgrep_arguments, "!**/.git/*")

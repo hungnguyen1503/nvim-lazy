@@ -6,14 +6,14 @@ end
 local project_dir
 if vim.fn.has("win32") == 1 then
     project_dir = {
-        "D:\\FSP\\fsp-rx-v",
-        "D:\\FSP\\fsp-rx-ra-test",
-        "D:\\FSP\\peaks",
-        "D:\\FSP\\wikijs",
-        "D:\\FSP\\fsp_gitlab",
-        "D:\\FSP\\fsp-rx-doc-images",
-        "D:\\CodeTest\\TestC",
-        "D:\\FSP\\08_Tutorial",
+        "~\\hungquangnguyen\\FSP\\fsp-rx-v",
+        "~\\hungquangnguyen\\FSP\\fsp-rx-ra-test",
+        "~\\hungquangnguyen\\FSP\\peaks",
+        "~\\hungquangnguyen\\FSP\\wikijs",
+        "~\\hungquangnguyen\\FSP\\fsp_gitlab",
+        "~\\hungquangnguyen\\FSP\\fsp-rx-doc-images",
+        "~\\hungquangnguyen\\FSP\\08_Tutorial",
+        "~\\hungquangnguyen\\CodeTest\\TestC",
         "~\\AppData\\Local\\nvim"
     }
 else
