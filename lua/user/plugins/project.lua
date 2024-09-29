@@ -6,14 +6,14 @@ end
 local project_dir
 if vim.fn.has("win32") == 1 then
     project_dir = {
-        "D:\\REDACTED\\REDACTED-v",
-        "D:\\REDACTED\\REDACTED-ra-test",
-        "D:\\REDACTED\\peaks",
-        "D:\\REDACTED\\wikijs",
-        "D:\\REDACTED\\REDACTED",
-        "D:\\REDACTED\\REDACTED-doc-images",
-        "D:\\CodeTest\\TestC",
-        "D:\\REDACTED\\08_Tutorial",
+        "~\\hungquangnguyen\\REDACTED\\REDACTED-v",
+        "~\\hungquangnguyen\\REDACTED\\REDACTED-ra-test",
+        "~\\hungquangnguyen\\REDACTED\\peaks",
+        "~\\hungquangnguyen\\REDACTED\\wikijs",
+        "~\\hungquangnguyen\\REDACTED\\REDACTED",
+        "~\\hungquangnguyen\\REDACTED\\REDACTED-doc-images",
+        "~\\hungquangnguyen\\REDACTED\\08_Tutorial",
+        "~\\hungquangnguyen\\CodeTest\\TestC",
         "~\\AppData\\Local\\nvim"
     }
 else
