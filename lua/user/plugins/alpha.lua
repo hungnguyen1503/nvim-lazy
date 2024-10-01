@@ -70,15 +70,15 @@ local options = {
     buttons = {
         type = "group",
         val = {
-            button("f", "  Find File  ", ":Telescope find_files<CR>"),
-            button("o", "  Recent File  ", ":Telescope oldfiles<CR>"),
-            button("w", "  Find Word  ", ":Telescope live_grep<CR>"),
-            button("p", "  Find Project  ", ":Telescope neovim-project discover<CR>"),
-            button("m", "  Sessions", ":SessionManager load_session<CR>"),
-            button("b", "  Bookmarks  ", ":Telescope marks<CR>"),
-            button("t", "  Themes  ", ":Telescope themes<CR>"),
+            button("ff", "  Find File  ", "<cmd>Telescope find_files<CR>"),
+            button("fo", "  Recent File  ", "<cmd>Telescope oldfiles<CR>"),
+            button("fw", "  Find Word  ", "<cmd>Telescope live_grep<CR>"),
+            button("fp", "  Find Project  ", "<cmd>Telescope neovim-project discover<CR>"),
+            button("fm", "  Sessions", "<cmd>SessionManager load_session<CR>"),
+            button("fb", "  Bookmarks  ", "<cmd>Telescope marks<CR>"),
+            button("ft", "  Themes  ", "<cmd>Telescope themes<CR>"),
             button("s", "  Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
-            button("q", "  Quit NVIM", ":qa<CR>"),
+            button("q", "  Quit NVIM", "<cmd>qa<CR>"),
         },
         opts = {
             spacing = 1,
