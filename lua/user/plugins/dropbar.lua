@@ -4,7 +4,7 @@ if not status_ok then
     return
 end
 
-local preview = true
+local preview = false
 
 local kinds = {
     Array = '󰅪 ',
