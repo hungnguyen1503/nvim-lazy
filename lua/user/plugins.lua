@@ -878,17 +878,18 @@ return {
                 }
             })
         end
-    }
+    },
 
     -- This plugin can be used to read and execute the command in the vscode json file
-    -- {
-    --     'stevearc/overseer.nvim',
-    --     config = function()
-    --         require('overseer').setup()
-    --     end
-    -- }
+    {
+        'stevearc/overseer.nvim',
+        config = function()
+            -- require('overseer').setup()
+            require("user.plugins.overseer")
+        end
+    }
 
-    -- TODO: Disabled tempolarily because there is a issue related nui-components plugin 
+    -- TODO: Disabled tempolarily because there is a issue related nui-components plugin
     -- {
     --     dir = vim.fn.stdpath("data") .. "/nui-components",
     -- }
