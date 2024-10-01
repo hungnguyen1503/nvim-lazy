@@ -1227,5 +1227,12 @@ M.spellwarn = {
     }
 }
 
+M.overseer = {
+    n = {
+        ["<space>b"] = { "<cmd>OverseerRun<CR>", "Tasks" },
+        ["<space>t"] = { "<cmd>OverseerToggle<CR>", "Tasks" }
+    }
+}
+
 
 return M
