@@ -6,7 +6,7 @@ end
 -- Clone the default Telescope configuration
 local vimgrep_arguments = { unpack(require("telescope.config").values.vimgrep_arguments) }
 -- Search in hidden/dot files.
--- table.insert(vimgrep_arguments, "--hidden")
+table.insert(vimgrep_arguments, "--hidden")
 -- Do not search in the `.git` directory.
 table.insert(vimgrep_arguments, "--glob")
 table.insert(vimgrep_arguments, "!**/.git/*")
@@ -23,6 +23,7 @@ local options = {
         selection_strategy = "reset",
         sorting_strategy = "ascending",
         layout_strategy = "horizontal",
+        hidden = true,
         file_ignore_patterns = { "node_modules", ".docker", ".git" },
         layout_config = {
             horizontal = {
@@ -36,6 +37,11 @@ local options = {
             width = 0.90,
             height = 0.90,
             preview_cutoff = 120,
+        },
+        pickers = {
+            find_files = {
+                find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--follow" }
+            },
         },
         file_sorter = require("telescope.sorters").get_fuzzy_file,
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,

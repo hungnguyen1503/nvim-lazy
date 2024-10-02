@@ -884,7 +884,6 @@ return {
     {
         'stevearc/overseer.nvim',
         config = function()
-            -- require('overseer').setup()
             require("user.plugins.overseer")
         end
     }
