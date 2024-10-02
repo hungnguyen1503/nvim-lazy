@@ -154,12 +154,14 @@ local options = {
             "on_output_summarize",
             "on_exit_set_status",
             "on_complete_notify",
-            { "on_complete_dispose", require_view = { "SUCCESS", "FAILURE" } },
+            { "on_complete_dispose", require_view = { "SUCCESS", "FAILURE", "CANCELED" } },
         },
         -- Tasks from tasks.json use these components
         default_vscode = {
             "default",
             "on_result_diagnostics",
+            "on_complete_notify",
+            {"open_output", focus = true}
         },
     },
     bundles = {
