@@ -625,13 +625,13 @@ return {
     -- Tabnine
     -- INFO: This plugin will use a significant performance.
     -- We should condsider this plugin if your device doesn't have enough RAM.
-    {
-        'tzachar/cmp-tabnine',
-        event = "VeryLazy",
-        -- INFO: The build configuration shall be installed manually on Windows
-        -- build = './install.sh',
-        dependencies = 'hrsh7th/nvim-cmp',
-    },
+    -- {
+    --     'tzachar/cmp-tabnine',
+    --     event = "VeryLazy",
+    --     -- INFO: The build configuration shall be installed manually on Windows
+    --     -- build = './install.sh',
+    --     dependencies = 'hrsh7th/nvim-cmp',
+    -- },
 
     {
         'L3MON4D3/LuaSnip',
@@ -808,23 +808,6 @@ return {
             require("user.plugins.spellwarn")
         end,
     },
-
-    -- {
-    --     "harrisoncramer/gitlab.nvim",
-    --     event = "VeryLazy",
-    --     dependencies = {
-    --         "MunifTanjim/nui.nvim",
-    --         "nvim-lua/plenary.nvim",
-    --         "folke/tokyonight.nvim",
-    --         "sindrets/diffview.nvim",
-    --         "stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
-    --         "nvim-tree/nvim-web-devicons" -- Recommended but not required. Icons in discussion tree.
-    --     },
-    --     build = function() require("gitlab.server").build(true) end, -- Builds the Go binary
-    --     config = function()
-    --         require("user.plugins.gitlab")
-    --     end,
-    -- },
 
     {
         "gbprod/stay-in-place.nvim",

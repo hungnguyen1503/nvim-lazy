@@ -71,7 +71,7 @@ autocmd("FileType", {
     pattern = "*",
     callback = function()
         local filetype = vim.bo.filetype
-        if filetype == 'c' or filetype == 'h'then
+        if filetype == 'c' or filetype == 'h' then
             vim.opt.spell = true
         else
             vim.opt.spell = false
@@ -103,6 +103,9 @@ autocmd("User", {
         end
     end,
 })
+
+vim.api.nvim_set_hl(0, "@keyword.directive.define.c", { fg = "#ff966c", bold = true }) -- Change this color as needed
+vim.api.nvim_set_hl(0, "@keyword.directive.c", { fg = "#ff966c", bold = true })        -- Change this color as needed
 
 vim.fn.sign_define('DapBreakpoint', { text = ' ', texthl = 'DapBreakpoint' })
 vim.fn.sign_define('DapBreakpointCondition', { text = ' ', texthl = 'DapBreakpoint' })
