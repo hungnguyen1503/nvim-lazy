@@ -58,9 +58,9 @@ tokyonight.setup({
             ctermbg = 0,
             fg = '#98c379'
         }
-        highlights.Macro = {
+        highlights.PreProc = {
             ctermbg = 0,
-            fg = colors.orange
+            fg = '#61afef'
         }
     end,
 })
