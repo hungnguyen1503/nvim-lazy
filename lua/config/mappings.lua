@@ -1065,7 +1065,7 @@ M.markview = {
     n = {
         ["mv"] = { "<cmd>Markview toggleAll<CR>", "Toggle Markview" },
     },
-    v = {
+    x = {
         ["mv"] = { "<cmd>Markview toggleAll<CR>", "Toggle Markview" },
     }
 }

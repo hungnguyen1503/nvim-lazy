@@ -242,23 +242,47 @@ return {
         end
     },
 
+    -- NOTE: This plugin will be alternative by brenton-leighton/multiple-cursors.nvim
+    -- {
+    --     "smoka7/multicursors.nvim",
+    --     event = "VeryLazy",
+    --     dependencies = {
+    --         'smoka7/hydra.nvim',
+    --     },
+    --     opts = {},
+    --     cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
+    --     keys = {
+    --         {
+    --             mode = { 'x', 'n' },
+    --             '<Leader>m',
+    --             '<cmd>MCstart<CR>',
+    --             desc = 'Create a selection for selected text or word under the cursor',
+    --         },
+    --     },
+    -- },
     {
-        "smoka7/multicursors.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            'smoka7/hydra.nvim',
-        },
-        opts = {},
-        cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
+        "brenton-leighton/multiple-cursors.nvim",
+        version = "*", -- Use the latest tagged version
+        opts = {}, -- This causes the plugin setup function to be called
         keys = {
-            {
-                mode = { 'x', 'n' },
-                '<Leader>m',
-                '<cmd>MCstart<CR>',
-                desc = 'Create a selection for selected text or word under the cursor',
-            },
+            -- { "<C-j>",         "<Cmd>MultipleCursorsAddDown<CR>",          mode = { "n", "x" },    desc = "Add cursor and move down" },
+            -- { "<C-k>",         "<Cmd>MultipleCursorsAddUp<CR>",            mode = { "n", "x" },    desc = "Add cursor and move up" },
+
+            { "<C-Up>",        "<Cmd>MultipleCursorsAddUp<CR>",            mode = { "n", "i", "x" }, desc = "Add cursor and move up" },
+            { "<C-Down>",      "<Cmd>MultipleCursorsAddDown<CR>",          mode = { "n", "i", "x" }, desc = "Add cursor and move down" },
+
+            { "<C-LeftMouse>", "<Cmd>MultipleCursorsMouseAddDelete<CR>",   mode = { "n", "i" },    desc = "Add or remove cursor" },
+
+            { "<leader>a",     "<Cmd>MultipleCursorsAddMatches<CR>",       mode = { "n", "x" },    desc = "Add cursors to cword" },
+            { "<leader>A",     "<Cmd>MultipleCursorsAddMatchesV<CR>",      mode = { "n", "x" },    desc = "Add cursors to cword in previous area" },
+
+            { "<leader>dn",     "<Cmd>MultipleCursorsAddJumpNextMatch<CR>", mode = { "n", "x" },    desc = "Add cursor and jump to next cword" },
+            { "<leader>D",     "<Cmd>MultipleCursorsJumpNextMatch<CR>",    mode = { "n", "x" },    desc = "Jump to next cword" },
+
+            { "<leader>l",     "<Cmd>MultipleCursorsLock<CR>",             mode = { "n", "x" },    desc = "Lock virtual cursors" },
         },
     },
+
     -- Quick scope move word
     {
         'phaazon/hop.nvim',
