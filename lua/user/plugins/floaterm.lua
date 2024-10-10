@@ -14,9 +14,5 @@ for k, v in pairs(floaterm) do
     vim.g[k] = v
 end
 
-if vim.fn.has("win32") == 1 then
-    vim.g["floaterm_shell"] = "bash"
-else
-    vim.g["floaterm_shell"] = "zsh"
-end
+vim.g["floaterm_shell"] = "zsh"
 
