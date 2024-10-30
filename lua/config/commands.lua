@@ -21,6 +21,11 @@ autocmd({ "CursorHold" },
     }
 )
 
+autocmd("BufWritePre", {
+    pattern = "*",
+    command = "setlocal fileformat=unix",
+})
+
 -- go to last loc when opening a buffer
 -- autocmd("BufReadPost", {
 --     callback = function()
