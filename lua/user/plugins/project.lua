@@ -11,6 +11,7 @@ if vim.fn.has("win32") == 1 then
         "~\\hungquangnguyen\\REDACTED\\peaks",
         "~\\hungquangnguyen\\REDACTED\\wikijs",
         "~\\hungquangnguyen\\REDACTED\\REDACTED",
+        "~\\hungquangnguyen\\REDACTED\\REDACTED",
         "~\\hungquangnguyen\\REDACTED\\REDACTED-doc-images",
         "~\\hungquangnguyen\\REDACTED\\08_Tutorial",
         "~\\hungquangnguyen\\CodeTest\\TestC",
