@@ -6,17 +6,21 @@ end
 local options = {
     duration = 300,
     keymaps = {
-        Keymap_name = {
-            -- most fields here are the same as in vim.keymap.set
-            desc = "a description",
+        undo = {
+            desc = "undo",
             hlgroup = 'HighlightUndo',
             mode = 'n',
-            lhs = 'p',
-            rhs = 'p',
-            opts = {
-            -- same as opts to vim.keymap.set. if rhs is nil, there should be a
-            -- callback key which points to a function
-            },
+            lhs = 'u',
+            rhs = nil,
+            opts = {},
+        },
+        redo = {
+            desc = "redo",
+            hlgroup = 'HighlightUndo',
+            mode = 'n',
+            lhs = '<C-r>',
+            rhs = nil,
+            opts = {},
         },
     },
 }

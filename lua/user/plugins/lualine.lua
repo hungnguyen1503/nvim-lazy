@@ -3,6 +3,8 @@ if not status_ok then
     return
 end
 
+local lazy_status = require("lazy.status")
+
 local hide_in_width = function()
     return vim.fn.winwidth(0) > 80
 end
@@ -47,6 +49,14 @@ local diff = {
         removed = "  "
     }, -- changes diff symbols
     cond = hide_in_width
+}
+
+local eol_format = {
+    function()
+        local eol = vim.bo.fileformat
+        return eol == 'unix' and 'LF' or (eol == 'dos' and 'CRLF' or 'UNKNOWN')
+    end,
+    icon = '⏎',
 }
 
 local empty = require('lualine.component'):extend()
@@ -121,7 +131,7 @@ local lsp_progress = {
             return ""
         end
 
-        local Lsp = vim.lsp.util.get_progress_messages()[1]
+        local Lsp = vim.lsp.status()
 
         if vim.o.columns < 120 or not Lsp then
             return ""
@@ -175,8 +185,14 @@ lualine.setup {
         lualine_a = { mode },
         lualine_b = { branch, filename, diff, diagnostics },
         lualine_c = {},
-        lualine_x = {}, --lsp_progress
-        lualine_y = { 'searchcount', lsp_status, spaces, 'location' },
+        lualine_x = {
+            {
+                lazy_status.updates,
+                cond = lazy_status.has_updates,
+                color = { fg = "#ff9e64" },
+            },
+        },
+        lualine_y = { 'searchcount', lsp_status, 'encoding', eol_format ,spaces, 'location' },
         lualine_z = { progress }
     },
     inactive_sections = {

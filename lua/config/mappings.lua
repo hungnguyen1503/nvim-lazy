@@ -73,13 +73,13 @@ M.general = {
             "Save file in insert mode",
             opts = { silent = true },
         },
-        ["<leader>ss"]  = {
+        ["<leader>ss"] = {
             "<ESC>:w<CR>:source%<CR>",
             "Save file and source file in normal mode",
             opts = { silent = true },
         },
 
-        ["<C-z>"] = { "[s1z=", opts = { silent = true }, "Correct ltest misspelled word" },
+        ["<C-z>"]      = { "[s1z=", opts = { silent = true }, "Correct ltest misspelled word" },
         -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
         -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
         -- empty mode is same as using <cmd> :map
@@ -163,10 +163,9 @@ M.bufferline = {
             end,
             "Close current buffer"
         },
-        ["<space>a<Tab>"] = { "<cmd>BufferLineCloseOthers<CR>", "Close all but keep current or pinned" },
-        -- NOTE: It should be changed another keymap
-        -- ["<space><Tab>"] = { "<cmd>BufferLineCloseLeft<CR>", "Close all but keep current or pinned" },
-        -- ["<space><Tab>"] = { "<cmd>BufferLineCloseRight<CR>", "Close all but keep current or pinned" },
+        ["<space>a<Tab>"] = { "<cmd>BufferLineCloseOthers<CR>", "Close all" },
+        ["<space>l<Tab>"] = { "<cmd>BufferLineCloseLeft<CR>", "Close all tab in the left side" },
+        ["<space>r<Tab>"] = { "<cmd>BufferLineCloseRight<CR>", "Close all tab in the right side" },
     },
 }
 
@@ -211,7 +210,7 @@ M.trouble = {
 
 M.neotree = {
     n = {
-        ["<F4>"] = {"<cmd>Neotree toggle<cr>","Toggle Neotree"},
+        ["<F4>"] = { "<cmd>Neotree toggle<cr>", "Toggle Neotree" },
     },
 }
 
@@ -377,6 +376,7 @@ M.telescope = {
         ["<leader>fb"]     = { "<cmd> Telescope file_browser <CR>", "Find browser" },
         ["<leader>fh"]     = { "<cmd> Telescope highlights <CR>", "Find highlights" },
         ["<leader>f<Tab>"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
+        ["<leader>/>"]     = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Find string in current buffer" },
         -- git
         -- ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
         -- ["<leader>st"] = { "<cmd> Telescope git_status <CR>", "git status" },
@@ -496,12 +496,12 @@ M.floaterm = {
         ["<C-BS>"]        = { "<C-\\><C-n>bdw", opts = { silent = true }, "Delete word in terminal" },
         ["<C-q>"]         = { "<C-\\><C-n><cmd>FloatermToggle<CR>", opts = { silent = true }, "Quit terminal" },
         ["<leader><ESC>"] = { "<C-\\><C-n>", opts = { silent = true }, "Exit terminal mode" },
-        ["<leader>tr"] = {
+        ["<leader>tr"]    = {
             "<cmd>FloatermNew --width=0.4 --height=0.9 --position=right --wintype=float<CR>",
             opts = { silent = true },
             "Toggle terminal"
         },
-        ["<leader>tf"] = {
+        ["<leader>tf"]    = {
             "<cmd>FloatermNew --width=0.9 --height=0.9 --position=center --wintype=float<CR>",
             opts = { silent = true },
             "Toggle terminal"
@@ -785,19 +785,19 @@ M.dap = {
             end,
             "Add breakpoint at line"
         },
-        ["<F9>"]  = {
+        ["<F9>"]        = {
             function()
                 require('persistent-breakpoints.api').toggle_breakpoint()
             end,
             "Add breakpoint at line"
         },
-        ["<S-F9>"] = {
+        ["<S-F9>"]      = {
             function()
                 require('persistent-breakpoints.api').set_conditional_breakpoint(vim.fn.input(' CONDITION    '))
             end,
             "Set condition breakpoint"
         },
-        ["<leader>cb"] = {
+        ["<leader>cb"]  = {
             function()
                 require('persistent-breakpoints.api').clear_all_breakpoints()
             end,
@@ -886,8 +886,8 @@ M.diffview = {
 M.neoscroll = {
     n = {
         ["<C-u>"] = {
-            function ()
-                require('neoscroll').ctrl_u({timeout = 350; easing = 'cubic'})
+            function()
+                require('neoscroll').ctrl_u({ timeout = 350, easing = 'cubic' })
             end,
             "Scroll Up with U"
         },
@@ -911,33 +911,33 @@ M.neoscroll = {
         },
         ["<C-k>"] = {
             function()
-                require('neoscroll').scroll( -0.25, { move_cursor = true, duration = 200, easing = 'sine' } )
+                require('neoscroll').scroll(-0.25, { move_cursor = true, duration = 200, easing = 'sine' })
             end,
             "Scroll Up with K"
         },
         ["<C-j>"] = {
             function()
-                require('neoscroll').scroll( 0.25, { move_cursor = true, duration = 200, easing = 'sine' } )
+                require('neoscroll').scroll(0.25, { move_cursor = true, duration = 200, easing = 'sine' })
             end,
             "Scroll Down with J"
         },
         ["<ScrollWheelUp>"] = {
             function()
-                require('neoscroll').scroll( -0.25, { move_cursor = true, duration = 200, easing = 'sine' } )
+                require('neoscroll').scroll(-0.25, { move_cursor = true, duration = 200, easing = 'sine' })
             end,
             "Scroll Up with WheelUp"
         },
         ["<ScrollWheelDown>"] = {
             function()
-                require('neoscroll').scroll( 0.25, { move_cursor = true, duration = 200, easing = 'sine' } )
+                require('neoscroll').scroll(0.25, { move_cursor = true, duration = 200, easing = 'sine' })
             end,
             "Scroll Down with WheelDown"
         }
     },
     x = {
         ["<C-u>"] = {
-            function ()
-                require('neoscroll').ctrl_u({timeout = 350; easing = 'cubic'})
+            function()
+                require('neoscroll').ctrl_u({ timeout = 350, easing = 'cubic' })
             end,
             "Scroll Up with U"
         },
@@ -961,25 +961,25 @@ M.neoscroll = {
         },
         ["<C-k>"] = {
             function()
-                require('neoscroll').scroll( -0.25, { move_cursor = true, duration = 200, easing = 'sine' } )
+                require('neoscroll').scroll(-0.25, { move_cursor = true, duration = 200, easing = 'sine' })
             end,
             "Scroll Up with K"
         },
         ["<C-j>"] = {
             function()
-                require('neoscroll').scroll( 0.25, { move_cursor = true, duration = 200, easing = 'sine' } )
+                require('neoscroll').scroll(0.25, { move_cursor = true, duration = 200, easing = 'sine' })
             end,
             "Scroll Down with J"
         },
         ["<ScrollWheelUp>"] = {
             function()
-                require('neoscroll').scroll( -0.25, { move_cursor = true, duration = 200, easing = 'sine' } )
+                require('neoscroll').scroll(-0.25, { move_cursor = true, duration = 200, easing = 'sine' })
             end,
             "Scroll Up with WheelUp"
         },
         ["<ScrollWheelDown>"] = {
             function()
-                require('neoscroll').scroll( 0.25, { move_cursor = true, duration = 200, easing = 'sine' } )
+                require('neoscroll').scroll(0.25, { move_cursor = true, duration = 200, easing = 'sine' })
             end,
             "Scroll Down with WheelDown"
         }
@@ -1029,13 +1029,13 @@ M.specture = {
         },
         ["<leader>sw"] = {
             function()
-                require("spectre").open_visual({select_word=true})
+                require("spectre").open_visual({ select_word = true })
             end,
             "Search current word"
         },
         ["<leader>sp"] = {
             function()
-                require("spectre").open_file_search({select_word=true})
+                require("spectre").open_file_search({ select_word = true })
             end,
             "Search on current file"
         },
@@ -1052,6 +1052,14 @@ M.specture = {
 
 M.yanky = {
     n = {
+        ["<leader>yy"] = {
+            function()
+                require("telescope").extensions.yank_history.yank_history({})
+            end,
+            "Quick open buffer with review"
+        },
+    },
+    x = {
         ["<leader>yy"] = {
             function()
                 require("telescope").extensions.yank_history.yank_history({})
