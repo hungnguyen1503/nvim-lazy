@@ -79,8 +79,8 @@ dropbar.setup({
             and not vim.wo[win].diff
     end,
     icons = {
+        enable = true,
         kinds = {
-            use_devicons = true,
             symbols = kinds,
         },
         ui = {
