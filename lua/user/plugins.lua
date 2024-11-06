@@ -307,13 +307,13 @@ return {
         cmd = { "ArgWrap" },
     },
 
-    {
-        'tzachar/highlight-undo.nvim',
-        event = "VeryLazy",
-        config = function()
-            require("user.plugins.undo")
-        end
-    },
+    -- {
+    --     'tzachar/highlight-undo.nvim',
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require("user.plugins.undo")
+    --     end
+    -- },
 
     -- Quick comment
     {
