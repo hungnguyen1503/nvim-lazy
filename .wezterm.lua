@@ -9,6 +9,12 @@
 local wezterm = require 'wezterm'
 local mux = wezterm.mux
 
+-- Plugin for WezTerm
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+
+local default_cwd = "C:/Users/a5134005/hungquangnguyen/FSP"
+
 local config = {}
 
 if wezterm.config_builder then
@@ -16,8 +22,8 @@ if wezterm.config_builder then
 end
 
 wezterm.on('gui-startup', function(cmd)
-  local tab, pane, window = mux.spawn_window(cmd or {})
-  window:gui_window():maximize()
+    local window = mux.spawn_window(cmd or {})
+    window:gui_window():maximize()
 end)
 
 -- Define custom color schemes
@@ -42,8 +48,8 @@ config.color_schemes = {
         scrollbar_thumb = "#2f334d",
 
         -- ANSI colors
-        ansi = { "#1b1d2b", "#ff757f", "#c3e88d", "#ffc777", "#82aaff", "#c099ff", "#86e1fc", "#828bb8" },
         brights = { "#444a73", "#ff757f", "#c3e88d", "#ffc777", "#82aaff", "#c099ff", "#86e1fc", "#c8d3f5" },
+        ansi = { "#1b1d2b", "#ff757f", "#c3e88d", "#ffc777", "#82aaff", "#c099ff", "#86e1fc", "#828bb8" },
 
         -- Tab bar colors
         tab_bar = {
@@ -55,7 +61,7 @@ config.color_schemes = {
             },
             inactive_tab = {
                 fg_color = "#545c7e",
-                bg_color = "#2f334d",
+                bg_color = "#181825",
             },
             inactive_tab_hover = {
                 fg_color = "#82aaff",
@@ -63,7 +69,7 @@ config.color_schemes = {
             },
             new_tab_hover = {
                 fg_color = "#82aaff",
-                bg_color = "#222436",
+                bg_color = "#181825",
                 intensity = "Bold",
             },
             new_tab = {
@@ -86,10 +92,10 @@ config.scrollback_lines = 3000
 config.enable_scroll_bar = true
 
 -- Tab bar
--- I don't like the look of "fancy" tab bar
-config.use_fancy_tab_bar = true
+config.use_fancy_tab_bar = false
 config.status_update_interval = 1000
 config.tab_bar_at_bottom = false
+config.tab_and_split_indices_are_zero_based = true
 
 -- Dim inactive panes
 config.inactive_pane_hsb = {
@@ -110,34 +116,63 @@ config.font_size = 11.0
 config.enable_wayland = false
 
 -- Define the launch menu with various shell options
+-- Common paths and addresses
+local coder_base_url = "http://coder.hcmflexbuild001.rvc.renesas.com/"
+local rx_coder_sing_url = "http://10.230.228.121:8080/"
+local rx_coder_mini_url = "http://coder.codermini1.rvc.renesas.com/"
+
+-- Helper function to create a coder login entry
+local function coder_login_entry(label, url)
+    return {
+        label = "Login to " .. label,
+        args = { "coder", "login", url },
+    }
+end
 config.launch_menu = {
     {
         label = 'Bash',
         args = { 'bash', '-l' },
+        cwd = default_cwd
+    },
+    {
+        label = 'Zsh',
+        args = { 'zsh' },
+        cwd = default_cwd
     },
     {
         label = 'PowerShell',
         args = { 'C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe' },
+        cwd = default_cwd
+    },
+    -- Install package automatically
+    {
+        label = 'Install package for FSP',
+        args = { 'bash', 'C:\\Users\\a5134005\\hungquangnguyen\\FSP\\08_Tutorial\\install_pack_rx.sh' },
     },
     {
-        label = 'Top',
-        args = { 'top' },
+        label = "SSH to Pi RX (10.23.9.131)",
+        args = { "ssh", "rvc@10.231.9.131" },
     },
     {
-        label = "SSH to Pi RX",
-        args = { "ssh", "rvc@10.231.9.131" }, -- Replace with your username and server address
+        label = "SSH to Coder HCM1 (RXFSP)",
+        args = { "ssh", "coder.RXFSP" },
     },
     {
-        label = "SSH to Coder HCM",
-        args = { "ssh", "coder.RXFSP" }, -- Replace with your username and server address
+        label = "Coder configure SSH",
+        args = { "coder", "config-ssh" },
     },
+    -- Coder Logins
+    coder_login_entry("RA Coder HCM1", coder_base_url),
+    coder_login_entry("RX Coder Sing", rx_coder_sing_url),
+    coder_login_entry("RX Coder Mini", rx_coder_mini_url),
+    coder_login_entry("Coder configure SSH", rx_coder_mini_url),
 }
 
 -- Default terminal startup
 config.default_prog = { "C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe" }
 
 -- Set the default directory where WezTerm will start
-config.default_cwd = "C:/Users/a5134005/hungquangnguyen/FSP"
+config.default_cwd = default_cwd
 
 -- Enable focus follows mouse
 config.pane_focus_follows_mouse = true
@@ -150,7 +185,7 @@ config.mouse_bindings = {
     },
     {
         event = { Down = { streak = 1, button = 'Right' } },
-        action = wezterm.action.PasteFrom('PrimarySelection'), -- Paste on right click
+        action = wezterm.action.PasteFrom('Clipboard'), -- Paste on right click
     },
     {
         event = { Up = { streak = 1, button = 'Left' } },
@@ -193,11 +228,13 @@ config.keys = {
 
     -- Copy and Paste
     { key = "c",          mods = "CTRL|SHIFT", action = wezterm.action.CopyTo("Clipboard") },
-    { key = "v",          mods = "CTRL|SHIFT", action = wezterm.action.PasteFrom("Clipboard") },
+    { key = "v",          mods = "CTRL",       action = wezterm.action.PasteFrom("Clipboard") },
 
     -- Search
     { key = "f",          mods = "CTRL|SHIFT", action = wezterm.action.Search("CurrentSelectionOrEmptyString") },
-}
+
+    -- Switch Workspace
+    { key = "s",          mods = "ALT",        action = workspace_switcher.switch_workspace(), } }
 
 -- Create tab activation keys in a loop (1-7)
 for i = 1, 7 do
@@ -208,69 +245,56 @@ for i = 1, 7 do
     })
 end
 
-wezterm.on("update-status", function(window, pane)
-    -- Workspace name
-    local stat = window:active_workspace()
-    local stat_color = "#f7768e"
-    -- It's a little silly to have workspace name all the time
-    -- Utilize this to display LDR or current key table name
-    if window:active_key_table() then
-        stat = window:active_key_table()
-        stat_color = "#7dcfff"
-    end
-    if window:leader_is_active() then
-        stat = "LDR"
-        stat_color = "#bb9af7"
-    end
+-- NOTE: Set up tabline for WezTerm
+tabline.setup({
+    options = {
+        icons_enabled = true,
+        theme = 'Catppuccin Mocha',
+        color_overrides = {},
+        section_separators = {
+            left = wezterm.nerdfonts.pl_left_hard_divider,
+            right = wezterm.nerdfonts.pl_right_hard_divider,
+        },
+        component_separators = {
+            left = wezterm.nerdfonts.pl_left_soft_divider,
+            right = wezterm.nerdfonts.pl_right_soft_divider,
+        },
+        tab_separators = {
+            left = wezterm.nerdfonts.pl_left_hard_divider,
+            right = wezterm.nerdfonts.pl_right_hard_divider,
+        },
+    },
+    sections = {
+        tabline_a = { 'mode' },
+        tabline_b = { 'workspace' },
+        tabline_c = { ' ' },
+        tab_active = {
+            'index',
+            { 'parent', padding = 0 },
+            '/',
+            { 'cwd',    padding = { left = 0, right = 1 } },
+            { 'zoomed', padding = 0 },
+        },
+        tab_inactive = { 'index', { 'process', padding = { left = 0, right = 1 } } },
+        tabline_x = { 'ram', 'cpu' },
+        tabline_y = { 'datetime', 'battery' },
+        tabline_z = { 'hungquangnguyen' },
+    },
+    extensions = {},
+})
 
-    local basename = function(s)
-        -- Nothing a little regex can't fix
-        return string.gsub(s, "(.*[/\\])(.*)", "%2")
-    end
+-- Config format for smart switch workspace.
+workspace_switcher.workspace_formatter = function(label)
+    return wezterm.format({
+        { Attribute = { Italic = true } },
+        { Foreground = { Color = "#c3e88d" } },
+        { Background = { Color = "#1b1d2b" } },
+        { Text = "󱂬: " .. label },
+    })
+end
 
-    -- Current working directory
-    local cwd = pane:get_current_working_dir()
-    if cwd then
-        if type(cwd) == "userdata" then
-            -- Wezterm introduced the URL object in 20240127-113634-bbcac864
-            cwd = basename(cwd.file_path)
-        else
-            -- 20230712-072601-f4abf8fd or earlier version
-            cwd = basename(cwd)
-        end
-    else
-        cwd = ""
-    end
-
-    -- Current command
-    local cmd = pane:get_foreground_process_name()
-    -- CWD and CMD could be nil (e.g. viewing log using Ctrl-Alt-l)
-    cmd = cmd and basename(cmd) or ""
-
-    -- Time
-    local time = wezterm.strftime("%H:%M")
-
-    -- Left status (left of the tab line)
-    window:set_left_status(wezterm.format({
-        { Foreground = { Color = stat_color } },
-        { Text = "  " },
-        { Text = wezterm.nerdfonts.oct_table .. "  " .. stat },
-        { Text = " |" },
-    }))
-
-    -- Right status
-    window:set_right_status(wezterm.format({
-        -- Wezterm has a built-in nerd fonts
-        -- https://wezfurlong.org/wezterm/config/lua/wezterm/nerdfonts.html
-        { Text = wezterm.nerdfonts.md_folder .. "  " .. cwd },
-        { Text = " | " },
-        { Foreground = { Color = "#e0af68" } },
-        { Text = wezterm.nerdfonts.fa_code .. "  " .. cmd },
-        "ResetAttributes",
-        { Text = " | " },
-        { Text = wezterm.nerdfonts.md_clock .. "  " .. time },
-        { Text = "  " },
-    }))
-end)
+-- Load extension configuration
+tabline.apply_to_config(config)
+workspace_switcher.apply_to_config(config)
 
 return config
