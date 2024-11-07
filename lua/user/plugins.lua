@@ -536,7 +536,7 @@ return {
     -- Trouble to display error in the source code
     {
         'folke/trouble.nvim',
-        cmd = {"Trouble", "TodoTrouble"},
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
             require("user.plugins.trouble")
@@ -555,6 +555,7 @@ return {
     -- LSP config manager
     {
         'neovim/nvim-lspconfig',
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.lspconfig")
             require("user.plugins.lspserver")
@@ -580,7 +581,12 @@ return {
             },
         },
     },
-    { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+
+    {
+        "Bilal2453/luvit-meta",
+        event = { "BufReadPre", "BufNewFile" },
+        lazy = true
+    }, -- optional `vim.uv` typings
 
     -- LSP Saga
     {
@@ -699,7 +705,7 @@ return {
 
     {
         "ray-x/lsp_signature.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("user.plugins.lspsignature")
         end
@@ -809,17 +815,6 @@ return {
     },
 
     {
-        'notomo/gesture.nvim',
-        init = function()
-            if vim.fn.has("win32") == 1 then
-                -- Don't use this plugin in Window OS
-            else
-                require("user.plugins.gesture")
-            end
-        end
-    },
-
-    {
         "nvim-pack/nvim-spectre",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
@@ -896,9 +891,4 @@ return {
             require("user.plugins.overseer")
         end
     }
-
-    -- TODO: Disabled tempolarily because there is a issue related nui-components plugin
-    -- {
-    --     dir = vim.fn.stdpath("data") .. "/nui-components",
-    -- }
 }

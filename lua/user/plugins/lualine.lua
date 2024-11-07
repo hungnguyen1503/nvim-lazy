@@ -102,13 +102,13 @@ local mode = function()
 end
 
 local spaces = function()
-    return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+    return "spaces: " .. vim.bo.shiftwidth
 end
 
 local lsp_status = {
     function()
         local msg = 'none'
-        local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+        local buf_ft = vim.bo.filetype
         local clients = vim.lsp.get_active_clients()
         if next(clients) == nil then
             return msg
