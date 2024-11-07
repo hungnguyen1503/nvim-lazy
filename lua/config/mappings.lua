@@ -365,8 +365,33 @@ M.outline = {
 M.telescope = {
     n = {
         -- find
-        ["<leader>ff"]     = { "<cmd> Telescope find_files <CR>", "Find files" },
-        ["<leader>fa"]     = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all files" },
+        ["<leader>ff"]     = {
+            function()
+                require('telescope.builtin').find_files({
+                    layout_strategy = 'vertical',
+                    layout_config = {
+                        width = 0.80,
+                        height = 0.80
+                    }
+                })
+            end,
+            "Find files"
+        },
+        ["<leader>fa"]     = {
+            function()
+                require('telescope.builtin').find_files({
+                    follow = true,
+                    no_ignore = true,
+                    hidden = true,
+                    layout_strategy = 'vertical',
+                    layout_config = {
+                        width = 0.80,
+                        height = 0.80
+                    }
+                })
+            end,
+            "Find all files"
+        },
         ["<leader>fw"]     = { "<cmd> Telescope live_grep <CR>", "Find live grep" },
         -- ["<leader>ft"]     = { "<cmd> Telescope help_tags <CR>", "help page" },
         ["<leader>fo"]     = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
@@ -376,13 +401,7 @@ M.telescope = {
         ["<leader>fb"]     = { "<cmd> Telescope file_browser <CR>", "Find browser" },
         ["<leader>fh"]     = { "<cmd> Telescope highlights <CR>", "Find highlights" },
         ["<leader>f<Tab>"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
-        ["<leader>/>"]     = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Find string in current buffer" },
-        -- git
-        -- ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
-        -- ["<leader>st"] = { "<cmd> Telescope git_status <CR>", "git status" },
-
-        -- Yank history
-        -- ["<leader>y"]      = { "<cmd> Telescope yank_history <CR>", "Find the yank history" },
+        ["<leader>/"]      = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Find string in current buffer" },
 
         -- Noice
         ["<leader>n"]      = { "<cmd> Telescope noice <CR>", "Find the noice log" },
