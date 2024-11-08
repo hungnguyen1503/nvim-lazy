@@ -14,7 +14,6 @@ table.insert(vimgrep_arguments, "!**/.git/*")
 local options = {
     defaults = {
         vimgrep_arguments = vimgrep_arguments,
-        -- wrap_results = "true",
         prompt_prefix = " ",
         selection_caret = " ",
         entry_prefix = "  ",
@@ -31,8 +30,8 @@ local options = {
             },
             horizontal = {
                 prompt_position = "top",
-                preview_width = 0.6,
-                results_width = 0.4,
+                preview_width = 0.4,
+                results_width = 0.6,
                 scroll_speed = 5,
             },
             vertical = {
@@ -70,11 +69,15 @@ local options = {
             n = {
                 ["<C-j>"] = require("telescope.actions").move_selection_next,
                 ["<C-k>"] = require("telescope.actions").move_selection_previous,
+                ['<C-h>'] = require('telescope.actions').preview_scrolling_left,
+                ['<C-l>'] = require('telescope.actions').preview_scrolling_right,
                 ["q"] = require("telescope.actions").close,
             },
             i = {
                 ["<C-j>"] = require("telescope.actions").move_selection_next,
                 ["<C-k>"] = require("telescope.actions").move_selection_previous,
+                ['<C-h>'] = require('telescope.actions').preview_scrolling_left,
+                ['<C-l>'] = require('telescope.actions').preview_scrolling_right,
                 ["<C-q>"] = require("telescope.actions").close,
             },
         },
@@ -87,13 +90,6 @@ local options = {
                 preview_width = 0.55
             },
         },
-        -- project = {
-        --     display_type = "full",
-        --     theme = 'dropdown',
-        --     order_by = "asc",
-        --     search_by = "title",
-        --     sync_with_nvim_tree = false, -- default false
-        -- },
         menu = {
             Sessions = {
                 items = {
@@ -122,12 +118,12 @@ local options = {
         },
     },
 
-    extensions_list = { "notify", --[[ "project", ]] "file_browser", "ui-select", "menu", "dap", "fzf" },
+    extensions_list = { "notify", "file_browser", "ui-select", "menu", "dap", "fzf" },
 }
 
 telescope.setup(options)
 
--- load extensions
+-- Load extensions
 pcall(function()
     for _, ext in ipairs(options.extensions_list) do
         telescope.load_extension(ext)
