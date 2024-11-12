@@ -309,7 +309,7 @@ return {
 
     {
         'tzachar/highlight-undo.nvim',
-        event = { "BufReadPre", "BufNewFile" },
+        keys = { { "u" }, { "<C-r>" } },
         config = function()
             require("user.plugins.undo")
         end

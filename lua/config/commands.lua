@@ -21,10 +21,12 @@ autocmd({ "CursorHold" },
     }
 )
 
-autocmd("BufWritePre", {
-    pattern = "*",
-    command = "setlocal fileformat=unix",
-})
+if vim.fn.has("win32") == 0 then
+    autocmd("BufWritePre", {
+        pattern = "*",
+        command = "setlocal fileformat=unix",
+    })
+end
 
 -- go to last loc when opening a buffer
 -- autocmd("BufReadPost", {
