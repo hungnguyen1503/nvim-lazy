@@ -7,7 +7,7 @@ end
 noice.setup({
     cmdline = {
         enabled = true, -- enables the Noice cmdline UI
-        view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+        view = "cmdline", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
         opts = {}, -- enable syntax highlighting in the cmdline
         format = {
             -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
