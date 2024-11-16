@@ -14,5 +14,9 @@ for k, v in pairs(floaterm) do
     vim.g[k] = v
 end
 
-vim.g["floaterm_shell"] = "zsh"
+if vim.fn.has("win32") == 0 then
+    vim.g["floaterm_shell"] = "zsh"
+else
+    vim.g["floaterm_shell"] = "pwsh"
+end
 
