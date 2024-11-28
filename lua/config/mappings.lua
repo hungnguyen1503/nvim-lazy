@@ -129,9 +129,15 @@ M.general = {
     },
 }
 
-M.lazygit = {
+-- M.lazygit = {
+--     n = {
+--         ["<leader>gg"] = { "<cmd>LazyGit<CR>", "Lazygit" },
+--     }
+-- }
+
+M.gitui = {
     n = {
-        ["<leader>gg"] = { "<cmd>LazyGit<CR>", "Lazygit" },
+        ["<leader>gg"] = { "<cmd>FloatermNew --width=0.9 --height=0.9 --position=center gitui<CR>", "Git ui" },
     }
 }
 
