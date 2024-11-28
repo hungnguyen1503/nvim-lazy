@@ -72,15 +72,6 @@ local kinds = {
 }
 
 dropbar.setup({
-    general = {
-        enable = function(buf, win)
-            return not vim.api.nvim_win_get_config(win).zindex
-                and vim.bo[buf].buftype == ''
-                and vim.api.nvim_buf_get_name(buf) ~= ''
-                and not vim.wo[win].diff
-        end,
-        update_interval = 100,
-    },
     icons = {
         enable = true,
         kinds = {
@@ -107,6 +98,7 @@ dropbar.setup({
             pivots = '123456789abcdefghijklmnopqrstuvwxyz',
         },
         truncate = true,
+        update_debounce = 50
     },
     symbol = {
         preview = {

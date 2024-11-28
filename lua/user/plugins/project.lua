@@ -15,6 +15,7 @@ if vim.fn.has("win32") == 1 then
         "~\\hungquangnguyen\\FSP\\13_RX_FSP\\peaks",
         "~\\hungquangnguyen\\FSP\\fsp-rx-doc-images",
         "~\\hungquangnguyen\\FSP\\08_Tutorial",
+        "~\\hungquangnguyen\\FSP\\13_RX_FSP\\rx_automation",
         "~\\hungquangnguyen\\CodeTest\\TestC",
         "~\\AppData\\Local\\nvim"
     }
