@@ -5,7 +5,7 @@ local floaterm = {
     floaterm_keymap_new = '<leader><to>',
     floaterm_keymap_kill = '<leader><tk>',
     floaterm_width = 0.9,
-    floaterm_height = 0.3,
+    floaterm_height = 0.45,
     floaterm_position = 'bottom',
     floaterm_keymap_toggle = '<leader><tt>'
 }
@@ -17,6 +17,6 @@ end
 if vim.fn.has("win32") == 0 then
     vim.g["floaterm_shell"] = "zsh"
 else
-    vim.g["floaterm_shell"] = "pwsh"
+    vim.g["floaterm_shell"] = "bash"
 end
 
