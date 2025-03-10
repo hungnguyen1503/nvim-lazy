@@ -129,17 +129,17 @@ M.general = {
     },
 }
 
--- M.lazygit = {
---     n = {
---         ["<leader>gg"] = { "<cmd>LazyGit<CR>", "Lazygit" },
---     }
--- }
-
-M.gitui = {
+M.lazygit = {
     n = {
-        ["<leader>gg"] = { "<cmd>FloatermNew --width=0.9 --height=0.9 --position=center gitui<CR>", "Git ui" },
+        ["<leader>gg"] = { "<cmd>LazyGit<CR>", "Lazygit" },
     }
 }
+
+-- M.gitui = {
+--     n = {
+--         ["<leader>gg"] = { "<cmd>FloatermNew --width=0.9 --height=0.9 --position=center gitui<CR>", "Git ui" },
+--     }
+-- }
 
 M.bufferline = {
     -- plugin = true,
@@ -1096,10 +1096,10 @@ M.yanky = {
 
 M.markview = {
     n = {
-        ["mv"] = { "<cmd>Markview toggleAll<CR>", "Toggle Markview" },
+        ["mv"] = { "<cmd>Markview toggle<CR>", "Toggle Markview" },
     },
     x = {
-        ["mv"] = { "<cmd>Markview toggleAll<CR>", "Toggle Markview" },
+        ["mv"] = { "<cmd>Markview toggle<CR>", "Toggle Markview" },
     }
 }
 
@@ -1117,5 +1117,13 @@ M.overseer = {
     }
 }
 
+M.markdowntable = {
+    n = {
+        ["<space>m"] = { "<cmd>Mtm<CR>", "Tasks" },
+    },
+    v = {
+        ["<space>m"] = { "<cmd>Mtm<CR>", "Tasks" },
+    }
+}
 
 return M
