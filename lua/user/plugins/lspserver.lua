@@ -60,15 +60,17 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 )
 
 -- suppress error messages from lang servers
-vim.notify = function(msg, log_level)
-    if msg:match "exit code" then
-        return
-    end
-    if log_level == vim.log.levels.ERROR then
-        vim.api.nvim_err_writeln(msg)
-    else
-        vim.api.nvim_echo({ { msg } }, true, {})
-    end
+vim.notify = function(msg, level, opts)
+  opts = opts or {}
+
+  -- Suppress specific messages
+  if msg:match("exit code") then
+    return
+  end
+
+  -- Use built-in echo for all levels to avoid recursion
+  local hlgroup = (level == vim.log.levels.ERROR) and "ErrorMsg" or "None"
+  vim.api.nvim_echo({ { msg, hlgroup } }, true, {})
 end
 
 local servers = {

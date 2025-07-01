@@ -427,7 +427,7 @@ return {
     -- Auto tag for html, xml, ....
     {
         "windwp/nvim-ts-autotag",
-        ft = {"hmtl", "xml"},
+        ft = { "hmtl", "xml" },
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         config = function()
             require('nvim-ts-autotag').setup()
@@ -855,10 +855,10 @@ return {
                     '*.md',
                 },
                 options = {
-                    insert = true, -- when typing "|"
-                    insert_leave = true, -- when leaving insert
+                    insert = true,              -- when typing "|"
+                    insert_leave = true,        -- when leaving insert
                     pad_separator_line = false, -- add space in separator line
-                    alig_style = 'default', -- default, left, center, right
+                    alig_style = 'default',     -- default, left, center, right
                 },
             })
         end
@@ -868,27 +868,8 @@ return {
     {
         "OXY2DEV/markview.nvim",
         ft = "markdown", -- If you decide to lazy-load anyway
-        dependencies = {
-            -- You will not need this if you installed the
-            -- parsers manually
-            -- Or if the parsers are in your $RUNTIMEPATH
-            "nvim-treesitter/nvim-treesitter",
-
-            "nvim-tree/nvim-web-devicons"
-        },
         config = function()
-            require("markview").setup({
-                modes = { "n", "i", "no", "c" },
-                hybrid_modes = { "i" },
-
-                -- This is nice to have
-                callbacks = {
-                    on_enable = function(_, win)
-                        vim.wo[win].conceallevel = 2;
-                        vim.wo[win].concealcursor = "nc";
-                    end
-                }
-            })
+            require("user.plugins.markview")
         end
     },
 
