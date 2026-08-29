@@ -31,17 +31,9 @@ local monokai = {
     teal          = "#34bfd0",
 }
 
-local default, options = pcall(require, "plugin.colorscheme")
-if not default then
-    colors = tokyonight -- set tokyonight as default
-else
-    local theme = options.get_option().colorscheme
-    if theme == "monokai-nightasty" then
-        colors = monokai
-    else
-        colors = tokyonight
-    end
-end
+-- The active colorscheme is configured in plugin/colorscheme. The cheatsheet
+-- needs colours before Lazy loads that spec, so keep its palette explicit.
+colors = tokyonight
 
 local highlights = {
     common = {

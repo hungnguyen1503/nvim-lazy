@@ -1,3 +1,5 @@
+vim.g.mapleader = ","
+
 local options = {
     -- Configuration mouse usage
     mouse          = "a",
@@ -75,7 +77,6 @@ local options = {
 vim.opt.syntax.minlines = 60
 vim.opt.syntax.maxlines = 120
 
-vim.g.mapleader = ","
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
@@ -90,14 +91,15 @@ end
 if vim.g.neovide then
     -- Put anything you want to happen only in Neovide here
     vim.g.neovide_refresh_rate = 60
-    vim.g.neovide_refresh_rate_idle = 60
-    vim.g.neovide_no_idle = true
+    vim.g.neovide_refresh_rate_idle = 5
+    -- Continuous redraw consumes CPU even when no animation is active.
+    vim.g.neovide_no_idle = false
     vim.g.neovide_confirm_quit = true
     vim.g.neovide_touch_drag_timeout = 0
     vim.g.neovide_cursor_antialiasing = true
     vim.g.neovide_scroll_animation_length = 0.4
     vim.g.neovide_cursor_antialiasing = true
-    vim.g.neovide_cursor_animate_command_line = true
+    vim.g.neovide_cursor_animate_command_line = false
     vim.g.neovide_cursor_vfx_particle_density = 0.2
     vim.g.neovide_cursor_trail_size = 0.8
     vim.g.neovide_hide_mouse_when_typing = true

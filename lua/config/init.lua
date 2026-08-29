@@ -1,2 +1,2 @@
-require("config.commands")
 require("config.options")
+require("config.autocmds")

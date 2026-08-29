@@ -36,6 +36,18 @@ M.general = {
         ["<F12>"] = { "<C-o><cmd>set relativenumber!<CR>", "Toggle line relative number" },
     },
     n = {
+        ["<C-j>"] = {
+            function()
+                require("neoscroll").scroll(0.25, { move_cursor = true, duration = 200, easing = "sine" })
+            end,
+            "Scroll down",
+        },
+        ["<C-k>"] = {
+            function()
+                require("neoscroll").scroll(-0.25, { move_cursor = true, duration = 200, easing = "sine" })
+            end,
+            "Scroll up",
+        },
         ["<ESC>"]      = { "<cmd> noh <CR>", "No highlight" },
         -- Change argument wrapping
         ["<leader>ar"] = { "<cmd>ArgWrap<CR>", "Change argument wrapping" },
@@ -106,6 +118,18 @@ M.general = {
 
     },
     x = {
+        ["<C-j>"] = {
+            function()
+                require("neoscroll").scroll(0.25, { move_cursor = true, duration = 200, easing = "sine" })
+            end,
+            "Scroll down",
+        },
+        ["<C-k>"] = {
+            function()
+                require("neoscroll").scroll(-0.25, { move_cursor = true, duration = 200, easing = "sine" })
+            end,
+            "Scroll up",
+        },
         ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
         ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
         -- Don't copy the replaced text after pasting in visual mode
@@ -256,7 +280,7 @@ M.lspconfig = {
         -- },
         ["<leader>ls"] = {
             function()
-                require('lsp_signature').toggle_float_win()
+                vim.lsp.buf.signature_help()
             end,
             "Lsp signature_help",
         },
@@ -368,70 +392,29 @@ M.outline = {
     }
 }
 
-M.telescope = {
+M.fzf = {
     n = {
-        -- find
-        ["<leader>ff"]     = {
+        ["<leader>ff"] = { function() require("config.pickers").files() end, "Find files" },
+        ["<leader>fa"] = {
             function()
-                require('telescope.builtin').find_files({
-                    layout_strategy = 'vertical',
-                    layout_config = {
-                        width = 0.80,
-                        height = 0.80
-                    }
-                })
+                require("fzf-lua").files({ fd_opts = "--type f --hidden --follow --no-ignore" })
             end,
-            "Find files"
+            "Find all files",
         },
-        ["<leader>fa"]     = {
-            function()
-                require('telescope.builtin').find_files({
-                    follow = true,
-                    no_ignore = true,
-                    hidden = true,
-                    layout_strategy = 'vertical',
-                    layout_config = {
-                        width = 0.80,
-                        height = 0.80
-                    }
-                })
-            end,
-            "Find all files"
-        },
-        ["<leader>fw"]     = { "<cmd> Telescope live_grep <CR>", "Find live grep" },
-        -- ["<leader>ft"]     = { "<cmd> Telescope help_tags <CR>", "help page" },
-        ["<leader>fo"]     = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
-        ["<leader>fk"]     = { "<cmd> Telescope keymaps <CR>", "Find key mappings" },
-        -- ["<leader>fp"]     = { "<cmd> Telescope project <CR>", "Find projects" },
-        ["<leader>fp"]     = { "<cmd> Telescope neovim-project discover <CR>", "Find project" },
-        ["<leader>fb"]     = { "<cmd> Telescope file_browser <CR>", "Find browser" },
-        ["<leader>fh"]     = { "<cmd> Telescope highlights <CR>", "Find highlights" },
-        ["<leader>f<Tab>"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
-        ["<leader>/"]      = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Find string in current buffer" },
-
-        -- Noice
-        ["<leader>n"]      = { "<cmd> Telescope noice <CR>", "Find the noice log" },
-        ["<leader>m"]      = { "<cmd> Telescope marks <CR>", "Find the marks" },
-
-        -- pick a hidden term
-        ["<leader>pt"]     = { "<cmd> Telescope terms <CR>", "Find and pick hidden term" },
-
-        -- theme switcher
-        ["<leader>th"]     = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
-
-        -- command
-        ["<leader>cm"]     = {
-            function()
-                require('telescope.builtin').commands(require('telescope.themes').get_dropdown())
-            end,
-        }
+        ["<leader>fw"] = { function() require("fzf-lua").live_grep() end, "Find live grep" },
+        ["<leader>fo"] = { function() require("fzf-lua").oldfiles() end, "Find old files" },
+        ["<leader>fk"] = { function() require("fzf-lua").keymaps() end, "Find key mappings" },
+        ["<leader>fp"] = { "<cmd>NeovimProjectDiscover<CR>", "Find project" },
+        ["<leader>fb"] = { function() require("config.pickers").files() end, "Browse files" },
+        ["<leader>fh"] = { function() require("fzf-lua").highlights() end, "Find highlights" },
+        ["<leader>f<Tab>"] = { function() require("fzf-lua").buffers() end, "Find buffers" },
+        ["<leader>/"] = { function() require("fzf-lua").blines() end, "Find current-buffer text" },
+        ["<leader>n"] = { "<cmd>Noice history<CR>", "Show Noice history" },
+        ["<leader>m"] = { function() require("fzf-lua").marks() end, "Find marks" },
+        ["<leader>pt"] = { "<cmd>FloatermNext<CR>", "Next terminal" },
+        ["<leader>th"] = { function() require("fzf-lua").colorschemes() end, "Choose colorscheme" },
+        ["<leader>cm"] = { function() require("fzf-lua").commands() end, "Find commands" },
     },
-}
-
-M.jabs = {
-    n = {
-        ["<leader>b"] = { "<cmd>JABSOpen<CR>", "Quick open buffer with review" },
-    }
 }
 
 M.gitsigns = {
@@ -586,112 +569,28 @@ M.align = {
     }
 }
 
-local hop = require('hop')
-local directions = require('hop.hint').HintDirection
-M.hop = {
-    n = {
-        ["f"] = {
-            function()
-                hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
-            end,
-            "Hop move forward"
-        },
-        ["F"] = {
-            function()
-                hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
-            end,
-            "Hop move backward"
-        },
-        ['t'] = {
-            function()
-                hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
-            end,
-            "Hop move forward before cursor"
-        },
-        ['T'] = {
-            function()
-                hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = -1 })
-            end,
-            "Hop move backward before cursor"
-        }
-    },
-    x = {
-        ["f"] = {
-            function()
-                hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
-            end,
-            "Hop move forward"
-        },
-        ["F"] = {
-            function()
-                hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
-            end,
-            "Hop move backward"
-        },
-        ['t'] = {
-            function()
-                hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
-            end,
-            "Hop move forward before cursor"
-        },
-        ['T'] = {
-            function()
-                hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = -1 })
-            end,
-            "Hop move backward before cursor"
-        }
-    },
-    o = {
-        ["f"] = {
-            function()
-                hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
-            end,
-            "Hop move forward"
-        },
-        ["F"] = {
-            function()
-                hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
-            end,
-            "Hop move backward"
-        },
-        ['t'] = {
-            function()
-                hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
-            end,
-            "Hop move forward before cursor"
-        },
-        ['T'] = {
-            function()
-                hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = -1 })
-            end,
-            "Hop move backward before cursor"
-        }
-    }
-}
+local function treesitter_repeat(method)
+    return function()
+        require("nvim-treesitter.textobjects.repeatable_move")[method]()
+    end
+end
 
-M.nerdy = {
-    n = {
-        ["<leader>ip"] = { "<cmd>Nerdy<CR>", "Icon picker in normal mode" }
-    }
-}
-
-local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
 M.treesitter = {
     n = {
-        [";"] = { ts_repeat_move.repeat_last_move_next, "Goes forward" },
-        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "Goes previous" },
+        [";"] = { treesitter_repeat("repeat_last_move_next"), "Goes forward" },
+        ["<A-;>"] = { treesitter_repeat("repeat_last_move_previous"), "Goes previous" },
     },
     x = {
-        [";"] = { ts_repeat_move.repeat_last_move_next, "Goes forward" },
-        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "Goes previous" },
+        [";"] = { treesitter_repeat("repeat_last_move_next"), "Goes forward" },
+        ["<A-;>"] = { treesitter_repeat("repeat_last_move_previous"), "Goes previous" },
     },
     v = {
-        [";"] = { ts_repeat_move.repeat_last_move_next, "Goes forward" },
-        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "Goes previous" },
+        [";"] = { treesitter_repeat("repeat_last_move_next"), "Goes forward" },
+        ["<A-;>"] = { treesitter_repeat("repeat_last_move_previous"), "Goes previous" },
     },
     o = {
-        [";"] = { ts_repeat_move.repeat_last_move_next, "Goes forward" },
-        ["<A-;>"] = { ts_repeat_move.repeat_last_move_previous, "Goes previous" },
+        [";"] = { treesitter_repeat("repeat_last_move_next"), "Goes forward" },
+        ["<A-;>"] = { treesitter_repeat("repeat_last_move_previous"), "Goes previous" },
     },
 }
 
@@ -790,47 +689,6 @@ M.replace = {
     }
 }
 
-M.dap = {
-    n = {
-        ["<leader>dlj"] = { "<cmd>DapLoadLaunchJSON<CR>", "Dap load JSON file" },
-        ["<F5>"]        = { "<cmd>DapStepInto<CR>", "Step into" },
-        ["<F6>"]        = { "<cmd>DapStepOver<CR>", "Step Over" },
-        ["<F7>"]        = { "<cmd>DapStepOut<CR>", "Step Out" },
-        ["<F8>"]        = { "<cmd>DapContinue<CR>", "Start or continue the debugger" },
-        ["<C-F2>"]      = { "<cmd>DapTerminate<CR><cmd>DapVirtualTextClear<CR>", "Terminate debugger" },
-        ["<F3>"]        = {
-            function()
-                require("dapui").eval()
-            end,
-            "Start or continue the debugger"
-        },
-        ["<leader>db"]  = {
-            function()
-                require('persistent-breakpoints.api').toggle_breakpoint()
-            end,
-            "Add breakpoint at line"
-        },
-        ["<F9>"]        = {
-            function()
-                require('persistent-breakpoints.api').toggle_breakpoint()
-            end,
-            "Add breakpoint at line"
-        },
-        ["<S-F9>"]      = {
-            function()
-                require('persistent-breakpoints.api').set_conditional_breakpoint(vim.fn.input(' CONDITION    '))
-            end,
-            "Set condition breakpoint"
-        },
-        ["<leader>cb"]  = {
-            function()
-                require('persistent-breakpoints.api').clear_all_breakpoints()
-            end,
-            "Clear all breakpoints"
-        },
-    }
-}
-
 M.flash = {
     n = {
         ["<leader>j"] = {
@@ -877,17 +735,6 @@ M.flash = {
     }
 }
 
-M.duplicate = {
-    n = {
-        ["<leader>dk"] = { "<cmd>LineDuplicate -1<CR>", "Line: duplicate up" },
-        ["<leader>dj"] = { "<cmd>LineDuplicate +1<CR>", "Line: duplicate down" },
-    },
-    v = {
-        ["<leader>dk"] = { "<cmd>VisualDuplicate  -1<CR>", "Line: duplicate up" },
-        ["<leader>dj"] = { "<cmd>VisualDuplicate +1<CR>", "Line: duplicate down" },
-    }
-}
-
 M.dropbar = {
     n = {
         ["<leader>ww"] = {
@@ -905,109 +752,6 @@ M.diffview = {
         ["<leader>dc"] = { "<cmd> DiffviewClose <CR>", "Diff view close" },
         ["<leader>dh"] = { "<cmd> DiffviewFileHistory <CR>", "Open history" },
         ["<leader>df"] = { "<cmd> DiffviewFileHistory %<CR>", "Current History" },
-    }
-}
-
-M.neoscroll = {
-    n = {
-        ["<C-u>"] = {
-            function()
-                require('neoscroll').ctrl_u({ timeout = 350, easing = 'cubic' })
-            end,
-            "Scroll Up with U"
-        },
-        ["<C-d>"] = {
-            function()
-                require('neoscroll').ctrl_d({ timeout = 350, easing = 'cubic' })
-            end,
-            "Scroll Down with D"
-        },
-        ["<C-b>"] = {
-            function()
-                require('neoscroll').ctrl_b({ timeout = 400, easing = 'cubic' })
-            end,
-            "Scroll Backward with B"
-        },
-        ["<C-f>"] = {
-            function()
-                require('neoscroll').ctrl_f({ timeout = 400, easing = 'cubic' })
-            end,
-            "Scroll Forward with F"
-        },
-        ["<C-k>"] = {
-            function()
-                require('neoscroll').scroll(-0.25, { move_cursor = true, duration = 200, easing = 'sine' })
-            end,
-            "Scroll Up with K"
-        },
-        ["<C-j>"] = {
-            function()
-                require('neoscroll').scroll(0.25, { move_cursor = true, duration = 200, easing = 'sine' })
-            end,
-            "Scroll Down with J"
-        },
-        ["<ScrollWheelUp>"] = {
-            function()
-                require('neoscroll').scroll(-0.25, { move_cursor = true, duration = 200, easing = 'sine' })
-            end,
-            "Scroll Up with WheelUp"
-        },
-        ["<ScrollWheelDown>"] = {
-            function()
-                require('neoscroll').scroll(0.25, { move_cursor = true, duration = 200, easing = 'sine' })
-            end,
-            "Scroll Down with WheelDown"
-        }
-    },
-    x = {
-        ["<C-u>"] = {
-            function()
-                require('neoscroll').ctrl_u({ timeout = 350, easing = 'cubic' })
-            end,
-            "Scroll Up with U"
-        },
-        ["<C-d>"] = {
-            function()
-                require('neoscroll').ctrl_d({ timeout = 350, easing = 'cubic' })
-            end,
-            "Scroll Down with D"
-        },
-        ["<C-b>"] = {
-            function()
-                require('neoscroll').ctrl_b({ timeout = 400, easing = 'cubic' })
-            end,
-            "Scroll Backward with B"
-        },
-        ["<C-f>"] = {
-            function()
-                require('neoscroll').ctrl_f({ timeout = 400, easing = 'cubic' })
-            end,
-            "Scroll Forward with F"
-        },
-        ["<C-k>"] = {
-            function()
-                require('neoscroll').scroll(-0.25, { move_cursor = true, duration = 200, easing = 'sine' })
-            end,
-            "Scroll Up with K"
-        },
-        ["<C-j>"] = {
-            function()
-                require('neoscroll').scroll(0.25, { move_cursor = true, duration = 200, easing = 'sine' })
-            end,
-            "Scroll Down with J"
-        },
-        ["<ScrollWheelUp>"] = {
-            function()
-                require('neoscroll').scroll(-0.25, { move_cursor = true, duration = 200, easing = 'sine' })
-            end,
-            "Scroll Up with WheelUp"
-        },
-        ["<ScrollWheelDown>"] = {
-            function()
-                require('neoscroll').scroll(0.25, { move_cursor = true, duration = 200, easing = 'sine' })
-            end,
-            "Scroll Down with WheelDown"
-        }
     }
 }
 
@@ -1078,18 +822,14 @@ M.specture = {
 M.yanky = {
     n = {
         ["<leader>yy"] = {
-            function()
-                require("telescope").extensions.yank_history.yank_history({})
-            end,
-            "Quick open buffer with review"
+            "<cmd>YankyRingHistory<CR>",
+            "Open yank history",
         },
     },
     x = {
         ["<leader>yy"] = {
-            function()
-                require("telescope").extensions.yank_history.yank_history({})
-            end,
-            "Quick open buffer with review"
+            "<cmd>YankyRingHistory<CR>",
+            "Open yank history",
         },
     }
 }
@@ -1124,6 +864,49 @@ M.markdowntable = {
     v = {
         ["<space>m"] = { "<cmd>Mtm<CR>", "Tasks" },
     }
+}
+
+M.jabs = {
+    n = {
+        ["<leader>b"] = { "<cmd>JABSOpen<CR>", "Open buffer switcher" },
+    },
+}
+
+local function hop_hint(direction, options)
+    options.direction = require("hop.hint").HintDirection[direction]
+    require("hop").hint_char1(options)
+end
+
+M.hop = {
+    n = {
+        ["f"] = { function() hop_hint("AFTER_CURSOR", { current_line_only = true }) end, "Hop forward" },
+        ["F"] = { function() hop_hint("BEFORE_CURSOR", { current_line_only = true }) end, "Hop backward" },
+        ["t"] = { function() hop_hint("AFTER_CURSOR", { current_line_only = true, hint_offset = -1 }) end, "Hop before character" },
+        ["T"] = { function() hop_hint("BEFORE_CURSOR", { current_line_only = true, hint_offset = -1 }) end, "Hop before character" },
+    },
+    x = {
+        ["f"] = { function() hop_hint("AFTER_CURSOR", { current_line_only = true }) end, "Hop forward" },
+        ["F"] = { function() hop_hint("BEFORE_CURSOR", { current_line_only = true }) end, "Hop backward" },
+        ["t"] = { function() hop_hint("AFTER_CURSOR", { current_line_only = true, hint_offset = -1 }) end, "Hop before character" },
+        ["T"] = { function() hop_hint("BEFORE_CURSOR", { current_line_only = true, hint_offset = -1 }) end, "Hop before character" },
+    },
+    o = {
+        ["f"] = { function() hop_hint("AFTER_CURSOR", { current_line_only = true }) end, "Hop forward" },
+        ["F"] = { function() hop_hint("BEFORE_CURSOR", { current_line_only = true }) end, "Hop backward" },
+        ["t"] = { function() hop_hint("AFTER_CURSOR", { current_line_only = true, hint_offset = -1 }) end, "Hop before character" },
+        ["T"] = { function() hop_hint("BEFORE_CURSOR", { current_line_only = true, hint_offset = -1 }) end, "Hop before character" },
+    },
+}
+
+M.duplicate = {
+    n = {
+        ["<leader>dk"] = { "<cmd>LineDuplicate -1<CR>", "Duplicate line up" },
+        ["<leader>dj"] = { "<cmd>LineDuplicate +1<CR>", "Duplicate line down" },
+    },
+    x = {
+        ["<leader>dk"] = { "<cmd>VisualDuplicate -1<CR>", "Duplicate selection up" },
+        ["<leader>dj"] = { "<cmd>VisualDuplicate +1<CR>", "Duplicate selection down" },
+    },
 }
 
 return M

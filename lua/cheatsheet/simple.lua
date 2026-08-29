@@ -1,6 +1,6 @@
 dofile(vim.fn.stdpath("config") .. "/lua/cheatsheet/color.lua")
 
-local mappings_tb = require("core.utils").load_config().mappings -- default & user mappings
+local mappings_tb = require("config.mappings") -- default & user mappings
 local isValid_mapping_TB = require("cheatsheet.api").isValid_mapping_TB
 
 -- filter mappings_tb i.e remove tb which have empty fields

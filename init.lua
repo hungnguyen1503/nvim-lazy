@@ -1,13 +1,11 @@
-vim.defer_fn(function()
-    pcall(require, "impatient")
-end, 0)
--- bootstrap the lazy.nvim, the LazyVim and your plugins
-require("user")
-require("core")
+-- Use Neovim's built-in bytecode loader. impatient.nvim is archived and is
+-- unnecessary on supported Neovim versions.
+if vim.loader and vim.loader.enable then
+    vim.loader.enable()
+end
 
-pcall(require, "config")
-require("core.utils").load_mappings()
-
-require("core.utils").load_highlights()
-
+require("config") -- options (mapleader) + autocmds
+require("plugins") -- lazy.nvim bootstrap, catalogue, setup
+require("config.highlights") -- applied after the colorscheme loads
+require("config.utils").load_mappings()
 require("cheatsheet")

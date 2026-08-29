@@ -1,0 +1,14 @@
+local M = {}
+
+--- Fast project file picker: git index inside repos (~0.5 s in REDACTED-ra-test),
+--- fd elsewhere. <leader>fa remains the exhaustive (all-files) picker.
+function M.files(opts)
+    local fzf = require("fzf-lua")
+    local in_repo = vim.fn.finddir(".git", ".;") ~= "" or vim.fn.findfile(".git", ".;") ~= ""
+    if in_repo then
+        return fzf.git_files(opts)
+    end
+    return fzf.files(opts)
+end
+
+return M
