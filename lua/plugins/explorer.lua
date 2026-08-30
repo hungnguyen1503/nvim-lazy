@@ -4,7 +4,7 @@ return {
         cmd = "Neotree",
         dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", "MunifTanjim/nui.nvim" },
         config = function()
-            require("plugins.setup.neotree")
+            require("plugins.setup.explorer.neotree")
         end,
     },
     {
@@ -13,7 +13,7 @@ return {
         version = "2.*",
         event = "VeryLazy",
         config = function()
-            require("plugins.setup.window-picker")
+            require("plugins.setup.explorer.window-picker")
         end,
     },
 }

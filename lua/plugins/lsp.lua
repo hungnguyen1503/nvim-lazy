@@ -3,7 +3,7 @@ return {
         "williamboman/mason.nvim",
         cmd = "Mason",
         config = function()
-            require("plugins.setup.mason")
+            require("plugins.setup.lsp.mason")
         end,
     },
     {
@@ -11,7 +11,7 @@ return {
         cmd = "MasonToolsInstall",
         dependencies = "williamboman/mason.nvim",
         config = function()
-            require("plugins.setup.mason-tools")
+            require("plugins.setup.lsp.mason-tools")
         end,
     },
     {
@@ -19,8 +19,8 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = "saghen/blink.cmp",
         config = function()
-            require("plugins.setup.lspconfig")
-            require("plugins.setup.lspserver")
+            require("plugins.setup.lsp.lspconfig")
+            require("plugins.setup.lsp.lspserver")
         end,
     },
     {
@@ -34,21 +34,21 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = { "anuvyklack/windows.nvim", "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
         config = function()
-            require("plugins.setup.lspsaga")
+            require("plugins.setup.lsp.lspsaga")
         end,
     },
     {
         "hedyhli/outline.nvim",
         cmd = { "Outline", "OutlineOpen" },
         config = function()
-            require("plugins.setup.outline")
+            require("plugins.setup.lsp.outline")
         end,
     },
     {
         "j-hui/fidget.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            require("plugins.setup.fidget")
+            require("plugins.setup.lsp.fidget")
         end,
     },
     {
@@ -78,7 +78,7 @@ return {
         event = "InsertEnter",
         dependencies = "rafamadriz/friendly-snippets",
         config = function()
-            require("plugins.setup.luasnip")
+            require("plugins.setup.lsp.luasnip")
         end,
     },
 }

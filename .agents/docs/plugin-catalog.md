@@ -16,7 +16,6 @@ each plugin in one category and update this file with the same change. Items in
 ## Git and history
 
 - `gitsigns.nvim` — inline Git hunks.
-- `yanky.nvim` — yank history; `sqlite.lua` stores it.
 - `lazygit.nvim` — `:LazyGit` interface.
 - `diffview.nvim` — `:DiffviewOpen` and file history.
 
@@ -24,11 +23,11 @@ each plugin in one category and update this file with the same change. Items in
 
 - `nvim-surround`, `nvim-autopairs`, `tabout.nvim` — paired-text editing.
 - `move.nvim`, `duplicate.nvim`, `align.nvim` — structural text editing.
-- `nvim-spider`, `flash.nvim`, `hop.nvim`, `tabtree.nvim` — code navigation.
-- `vim-argwrap`, `highlight-undo.nvim`, `Comment.nvim` — focused edits.
+- `nvim-spider`, `flash.nvim`, `hop.nvim` — code navigation.
+- `vim-argwrap`, `highlight-undo.nvim` — focused edits (line commenting is native `gc`).
 - `fzf-lua` — files, grep, buffers, marks, commands, and UI selection through the `fzf` executable.
 - `neovim-project`, `neovim-session-manager`, `vim-floaterm`, `overseer.nvim` — projects, sessions, terminals, and tasks.
-- `auto-save.nvim`, `auto-indent.nvim`, `stay-in-place.nvim` — editing behavior.
+- `yanky.nvim` — yank history; `sqlite.lua` stores it.
 - `vim-illuminate`, `nvim-colorizer.lua`, `indent-blankline.nvim`, `todo-comments.nvim` — code readability.
 - `trouble.nvim`, `nvim-spectre`, `spellwarn.nvim`, `nvim-lastplace` — diagnostics, replacement, spelling, and cursor restore.
 - `markdown-table-mode.nvim`, `markview.nvim` — Markdown editing and preview.
@@ -52,7 +51,7 @@ each plugin in one category and update this file with the same change. Items in
 
 - `alpha-nvim` — start screen.
 - `lualine.nvim`, `dropbar.nvim`, `bufferline.nvim` — status, path, and buffer UI.
-- `bufdelete.nvim`, `JABS.nvim` — buffer closing and switching.
+- `JABS.nvim` — buffer switching.
 - `nvim-notify`, `noice.nvim`, `dressing.nvim`, `neoscroll.nvim` — messages, command UI, selections, and smooth scrolling.
 
 ## Shared dependencies
@@ -65,6 +64,6 @@ each plugin in one category and update this file with the same change. Items in
 ## Maintenance rules
 
 1. Add a spec in the category that owns its user-facing behavior.
-2. Put setup code in `lua/plugins/setup/<name>.lua`; keep the spec thin.
+2. Put setup code in `lua/plugins/setup/<domain>/<name>.lua`; keep the spec thin.
 3. Add any new plugin and its reason above, then run `:Lazy sync` and `./scripts/test-config.ps1`.
 4. Remove the catalog entry, its setup module, mappings, and lockfile entry together when retiring a plugin.

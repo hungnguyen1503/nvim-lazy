@@ -4,7 +4,7 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         build = ":TSUpdate",
         config = function()
-            require("plugins.setup.treesitter")
+            require("plugins.setup.treesitter.treesitter")
         end,
     },
     {
@@ -24,19 +24,11 @@ return {
         dependencies = "nvim-treesitter/nvim-treesitter",
     },
     {
-        "roobert/tabtree.nvim",
-        event = { "BufReadPre", "BufNewFile" },
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        config = function()
-            require("plugins.setup.tabtree")
-        end,
-    },
-    {
         "HiPhish/rainbow-delimiters.nvim",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = "nvim-treesitter/nvim-treesitter",
         config = function()
-            require("plugins.setup.rainbow")
+            require("plugins.setup.treesitter.rainbow")
         end,
     },
 }

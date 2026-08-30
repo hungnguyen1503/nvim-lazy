@@ -3,22 +3,14 @@ return {
         "lewis6991/gitsigns.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            require("plugins.setup.gitsigns")
-        end,
-    },
-    {
-        "gbprod/yanky.nvim",
-        event = { "BufReadPre", "BufNewFile" },
-        dependencies = "kkharji/sqlite.lua",
-        config = function()
-            require("plugins.setup.yanky")
+            require("plugins.setup.git.gitsigns")
         end,
     },
     {
         "kdheepak/lazygit.nvim",
         cmd = "LazyGit",
         config = function()
-            require("plugins.setup.lazygit")
+            require("plugins.setup.git.lazygit")
         end,
     },
     {
@@ -26,7 +18,7 @@ return {
         cmd = { "DiffviewOpen", "DiffviewFileHistory" },
         dependencies = "nvim-lua/plenary.nvim",
         config = function()
-            require("plugins.setup.diffview")
+            require("plugins.setup.git.diffview")
         end,
     },
 }

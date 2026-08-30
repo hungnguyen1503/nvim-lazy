@@ -113,7 +113,7 @@ M.general = {
         ["<Up>"]     = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
         ["<Down>"]   = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
         -- Format range
-        ["<space>f"] = { "<cmd>lua require'lsp-range-format'.format()<CR>", "format range" },
+        ["<space>f"] = { "gq", "Format selection (LSP range format)" },
         ["\\"]       = { "%", "Goto bracket pairs" },
 
     },
@@ -188,8 +188,8 @@ M.bufferline = {
         ["<space>p"]      = { "<cmd>BufferLineTogglePin<CR>", "Pin/Unpin buffer" },
         -- Close buffer
         ["<space><Tab>"]  = {
-            function(bufnum)
-                require('bufdelete').bufdelete(bufnum, true)
+            function()
+                vim.api.nvim_buf_delete(0, { force = true })
             end,
             "Close current buffer"
         },
@@ -359,10 +359,7 @@ M.lspconfig = {
         },
     },
     x = {
-        ["<space>f"] = {
-            ":lua require'lsp-range-format'.format()<ESC>",
-            "Lsp formatting",
-        },
+        ["<space>f"] = { "gq", "Lsp formatting" },
     }
 }
 

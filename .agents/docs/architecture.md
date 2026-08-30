@@ -25,8 +25,10 @@ instead.
   `colorscheme`, `editor`, `explorer`, `git`, `lsp`, `treesitter`, `ui` — plus
   `init.lua` (bootstrap), `specs.lua` (catalogue), and `settings.lua` (Lazy
   options, including disabled runtime plugins).
-- `lua/plugins/setup/`: per-plugin configuration modules; each is required
-  exactly once by its domain spec's `config` function.
+ `lua/plugins/setup/`: per-plugin configuration modules, grouped into
+   subfolders that mirror the domain spec files (`setup/editor/`,
+   `setup/lsp/`, ...); each is required exactly once by its domain spec's
+   `config` function, as `plugins.setup.<domain>.<name>`.
 - `lua/cheatsheet/`: in-editor cheat-sheet content.
 - `spell/`: custom spell-file source and compiled dictionary.
 - `dotfiles/`: non-Neovim shell/terminal files kept for reference only.

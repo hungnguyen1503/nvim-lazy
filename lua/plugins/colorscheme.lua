@@ -4,7 +4,7 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            require("plugins.setup.tokyonight")
+            require("plugins.setup.colorscheme.tokyonight")
         end,
     },
 }

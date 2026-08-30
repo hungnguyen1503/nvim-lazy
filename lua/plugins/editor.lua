@@ -3,14 +3,14 @@ return {
         "kylechui/nvim-surround",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            require("plugins.setup.surround")
+            require("plugins.setup.editor.surround")
         end,
     },
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
         config = function()
-            require("plugins.setup.autopairs")
+            require("plugins.setup.editor.autopairs")
         end,
     },
     {
@@ -18,28 +18,28 @@ return {
         event = "InsertEnter",
         dependencies = "nvim-treesitter/nvim-treesitter",
         config = function()
-            require("plugins.setup.tabout")
+            require("plugins.setup.editor.tabout")
         end,
     },
     {
         "fedepujol/move.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            require("plugins.setup.move")
+            require("plugins.setup.editor.move")
         end,
     },
     {
         "chrisgrieser/nvim-spider",
         event = "VeryLazy",
         config = function()
-            require("plugins.setup.spider")
+            require("plugins.setup.editor.spider")
         end,
     },
     {
         "folke/flash.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            require("plugins.setup.flash")
+            require("plugins.setup.editor.flash")
         end,
     },
     {
@@ -61,21 +61,14 @@ return {
         "tzachar/highlight-undo.nvim",
         keys = { { "u" }, { "<C-r>" } },
         config = function()
-            require("plugins.setup.undo")
-        end,
-    },
-    {
-        "numToStr/Comment.nvim",
-        event = { "BufReadPre", "BufNewFile" },
-        config = function()
-            require("plugins.setup.comment")
+            require("plugins.setup.editor.undo")
         end,
     },
     {
         "Shatur/neovim-session-manager",
         event = "VeryLazy",
         config = function()
-            require("plugins.setup.session")
+            require("plugins.setup.editor.session")
         end,
     },
     {
@@ -83,7 +76,7 @@ return {
         cmd = "FzfLua",
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
-            require("plugins.setup.fzf")
+            require("plugins.setup.editor.fzf")
         end,
     },
     {
@@ -95,21 +88,21 @@ return {
             vim.opt.sessionoptions:append("globals")
         end,
         config = function()
-            require("plugins.setup.project")
+            require("plugins.setup.editor.project")
         end,
     },
     {
         "voldikss/vim-floaterm",
         cmd = { "FloatermToggle", "FloatermNew", "FloatermShow" },
         config = function()
-            require("plugins.setup.floaterm")
+            require("plugins.setup.editor.floaterm")
         end,
     },
     {
         "okuuva/auto-save.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            require("plugins.setup.autosave")
+            require("plugins.setup.editor.autosave")
         end,
     },
     {
@@ -121,21 +114,21 @@ return {
         "RRethy/vim-illuminate",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            require("plugins.setup.illuminate")
+            require("plugins.setup.editor.illuminate")
         end,
     },
     {
         "NvChad/nvim-colorizer.lua",
         event = "VeryLazy",
         config = function()
-            require("plugins.setup.colorizer")
+            require("plugins.setup.editor.colorizer")
         end,
     },
     {
         "lukas-reineke/indent-blankline.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            require("plugins.setup.blankline")
+            require("plugins.setup.editor.blankline")
         end,
     },
     {
@@ -143,7 +136,7 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = "nvim-treesitter/nvim-treesitter",
         config = function()
-            require("plugins.setup.autoindent")
+            require("plugins.setup.editor.autoindent")
         end,
     },
     {
@@ -151,7 +144,7 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = "nvim-lua/plenary.nvim",
         config = function()
-            require("plugins.setup.todo")
+            require("plugins.setup.editor.todo")
         end,
     },
     {
@@ -159,7 +152,7 @@ return {
         cmd = "Trouble",
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
-            require("plugins.setup.trouble")
+            require("plugins.setup.editor.trouble")
         end,
     },
     {
@@ -178,14 +171,14 @@ return {
         cmd = "Spectre",
         dependencies = "nvim-lua/plenary.nvim",
         config = function()
-            require("plugins.setup.spectre")
+            require("plugins.setup.editor.spectre")
         end,
     },
     {
         "ravibrock/spellwarn.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            require("plugins.setup.spellwarn")
+            require("plugins.setup.editor.spellwarn")
         end,
     },
     { "gbprod/stay-in-place.nvim", event = { "BufReadPre", "BufNewFile" }, opts = {} },
@@ -200,14 +193,22 @@ return {
         "OXY2DEV/markview.nvim",
         ft = "markdown",
         config = function()
-            require("plugins.setup.markview")
+            require("plugins.setup.editor.markview")
         end,
     },
     {
         "stevearc/overseer.nvim",
         cmd = { "OverseerRun", "OverseerToggle" },
         config = function()
-            require("plugins.setup.overseer")
+            require("plugins.setup.editor.overseer")
+        end,
+    },
+    {
+        "gbprod/yanky.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = "kkharji/sqlite.lua",
+        config = function()
+            require("plugins.setup.editor.yanky")
         end,
     },
 }

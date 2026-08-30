@@ -3,28 +3,28 @@ return {
         "nvim-tree/nvim-web-devicons",
         event = "VeryLazy",
         config = function()
-            require("plugins.setup.devicons")
+            require("plugins.setup.ui.devicons")
         end,
     },
     {
         "goolord/alpha-nvim",
         event = "VimEnter",
         config = function()
-            require("plugins.setup.alpha")
+            require("plugins.setup.ui.alpha")
         end,
     },
     {
         "nvim-lualine/lualine.nvim",
         event = "BufReadPost",
         config = function()
-            require("plugins.setup.lualine")
+            require("plugins.setup.ui.lualine")
         end,
     },
     {
         "Bekaboo/dropbar.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            require("plugins.setup.dropbar")
+            require("plugins.setup.ui.dropbar")
         end,
     },
     {
@@ -33,23 +33,22 @@ return {
         event = { "BufReadPost", "BufWinEnter", "FileWritePost" },
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
-            require("plugins.setup.bufferline")
+            require("plugins.setup.ui.bufferline")
         end,
     },
-    { "famiu/bufdelete.nvim", event = "VeryLazy" },
     {
         "matbme/JABS.nvim",
         cmd = "JABSOpen",
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
-            require("plugins.setup.jabs")
+            require("plugins.setup.ui.jabs")
         end,
     },
     {
         "rcarriga/nvim-notify",
         event = "VeryLazy",
         config = function()
-            require("plugins.setup.notify")
+            require("plugins.setup.ui.notify")
         end,
     },
     {
@@ -57,7 +56,7 @@ return {
         event = "VeryLazy",
         dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
         config = function()
-            require("plugins.setup.noice")
+            require("plugins.setup.ui.noice")
         end,
     },
     { "stevearc/dressing.nvim", event = "VeryLazy", opts = {} },
@@ -65,7 +64,7 @@ return {
         "karb94/neoscroll.nvim",
         event = "VeryLazy",
         config = function()
-            require("plugins.setup.neoscroll")
+            require("plugins.setup.ui.neoscroll")
         end,
     },
 }
