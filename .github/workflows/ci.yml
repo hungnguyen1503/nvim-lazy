@@ -1,0 +1,86 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  config:
+    name: Neovim ${{ matrix.version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        version: [stable, nightly]
+        include:
+          - version: nightly
+            experimental: true
+    continue-on-error: ${{ matrix.experimental }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Neovim
+        uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: ${{ matrix.version }}
+
+      - name: Restore plugin cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.local/share/nvim
+            ~/.cache/nvim
+          key: nvim-${{ matrix.version }}-plugins-${{ hashFiles('lazy-lock.json') }}
+
+      - name: Link repository as user config
+        run: |
+          mkdir -p "$HOME/.config"
+          ln -s "$GITHUB_WORKSPACE" "$HOME/.config/nvim"
+
+      - name: Sync plugins from lazy-lock.json
+        run: nvim --headless "+Lazy! sync" +qa
+
+      - name: Startup must be error-free
+        run: |
+          set +e
+          out=$(nvim --headless '+qall!' 2>&1)
+          code=$?
+          set -e
+          printf '%s\n' "$out"
+          if [ "$code" -ne 0 ] || printf '%s' "$out" | grep -qi 'Error detected while processing'; then
+            echo "::error::Neovim startup reported errors"
+            exit 1
+          fi
+
+      - name: Deprecated API report
+        run: |
+          nvim --headless \
+            -c 'lua io.write(vim.api.nvim_exec2("checkhealth! vim.deprecated", { output = true }).output .. "\n")' \
+            -c 'qa!' | tee deprecated.log
+          echo '## Deprecated API (`checkhealth vim.deprecated`)' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          cat deprecated.log >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Cold startup budget (median of 3 runs, 1s)
+        run: |
+          times=()
+          for _ in 1 2 3; do
+            start=$(date +%s%N)
+            nvim --headless '+qall!' >/dev/null 2>&1
+            end=$(date +%s%N)
+            times+=("$(( (end - start) / 1000000 ))")
+          done
+          median=$(printf '%s\n' "${times[@]}" | sort -n | awk 'NR==2')
+          echo "startup median: ${median} ms" | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ "${median}" -gt 1000 ]; then
+            echo "::error::Median cold startup ${median} ms exceeds the 1 s budget"
+            exit 1
+          fi

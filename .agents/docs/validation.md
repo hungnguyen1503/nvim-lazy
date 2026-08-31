@@ -28,3 +28,7 @@ Verify the GUI starts, cursor and scrolling behavior remain usable, and terminal
 ## Before commit
 
 Review `git diff --check` and `git status --short`. Do not commit an unintended `lazy-lock.json` update, generated plugin state, or a user's unrelated working-tree edits.
+
+## Continuous integration
+
+`.github/workflows/ci.yml` mirrors the fast checks on every push to `master` and every pull request: it links the repository as the user config, syncs plugins from `lazy-lock.json`, fails on any startup error, reports `checkhealth vim.deprecated` in the job summary, and enforces the one-second median cold-startup budget. It runs against Neovim `stable` (blocking) and `nightly` (advisory, may fail without turning the check red).
