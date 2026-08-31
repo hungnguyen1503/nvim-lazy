@@ -51,7 +51,7 @@ illuminate.configure({
     providers_regex_syntax_allowlist = {},
     -- under_cursor: whether or not to illuminate under the cursor
     under_cursor = false,
-    -- Skip illumination in huge buffers (generated REDACTED tables, minified code):
+    -- Skip illumination in huge buffers (generated tables, minified code):
     -- the LSP/treesitter reference scan re-runs on every cursor move, so these
     -- files are the actual lag source. 5000 lines stays above any hand-written
     -- C file while cutting the multi-hundred-thousand-line generators loose.

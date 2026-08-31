@@ -1,6 +1,6 @@
 local M = {}
 
---- Fast project file picker: git index inside repos (~0.5 s in REDACTED-ra-test),
+--- Fast project file picker: git index inside repos (~0.5 s in a 12k-file repo),
 --- fd elsewhere. <leader>fa remains the exhaustive (all-files) picker.
 function M.files(opts)
     local fzf = require("fzf-lua")

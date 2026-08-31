@@ -159,12 +159,6 @@ M.lazygit = {
     }
 }
 
--- M.gitui = {
---     n = {
---         ["<leader>gg"] = { "<cmd>FloatermNew --width=0.9 --height=0.9 --position=center gitui<CR>", "Git ui" },
---     }
--- }
-
 M.bufferline = {
     -- plugin = true,
     n = {
@@ -752,68 +746,35 @@ M.diffview = {
     }
 }
 
--- INFO: This plugin is disabled temporarily
--- M.GrugFar = {
---     n = {
---         ["<leader>fs"] = {
---             function()
---                 require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>") } })
---             end,
---             "Search and Replace Current Word in Normal mode"
---         },
---         ["<leader>sc"] = {
---             function()
---                 require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>"), filesFilter = '*.{c, h, cpp}' } })
---             end,
---             "Search and Replace Word in Normal mode"
---         },
---         ["<leader>sl"] = {
---             function()
---                 require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>"), filesFilter = '*.{lua}' } })
---             end,
---             "Search and Replace Word in Normal mode"
---         },
---     },
---
---     x = {
---         ["<leader>fs"] = {
---             function ()
---                 require('grug-far').grug_far({ prefills = { search = vim.fn.expand("<cword>") } })
---             end,
---             "Search and Replace Current Word in Visual mode"
---         },
---     },
--- }
-
-M.specture = {
+M.vscode_search_replace = {
     n = {
         ["<leader>S"] = {
             function()
-                require("spectre").toggle()
+                require("vscode-search-replace").open()
             end,
-            "Toggle Spectre"
+            "Global search & replace UI",
+        },
+        ["<C-F>"] = {
+            function()
+                require("vscode-search-replace").open({ file = true, word = true })
+            end,
+            "Search word under cursor in current file",
         },
         ["<leader>sw"] = {
             function()
-                require("spectre").open_visual({ select_word = true })
+                require("vscode-search-replace").open({ word = true })
             end,
-            "Search current word"
-        },
-        ["<leader>sp"] = {
-            function()
-                require("spectre").open_file_search({ select_word = true })
-            end,
-            "Search on current file"
+            "Global search: word under cursor",
         },
     },
     v = {
         ["<leader>sw"] = {
             function()
-                require("spectre").open_visual()
+                require("vscode-search-replace").open({ word = true })
             end,
-            "Search current word"
+            "Global search: visual selection",
         },
-    }
+    },
 }
 
 M.yanky = {

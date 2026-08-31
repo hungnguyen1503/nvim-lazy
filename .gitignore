@@ -3,3 +3,10 @@ plugin
 ftplugin
 coc-settings.json
 .luarc.json
+
+# tool artifacts and local-only files — never publish
+.codegraph/
+Temp/
+spell/*.spl
+dotfiles/.wezterm.lua
+lua/plugins/setup/editor/project_dirs.lua

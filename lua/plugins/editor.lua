@@ -175,6 +175,12 @@ return {
         end,
     },
     {
+        "hungnguyen1503/nvim-vscode-search-replace",
+        cmd = "SearchReplace",
+        event = "VeryLazy", -- mappings require() the module outside lazy's wrappers
+        dependencies = { "grapp-dev/nui-components.nvim", "MunifTanjim/nui.nvim" },
+    },
+    {
         "ravibrock/spellwarn.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function()

@@ -3,29 +3,11 @@ if not status_ok then
     return
 end
 
-local project_dir
-if vim.fn.has("win32") == 1 then
-    project_dir = {
-        "~\\hungquangnguyen\\REDACTED\\REDACTED-v",
-        "~\\hungquangnguyen\\REDACTED\\REDACTED-ra-test",
-        "~\\hungquangnguyen\\REDACTED\\peaks",
-        "~\\hungquangnguyen\\REDACTED\\wikijs",
-        "~\\hungquangnguyen\\REDACTED\\REDACTED",
-        "~\\hungquangnguyen\\REDACTED\\12_Coder\\REDACTED",
-        "~\\hungquangnguyen\\REDACTED\\13_REDACTED\\peaks",
-        "~\\hungquangnguyen\\REDACTED\\REDACTED-doc-images",
-        "~\\hungquangnguyen\\REDACTED\\08_Tutorial",
-        "~\\hungquangnguyen\\REDACTED\\13_REDACTED\\rx_automation",
-        "~\\hungquangnguyen\\CodeTest\\TestC",
-        "~\\AppData\\Local\\nvim"
-    }
-else
-    project_dir = {
-        "~/REDACTED/REDACTED/",
-        "~/REDACTED/wikijs/",
-        "~/REDACTED/wikiRVC/wikijs/",
-        "~/data2/hungnguyen/neovim/nvim-lazy/"
-    }
+-- Personal project lists live in lua/plugins/setup/editor/project_dirs.lua
+-- (git-ignored); fresh clones fall back to the placeholder list next to it.
+local ok, project_dir = pcall(require, "plugins.setup.editor.project_dirs")
+if not ok then
+    project_dir = require("plugins.setup.editor.project_dirs.example")
 end
 
 local options = {

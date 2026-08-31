@@ -1,16 +1,12 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        event = { "BufReadPre", "BufNewFile" },
+        branch = "main", -- master is frozen and broken on nvim 0.11+ (iter_matches node-list change)
+        lazy = false, -- main branch does not support lazy-loading
         build = ":TSUpdate",
         config = function()
             require("plugins.setup.treesitter.treesitter")
         end,
-    },
-    {
-        "RRethy/nvim-treesitter-endwise",
-        event = { "BufReadPre", "BufNewFile" },
-        dependencies = "nvim-treesitter/nvim-treesitter",
     },
     {
         "windwp/nvim-ts-autotag",
@@ -20,8 +16,12 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
+        branch = "main",
         event = "VeryLazy",
         dependencies = "nvim-treesitter/nvim-treesitter",
+        config = function()
+            require("plugins.setup.treesitter.textobjects")
+        end,
     },
     {
         "HiPhish/rainbow-delimiters.nvim",

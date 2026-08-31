@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is a personal Neovim configuration, not an REDACTED repository. It bootstraps `lazy.nvim`, defines Lua-based editor behavior and plugin specifications, and includes guarded settings for the Neovide GUI. Plugins are fetched from GitHub through `lazy.nvim`.
+This is a personal Neovim configuration, not a work/firmware repository. It bootstraps `lazy.nvim`, defines Lua-based editor behavior and plugin specifications, and includes guarded settings for the Neovide GUI. Plugins are fetched from GitHub through `lazy.nvim`.
 
 ## Nvim configuration
 

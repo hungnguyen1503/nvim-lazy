@@ -1,114 +1,32 @@
-local present, treesitter = pcall(require, "nvim-treesitter.configs")
-if not present then
-    return
-end
+-- nvim-treesitter "main" branch API: full rewrite, no configs/module system.
+-- The plugin only installs parsers and queries; highlight/fold are native
+-- Neovim features, indent comes from this plugin. See the plugin README.
+local treesitter = require("nvim-treesitter")
 
-local status_ok, install = pcall(require, "nvim-treesitter.install")
-if not status_ok then
-    return
-end
+-- Keep the language set previously installed via :TSInstall (no-op if present).
+treesitter.install({
+    "bash", "c", "cmake", "cpp", "html", "json", "json5", "lua",
+    "markdown", "markdown_inline", "pug", "python", "vim", "vimdoc", "xml", "yaml",
+})
 
-local options = {
-    highlight             = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-        disable = function(lang, buf)
-            local max_filesize = 1000 * 1024 -- 1 MB
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-            if ok and stats and stats.size > max_filesize then
-                return true
-            end
-        end,
-    },
-    incremental_selection = { enable = true },
-    indent                = { enable = true },
-    matchup               = { enable = true },
-    endwise               = { enable = true },
-    textobjects           = {
-        -- NOTE: Build in text objects.
-        -- @block.inner
-        -- @block.outer
-        -- @call.inner
-        -- @call.outer
-        -- @class.inner
-        -- @class.outer
-        -- @comment.outer
-        -- @conditional.inner
-        -- @conditional.outer
-        -- @frame.inner
-        -- @frame.outer
-        -- @function.inner
-        -- @function.outer
-        -- @loop.inner
-        -- @loop.outer
-        -- @parameter.inner
-        -- @parameter.outer
-        -- @scopename.inner
-        -- @statement.outer
-        select = {
-            enable = true,
-            -- Automatically jump forward to textobj, similar to targets.vim
-            lookahead = true,
-            keymaps = {
-                -- You can use the capture groups defined in textobjects.scm
-                ["ap"] = "@parameter.outer",
-                ["ip"] = "@parameter.inner",
-                ["a/"] = "@comment.outer",
-            },
-            -- You can choose the select mode (default is charwise 'v')
-            --
-            -- Can also be a function which gets passed a table with the keys
-            -- * query_string: eg '@function.inner'
-            -- * method: eg 'v' or 'o'
-            -- and should return the mode ('v', 'V', or '<c-v>') or a table
-            -- mapping query_strings to modes.
-            selection_modes = {
-                ['@parameter.outer'] = 'v', -- charwise
-                ['@function.outer'] = 'V', -- linewise
-                ['@class.outer'] = '<c-v>', -- blockwise
-            },
-            -- If you set this to `true` (default is `false`) then any textobject is
-            -- extended to include preceding or succeeding whitespace. Succeeding
-            -- whitespace has priority in order to act similarly to eg the built-in
-            -- `ap`.
-            --
-            -- Can also be a function which gets passed a table with the keys
-            -- * query_string: eg '@function.inner'
-            -- * selection_mode: eg 'v'
-            -- and should return true of false
-            include_surrounding_whitespace = false,
-        },
-        move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-                ["]p"] = "@parameter.inner",
-                ["]c"] = "@comment.outer",
-                ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
-            },
-            goto_next_end = {
-                ["]P"] = "@parameter.inner",
-                ["]C"] = "@comment.outer",
-            },
-            goto_previous_start = {
-                ["[p"] = "@parameter.inner",
-                ["[c"] = "@comment.outer",
-                ["[z"] = { query = "@fold", query_group = "folds", desc = "Previous fold" },
-            },
-            goto_previous_end = {
-                ["[P"] = "@parameter.inner",
-                ["[C"] = "@comment.outer",
-            },
-        }
-    }
-}
+local max_filesize = 1000 * 1024 -- 1 MB
 
-treesitter.setup(options)
-
-if vim.fn.has("win32") == 1 then
-    install.compilers = { "x86_64-w64-mingw32-clang" }
-else
-    install.compilers = { "gcc" }
-end
+-- Enable native treesitter highlighting per filetype, replacing the old
+-- `highlight = { enable = true }` module.
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function(ev)
+        local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(ev.buf))
+        if ok and stats and stats.size > max_filesize then
+            return
+        end
+        if not pcall(vim.treesitter.start, ev.buf) then
+            return -- no parser for this filetype
+        end
+        -- Treesitter indentation (experimental, provided by nvim-treesitter).
+        -- Falls back to autoindent when no indent query matches.
+        vim.bo[ev.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end,
+})
 
 vim.api.nvim_set_hl(0, "@punctuation.bracket", { link = "" })
