@@ -234,7 +234,7 @@ M.trouble = {
 
 M.neotree = {
     n = {
-        ["<F4>"] = { "<cmd>Neotree toggle<cr>", "Toggle Neotree" },
+        ["<F4>"] = { "<cmd>Neotree toggle reveal<cr>", "Toggle Neotree" },
     },
 }
 

@@ -235,8 +235,8 @@ local options = {
             },
         },
         follow_current_file = {
-            enabled = false,        -- Avoid a synchronous reveal scan each time the explorer opens.
-            -- the current file is changed while the tree is open.
+            enabled = false,        -- Avoid a synchronous reveal scan each time the buffer changes.
+            -- Reveal is done explicitly on open instead: <F4> runs `:Neotree toggle reveal`.
             leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
         -- time the current file is changed while the tree is open.
