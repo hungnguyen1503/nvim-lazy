@@ -385,14 +385,19 @@ M.outline = {
 
 M.fzf = {
     n = {
-        ["<leader>ff"] = { function() require("config.pickers").files() end, "Find files" },
-        ["<leader>fa"] = {
+        ["<leader>ff"] = {
             function()
-                require("fzf-lua").files({ fd_opts = "--type f --hidden --follow --no-ignore" })
+                -- VS Code-style list-only picker: prompt on top (fzf --layout=reverse),
+                -- no preview pane or preview process (previewer=false + preview.hidden).
+                require("fzf-lua").files({
+                    fd_opts = "--type f --hidden --follow --no-ignore",
+                    previewer = false,
+                    winopts = { preview = { hidden = true } },
+                })
             end,
-            "Find all files",
+            "Find files",
         },
-        ["<leader>fw"] = { function() require("fzf-lua").live_grep() end, "Find live grep" },
+        ["<leader>fg"] = { function() require("fzf-lua").live_grep() end, "Find live grep" },
         ["<leader>fo"] = { function() require("fzf-lua").oldfiles() end, "Find old files" },
         ["<leader>fk"] = { function() require("fzf-lua").keymaps() end, "Find key mappings" },
         ["<leader>fp"] = { "<cmd>NeovimProjectDiscover<CR>", "Find project" },
@@ -560,31 +565,6 @@ M.align = {
     }
 }
 
-local function treesitter_repeat(method)
-    return function()
-        require("nvim-treesitter.textobjects.repeatable_move")[method]()
-    end
-end
-
-M.treesitter = {
-    n = {
-        [";"] = { treesitter_repeat("repeat_last_move_next"), "Goes forward" },
-        ["<A-;>"] = { treesitter_repeat("repeat_last_move_previous"), "Goes previous" },
-    },
-    x = {
-        [";"] = { treesitter_repeat("repeat_last_move_next"), "Goes forward" },
-        ["<A-;>"] = { treesitter_repeat("repeat_last_move_previous"), "Goes previous" },
-    },
-    v = {
-        [";"] = { treesitter_repeat("repeat_last_move_next"), "Goes forward" },
-        ["<A-;>"] = { treesitter_repeat("repeat_last_move_previous"), "Goes previous" },
-    },
-    o = {
-        [";"] = { treesitter_repeat("repeat_last_move_next"), "Goes forward" },
-        ["<A-;>"] = { treesitter_repeat("repeat_last_move_previous"), "Goes previous" },
-    },
-}
-
 M.spider = {
     n = {
         ["w"] = {
@@ -669,17 +649,6 @@ M.spider = {
     }
 }
 
-M.replace = {
-    n = {
-        ["<leader>rw"] = { "<cmd>EasyReplaceWord<CR>", "Replace word" },
-        ["<leader>rc"] = { "<cmd>EasyReplaceCword<CR>", "Replace cursor word" },
-    },
-    x = {
-        ["<leader>rw"] = { "<cmd>EasyReplaceWordInVisual<CR>", "Replace word" },
-        ["<leader>rc"] = { "<cmd>EasyReplaceCwordInVisual<CR>", "Replace cursor word" },
-    }
-}
-
 M.flash = {
     n = {
         ["<leader>j"] = {
@@ -754,13 +723,13 @@ M.vscode_search_replace = {
             end,
             "Global search & replace UI",
         },
-        ["<C-F>"] = {
+        ["<leader>fs"] = {
             function()
                 require("vscode-search-replace").open({ file = true, word = true })
             end,
             "Search word under cursor in current file",
         },
-        ["<leader>sw"] = {
+        ["<leader>fs"] = {
             function()
                 require("vscode-search-replace").open({ word = true })
             end,

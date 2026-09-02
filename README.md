@@ -92,7 +92,6 @@ Run `:Lazy sync` after pulling configuration updates.
 
 ### 🌳 Treesitter & Syntax
 + [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) — parser-based highlighting & textobjects
-+ [nvim-treesitter/nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) — semantic motions
 + [RRethy/nvim-treesitter-endwise](https://github.com/RRethy/nvim-treesitter-endwise) · [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) — language-aware closing constructs
 + [HiPhish/rainbow-delimiters.nvim](https://github.com/HiPhish/rainbow-delimiters.nvim) — nested delimiter colours
 

@@ -30,7 +30,7 @@ each plugin in one category and update this file with the same change. Items in
 - `yanky.nvim` — yank history; `sqlite.lua` stores it.
 - `vim-illuminate`, `nvim-colorizer.lua`, `indent-blankline.nvim`, `todo-comments.nvim` — code readability.
 - `trouble.nvim`, `nvim-spectre`, `spellwarn.nvim`, `nvim-lastplace` — diagnostics, replacement, spelling, and cursor restore.
-- `nvim-vscode-search-replace` (`hungnguyen1503/nvim-vscode-search-replace`) — `:SearchReplace` VS Code-style search & replace UI built on nui-components: `<leader>S` global, `<C-F>` current file, `<leader>sw` word/visual-selection; search-row toggle BOXES that fill while active — `⇄` replace-mode icon box left of the (fixed-width) search field, `ab` whole-word / `Aa` case / `.*` regex right of it, trailing `?` help box; the replace row adds `AB` preserve-case and an icon-only `⇉` Replace All that asks a Yes/No dialog; every widget (boxes, inputs, results-tree rows, help overlay, dialog buttons) is mouse-clickable; inside the float `Esc`/`q` close, `<CR>` jump, `<C-R>` Replace All, `<A-h>/<A-j>/<A-k>/<A-l>` panel navigation, `<A-c>/<A-w>/<A-r>/<A-p>` toggle hotkeys, `?` keymap help overlay. Spectre keeps `:Spectre` only (global keymaps removed).
+- `nvim-vscode-search-replace` (`hungnguyen1503/nvim-vscode-search-replace`) — `:SearchReplace` VS Code-style search & replace UI built on nui-components: `<leader>S` global, `<leader>fs` current file, `<leader>sw` word/visual-selection; search-row toggle BOXES that fill while active — `⇄` replace-mode icon box left of the (fixed-width) search field, `ab` whole-word / `Aa` case / `.*` regex right of it, trailing `?` help box; the replace row adds `AB` preserve-case and an icon-only `⇉` Replace All that asks a Yes/No dialog; every widget (boxes, inputs, results-tree rows, help overlay, dialog buttons) is mouse-clickable; inside the float `Esc`/`q` close, `<CR>` jump, `<C-R>` Replace All, `<A-h>/<A-j>/<A-k>/<A-l>` panel navigation, `<A-c>/<A-w>/<A-r>/<A-p>` toggle hotkeys, `?` keymap help overlay. Spectre keeps `:Spectre` only (global keymaps removed).
 - `markdown-table-mode.nvim`, `markview.nvim` — Markdown editing and preview.
 
 ## Language intelligence and completion
@@ -44,8 +44,8 @@ each plugin in one category and update this file with the same change. Items in
 
 ## Treesitter and syntax
 
-- `nvim-treesitter`, `nvim-treesitter-textobjects` — parser-based highlighting and motions.
-- `nvim-treesitter-endwise`, `nvim-ts-autotag` — language-aware closing constructs.
+- `nvim-treesitter` (branch `main`) — installs/maintains parsers and queries; highlighting and folds are native Neovim, indentation comes from the plugin.
+- `nvim-ts-autotag` — language-aware closing tags.
 - `rainbow-delimiters.nvim` — nested delimiter colours.
 
 ## User interface

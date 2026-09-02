@@ -4,8 +4,7 @@ if not status_ok then
 end
 
 neoscroll.setup({
-    -- <C-f> removed: reserved for vscode-search-replace "search in current file"
-    mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
+    mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
     hide_cursor = true,
     stop_eof = true,
     respect_scrolloff = false,

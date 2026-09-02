@@ -15,15 +15,6 @@ return {
         opts = {},
     },
     {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        branch = "main",
-        event = "VeryLazy",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        config = function()
-            require("plugins.setup.treesitter.textobjects")
-        end,
-    },
-    {
         "HiPhish/rainbow-delimiters.nvim",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = "nvim-treesitter/nvim-treesitter",
