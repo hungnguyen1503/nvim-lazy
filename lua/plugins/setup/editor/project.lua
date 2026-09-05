@@ -4,10 +4,16 @@ if not status_ok then
 end
 
 -- Personal project lists live in lua/plugins/setup/editor/project_dirs.lua
--- (git-ignored); fresh clones fall back to the placeholder list next to it.
+-- (git-ignored); fresh clones fall back to the placeholder next to it.
+-- Note: the fallback uses dofile() because lazy.nvim's cache loader resolves
+-- every dot in a module name as a directory separator, so a module named
+-- "project_dirs.example" (file project_dirs.example.lua) can never be
+-- require()d.
 local ok, project_dir = pcall(require, "plugins.setup.editor.project_dirs")
 if not ok then
-    project_dir = require("plugins.setup.editor.project_dirs.example")
+    local example = vim.fs.find("project_dirs.example.lua",
+        { path = vim.fn.stdpath("config") .. "/lua", upward = false })[1]
+    project_dir = example and dofile(example) or {}
 end
 
 local options = {
