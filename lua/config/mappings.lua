@@ -723,7 +723,7 @@ M.vscode_search_replace = {
             end,
             "Global search & replace UI",
         },
-        ["<leader>fs"] = {
+        ["<leader>fw"] = {
             function()
                 require("vscode-search-replace").open({ file = true, word = true })
             end,
