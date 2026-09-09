@@ -1,3 +1,4 @@
+-- modified
 vim.g.mapleader = ","
 
 local options = {

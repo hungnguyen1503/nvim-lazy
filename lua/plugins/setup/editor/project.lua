@@ -4,13 +4,13 @@ if not status_ok then
 end
 
 -- Personal project lists live in lua/plugins/setup/editor/project_dirs.lua
--- (git-ignored); fresh clones fall back to the placeholder next to it.
--- Note: the fallback uses dofile() because lazy.nvim's cache loader resolves
--- every dot in a module name as a directory separator, so a module named
--- "project_dirs.example" (file project_dirs.example.lua) can never be
--- require()d.
+-- (git-ignored); fresh clones fall back to the placeholder list next to it.
 local ok, project_dir = pcall(require, "plugins.setup.editor.project_dirs")
 if not ok then
+    -- dofile() instead of require(): lazy.nvim's cache loader resolves every
+    -- dot in a module name as a directory separator, so a module named
+    -- "project_dirs.example" (file project_dirs.example.lua) can never be
+    -- require()d.
     local example = vim.fs.find("project_dirs.example.lua",
         { path = vim.fn.stdpath("config") .. "/lua", upward = false })[1]
     project_dir = example and dofile(example) or {}
@@ -69,4 +69,45 @@ local options = {
     },
 }
 
+-- <Ctrl-a> inside the fzf-lua project picker: add a new project directory to
+-- the history. neovim-project's picker merges user-supplied `opts.actions`
+-- with its own (tbl_deep_extend), so we override the two picker commands and
+-- pass a "ctrl-a" action; the plugin's own ctrl-d delete action stays intact.
+local function add_project_to_history()
+    require("plugins.setup.editor.project_add").add()
+end
+
+local function with_add_action(opts)
+    opts = opts or {}
+    opts.actions = vim.tbl_extend("force", opts.actions or {}, {
+        ["ctrl-a"] = function()
+            add_project_to_history()
+        end,
+    })
+    return opts
+end
+
+-- Re-create the picker commands with the ctrl-a action injected.
+local config = require("neovim-project.config")
+local picker = require("neovim-project.picker")
+
+do
+    local project_module = require("neovim-project.project")
+    vim.api.nvim_create_user_command("NeovimProjectDiscover", function(args)
+        -- Default to "history" sorting: merges recent-projects (entries added
+        -- via <leader>fa / <C-a>) ahead of pattern matches. Plain "default"
+        -- lists ONLY dirs matching the `projects` patterns, hiding everything
+        -- added to the history.
+        config.options.picker.opts.sorting = args.args or "history"
+        picker.create_picker(with_add_action(args), true, project_module.switch_project)
+    end, { nargs = "?", complete = function()
+        return { "history", "default", "alphabetical_name", "alphabetical_path" }
+    end })
+
+    vim.api.nvim_create_user_command("NeovimProjectHistory", function(args)
+        picker.create_picker(with_add_action(args), false, project_module.switch_project)
+    end, {})
+end
+
 project.setup(options)
+
