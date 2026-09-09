@@ -81,7 +81,9 @@ local function with_add_action(opts)
     opts = opts or {}
     opts.actions = vim.tbl_extend("force", opts.actions or {}, {
         ["ctrl-a"] = function()
-            add_project_to_history()
+            -- Reopen the picker after adding so the new entry is visible
+            -- without manually re-running <leader>fp.
+            require("plugins.setup.editor.project_add").add({ reopen_picker = true })
         end,
     })
     return opts

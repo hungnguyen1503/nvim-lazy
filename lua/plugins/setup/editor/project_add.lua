@@ -6,7 +6,7 @@
 -- format neovim-project itself writes, so history entries stay consistent.
 local M = {}
 
-function M.add()
+function M.add(opts)
     local path_util = require("neovim-project.utils.path")
     local history = require("neovim-project.utils.history")
 
@@ -24,13 +24,20 @@ function M.add()
         history.make_sure_read_projects_from_history()
         for _, existing in ipairs(history.get_recent_projects()) do
             if path_util.short_path(existing) == dir then
-                vim.notify("Already in projects: " .. dir, vim.log.levels.INFO, { title = "Neovim Project" })
+                vim.notify("Already in projects: " .. dir
+                    .. " — open <leader>fp to jump to it", vim.log.levels.INFO,
+                    { title = "Neovim Project" })
                 return
             end
         end
         history.add_session_project(dir)
         history.write_projects_to_history()
         vim.notify("Added project: " .. dir, vim.log.levels.INFO, { title = "Neovim Project" })
+        if opts and opts.reopen_picker then
+            vim.schedule(function()
+                vim.cmd("NeovimProjectDiscover")
+            end)
+        end
     end)
 end
 
